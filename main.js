@@ -67,7 +67,6 @@ function generatePics(picturesNumber) {
 
 function generateComments(commentsNumber) {
     let comments = [];
-
     for (let n = 0; n < commentsNumber; n++) {
         let commenter = randomInt(0, 5);
         let newCom = {
@@ -82,4 +81,3 @@ function generateComments(commentsNumber) {
 }
 
 console.log(generatePics(25));
-
