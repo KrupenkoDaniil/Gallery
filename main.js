@@ -42,7 +42,7 @@ function getRandomElem(list) {
 };
 
 
-function generatePicsMassive(picturesNumber) {
+function generatePicsArray(picturesNumber) {
     const maxComId = MAX_COMMENT_COUNT * picturesNumber;
     const usedPicIds = [];
     const usedComIds = [];
@@ -58,7 +58,7 @@ function generatePicsMassive(picturesNumber) {
 // в качестве аргумента принимает кол объектов, которые должная вернуть в массиве
 function generatePic(maxPicId, usedPicIds, maxComId, usedComIds) {
     while (true) {
-        let nextId = randomInt(1, maxPicId);
+        const nextId = randomInt(1, maxPicId);
         if (!usedPicIds.includes(nextId)) {
             const newPic = {
                 id: nextId,
@@ -77,9 +77,9 @@ function generateComments(commentsNumber, maxComId, usedComIds) {
     const comments = [];
 
     while (commentsNumber > 0) {
-        let nextId = randomInt(1, maxComId);
+        const nextId = randomInt(1, maxComId);
         if (nextId < maxComId && !usedComIds.includes(nextId)) {
-            let commenter = randomInt(0, 5);
+            const commenter = randomInt(0, 5);
             const newCom = {
                 id: nextId,
                 avatar: `./img/avatar-${commenter + 1}.jpg`,
@@ -94,4 +94,5 @@ function generateComments(commentsNumber, maxComId, usedComIds) {
     return comments;
 };
 
-console.log(generatePicsMassive(5));
+console.log(generateComments(10, 15, []));
+console.log(generatePicsArray(5));
