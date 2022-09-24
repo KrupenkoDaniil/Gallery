@@ -94,5 +94,5 @@ function generateComments(commentsNumber, maxComId, usedComIds) {
     return comments;
 };
 
-console.log(generateComments(10, 15, []));
+//console.log(generateComments(10, 15, []));
 console.log(generatePicsArray(5));
