@@ -6,6 +6,27 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
+    <section class="modal-window">
+        <div class="modal-window__image-section image-section">
+            <img class="image-section__img" src="#" alt="picture">
+            <a href="#" class="image-section__exit-button"></a>
+            <div class="image-section__header">
+                <p class="image-section__text">Hello, World!😀</p>
+                <div class="image-section__likes">10</div>
+            </div>
+        </div>
+        <div class="modal-window__comments-section comments-section">
+        </div>
+    </section>
+    <template id='comment-template'>
+        <div class="comments-section__comment">
+            <div class="comment-section__title">
+                <img class="comment-section__avatar" src="#" alt="picture">
+                <p class="comment-section__nickname"></p>
+            </div>
+            <p class="comment-section__text"></p>
+        </div>
+    </template>
     <script src="./createDesk.js" type="module"></script>
 </body>
 </html>

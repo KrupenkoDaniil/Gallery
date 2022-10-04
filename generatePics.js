@@ -4,12 +4,14 @@ const MIN_LIKE_COUNT = 15;
 const MAX_LIKE_COUNT = 200;
 const MAX_COMMENT_COUNT = 10;
 export const PICS = {
-    'red': 'section_pic_winter.jpg',
+    'gold': 'section_pic_winter.jpg',
     'white': 'section_pic_summer.jpg',
     'darkgreen': 'section_pic_spring.jpg',
-    'yellow': 'section_pic_2.jpg',
+    'lime': 'section_pic_2.jpg',
     'blue': 'section_pic_1.jpeg',
-    'wheat': 'eva.png'
+    'red': 'winter_scenery.jpg',
+    'orange': 'fly_me_to_the_moon.jpg',
+    'purple': 'cat.jpg',
 };
 const DESCRIPTIONS = [
     'This is my food',
@@ -37,55 +39,63 @@ const NAMES = [
     'Natasha'
 ];
 
-
 export function generatePicsArray(picturesNumber) {
-    const maxComId = MAX_COMMENT_COUNT * picturesNumber;
-    const usedPicIds = [];
-    const usedComIds = [];
-    const pictures = [];
+    const maxCommentId = MAX_COMMENT_COUNT * picturesNumber;
 
-    for (let i = 0; i < picturesNumber; i++) {
-        pictures.push(generatePic(picturesNumber, usedPicIds, maxComId, usedComIds));
-    };
+    // Generate an array with certain amount of objects within
+    // using Array.from:
+    const pictures = Array.from({ length: picturesNumber }, () => generatePic(picturesNumber, maxCommentId));
+
+    // using new Array(n).fill().map(() => func)
+    // let pictures = new Array(picturesNumber).fill().map(() => generatePic(picturesNumber, maxComId));
 
     return pictures;
 }
 
-// в качестве аргумента принимает кол объектов, которые должная вернуть в массиве
-function generatePic(maxPicId, usedPicIds, maxComId, usedComIds) {
-    while (true) {
+// As an argument gets the number of elements supposed to be in the array
+function generatePic(maxPicId, maxCommentId) {
+
+    // Static var immitation
+    if (generatePic.usedPicIds === undefined) {
+        generatePic.usedPicIds = [];
+    }
+
+    let creatingNewPic = true;
+    while (creatingNewPic) {
         const nextId = randomInt(1, maxPicId);
-        if (!usedPicIds.includes(nextId)) {
+        if (!generatePic.usedPicIds.includes(nextId)) {
             const newPic = {
                 id: nextId,
                 // url: `./photos/${nextId}.jpg`,
                 url: `${getRandomKey(PICS)}`,
                 descripction: getRandomElem(DESCRIPTIONS),
                 likes: randomInt(MIN_LIKE_COUNT, MAX_LIKE_COUNT), // 15 - 200
-                comments: generateComments(randomInt(0, MAX_COMMENT_COUNT), maxComId, usedComIds) // 0 - 10
+                comments: Array.from({ length: randomInt(0, MAX_COMMENT_COUNT) }, () => generateComment(maxCommentId)) // 0 - 10
             };
-            usedPicIds.push(nextId);
+            generatePic.usedPicIds.push(nextId);
             return newPic;
-        };
-    };
-};
-function generateComments(commentsNumber, maxComId, usedComIds) {
-    const comments = [];
+        }
+    }
+}
+function generateComment(maxCommentId) {
+    // Static var immitation
+    if (generateComment.usedCommentIds === undefined) {
+        generateComment.usedCommentIds = [];
+    }
 
-    while (commentsNumber > 0) {
-        const nextId = randomInt(1, maxComId);
-        if (nextId < maxComId && !usedComIds.includes(nextId)) {
+    let creatingNewComment = true;
+    while (creatingNewComment) {
+        const nextId = randomInt(1, maxCommentId);
+        if (nextId < maxCommentId && !generateComment.usedCommentIds.includes(nextId)) {
             const commenter = randomInt(0, 5);
             const newComments = {
                 id: nextId,
-                avatar: `./img/avatar-${commenter + 1}.jpg`,
+                avatar: `./img/avatar-${commenter + 1}.png`,
                 message: getRandomElem(MESSAGES),
                 name: NAMES[commenter]
             };
-            comments.push(newComments);
-            commentsNumber--;
-        };
-    };
-
-    return comments;
-};
+            generateComment.usedCommentIds.push(nextId);
+            return newComments;
+        }
+    }
+}
