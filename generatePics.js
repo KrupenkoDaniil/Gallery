@@ -54,48 +54,40 @@ export function generatePicsArray(picturesNumber) {
 
 // As an argument gets the number of elements supposed to be in the array
 function generatePic(maxPicId, maxCommentId) {
-
-    // Static var immitation
-    if (generatePic.usedPicIds === undefined) {
-        generatePic.usedPicIds = [];
-    }
-
-    let creatingNewPic = true;
-    while (creatingNewPic) {
-        const nextId = randomInt(1, maxPicId);
-        if (!generatePic.usedPicIds.includes(nextId)) {
-            const newPic = {
-                id: nextId,
-                // url: `./photos/${nextId}.jpg`,
-                url: `${getRandomKey(PICS)}`,
-                descripction: getRandomElem(DESCRIPTIONS),
-                likes: randomInt(MIN_LIKE_COUNT, MAX_LIKE_COUNT), // 15 - 200
-                comments: Array.from({ length: randomInt(0, MAX_COMMENT_COUNT) }, () => generateComment(maxCommentId)) // 0 - 10
-            };
-            generatePic.usedPicIds.push(nextId);
-            return newPic;
-        }
-    }
+    const newPic = {
+        id: getUniqueId.call(generatePic, maxPicId),
+        // url: `./photos/${nextId}.jpg`,
+        url: `${getRandomKey(PICS)}`,
+        descripction: getRandomElem(DESCRIPTIONS),
+        likes: randomInt(MIN_LIKE_COUNT, MAX_LIKE_COUNT), // 15 - 200
+        comments: Array.from({ length: randomInt(0, MAX_COMMENT_COUNT) }, () => generateComment(maxCommentId)) // 0 - 10
+    };
+    return newPic;
 }
+
 function generateComment(maxCommentId) {
+    const commenter = randomInt(0, 5);
+    const newComments = {
+        id: getUniqueId.call(generateComment, maxCommentId),
+        avatar: `./img/avatar-${commenter + 1}.png`,
+        message: getRandomElem(MESSAGES),
+        name: NAMES[commenter]
+    };
+    return newComments;
+}
+
+function getUniqueId(maxId) {
     // Static var immitation
-    if (generateComment.usedCommentIds === undefined) {
-        generateComment.usedCommentIds = [];
+    if (this.usedIds === undefined) {
+        this.usedIds = [];
     }
 
-    let creatingNewComment = true;
-    while (creatingNewComment) {
-        const nextId = randomInt(1, maxCommentId);
-        if (nextId < maxCommentId && !generateComment.usedCommentIds.includes(nextId)) {
-            const commenter = randomInt(0, 5);
-            const newComments = {
-                id: nextId,
-                avatar: `./img/avatar-${commenter + 1}.png`,
-                message: getRandomElem(MESSAGES),
-                name: NAMES[commenter]
-            };
-            generateComment.usedCommentIds.push(nextId);
-            return newComments;
-        }
+    // Generate new id
+    let nextId = randomInt(0, maxId);
+    while (this.usedIds.includes(nextId)) {
+        nextId = randomInt(0, maxId);
     }
+    // this.usedIds.push(nextId);
+
+    return nextId;
 }

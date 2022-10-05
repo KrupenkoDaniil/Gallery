@@ -39,7 +39,7 @@ export function openModalWindow(event, picsArray) {
         })
 
         modalWindow.classList.toggle('active');
-        
+
     } else if ((event.target.closest('section') === null) || (!event.target.closest('section').classList.contains('modal-window'))) {
         modalWindow.classList.remove('active');
     }
