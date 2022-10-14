@@ -5,24 +5,31 @@ body {
     box-sizing: border-box;
 }
 
-p {
+p, h1, h2, h3, h4, h5 {
     margin: 0;
+}
+
+hr {
+    width: 100%;
+    height: 2px;
+    background-color: gold;
 }
 
 .container {
     display: flex;
     flex-wrap:wrap;
-    position: relative;
     width: 100%;
     margin: 15px auto 0;
     border-radius: 5px;
+    transition: opacity .2s linear;
 }
 
+/* Frame settings */
 .frame {
     opacity: 0.8;
     display: flex;
-    justify-content: center;
-    align-items: flex-end;
+    flex-direction: column;
+    justify-content: flex-end;
     text-align: center;
     font-size: 0;
     background-size:cover;
@@ -38,6 +45,7 @@ p {
     transition: transform .2s linear, color .2s linear, font-size .2s linear;
 }
 
+/* Add button settings */
 .add-button {
     display: flex;
     justify-content: center;
@@ -56,28 +64,35 @@ p {
     transition: transform .2s linear, color .3s linear;
 }
 
-.modal-window.active {
-    display: block;
-    right: 50%;
-    transform: translate(50%, 0);
+/* Frame window settings */
+.frame-window.active {
+    opacity: 1;
+    visibility: visible;
 }
 
-.modal-window {
+.frame-window {
+    opacity: 0;
+    visibility: hidden;
     position: absolute;
+    display: block;
     max-width: 60vw;
-    display: none;
-    width: 100%;
-    right: -100%;
+    width: 100vw;
+    top: -100%;
+    left: 0;
+    right: 0;
+    margin: 1em auto 0;
     padding: 1em;
-    border-radius: 15px;
     z-index: 1;
-    background-color: white;
+    border-radius: 15px;
     box-shadow: 0px 0px 5px black;
+    background-color: wheat;
+    transition: all .2s linear;
 }
-
-.modal-window__image-section {
+/* Image section settings */
+.image-section {
     display: flex;
     align-items: center;
+    justify-content: center;
     flex-direction: column;
     margin-bottom: 20px;
 }
@@ -90,6 +105,7 @@ p {
 
 .image-section__exit-button {
     position: absolute;
+    top: 20px;
     right: 0;
     width: 20px;
     height: 20px;
@@ -114,6 +130,7 @@ p {
     font-weight: 700;
 }
 
+/* Comments section settings */
 .comments-section {
     display: flex;
     flex-direction: column;
@@ -134,4 +151,168 @@ p {
 } 
 
 .comment-section__text {
+}
+
+
+/* New comment settings */
+.frame-window__comment {
+    margin-top: 20px;
+}
+
+.comment__name{
+    text-align: center;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 0;
+    box-shadow: 0px 1px 5px gray;
+    transition: all .2s;
+}
+
+.comment__name:hover {
+    cursor: text;
+    background-color: #eee;
+}
+
+.comment__name:focus {
+    outline: none;
+    box-shadow: 0px 1px 5px #333;
+}
+
+.textarea {
+    outline: none;
+    resize: none;
+    width: 100%;
+    min-height: 1em;
+    padding-left: 10px;
+    border-radius: 5px;
+    border: 0;
+    box-shadow: 0px 1px 5px gray;
+    transition: all .2s;
+}
+
+.textarea:hover {
+    cursor: text;
+    background-color: #eee;
+    transition: all .2s;
+}
+
+.textarea:focus {
+    cursor: text;
+    box-shadow: 0px 1px 5px #333;
+    transition: all .2s;
+}
+
+.comment__submit-button {
+    width: 70px;
+    text-align: center;
+    margin-top: 10px;
+    padding: 5px 10px;
+    color: white;
+    background-color: blue;
+    border-radius: 5px;
+    transition: transform .2s linear;
+}
+
+.comment__submit-button:hover {
+    cursor: pointer;
+    transform: translate( 0, -3px);
+    transition: transform .2s linear;
+}
+
+/* Add window settings */
+.add-window.active {
+    top: 0;
+    opacity: 1;
+    visibility: visible;
+}
+
+.add-window {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    display: block;
+    max-width: 60vw;
+    width: 100vw;
+    top: -100%;
+    left: 0;
+    right: 0;
+    margin: 1em auto 0;
+    padding: 1em;
+    z-index: 1;
+    border-radius: 15px;
+    box-shadow: 0px 0px 5px black;
+    background-color: wheat;
+    transition: all .2s linear;
+}
+
+.add-window__image-section {
+    min-height: 400px;
+}
+
+.add-window__upload-label {
+    cursor: pointer;
+    text-align: center;
+    padding: 10px 20px;
+    font-size: 20px;
+    color: white;
+    background-color: blue;
+    border-radius: 5px;
+    transition: transform .2s linear;
+}
+
+.add-window__upload-label:hover {
+    box-shadow: 0 5px 0 darkblue;
+    transform: translate( 0, -5px);
+}
+
+.add-window__upload-input {
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.add-window__exit-button {
+    position: absolute;
+    top: 20px;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+/* Setting section settings */
+.setting-section {
+}
+
+.setting-section__label{
+    font-size: 1.2em;
+}
+
+.setting-section__radiobutton{
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.setting-section__textarea{
+}
+
+.setting-section__submit-button {
+    width: 50%;
+    cursor: pointer;
+    text-align: center;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 20px;
+    color: white;
+    background-color: blue;
+    border-radius: 5px;
+    transition: transform .2s linear;
+}
+
+.setting-section__submit-button:hover {
+    box-shadow: 3px 3px 0 darkblue;
+    transform: translate( -3px, -3px);
 }

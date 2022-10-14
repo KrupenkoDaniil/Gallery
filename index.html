@@ -6,18 +6,51 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <section class="modal-window">
-        <div class="modal-window__image-section image-section">
+
+    <section class="frame-window">
+        <div class="frame-window__image-section image-section">
             <img class="image-section__img" src="#" alt="picture">
             <a href="#" class="image-section__exit-button"></a>
             <div class="image-section__header">
-                <p class="image-section__text">Hello, World!😀</p>
-                <div class="image-section__likes">10</div>
+                <p class="image-section__text"></p>
+                <div class="image-section__likes"></div>
             </div>
         </div>
-        <div class="modal-window__comments-section comments-section">
+        <hr>
+        <div class="frame-window__comments-section comments-section">
         </div>
+        <form class="frame-window__comment comment" method="GET">
+            <input class="comment__name" type="text"  list="names" placeholder="Your name" required>
+            <datalist id="names">
+                <option value="Daniil Krupenko"></option>
+            </datalist>
+            <textarea class="comment__textarea textarea" name="comment" id="comment" placeholder="Your comment here" required></textarea>
+            <div class="comment__submit-button">Submit</div>
+        </form>
     </section>
+
+    <section class="add-window">
+        <div class="add-window__image-section image-section">
+            <label class="add-window__upload-label" for="file">Choose file</label>
+            <input id="file" name="file" type="file" class="add-window__upload-input">
+            <a href="#" class="add-window__exit-button"></a>
+        </div>
+        <hr>
+        <form method="GET" class="setting-section">
+            <label class="setting-section__label" for="filter">Choose filters:</label>
+            <input class="setting-section__radiobutton" type="radio" name="filter" id="">
+            <input class="setting-section__radiobutton" type="radio" name="filter" id="">
+            <input class="setting-section__radiobutton" type="radio" name="filter" id="">
+            <input class="setting-section__radiobutton" type="radio" name="filter" id="">
+            <input class="setting-section__radiobutton" type="radio" name="filter" id="">
+            <input class="setting-section__radiobutton" type="radio" name="filter" id="">
+            <input class="setting-section__radiobutton" type="radio" name="filter" id="">
+            <br>
+            <textarea class="setting-section__textarea textarea" name="description" id="description" placeholder="Write description" required></textarea>
+            <div class="setting-section__submit-button">Upload new post</div>
+        </form>
+    </section>
+
     <template id='comment-template'>
         <div class="comments-section__comment">
             <div class="comment-section__title">
@@ -27,6 +60,14 @@
             <p class="comment-section__text"></p>
         </div>
     </template>
-    <script src="./createDesk.js" type="module"></script>
+
+    <template id="frame-template" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <div class="frame">
+            <h5>Comments:<span></span></h5>
+            <h5>Likes:<span></span></h5>
+        </div>
+    </template>
+
+    <script src="./js/createDesk.js" type="module"></script>
 </body>
 </html>
