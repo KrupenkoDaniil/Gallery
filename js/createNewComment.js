@@ -1,11 +1,12 @@
 import { generateComment } from "./generatePics.js";
 
-export function createNewComment(event, targetElement) {
+export function createNewComment(targetElement) {
 
     // Check if textarea has any content
     const textarea = document.getElementById('comment');
     const commenterName = document.querySelector('.comment__name');
     if (textarea.value !== '' && commenterName.value.length > 1) {
+
         // Find necessary elements
         const commentSection = document.querySelector('.comments-section');
         const commentTemplate = document.getElementById('comment-template');
@@ -13,7 +14,7 @@ export function createNewComment(event, targetElement) {
         // Set basics
         const commentName = commentTemplate.content.querySelector('.comment-section__nickname');
         const commentAvatar = commentTemplate.content.querySelector('.comment-section__avatar');
-        commentAvatar.src = '../img/avatar-1.png';
+        commentAvatar.src = '../img/avatars/avatar-4.png';
         commentName.textContent = commenterName.value;
 
         // Comment text
@@ -35,7 +36,7 @@ export function createNewComment(event, targetElement) {
 
         textarea.value = '';
     } else {
-        alert("Fill in all the fields!")
+        alert("Fill in all the fields!");
     }
 
 }

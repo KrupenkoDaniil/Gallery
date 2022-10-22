@@ -8,10 +8,12 @@ export const PICS = {
     'white': 'section_pic_summer.jpg',
     'darkgreen': 'section_pic_spring.jpg',
     'lime': 'section_pic_2.jpg',
-    'blue': 'section_pic_1.jpeg',
+    'darkred': 'section_pic_1.jpeg',
     'red': 'winter_scenery.jpg',
     'orange': 'fly_me_to_the_moon.jpg',
     'purple': 'cat.jpg',
+    'blue': 'Man_drinking_cocoa.jpg',
+    'black': 'Man_drinking_tea.jpg',
 };
 const DESCRIPTIONS = [
     'This is my food',
@@ -52,8 +54,7 @@ export function generatePicsArray(picturesNumber) {
     return pictures;
 }
 
-//* As an argument gets the number of elements supposed to be in the array
-export function generatePic(maxPicId, maxCommentId = 0) {
+export function generatePic(maxPicId, maxCommentId) {
     if (generatePic.maxPicId === undefined) {
         generatePic.maxPicId = maxPicId;
     }
@@ -77,7 +78,7 @@ export function generateComment(maxCommentId) {
     const commenter = randomInt(0, 5);
     const newComment = {
         id: getUniqueId.call(generateComment, maxCommentId),
-        avatar: `./img/avatar-${commenter + 1}.png`,
+        avatar: `./img/avatars/avatar-${commenter + 1}.png`,
         message: getRandomElem(MESSAGES),
         name: NAMES[commenter]
     };

@@ -10,7 +10,7 @@ export function createDesk(number, containerWidth = 800, RowSize = 5, containerM
     const mainContainer = document.createElement('div');
     mainContainer.classList.add('container');
     mainContainer.style.maxWidth = containerWidth + 'px';
-    body.addEventListener('click', (event) => openModalWindow(event, picsArray, mainContainer));
+    body.addEventListener('click', (event) => openModalWindow(event, picsArray));
     body.appendChild(mainContainer);
 
     // Set parameters

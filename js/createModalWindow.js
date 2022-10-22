@@ -1,38 +1,49 @@
 import { PICS, generatePic } from './generatePics.js';
 import { createNewComment } from './createNewComment.js';
 
-export function openModalWindow(event, picsArray) {
-    const mainContainer = document.querySelector('.container');
-    const frameModalWindow = document.querySelector('.frame-window')
-    const addModalWindow = document.querySelector('.add-window')
+const mainOverlay = document.querySelector('.overlay');
+let targetElement, modalWindow;
 
-    if (event.target.classList.contains('frame')
-        && !frameModalWindow.classList.contains('active')
-        && !addModalWindow.classList.contains('active')) { //! if we target frame
-        const targetElement = picsArray[event.target.getAttribute('id')];
+// Set event for exeting modal window by pressing "Escape" button 
+document.addEventListener('keydown', (event,) => {
+    if (modalWindow !== undefined) {
+
+        switch (event.code) {
+            case 'Escape':
+                closeModalWindow(modalWindow);
+                break
+            case 'Enter':
+                if (document.querySelector('.comment__textarea:focus')) {
+                    createNewComment(targetElement);
+                }
+                if (document.querySelector('.setting-section__textarea:focus')) {
+                    submitPost();
+                }
+        }
+    }
+});
+export function openModalWindow(event, picsArray) {
+    if (event.target.classList.contains('frame')) { //! if we target frame
+        targetElement = picsArray[event.target.getAttribute('id')];
+        modalWindow = document.querySelector('.frame-window');
 
         // Set attributes and styles
-        frameModalWindow.classList.add('active');
-        frameModalWindow.style.top = '0';
-        mainContainer.style.opacity = '.5';
+        modalWindow.classList.add('active');
+        modalWindow.style.top = '0';
+        mainOverlay.style.display = 'block';
 
         // Set Image section
-        let windowText = frameModalWindow.querySelector('.image-section__text');
-        let windowLikes = frameModalWindow.querySelector('.image-section__likes');
-        let mainImg = frameModalWindow.querySelector('img');
-        windowText.textContent = `${targetElement['descripction']}`;
-        windowLikes.textContent = `Likes: ${targetElement['likes']}`;
-        mainImg.src = `../img/${PICS[targetElement['url']]}`;
+        let modalWindowText = modalWindow.querySelector('.image-section__text');
+        let modalWindowLikes = modalWindow.querySelector('.image-section__likes');
+        let modalWindowImg = modalWindow.querySelector('img');
+        modalWindowText.textContent = `${targetElement['descripction']}`;
+        modalWindowLikes.textContent = `Likes: ${targetElement['likes']}`;
+        modalWindowImg.src = `../img/${PICS[targetElement['url']]}`;
 
 
         // Set exit button
-        const windowExitButton = frameModalWindow.querySelector('.image-section__exit-button');
-        windowExitButton.addEventListener('click', () => {
-            frameModalWindow.classList.remove('active');
-            document.querySelector('.comments-section').innerHTML = '';
-            frameModalWindow.style.top = '-100%';
-            mainContainer.style.opacity = '1';
-        })
+        const exitButton = modalWindow.querySelector('.image-section__exit-button');
+        setClickEvent(exitButton, closeModalWindow);
 
         // Set comment section
         const targetElementComments = targetElement['comments'];
@@ -43,7 +54,7 @@ export function openModalWindow(event, picsArray) {
             const commentNickname = commentTemplate.content.querySelector('.comment-section__nickname');
             const commentAvatar = commentTemplate.content.querySelector('.comment-section__avatar');
             commentAvatar.src = `${targetElementComments[i]['avatar']}`;
-            commentAvatar.alt = `${targetElementComments[i]['avatar'].slice(6, 14)}`;
+            commentAvatar.alt = `${targetElementComments[i]['avatar'].slice(14, 22)}`;
             commentNickname.textContent = `${targetElementComments[i]['name']}`;
             // Comment text
             const commentText = commentTemplate.content.querySelector('.comment-section__text');
@@ -54,24 +65,19 @@ export function openModalWindow(event, picsArray) {
         }
 
         // Create new comment
-        const newComment = document.querySelector('.comment__submit-button');
-        newComment.addEventListener('click', (event) => createNewComment(event, targetElement));
-        document.addEventListener('keydown', (event) => {
-            if (event.code == 'Enter') {
-                createNewComment(event, targetElement);
-            }
-        })
+        const newCommentButton = document.querySelector('.comment__submit-button');
+        const createNewCommentEvent = () => createNewComment(targetElement);
+        setClickEvent(newCommentButton, createNewCommentEvent)
 
-        // Set keydown event
-        document.addEventListener('keydown', (event) => closeModalWindow(event, frameModalWindow, mainContainer));
 
-    } else if (event.target.classList.contains('add-button')
-        && !frameModalWindow.classList.contains('active')
-        && !addModalWindow.classList.contains('active')) { //! if we target add button
+
+    } else if (event.target.classList.contains('add-button')) { //! if we target add button
+        modalWindow = document.querySelector('.add-window');
+
         // Set attributes and styles
-        addModalWindow.classList.add('active');
-        addModalWindow.style.top = '0';
-        mainContainer.style.opacity = '.5';
+        modalWindow.classList.add('active');
+        modalWindow.style.top = '0';
+        mainOverlay.style.display = 'block';
 
         // Set image section
         const uploadButton = document.querySelector('.add-window__upload-label');
@@ -79,42 +85,38 @@ export function openModalWindow(event, picsArray) {
         //TODO: write function for uploading new pic
 
         // Set exit button
-        const windowExitButton = addModalWindow.querySelector('.add-window__exit-button');
-        windowExitButton.addEventListener('click', () => {
-            addModalWindow.classList.remove('active');
-            addModalWindow.style.top = '-100%';
-            mainContainer.style.opacity = '1';
-        })
+        const exitButton = modalWindow.querySelector('.add-window__exit-button');
+        setClickEvent(exitButton, closeModalWindow);
 
         // Set upload button
         const submitButton = document.querySelector('.setting-section__submit-button');
-        submitButton.addEventListener('click', submitPost);
+        setClickEvent(submitButton, submitPost)
         //TODO: Add submitting post by pressing ENTER
 
-
-        // Set keydown event
-        document.addEventListener('keydown', (event) => closeModalWindow(event, addModalWindow, mainContainer));
-
-    } else if ((event.target.closest('section') === null)) { //! if we target any other part of the viewport
-        // Null add window
-        addModalWindow.classList.remove('active');
-
-        // Null frame window
-        frameModalWindow.classList.remove('active');
-        document.querySelector('.comments-section').innerHTML = '';
-        frameModalWindow.style.top = '-100%';
-        addModalWindow.style.top = '-100%';
-        mainContainer.style.opacity = '1';
+    } else if (modalWindow !== undefined // if modal window is set
+        && modalWindow.classList.contains('active') // if modal window is active
+        && event.target.closest('section') === null) { //! if we target any other part of the viewport
+        closeModalWindow();
     }
 }
 
-function closeModalWindow(event, modalWindow, mainContainer) {
-    if (event.code == 'Escape') {
-        modalWindow.classList.remove('active');
-        document.querySelector('.comments-section').innerHTML = '';
-        modalWindow.style.top = '-100%';
-        mainContainer.style.opacity = '1';
-        document.removeEventListener('keydown', closeModalWindow);
+function setClickEvent(eventElement, eventFunction) {
+    if (setClickEvent.activeEvents == undefined) {
+        setClickEvent.activeEvents = [];
+    }
+    eventElement.addEventListener('click', eventFunction);
+    setClickEvent.activeEvents.push([eventElement, eventFunction]);
+}
+
+function closeModalWindow() {
+    modalWindow.classList.remove('active');
+    document.querySelector('.comments-section').innerHTML = '';
+    modalWindow.style.top = '-100%';
+    mainOverlay.style.display = 'none';
+    for (let i = 0; i < setClickEvent.activeEvents.length; i++) {
+        let eventElement = setClickEvent.activeEvents[i][0];
+        let eventFunction = setClickEvent.activeEvents[i][1];
+        eventElement.removeEventListener('click', eventFunction);
     }
 }
 
@@ -134,7 +136,7 @@ function submitPost() {
                 radioButton = button;
             }
         });
-        //TODO: Add setting different filters on photo 
+        //TODO: Add setting different filters on photo
 
         //TODO: Add new post in general PICS object and set it in viewport
         const nextPostId = generatePic.maxPicId + 1;
@@ -143,7 +145,4 @@ function submitPost() {
     } else {
         alert("Fill in all necessities!")
     }
-
-
-
 }
