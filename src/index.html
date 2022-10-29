@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div class="overlay"></div>
+    
+    <section class="post-window"> 
+        <div class="post-window__image-section image-section">
+            <img class="image-section__img" src="#" alt="picture">
+            <a href="#" class="image-section__exit-button"></a>
+            <div class="image-section__title">
+                <p class="image-section__text"></p>
+                <div class="image-section__likes"></div>
+            </div>
+        </div>
+        <hr>
+        <div class="post-window__comment-container">
+            <div class="post-window__comments-section comments-section">
+            </div>
+            <div class="post-window__show-comments-button button">Show More Comments</div>
+        </div>
+        <form class="post-window__add-comment add-comment" method="GET">
+            <input class="add-comment__name" type="text" list="names" placeholder="Your name" required>
+            <datalist id="names">
+                <option value="Daniil Krupenko"></option>
+                <option value="Vasia Pypkin"></option>
+            </datalist>
+            <textarea class="add-comment__textarea textarea" name="comment" id="comment" placeholder="Your comment here" required></textarea>
+            <div class="add-comment__submit-button button">Submit</div>
+        </form>
+    </section>
+
+    <section class="add-window">
+        <div class="add-window__image-section image-section">
+            <div class="add-window__img-container">
+                <img class="add-window__img" src="#" alt="new-pic">
+            </div>
+            <input id="file" name="file" type="file" accept="image/png, image/jpeg" class="add-window__upload-input">
+            <a href="#" class="add-window__exit-button"></a>
+        </div>
+        <hr>
+        <form method="GET" class="setting-section">
+            <label class="setting-section__label" for="filter">Choose filters:</label>
+            <input class="setting-section__radiobutton" type="radio" name="filter" id="">
+            <input class="setting-section__radiobutton" type="radio" name="filter" id="">
+            <input class="setting-section__radiobutton" type="radio" name="filter" id="">
+            <input class="setting-section__radiobutton" type="radio" name="filter" id="">
+            <input class="setting-section__radiobutton" type="radio" name="filter" id="">
+            <input class="setting-section__radiobutton" type="radio" name="filter" id="">
+            <input class="setting-section__radiobutton" type="radio" name="filter" id="">
+            <br>
+            <textarea class="setting-section__textarea textarea" name="description" id="description" placeholder="Write description" required></textarea>
+            <!-- make it anchor -->
+            <div class="setting-section__submit-button">Upload new post</div>
+        </form>
+    </section>
+
+    <template id='comment-template'>
+        <div class="comments-section__comment">
+            <div class="comment-section__title">
+                <img class="comment-section__avatar" src="#" alt="picture">
+                <p class="comment-section__nickname"></p>
+            </div>
+            <p class="comment-section__text"></p>
+        </div>
+    </template>
+
+    <template id="post-template" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <div class="post">
+            <h5>Comments:<span></span></h5>
+            <h5>Likes:<span></span></h5>
+        </div>
+    </template>
+</body>
+</html>
