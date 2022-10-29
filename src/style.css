@@ -189,11 +189,12 @@ hr {
 } 
 
 .comment-section__text {
+    word-break: break-all;
 }
 
 .post-window__show-comments-button {
     width: 200px;
-    margin: 0 auto;
+    margin: 20px auto 0;
     padding: 10px 15px;
 }
 
