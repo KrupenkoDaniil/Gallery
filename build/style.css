@@ -1,6 +1,6 @@
-/*!*****************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/style.css ***!
-  \*****************************************************************/
+/*!************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/style/basics.css ***!
+  \************************************************************************/
 html {
     scroll-behavior: smooth;
 }
@@ -22,7 +22,6 @@ hr {
     background-color: gold;
 }
 
-/*! Basic classes */
 .container {
     display: flex;
     flex-wrap:wrap;
@@ -56,7 +55,9 @@ hr {
     z-index: 1;
     background-color: rgba(255, 255, 255, .5);
 }
-
+/*!******************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/style/post-section.css ***!
+  \******************************************************************************/
 /*! Post settings */
 .post {
     opacity: 0.8;
@@ -76,25 +77,6 @@ hr {
     font-weight: 700;
     transform:translateY(-5px);
     transition: transform .2s linear, color .2s linear, font-size .2s linear;
-}
-
-/*! Add button settings */
-.add-button {
-    display: flex;
-    justify-content: center;
-    align-items: center;    
-    border-radius: 15%;
-    font-size: 1.5em;
-    font-weight: 700;
-    text-transform: uppercase;
-    background-color: goldenrod;
-    transition: all .2s linear;
-}
-
-.add-button:hover {
-    color: wheat;
-    transform:translateY(-10px);
-    transition: transform .2s linear, color .3s linear;
 }
 
 /*! Post window settings */
@@ -121,6 +103,7 @@ hr {
     background-color: wheat;
     transition: all .2s linear;
 }
+
 /*! Image section settings */
 .image-section {
     position: relative;
@@ -192,11 +175,12 @@ hr {
 } 
 
 .comment-section__text {
+    word-break: break-all;
 }
 
 .post-window__show-comments-button {
     width: 200px;
-    margin: 0 auto;
+    margin: 20px auto 0;
     padding: 10px 15px;
 }
 
@@ -255,6 +239,29 @@ hr {
     margin-top: 10px;
     padding: 5px 10px;
 }
+/*!*****************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/style/add-section.css ***!
+  \*****************************************************************************/
+/*! Add button settings */
+.add-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+    border-radius: 15%;
+    font-size: 1.5em;
+    font-weight: 700;
+    text-transform: uppercase;
+    background-color: goldenrod;
+    transition: all .2s linear;
+}
+
+.add-button:hover {
+    color: wheat;
+    transform:translateY(-10px);
+    transition: transform .2s linear, color .3s linear;
+}
+
+
 
 /*! Add window settings */
 .add-window.active {
@@ -361,5 +368,13 @@ hr {
     box-shadow: 3px 3px 0 darkblue;
     transform: translate( -3px, -3px);
 }
+/*!*****************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/style.css ***!
+  \*****************************************************************/
+
+
+
+
+
 
 /*# sourceMappingURL=style.css.map*/

@@ -35,7 +35,7 @@ export function openModalWindow(event, picsArray) {
         mainOverlay.style.display = 'block';
 
         // Set Image section
-        let modalWindowImg = modalWindow.querySelector('img');
+        modalWindowImg = modalWindow.querySelector('img');
         let modalWindowText = modalWindow.querySelector('.image-section__text');
         let modalWindowLikes = modalWindow.querySelector('.image-section__likes');
         modalWindowText.textContent = `${targetElement['descripction']}`;
@@ -82,6 +82,29 @@ export function openModalWindow(event, picsArray) {
         const exitButton = modalWindow.querySelector('.add-window__exit-button');
         setEvent('click', exitButton, closeModalWindow);
 
+        // Change photo's scale
+        const modalWindowImg = modalWindow.querySelector('.add-window__img');
+        const increaseScaleButton = document.querySelector('.scale-control-settings__increase-button');
+        const decreaseScaleButton = document.querySelector('.scale-control-settings__decrease-button');
+
+        // Set default scale 
+        let scaleValue = 1;
+        modalWindowImg.style.setProperty('--scale', scaleValue);
+
+        // Set scale addEventListeners
+        setEvent('click', increaseScaleButton, () => {
+            if (scaleValue < 1) {
+                modalWindowImg.style.setProperty('--scale', String(scaleValue + 0.25));
+                scaleValue = +getComputedStyle(modalWindowImg).getPropertyValue('--scale');
+            }
+        })
+        setEvent('click', decreaseScaleButton, () => {
+            if (scaleValue > 0.25) {
+                modalWindowImg.style.setProperty('--scale', String(scaleValue - 0.25));
+                scaleValue = +getComputedStyle(modalWindowImg).getPropertyValue('--scale');
+            }
+        })
+
         // Set submit button
         const submitButton = document.querySelector('.setting-section__submit-button');
         setEvent('click', submitButton, submitPost)
@@ -98,12 +121,12 @@ function closeModalWindow() {
     document.querySelector('.comments-section').innerHTML = '';
     modalWindow.style.top = '-100%';
     mainOverlay.style.display = 'none';
-    removeEvents('click');
-    removeEvents('change');
+    inputFile.value = '';
+    removeEvents();
 }
 
 function uploadPicture() {
-    const modalWindowImg = modalWindow.querySelector('img');
+    const modalWindowImg = modalWindow.querySelector('.add-window__img');
     const reader = new FileReader();
     const selectedFile = inputFile.files[0];
 
@@ -112,7 +135,6 @@ function uploadPicture() {
             modalWindowImg.src = reader.result;
         });
         reader.readAsDataURL(selectedFile);
-
         // Set attributes and styles
         modalWindow.classList.add('active');
         modalWindow.style.top = '0';
@@ -124,7 +146,6 @@ function submitPost() {
 
     // Check if textarea has any content
     const textarea = document.querySelector('.setting-section__textarea');
-
     if (textarea.value !== '' && fileInput.value !== '') { //! we can create new post only if it has discription and img
         // Set active radio button
         let radioButton;
