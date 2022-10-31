@@ -92,10 +92,10 @@ function getUniqueId(maxId) {
     }
 
     // Generate new id
-    let nextId = getRandomInt(0, maxId);
-    while (this.usedIds.includes(nextId)) {
+    let nextId;
+    do {
         nextId = getRandomInt(0, maxId);
-    }
+    } while (this.usedIds.includes(nextId));
     this.usedIds.push(nextId);
 
     return nextId;
