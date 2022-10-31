@@ -35,9 +35,9 @@ export function openModalWindow(event, picsArray) {
         mainOverlay.style.display = 'block';
 
         // Set Image section
-        modalWindowImg = modalWindow.querySelector('img');
-        let modalWindowText = modalWindow.querySelector('.image-section__text');
-        let modalWindowLikes = modalWindow.querySelector('.image-section__likes');
+        const modalWindowImg = modalWindow.querySelector('img');
+        const modalWindowText = modalWindow.querySelector('.image-section__text');
+        const modalWindowLikes = modalWindow.querySelector('.image-section__likes');
         modalWindowText.textContent = `${targetElement['descripction']}`;
         modalWindowLikes.textContent = `Likes: ${targetElement['likes']}`;
         modalWindowImg.src = `../img/${PICS[targetElement['url']]}`;
