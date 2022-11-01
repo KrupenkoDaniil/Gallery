@@ -1,6 +1,5 @@
-import { generateComment } from "./generate-pics-array.js";
 
-export function createNewComment(targetElement) {
+export function createNewComment() {
 
     // Check if textarea has any content
     const textarea = document.getElementById('comment');
@@ -8,7 +7,7 @@ export function createNewComment(targetElement) {
     if (textarea.value !== '' && commenterName.value.length > 1) {
 
         // Find necessary elements
-        const commentSection = document.querySelector('.comments-section');
+        const commentContainer = document.querySelector('.comments-container');
         const commentTemplate = document.getElementById('comment-template');
 
         // Set basics
@@ -21,20 +20,13 @@ export function createNewComment(targetElement) {
         const commentText = commentTemplate.content.querySelector('.comment-section__text');
         commentText.textContent = textarea.value;
 
-        // Creating new comment object
-        const newComment = {
-            id: generateComment.maxCommentId++ + 1, //? don't know how it works but it does!
-            avatar: commentAvatar.src,
-            message: textarea.value,
-            name: commenterName.value
-        };
-        targetElement['comments'].push(newComment);
 
         // Creating a new comment clone
         const commentTextClone = commentTemplate.content.cloneNode(true);
-        commentSection.appendChild(commentTextClone);
+        commentContainer.appendChild(commentTextClone);
 
         textarea.value = '';
+        textarea.blur();
     } else {
         alert("Fill in all the fields!");
     }

@@ -5,6 +5,7 @@ import { setEvent, removeEvents } from './click-events.js';
 // Set main Constants
 const mainOverlay = document.querySelector('.overlay');
 const inputFile = document.querySelector('#file');
+const targetElementComments = [];
 
 // Set event for exeting modal window by pressing "Escape" button 
 let targetElement, modalWindow;
@@ -47,29 +48,17 @@ export function openModalWindow(event, picsArray) {
         const exitButton = modalWindow.querySelector('.image-section__exit-button');
         setEvent('click', exitButton, closeModalWindow);
 
-        // Set comment section
-        const targetElementComments = targetElement['comments'];
-        const commentSection = document.querySelector('.comments-section');
-        const commentTemplate = document.getElementById('comment-template');
-        for (let i = 0; i < targetElementComments.length; i++) {
-            // Comment header
-            const commentNickname = commentTemplate.content.querySelector('.comment-section__nickname');
-            const commentAvatar = commentTemplate.content.querySelector('.comment-section__avatar');
-            commentAvatar.src = `${targetElementComments[i]['avatar']}`;
-            commentAvatar.alt = `${targetElementComments[i]['avatar'].slice(14, 22)}`;
-            commentNickname.textContent = `${targetElementComments[i]['name']}`;
-            // Comment text
-            const commentText = commentTemplate.content.querySelector('.comment-section__text');
-            commentText.textContent = `${targetElementComments[i]['message']}`;
-            // Comment clone
-            const commentTextClone = commentTemplate.content.cloneNode(true);
-            commentSection.appendChild(commentTextClone);
-        }
+        // Set comments section
+        targetElement['comments'].forEach((item) => {
+            targetElementComments.push(item);
+        })
+        const showCommentsButton = document.querySelector('.comments-section__show-comments-button');
+        showComments(5, showCommentsButton);
+        setEvent('click', showCommentsButton, () => showComments(5, showCommentsButton))
 
         // Create new comment
         const newCommentButton = document.querySelector('.add-comment__submit-button');
-        const createNewCommentEvent = () => createNewComment(targetElement);
-        setEvent('click', newCommentButton, createNewCommentEvent);
+        setEvent('click', newCommentButton, createNewComment);
 
 
 
@@ -118,11 +107,39 @@ export function openModalWindow(event, picsArray) {
 
 function closeModalWindow() {
     modalWindow.classList.remove('active');
-    document.querySelector('.comments-section').innerHTML = '';
+    document.querySelector('.comments-container').innerHTML = '';
     modalWindow.style.top = '-100%';
     mainOverlay.style.display = 'none';
     inputFile.value = '';
     removeEvents();
+}
+
+function showComments(commentsNumber, showCommentsButton) {
+    const commentSection = document.querySelector('.comments-container');
+    const commentTemplate = document.getElementById('comment-template');
+
+    // Check if we have enough comments
+    showCommentsButton.classList.remove('hidden');
+    if (targetElementComments.length <= 5) {
+        commentsNumber = targetElementComments.length;
+        showCommentsButton.classList.add('hidden');
+    }
+
+    for (let i = 0; i < commentsNumber; i++) {
+        // Comment header
+        const commentNickname = commentTemplate.content.querySelector('.comment-section__nickname');
+        const commentAvatar = commentTemplate.content.querySelector('.comment-section__avatar');
+        commentAvatar.src = `${targetElementComments[0]['avatar']}`;
+        commentAvatar.alt = `${targetElementComments[0]['name']}`;
+        commentNickname.textContent = `${targetElementComments[0]['name']}`;
+        // Comment text
+        const commentText = commentTemplate.content.querySelector('.comment-section__text');
+        commentText.textContent = `${targetElementComments[0]['message']}`;
+        // Comment clone
+        const commentTextClone = commentTemplate.content.cloneNode(true);
+        commentSection.appendChild(commentTextClone);
+        targetElementComments.shift();
+    }
 }
 
 function uploadPicture() {

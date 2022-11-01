@@ -7,31 +7,33 @@
 <body>
     <div class="overlay"></div>
     
-    <section class="post-window"> 
-        <div class="post-window__image-section image-section">
-            <img class="image-section__img" src="#" alt="picture">
-            <a href="#" class="image-section__exit-button"></a>
-            <div class="image-section__title">
-                <p class="image-section__text"></p>
-                <div class="image-section__likes"></div>
+    <div class="wrap">
+        <section class="post-window"> 
+            <div class="post-window__image-section image-section">
+                <img class="image-section__img" src="#" alt="picture">
+                <a href="#" class="image-section__exit-button"></a>
+                <div class="image-section__title">
+                    <p class="image-section__text"></p>
+                    <div class="image-section__likes"></div>
+                </div>
             </div>
-        </div>
-        <hr>
-        <div class="post-window__comment-container">
+            <hr>
             <div class="post-window__comments-section comments-section">
+                <ul class="comments-section__comments-container comments-container">
+                </ul>
+                <div class="comments-section__show-comments-button button">Show More Comments</div>
             </div>
-            <div class="post-window__show-comments-button button">Show More Comments</div>
-        </div>
-        <form class="post-window__add-comment add-comment" method="GET">
-            <input class="add-comment__name" type="text" list="names" placeholder="Your name" required>
-            <datalist id="names">
-                <option value="Daniil Krupenko"></option>
-                <option value="Vasia Pypkin"></option>
-            </datalist>
-            <textarea class="add-comment__textarea textarea" name="comment" id="comment" placeholder="Your comment here" required></textarea>
-            <div class="add-comment__submit-button button">Submit</div>
-        </form>
-    </section>
+            <form class="post-window__add-comment add-comment" method="GET">
+                <input class="add-comment__name" type="text" list="names" placeholder="Your name" required>
+                <datalist id="names">
+                    <option value="Daniil Krupenko"></option>
+                    <option value="Vasia Pypkin"></option>
+                </datalist>
+                <textarea class="add-comment__textarea textarea" name="comment" id="comment" placeholder="Your comment here" required></textarea>
+                <div class="add-comment__submit-button button">Submit</div>
+            </form>
+        </section>
+    </div>  
 
     <section class="add-window">
         <div class="add-window__image-section image-section">
@@ -39,7 +41,7 @@
                 <a class="scale-control-settings__increase-button">+</a>
                 <a class="scale-control-settings__decrease-button">-</a>
             </div>
-            <img class="add-window__img" src="#" alt="new-pic">
+            <img class="add-window__img" src="./img/cat.jpg" alt="new-pic">
             <input id="file" name="file" type="file" accept="image/png, image/jpeg" class="add-window__upload-input">
             <a href="#" class="add-window__exit-button"></a>
         </div>
@@ -61,13 +63,13 @@
     </section>
 
     <template id='comment-template'>
-        <div class="comments-section__comment">
+        <li class="comments-section__comment">
             <div class="comment-section__title">
                 <img class="comment-section__avatar" src="#" alt="picture">
                 <p class="comment-section__nickname"></p>
             </div>
             <p class="comment-section__text"></p>
-        </div>
+        </li>
     </template>
 
     <template id="post-template" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
