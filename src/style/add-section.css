@@ -59,7 +59,26 @@
     width: 90%;
     transform: scale(var(--scale));
     border-radius: 15px;
-    transition: transform 0.2s linear;
+    transition: all .2s linear;
+}
+
+.filter-chrome {
+    filter: grayscale(1);
+}
+.filter-sepia {
+    filter: sepia(1);
+}
+.filter-marvin {
+    filter: invert(100%);
+}
+.filter-fobos {
+    filter: blur(3px);
+}
+.filter-znoi {
+    filter: brightness(3);
+}
+.filter-original {
+    filter: none;
 }
 
 .scale-control-settings {
@@ -124,13 +143,66 @@
 .setting-section {
 }
 
-.setting-section__label{
-    font-size: 1.2em;
+.setting-section__filters {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-bottom: 20px;
 }
 
-.setting-section__radiobutton{
+.setting-section__filters .setting-section__label{
+    font-size: 1.2em;
     cursor: pointer;
+    padding: 5px 10px;
+    border: 2px solid transparent;
+    border-radius: 50px;
+    transition: all .2s linear;
+}
+
+.setting-section__label:hover {
+    border: 2px solid blue;
+}
+.setting-section__label--active {
+    color: white;
+    background-color: blue;
+}
+
+.setting-section__input {
+    display: none;
+}
+
+.setting-section__range {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin-bottom: 20px;
+}
+
+.range__slider {
+    width: 50%;
+}
+
+.range__inputs {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.range__label {
+}
+
+.range__input {
+    text-align: center;
+    border-radius: 10px;
+    outline: 0;
+    border: 2px solid transparent;
+    transition: all .2s linear;
+}
+.range__input:hover {
+    border: 2px solid blue;
+}
+.range__input:focus {
+    border: 2px solid blue;
 }
 
 .setting-section__textarea{

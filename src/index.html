@@ -47,15 +47,38 @@
         </div>
         <hr>
         <form method="GET" class="setting-section">
-            <label class="setting-section__label" for="filter">Choose filters:</label>
-            <input class="setting-section__radiobutton" type="radio" name="filter" id="">
-            <input class="setting-section__radiobutton" type="radio" name="filter" id="">
-            <input class="setting-section__radiobutton" type="radio" name="filter" id="">
-            <input class="setting-section__radiobutton" type="radio" name="filter" id="">
-            <input class="setting-section__radiobutton" type="radio" name="filter" id="">
-            <input class="setting-section__radiobutton" type="radio" name="filter" id="">
-            <input class="setting-section__radiobutton" type="radio" name="filter" id="">
-            <br>
+            <div class="setting-section__filters">
+                <label class="setting-section__label" for="filter-chrome">"Хром"
+                    <input class="setting-section__input" type="radio" name="filter" id="filter-chrome">
+                </label>
+                <label class="setting-section__label" for="filter-sepia">"Сепия"
+                    <input class="setting-section__input" type="radio" name="filter" id="filter-sepia">
+                </label>
+                <label class="setting-section__label" for="filter-marvin">"Марвин"
+                    <input class="setting-section__input" type="radio" name="filter" id="filter-marvin">
+                </label>
+                <label class="setting-section__label" for="filter-fobos">"Фобос"
+                    <input class="setting-section__input" type="radio" name="filter" id="filter-fobos">
+                </label>
+                <label class="setting-section__label" for="filter-znoi">"Зной"
+                    <input class="setting-section__input" type="radio" name="filter" id="filter-znoi">
+                </label>
+                <label class="setting-section__label" for="filter-original">"Оригинал"
+                    <input class="setting-section__input" type="radio" name="filter" id="filter-original">
+                </label>
+            </div>
+
+            <div class="setting-section__range range">
+                <div class="range__slider" id="range-slider"></div>
+                <div class="range__inputs">
+                    <label class="range__label">
+                        <input type="number" min="500" max="999999" value="500" class="range__input" id="input-1">
+                    </label>
+                    <label class="range__label">
+                        <input type="number" min="500" max="999999" value="999999" class="range__input" id="input-2">
+                    </label>
+                </div>
+            </div>
             <textarea class="setting-section__textarea textarea" name="description" id="description" placeholder="Write description" required></textarea>
             <!-- make it anchor -->
             <div class="setting-section__submit-button">Upload new post</div>

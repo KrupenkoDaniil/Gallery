@@ -1,3 +1,5 @@
+import * as noUiSlider from 'nouislider';
+import 'nouislider/dist/nouislider.css';
 import { PICS, generatePic } from './generate-pics-array.js';
 import { createNewComment } from './create-new-comment.js';
 import { setEvent, removeEvents } from './click-events.js';
@@ -8,7 +10,7 @@ const inputFile = document.querySelector('#file');
 const targetElementComments = [];
 
 // Set event for exeting modal window by pressing "Escape" button 
-let targetElement, modalWindow;
+let targetElement, modalWindow, modalWindowImg;
 document.addEventListener('keydown', (event,) => {
     if (modalWindow !== undefined) {
         switch (event.code) {
@@ -36,7 +38,7 @@ export function openModalWindow(event, picsArray) {
         mainOverlay.style.display = 'block';
 
         // Set Image section
-        const modalWindowImg = modalWindow.querySelector('img');
+        modalWindowImg = modalWindow.querySelector('img');
         const modalWindowText = modalWindow.querySelector('.image-section__text');
         const modalWindowLikes = modalWindow.querySelector('.image-section__likes');
         modalWindowText.textContent = `${targetElement['descripction']}`;
@@ -72,7 +74,7 @@ export function openModalWindow(event, picsArray) {
         setEvent('click', exitButton, closeModalWindow);
 
         // Change photo's scale
-        const modalWindowImg = modalWindow.querySelector('.add-window__img');
+        modalWindowImg = modalWindow.querySelector('.add-window__img');
         const increaseScaleButton = document.querySelector('.scale-control-settings__increase-button');
         const decreaseScaleButton = document.querySelector('.scale-control-settings__decrease-button');
 
@@ -93,6 +95,10 @@ export function openModalWindow(event, picsArray) {
                 scaleValue = +getComputedStyle(modalWindowImg).getPropertyValue('--scale');
             }
         })
+
+        // Put filter on photo
+        const filtersField = document.querySelector('.setting-section__filters');
+        setEvent('click', filtersField, applyFilters)
 
         // Set submit button
         const submitButton = document.querySelector('.setting-section__submit-button');
@@ -159,11 +165,58 @@ function uploadPicture() {
     }
 }
 
-function submitPost() {
+function applyFilters(event) {
+    if (event.target.classList.contains('setting-section__label')) {
+        let activeLabel = document.querySelector('.setting-section__label--active');
+        activeLabel ? activeLabel.classList.remove('setting-section__label--active') : null;
+        event.target.classList.add('setting-section__label--active');
+        setRange();
+    }
+    if (event.target.classList.contains('setting-section__input')) {
+        modalWindowImg.classList.length > 1 ? modalWindowImg.classList.remove(modalWindowImg.classList[1]) : null;
+        //TODO: Fix filter transition
+        switch (event.target.id) {
+            case 'filter-chrome':
+                modalWindowImg.classList.add('filter-chrome');
+                break;
+            case 'filter-sepia':
+                modalWindowImg.classList.add('filter-sepia');
+                break;
+            case 'filter-marvin':
+                modalWindowImg.classList.add('filter-marvin');
+                break;
+            case 'filter-fobos':
+                modalWindowImg.classList.add('filter-fobos');
+                break;
+            case 'filter-znoi':
+                modalWindowImg.classList.add('filter-znoi');
+                break;
+            case 'filter-original':
+                modalWindowImg.classList.add('filter-original');
+                break;
+        }
+    }
+}
 
+function setRange() {
+    const rangeSlider = document.querySelector('#range-slider');
+    if (rangeSlider) {
+        noUiSlider.create(rangeSlider, {
+            start: [50],
+            step: 1,
+            range: {
+                'min': 0,
+                'max': 100
+            }
+        });
+    }
+
+}
+
+function submitPost() {
     // Check if textarea has any content
     const textarea = document.querySelector('.setting-section__textarea');
-    if (textarea.value !== '' && fileInput.value !== '') { //! we can create new post only if it has discription and img
+    if (textarea.value !== '' && modalWindowImg.src !== '') { //! we can create new post only if it has discription and img
         // Set active radio button
         let radioButton;
         document.querySelectorAll('.setting-section__radiobutton').forEach((button) => {
@@ -177,6 +230,7 @@ function submitPost() {
         const nextPostId = generatePic.maxPicId + 1;
 
         textarea.value = '';
+        textarea.blur();
     } else {
         alert("Fill in all necessities!")
     }
