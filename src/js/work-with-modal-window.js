@@ -1,17 +1,36 @@
+// Import Libs
 import * as noUiSlider from 'nouislider';
 import 'nouislider/dist/nouislider.css';
+
 import { PICS, generatePic } from './generate-pics-array.js';
 import { createNewComment } from './create-new-comment.js';
-import { setEvent, removeEvents } from './click-events.js';
+import { setEvent, removeEvents } from './set-events.js';
 
 // Set main Constants
 const mainOverlay = document.querySelector('.overlay');
 const inputFile = document.querySelector('#file');
+const rangeSection = document.querySelector('.range')
+const rangeInput = document.querySelector('#range-input');
 const targetElementComments = [];
 
-// Set event for exeting modal window by pressing "Escape" button 
+// Set main Vars
 let targetElement, modalWindow, modalWindowImg;
-document.addEventListener('keydown', (event,) => {
+
+// Set Range Slider
+const rangeSlider = document.querySelector('#range-slider');
+if (rangeSlider) {
+    noUiSlider.create(rangeSlider, {
+        start: [0],
+        step: 1,
+        range: {
+            'min': 0,
+            'max': 1
+        }
+    });
+}
+
+// Set event for exeting modal window by pressing "Escape" button 
+document.addEventListener('keydown', (event) => {
     if (modalWindow !== undefined) {
         switch (event.code) {
             case 'Escape':
@@ -98,7 +117,7 @@ export function openModalWindow(event, picsArray) {
 
         // Put filter on photo
         const filtersField = document.querySelector('.setting-section__filters');
-        setEvent('click', filtersField, applyFilters)
+        setEvent('click', filtersField, applyFilters);
 
         // Set submit button
         const submitButton = document.querySelector('.setting-section__submit-button');
@@ -130,7 +149,6 @@ function showComments(commentsNumber, showCommentsButton) {
         commentsNumber = targetElementComments.length;
         showCommentsButton.classList.add('hidden');
     }
-
     for (let i = 0; i < commentsNumber; i++) {
         // Comment header
         const commentNickname = commentTemplate.content.querySelector('.comment-section__nickname');
@@ -170,47 +188,102 @@ function applyFilters(event) {
         let activeLabel = document.querySelector('.setting-section__label--active');
         activeLabel ? activeLabel.classList.remove('setting-section__label--active') : null;
         event.target.classList.add('setting-section__label--active');
-        setRange();
     }
     if (event.target.classList.contains('setting-section__input')) {
         modalWindowImg.classList.length > 1 ? modalWindowImg.classList.remove(modalWindowImg.classList[1]) : null;
-        //TODO: Fix filter transition
+        let settings = {};
         switch (event.target.id) {
             case 'filter-chrome':
                 modalWindowImg.classList.add('filter-chrome');
+                settings = {
+                    min: 0,
+                    max: 1,
+                    step: 0.1,
+                    filter: 'grayscale'
+                };
                 break;
             case 'filter-sepia':
                 modalWindowImg.classList.add('filter-sepia');
+                settings = {
+                    min: 0,
+                    max: 1,
+                    step: 0.1,
+                    filter: 'sepia'
+                };
                 break;
             case 'filter-marvin':
                 modalWindowImg.classList.add('filter-marvin');
+                settings = {
+                    min: 0,
+                    max: 100,
+                    step: 1,
+                    filter: 'invert'
+                };
                 break;
             case 'filter-fobos':
                 modalWindowImg.classList.add('filter-fobos');
+                settings = {
+                    min: 0,
+                    max: 3,
+                    step: 0.1,
+                    filter: 'blur'
+                };
                 break;
             case 'filter-znoi':
                 modalWindowImg.classList.add('filter-znoi');
+                settings = {
+                    min: 1,
+                    max: 3,
+                    step: 0.1,
+                    filter: 'brightness'
+                };
                 break;
             case 'filter-original':
                 modalWindowImg.classList.add('filter-original');
+                settings = {};
                 break;
         }
+        setRange(settings);
+
     }
 }
 
-function setRange() {
-    const rangeSlider = document.querySelector('#range-slider');
-    if (rangeSlider) {
-        noUiSlider.create(rangeSlider, {
-            start: [50],
-            step: 1,
+function setRange(settings) {
+    if (settings['max'] !== undefined) {
+        rangeSection.classList.add('active');
+        rangeInput.removeEventListener('input', setInput)
+        rangeInput.addEventListener('input', setInput);
+        rangeSlider.noUiSlider.updateOptions({
+            start: (settings['max'] + settings['min']) / 2,
+            step: settings['step'],
             range: {
-                'min': 0,
-                'max': 100
+                'min': settings['min'],
+                'max': settings['max']
             }
-        });
+        }, true)
+        rangeSlider.noUiSlider.on('update', (value) => {
+            rangeInput.value = Math.round(value * 10) / 10;
+            switch (settings['filter']) {
+                case 'invert':
+                    value[0] += '%';
+                    break;
+                case 'blur':
+                    value[0] += 'px';
+                    break;
+            }
+            modalWindowImg.style.filter = `${settings['filter']}(${value})`;
+            rangeInput.step = settings['step'];
+        })
+    } else {
+        rangeSection.classList.remove('active');
+        modalWindowImg.style.filter = 'unset';
     }
+}
 
+function setInput() {
+    rangeSlider.noUiSlider.updateOptions({
+        start: (rangeInput.value),
+    }, true)
 }
 
 function submitPost() {

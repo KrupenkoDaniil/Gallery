@@ -6,7 +6,6 @@
 </head>
 <body>
     <div class="overlay"></div>
-    
     <div class="wrap">
         <section class="post-window"> 
             <div class="post-window__image-section image-section">
@@ -70,14 +69,9 @@
 
             <div class="setting-section__range range">
                 <div class="range__slider" id="range-slider"></div>
-                <div class="range__inputs">
-                    <label class="range__label">
-                        <input type="number" min="500" max="999999" value="500" class="range__input" id="input-1">
-                    </label>
-                    <label class="range__label">
-                        <input type="number" min="500" max="999999" value="999999" class="range__input" id="input-2">
-                    </label>
-                </div>
+                <label class="range__label">
+                    <input type="number" class="range__input" id="range-input">
+                </label>
             </div>
             <textarea class="setting-section__textarea textarea" name="description" id="description" placeholder="Write description" required></textarea>
             <!-- make it anchor -->

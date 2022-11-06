@@ -1,4 +1,3 @@
-
 export function setEvent(eventName, eventElement, eventFunction) {
     if (setEvent.activeEvents == undefined) {
         setEvent.activeEvents = [];
@@ -13,6 +12,7 @@ export function removeEvents() {
         let eventFunction = setEvent.activeEvents[i][1];
         eventElement.removeEventListener('click', eventFunction);
         eventElement.removeEventListener('change', eventFunction);
+        eventElement.removeEventListener('input', eventFunction);
     }
     setEvent.activeEvents = [];
 }

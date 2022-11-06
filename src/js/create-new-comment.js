@@ -1,4 +1,3 @@
-
 export function createNewComment() {
 
     // Check if textarea has any content
