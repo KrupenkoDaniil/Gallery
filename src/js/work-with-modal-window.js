@@ -1,33 +1,15 @@
-// Import Libs
-import * as noUiSlider from 'nouislider';
-import 'nouislider/dist/nouislider.css';
-
 import { PICS, generatePic } from './generate-pics-array.js';
 import { createNewComment } from './create-new-comment.js';
 import { setEvent, removeEvents } from './set-events.js';
+import { setRange } from "./noUiSlider.js";
 
 // Set main Constants
 const mainOverlay = document.querySelector('.overlay');
 const inputFile = document.querySelector('#file');
-const rangeSection = document.querySelector('.range')
-const rangeInput = document.querySelector('#range-input');
 const targetElementComments = [];
 
 // Set main Vars
 let targetElement, modalWindow, modalWindowImg;
-
-// Set Range Slider
-const rangeSlider = document.querySelector('#range-slider');
-if (rangeSlider) {
-    noUiSlider.create(rangeSlider, {
-        start: [0],
-        step: 1,
-        range: {
-            'min': 0,
-            'max': 1
-        }
-    });
-}
 
 // Set event for exeting modal window by pressing "Escape" button 
 document.addEventListener('keydown', (event) => {
@@ -243,47 +225,9 @@ function applyFilters(event) {
                 settings = {};
                 break;
         }
-        setRange(settings);
+        setRange(settings, modalWindowImg);
 
     }
-}
-
-function setRange(settings) {
-    if (settings['max'] !== undefined) {
-        rangeSection.classList.add('active');
-        rangeInput.removeEventListener('input', setInput)
-        rangeInput.addEventListener('input', setInput);
-        rangeSlider.noUiSlider.updateOptions({
-            start: (settings['max'] + settings['min']) / 2,
-            step: settings['step'],
-            range: {
-                'min': settings['min'],
-                'max': settings['max']
-            }
-        }, true)
-        rangeSlider.noUiSlider.on('update', (value) => {
-            rangeInput.value = Math.round(value * 10) / 10;
-            switch (settings['filter']) {
-                case 'invert':
-                    value[0] += '%';
-                    break;
-                case 'blur':
-                    value[0] += 'px';
-                    break;
-            }
-            modalWindowImg.style.filter = `${settings['filter']}(${value})`;
-            rangeInput.step = settings['step'];
-        })
-    } else {
-        rangeSection.classList.remove('active');
-        modalWindowImg.style.filter = 'unset';
-    }
-}
-
-function setInput() {
-    rangeSlider.noUiSlider.updateOptions({
-        start: (rangeInput.value),
-    }, true)
 }
 
 function submitPost() {
