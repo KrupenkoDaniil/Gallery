@@ -1,5 +1,5 @@
 import { PICS, generatePic } from './generate-pics-array.js';
-import { createNewComment } from './create-new-comment.js';
+import { submitNewComment } from './submit-new-comment.js';
 import { setEvent, removeEvents } from './set-events.js';
 import { setRange } from "./noUiSlider.js";
 
@@ -16,7 +16,9 @@ document.addEventListener('keydown', (event) => {
     if (modalWindow !== undefined) {
         switch (event.code) {
             case 'Escape':
-                closeModalWindow(modalWindow);
+                if (!document.querySelector('#description:focus')) { // check if new-port
+                    closeModalWindow(modalWindow);
+                }
                 break
             case 'Enter':
                 if (document.querySelector('.add-comment__textarea:focus')) {
@@ -32,11 +34,8 @@ export function openModalWindow(event, picsArray) {
     if (event.target.classList.contains('post')) { //! if we target post
         targetElement = picsArray[event.target.getAttribute('id')];
         modalWindow = document.querySelector('.post-window');
+        setBasics(submitNewComment);
 
-        // Set attributes and styles
-        modalWindow.classList.add('active');
-        modalWindow.style.top = '0';
-        mainOverlay.style.display = 'block';
 
         // Set Image section
         modalWindowImg = modalWindow.querySelector('img');
@@ -46,11 +45,6 @@ export function openModalWindow(event, picsArray) {
         modalWindowLikes.textContent = `Likes: ${targetElement['likes']}`;
         modalWindowImg.src = `../img/${PICS[targetElement['url']]}`;
 
-
-        // Set exit button
-        const exitButton = modalWindow.querySelector('.image-section__exit-button');
-        setEvent('click', exitButton, closeModalWindow);
-
         // Set comments section
         targetElement['comments'].forEach((item) => {
             targetElementComments.push(item);
@@ -58,24 +52,13 @@ export function openModalWindow(event, picsArray) {
         const showCommentsButton = document.querySelector('.comments-section__show-comments-button');
         showComments(5, showCommentsButton);
         setEvent('click', showCommentsButton, () => showComments(5, showCommentsButton))
-
-        // Create new comment
-        const newCommentButton = document.querySelector('.add-comment__submit-button');
-        setEvent('click', newCommentButton, createNewComment);
-
-
-
+        
     } else if (event.target.classList.contains('add-button')) { //! if we target add button
         modalWindow = document.querySelector('.add-window');
-
         setEvent('change', inputFile, uploadPicture);
 
-        // Set exit button
-        const exitButton = modalWindow.querySelector('.add-window__exit-button');
-        setEvent('click', exitButton, closeModalWindow);
-
         // Change photo's scale
-        modalWindowImg = modalWindow.querySelector('.add-window__img');
+        modalWindowImg = modalWindow.querySelector('.image-section__img');
         const increaseScaleButton = document.querySelector('.scale-control-settings__increase-button');
         const decreaseScaleButton = document.querySelector('.scale-control-settings__decrease-button');
 
@@ -101,15 +84,26 @@ export function openModalWindow(event, picsArray) {
         const filtersField = document.querySelector('.setting-section__filters');
         setEvent('click', filtersField, applyFilters);
 
-        // Set submit button
-        const submitButton = document.querySelector('.setting-section__submit-button');
-        setEvent('click', submitButton, submitPost)
-
     } else if (modalWindow !== undefined // if modal window is set
         && modalWindow.classList.contains('active') // if modal window is active
         && event.target.closest('section') === null) { //! if we target any other part of the viewport
         closeModalWindow();
     }
+}
+
+function setBasics(submitButtonFunc) {
+    // Set attributes and styles
+    modalWindow.classList.add('active');
+    modalWindow.style.top = '0';
+    mainOverlay.style.display = 'block';
+
+    // Set exit button
+    const exitButton = modalWindow.querySelector('.modal-window__exit-button');
+    setEvent('click', exitButton, closeModalWindow);
+
+    // Set new comment
+    const submitButton = modalWindow.querySelector('button');
+    setEvent('click', submitButton, submitButtonFunc);
 }
 
 function closeModalWindow() {
@@ -149,7 +143,7 @@ function showComments(commentsNumber, showCommentsButton) {
 }
 
 function uploadPicture() {
-    const modalWindowImg = modalWindow.querySelector('.add-window__img');
+    const modalWindowImg = modalWindow.querySelector('.image-section__img');
     const reader = new FileReader();
     const selectedFile = inputFile.files[0];
 
@@ -158,10 +152,8 @@ function uploadPicture() {
             modalWindowImg.src = reader.result;
         });
         reader.readAsDataURL(selectedFile);
-        // Set attributes and styles
-        modalWindow.classList.add('active');
-        modalWindow.style.top = '0';
-        mainOverlay.style.display = 'block';
+
+        setBasics(submitPost);
     }
 }
 
@@ -241,7 +233,6 @@ function submitPost() {
                 radioButton = button;
             }
         });
-        //TODO: Add setting different filters on photo
 
         //TODO: Add new post in general PICS object and set it in viewport
         const nextPostId = generatePic.maxPicId + 1;

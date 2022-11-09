@@ -1,4 +1,4 @@
-export function createNewComment() {
+export function submitNewComment() {
 
     // Check if textarea has any content
     const textarea = document.getElementById('comment');

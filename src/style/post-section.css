@@ -20,29 +20,10 @@
 }
 
 /*! Post window settings */
-
-.post-window {
-    opacity: 0;
-    visibility: hidden;
-    position: absolute;
-    display: block;
-    max-width: 60vw;
-    width: 100%;
-    top: -100%;
-    left: 0;
-    right: 0;
-    margin: 1em auto 0;
-    padding: 1em;
-    z-index: 1;
-    border-radius: 15px;
-    box-shadow: 0px 0px 5px black;
-    background-color: wheat;
-    transition: all .2s linear;
+.post-window{
 }
 
 .post-window.active {
-    opacity: 1;
-    visibility: visible;
 }
 
 /*! Image section settings */
@@ -50,7 +31,6 @@
     position: relative;
     display: flex;
     align-items: center;
-    justify-content: center;
     flex-direction: column;
     margin-bottom: 20px;
 }
@@ -58,18 +38,8 @@
 .image-section__img {
     width: 90%;
     transform: scale(var(--scale));
-    margin-bottom: 10px;
+    margin: auto 0;
     border-radius: 15px;
-}
-
-.image-section__exit-button {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 20px;
-    height: 20px;
-    background-color: red;
-    border-radius: 50%;
 }
 
 .image-section__title {
@@ -77,6 +47,7 @@
     width: 100%;
     align-items: center;
     justify-content: space-between;
+    margin-top: 10px;
 }
 
 .image-section__text {
@@ -186,8 +157,4 @@
 }
 
 .add-comment__submit-button {
-    width: 70px;
-    text-align: center;
-    margin-top: 10px;
-    padding: 5px 10px;
 }

@@ -51,16 +51,57 @@ input[type=number] {
 
 .button {
     cursor: pointer;
+    display: block;
+    width: 50%;
+    margin: 20px auto;
+    padding: 10px 20px;
     text-align: center;
     color: white;
+    font-size: 20px;
     background-color: blue;
+    border: 0;
     border-radius: 5px;
-    transition: all .2s linear;
+    transition: transform .2s linear;
 }
 
 .button:hover {
-    transform:translateY(-5px);
-    transition: transform .2s linear, color .3s linear;
+    box-shadow: 3px 3px 0 darkblue;
+    transform: translate( -3px, -3px);
+}
+
+.modal-window {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    display: block;
+    max-width: 60vw;
+    width: 100%;
+    top: -100%;
+    left: 0;
+    right: 0;
+    margin: 1em auto 0;
+    padding: 1em;
+    z-index: 1;
+    border-radius: 15px;
+    box-shadow: 0px 0px 5px black;
+    background-color: wheat;
+    transition: all .2s linear;
+}
+
+.modal-window.active {
+    top: 0;
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-window__exit-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    border-radius: 50%;
 }
 
 .overlay {

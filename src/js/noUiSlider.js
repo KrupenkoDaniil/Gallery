@@ -30,7 +30,7 @@ export function setRange(settings, modalWindowImg) {
     if (settings['max'] !== undefined) {
         rangeSection.classList.add('active');
         rangeSlider.noUiSlider.updateOptions({
-            start: (settings['max'] + settings['min']) / 2,
+            start: (settings['max']),
             step: settings['step'],
             range: {
                 'min': settings['min'],

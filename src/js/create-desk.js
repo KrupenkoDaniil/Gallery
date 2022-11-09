@@ -1,5 +1,6 @@
 import { getRandomInt } from "./randoming.js";
 import { openModalWindow } from "./work-with-modal-window.js";
+import './validation.js';
 import { generatePicsArray, PICS } from "./generate-pics-array.js";
 
 export function createDesk(picsArray, containerWidth = 800, RowSize = 5, containerMargin = 15) {
