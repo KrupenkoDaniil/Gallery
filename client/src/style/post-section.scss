@@ -1,0 +1,168 @@
+//! Post Settings
+.post {
+    opacity: 0.8;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    text-align: center;
+    font-size: 0;
+    background-size:cover;
+    background-position: center;
+    border-radius: 15%;
+    transition: transform .2s linear, color .2s linear, font-size .2s linear;
+
+    &:hover {
+        opacity: 1;
+        font-size: 1em;
+        font-weight: 700;
+        transform:translateY(-5px);
+        transition: transform .2s linear, color .2s linear, font-size .2s linear;
+    }
+}
+
+//! Post Window Settings
+.post-window{
+
+    &.active {
+    }
+
+    &__comment-section {
+    }
+
+    &__add-comment {
+        margin-top: 20px;
+    }
+}
+
+//! Image Section Settings
+.image-section {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 20px;
+
+    &__img {
+        width: 90%;
+        transform: scale(var(--scale));
+        margin: auto 0;
+        border-radius: 15px;
+    }
+
+    &__title {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 10px;
+    }
+
+    &__text {
+        font-size: 1.2em;
+    }
+
+    &__likes span {
+        font-size: 1.2em;
+        font-weight: 700;
+    }
+}
+
+//! Comments Section Settings 
+.comments-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    &__comments-container{
+    }
+
+    &__comment {
+        margin-bottom: 20px;
+    }
+    
+    &__title {
+        display: flex;
+        align-items: center;
+    }
+
+    &__avatar {
+        width: 40px;
+    }
+
+    &__nickname {
+        margin-left: .7em;
+    } 
+
+    &__text {
+        word-break: break-all;
+    }
+
+    &__show-comments-button {
+        position: relative;
+        width: 200px;
+        opacity: 1;
+        visibility: visible;
+        margin: 20px auto 0;
+        padding: 10px 15px;
+
+        &.hidden {
+            height: 0;
+            opacity: 1;
+            visibility: hidden;
+            margin-top: 0;
+            padding: 0;
+        }
+    }
+}
+
+//! New Comment Settings
+.add-comment {
+
+    &__name{
+        text-align: center;
+        margin-bottom: 10px;
+        padding: 10px;
+        border-radius: 5px;
+        border: 0;
+        box-shadow: 0px 1px 5px gray;
+        transition: all .2s;
+
+        &:hover {
+            cursor: text;
+            background-color: #eee;
+        }
+
+        &:focus {
+            outline: none;
+            box-shadow: 0px 1px 5px #333;
+        }
+    }
+
+    &__submit-button {
+    }
+}
+
+//! Textarea Settings
+.textarea {
+    outline: none;
+    resize: none;
+    width: 100%;
+    min-height: 1em;
+    padding-left: 10px;
+    border-radius: 5px;
+    border: 0;
+    box-shadow: 0px 1px 5px gray;
+    transition: all .2s;
+
+    &:hover {
+        cursor: text;
+        background-color: #eee;
+        transition: all .2s;
+    }
+
+    &:focus {
+        cursor: text;
+        box-shadow: 0px 1px 5px #333;
+        transition: all .2s;
+    }
+}
