@@ -1,3 +1,6 @@
+import * as consts from './variables.js';
+
+// Get Data from the server
 export const getData = (onSuccess) => {
     const xhr = new XMLHttpRequest();
     xhr.open('GET', 'http://localhost:80/pictures?expand=comments');
@@ -10,13 +13,10 @@ export const getData = (onSuccess) => {
     xhr.send();
 }
 
+// Send Data to the server
 const sendData = (onSuccess, body) => {
-    const formDataObj = {};
-    body.forEach((value, key) => (formDataObj[key] = value));
-    console.log(formDataObj);
-
     const xhr = new XMLHttpRequest();
-    xhr.open('POST', 'http://localhost:80/pictures?expand=comments');
+    xhr.open('POST', 'http://localhost:80/pictures');
 
     xhr.addEventListener('load', () => {
         if (xhr.status == 201) {
@@ -26,10 +26,14 @@ const sendData = (onSuccess, body) => {
     xhr.send(body);
 }
 
-const form = document.querySelector('#new-post-form');
-export const setForm = (onSuccess) => {
-    form.addEventListener('submit', (event) => {
+export const setForm = (filter_id, onSuccess) => {
+    consts.POST_FORM.addEventListener('submit', (event) => {
         event.preventDefault();
-        sendData(onSuccess, new FormData(event.target));
-    });
+        let data = new FormData(event.target);
+        data.append('user_id', 1);
+        console.log(+Object.keys(consts.filters).find(key => consts.filters[key] === filter_id));
+        data.append('effect_id', +Object.keys(consts.filters).find(key => consts.filters[key] === filter_id));
+
+        sendData(onSuccess, data);
+    }, { once: true });
 } 

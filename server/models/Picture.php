@@ -81,7 +81,7 @@ class Picture extends ActiveRecord
                 return count($this->likes);
             },
             'scale',
-            'effect',
+            'effect_id',
             'effect_level',
         ];
     }

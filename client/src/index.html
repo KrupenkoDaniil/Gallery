@@ -34,12 +34,13 @@
 
     <section class="add-window modal-window">
         
-        <form method="GET" class="add-window__setting-section setting-section" id="new-post-form">
+        <form method="GET" class="add-window__setting-section setting-section" id="new-post-form" name="newPost">
             <img src="./img/svg/close-outline.svg" class="modal-window__exit-button">
             <div class="add-window__image-section image-section">
                 <div class="image-setcion__scale-control-settings scale-control-settings">
                     <a class="scale-control-settings__increase-button">+</a>
                     <a class="scale-control-settings__decrease-button">-</a>
+                    <input name="scale" value="100%" type="text" class="scale-control-settings__value">
                 </div>
                 <img class="image-section__img" alt="new-pic">
                 <input id="file" name="filename" type="file" accept="image/png, image/jpeg" class="add-window__upload-input">
@@ -50,25 +51,26 @@
                 <div class="hesh-tegs-section__hesh-tegs-container">
                 </div>
             </div>
-            <div class="setting-section__filters">
+            <div class="setting-section__effects">
                 <label class="setting-section__label" for="chrome">"Хром"
-                    <input class="setting-section__input" type="radio" name="effect" value="chrome" id="chrome">
+                    <input class="setting-section__effect" type="radio" name="effect_name" value="chrome" id="chrome">
                 </label>
                 <label class="setting-section__label" for="sepia">"Сепия"
-                    <input class="setting-section__input" type="radio" name="effect" value="sepia" id="sepia">
+                    <input class="setting-section__effect" type="radio" name="effect_name" value="sepia" id="sepia">
                 </label>
                 <label class="setting-section__label" for="marvin">"Марвин"
-                    <input class="setting-section__input" type="radio" name="effect" value="amrvin" id="marvin">
+                    <input class="setting-section__effect" type="radio" name="effect_name" value="marvin" id="marvin">
                 </label>
                 <label class="setting-section__label" for="fobos">"Фобос"
-                    <input class="setting-section__input" type="radio" name="effect" value="fobos" id="fobos">
+                    <input class="setting-section__effect" type="radio" name="effect_name" value="phobos" id="fobos">
                 </label>
                 <label class="setting-section__label" for="heat">"Зной"
-                    <input class="setting-section__input" type="radio" name="effect" value="heat" id="heat">
+                    <input class="setting-section__effect" type="radio" name="effect_name" value="heat" id="heat">
                 </label>
                 <label class="setting-section__label setting-section__label--active" for="original">"Оригинал"
-                    <input class="setting-section__input" type="radio" name="effect" value="none" checked id="original">
+                    <input class="setting-section__effect" type="radio" name="effect_name" value="none" checked id="original">
                 </label>
+                <input class="setting-section__effect-id" type="number" name="effect_id" value="0">
             </div>
             <div class="setting-section__range range">
                 <div class="range__slider" id="range-slider"></div>

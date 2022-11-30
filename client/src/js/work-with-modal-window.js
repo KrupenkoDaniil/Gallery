@@ -1,19 +1,14 @@
-import { PICS, generatePic } from './generate-pics-array.js';
+import * as consts from './variables.js';
 import { submitNewComment } from './submit-new-comment.js';
 import { setEvent, removeEvents } from './set-events.js';
 import { setRange, checkFilters } from "./noUiSlider.js";
 import { setForm } from "./server-api.js";
 // import { LoaderTargetPlugin } from 'webpack';
 
-// Set main Constants
-const mainOverlay = document.querySelector('.overlay');
-const inputFile = document.querySelector('#file');
-const tegInput = document.querySelector('.hesh-tegs-section__input');
-const COMENTS_TO_SHOW_AMOUNT = 5;
-const MAX_TEG_LENGTH = 20;
+let appliedFilter = consts.filters[1];
 
 // Set main Vars
-let targetElement, modalWindow, modalWindowImg;
+let targetElement, modalWindow, modalWindowImg, scaleValue;
 let targetElementComments = [];
 let tegsArray = [];
 
@@ -29,24 +24,26 @@ document.addEventListener('keydown', (event) => {
                 break;
             case 'Enter':
                 if (document.querySelector('.add-comment__textarea:focus')) {
-                    createNewComment(targetElement);
+                    // createNewComment(targetElement);
                 }
                 if (document.querySelector('.setting-section__textarea:focus')) {
-                    submitPost();
+                    event.preventDefault();
+                    // submitPost();
                 }
                 if (document.querySelector('.hesh-tegs-section__input:focus')) {
+                    event.preventDefault();
                     addNewTeg();
 
                 }
                 break;
             case 'Backspace':
-                if (document.querySelector('.hesh-tegs-section__input:focus') && tegInput.value == '#') {
-                    tegInput.setCustomValidity('You can\'t delete #');
+                if (document.querySelector('.hesh-tegs-section__input:focus') && consts.INPUT_TEG.value == '#') {
+                    consts.INPUT_TEG.setCustomValidity('You can\'t delete #');
                     event.preventDefault();
                 } else {
-                    tegInput.setCustomValidity('');
+                    consts.INPUT_TEG.setCustomValidity('');
                 }
-                tegInput.reportValidity();
+                consts.INPUT_TEG.reportValidity();
                 break;
         }
     }
@@ -64,9 +61,9 @@ export function openModalWindow(event, picsArray) {
         const modalWindowLikes = modalWindow.querySelector('.image-section__likes');
         modalWindowText.textContent = `${targetElement['description']}`;
         modalWindowLikes.textContent = `Likes: ${targetElement['likes']}`;
-        modalWindowImg.src = `../img/${targetElement['url']}`;
+        modalWindowImg.src = `http://192.168.1.101:8082/gallery/server/web/uploads/${targetElement['url']}`;
 
-        let pictureFilter = checkFilters(targetElement['effect']['inner_name'], targetElement['effect_level']);
+        let pictureFilter = checkFilters(consts.filters[targetElement['effect_id']], targetElement['effect_level']);
         modalWindowImg.style.filter = `${pictureFilter[0]}(${pictureFilter[1]})`;
         modalWindowImg.style.setProperty('--scale', targetElement['scale']);
 
@@ -75,12 +72,12 @@ export function openModalWindow(event, picsArray) {
             targetElementComments.push(item);
         })
         const showCommentsButton = document.querySelector('.comments-section__show-comments-button');
-        showComments(COMENTS_TO_SHOW_AMOUNT, showCommentsButton);
-        setEvent('click', showCommentsButton, () => showComments(COMENTS_TO_SHOW_AMOUNT, showCommentsButton))
+        showComments(consts.COMENTS_TO_SHOW_AMOUNT, showCommentsButton);
+        setEvent('click', showCommentsButton, () => showComments(consts.COMENTS_TO_SHOW_AMOUNT, showCommentsButton))
 
     } else if (event.target.classList.contains('add-button')) { //! if we target add button
         modalWindow = document.querySelector('.add-window');
-        setEvent('change', inputFile, uploadPicture);
+        setEvent('change', consts.INPUT_FILE, uploadPicture);
 
         // Change photo's scale
         modalWindowImg = modalWindow.querySelector('.image-section__img');
@@ -88,7 +85,7 @@ export function openModalWindow(event, picsArray) {
         const decreaseScaleButton = document.querySelector('.scale-control-settings__decrease-button');
 
         // Set default scale 
-        let scaleValue = 1;
+        scaleValue = 1;
         modalWindowImg.style.setProperty('--scale', scaleValue);
 
         // Set scale addEventListeners
@@ -116,7 +113,7 @@ export function openModalWindow(event, picsArray) {
         });
 
         // Put filter on photo
-        const filtersField = document.querySelector('.setting-section__filters');
+        const filtersField = document.querySelector('.setting-section__effects');
         setEvent('click', filtersField, applyFilters);
 
         // Set Submit button
@@ -135,7 +132,7 @@ function setBasics(submitButtonFunc) {
     // Set Attributes and Styles
     modalWindow.classList.add('active');
     modalWindow.style.top = '0';
-    mainOverlay.style.display = 'block';
+    consts.MAIN_OVERLAY.style.display = 'block';
 
     // Set Exit Button
     const exitButton = modalWindow.querySelector('.modal-window__exit-button');
@@ -150,7 +147,7 @@ function closeModalWindow() {
     modalWindow.classList.remove('active');
 
     // Null Tegs
-    tegInput.value = '#';
+    consts.INPUT_TEG.value = '#';
     tegsArray = [];
     document.querySelector('.hesh-tegs-section__hesh-tegs-container').textContent = '';
 
@@ -166,8 +163,8 @@ function closeModalWindow() {
 
     // Null Styles
     modalWindow.style.top = '-100%';
-    mainOverlay.style.display = 'none';
-    inputFile.value = '';
+    consts.MAIN_OVERLAY.style.display = 'none';
+    consts.INPUT_FILE.value = '';
 
     removeEvents();
 }
@@ -202,7 +199,7 @@ function showComments(commentsNumber, showCommentsButton) {
 function uploadPicture() {
     const modalWindowImg = modalWindow.querySelector('.image-section__img');
     const reader = new FileReader();
-    const selectedFile = inputFile.files[0];
+    const selectedFile = consts.INPUT_FILE.files[0];
 
     if (selectedFile) {
         reader.addEventListener('load', () => {
@@ -216,13 +213,13 @@ function uploadPicture() {
 
 function addNewTeg() {
     // Create New Teg
-    if (tegInput.value.length < 2) {
+    if (consts.INPUT_TEG.value.length < 2) {
         alert('You can\'t add empty hesh-teg!');
-    } else if (tegInput.value.length > MAX_TEG_LENGTH) {
+    } else if (consts.INPUT_TEG.value.length > consts.MAX_TEG_LENGTH) {
         alert('You hesh-tag is too long!');
-    } else if (tegsArray.includes(tegInput.value.toLowerCase())) { // check if you already have such teg
+    } else if (tegsArray.includes(consts.INPUT_TEG.value.toLowerCase())) { // check if you already have such teg
         alert('You already have such teg!');
-    } else if (tegInput.validity.customError) { // check if you have forbidden symbols
+    } else if (consts.INPUT_TEG.validity.customError) { // check if you have forbidden symbols
         alert('You can\'t use #, @, $, etc symbols and spaces in hesh-teg!');
     } else if (tegsArray.length >= 5) {
         alert('You can add only 5 hesh-tegs!')
@@ -230,11 +227,11 @@ function addNewTeg() {
         const tegsContainer = modalWindow.querySelector('.hesh-tegs-section__hesh-tegs-container');
         const tegTemplate = document.querySelector('#hesh-teg-template');
         const newTegText = tegTemplate.content.querySelector('.hesh-tegs-section__text');
-        newTegText.textContent = tegInput.value;
+        newTegText.textContent = consts.INPUT_TEG.value;
         const tegClone = tegTemplate.content.cloneNode(true);
         tegsContainer.appendChild(tegClone);
-        tegsArray.push(tegInput.value.toLowerCase());
-        tegInput.value = '#';
+        tegsArray.push(consts.INPUT_TEG.value.toLowerCase());
+        consts.INPUT_TEG.value = '#';
     }
 }
 
@@ -244,9 +241,10 @@ function applyFilters(event) {
         activeLabel ? activeLabel.classList.remove('setting-section__label--active') : null;
         event.target.classList.add('setting-section__label--active');
     }
-    if (event.target.classList.contains('setting-section__input')) {
+    if (event.target.classList.contains('setting-section__effect')) {
         modalWindowImg.classList.length > 1 ? modalWindowImg.classList.remove(modalWindowImg.classList[1]) : null;
         let settings = {};
+        appliedFilter = event.target.value;
         switch (event.target.id) {
             case 'chrome':
                 modalWindowImg.classList.add('filter-chrome');
@@ -313,8 +311,10 @@ function submitPost() {
     //     alert("Fill in all necessities!")
     // }
 
-    setForm((response) => {
+    // Set Value input for form
+    document.querySelector('.scale-control-settings__value').setAttribute('value', `${scaleValue * 100}%`)
+    document.querySelector('.setting-section__effect-id').setAttribute('value', Object.keys(consts.filters).find(key => consts.filters[key] === appliedFilter))
+    setForm(appliedFilter, (response) => {
         console.log(response);
     });
-
 }

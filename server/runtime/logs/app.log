@@ -4254,180 +4254,13 @@ $_SERVER = [
     'REQUEST_TIME_FLOAT' => 1669288403.1007
     'REQUEST_TIME' => 1669288403
 ]
-2022-11-26 14:26:55 [-][-][-][error][yii\db\Exception] PDOException: SQLSTATE[HY000] [1049] Unknown database 'yii2basic' in C:\OSPanel\domains\gallery\server\vendor\yiisoft\yii2\db\Connection.php:722
+2022-11-28 14:15:50 [::1][-][-][error][yii\web\HttpException:404] yii\web\NotFoundHttpException: Page not found. in /Users/anatolev-max/PhpstormProjects/kekstagram/server/vendor/yiisoft/yii2/web/Request.php:299
 Stack trace:
-#0 C:\OSPanel\domains\gallery\server\vendor\yiisoft\yii2\db\Connection.php(722): PDO->__construct()
-#1 C:\OSPanel\domains\gallery\server\vendor\yiisoft\yii2\db\Connection.php(637): yii\db\Connection->createPdoInstance()
-#2 C:\OSPanel\domains\gallery\server\vendor\yiisoft\yii2\db\Connection.php(1067): yii\db\Connection->open()
-#3 C:\OSPanel\domains\gallery\server\vendor\yiisoft\yii2\db\Connection.php(1054): yii\db\Connection->getMasterPdo()
-#4 C:\OSPanel\domains\gallery\server\vendor\yiisoft\yii2\db\Command.php(261): yii\db\Connection->getSlavePdo()
-#5 C:\OSPanel\domains\gallery\server\vendor\yiisoft\yii2\db\Command.php(1163): yii\db\Command->prepare()
-#6 C:\OSPanel\domains\gallery\server\vendor\yiisoft\yii2\db\Command.php(410): yii\db\Command->queryInternal()
-#7 C:\OSPanel\domains\gallery\server\vendor\yiisoft\yii2\db\mysql\Schema.php(320): yii\db\Command->queryAll()
-#8 C:\OSPanel\domains\gallery\server\vendor\yiisoft\yii2\db\mysql\Schema.php(125): yii\db\mysql\Schema->findColumns()
-#9 C:\OSPanel\domains\gallery\server\vendor\yiisoft\yii2\db\Schema.php(756): yii\db\mysql\Schema->loadTableSchema()
-#10 C:\OSPanel\domains\gallery\server\vendor\yiisoft\yii2\db\Schema.php(192): yii\db\Schema->getTableMetadata()
-#11 C:\OSPanel\domains\gallery\server\vendor\yiisoft\yii2\console\controllers\MigrateController.php(211): yii\db\Schema->getTableSchema()
-#12 C:\OSPanel\domains\gallery\server\vendor\yiisoft\yii2\console\controllers\BaseMigrateController.php(908): yii\console\controllers\MigrateController->getMigrationHistory()
-#13 C:\OSPanel\domains\gallery\server\vendor\yiisoft\yii2\console\controllers\BaseMigrateController.php(183): yii\console\controllers\BaseMigrateController->getNewMigrations()
-#14 [internal function]: yii\console\controllers\BaseMigrateController->actionUp()
-#15 C:\OSPanel\domains\gallery\server\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array()
-#16 C:\OSPanel\domains\gallery\server\vendor\yiisoft\yii2\base\Controller.php(178): yii\base\InlineAction->runWithParams()
-#17 C:\OSPanel\domains\gallery\server\vendor\yiisoft\yii2\console\Controller.php(180): yii\base\Controller->runAction()
-#18 C:\OSPanel\domains\gallery\server\vendor\yiisoft\yii2\base\Module.php(552): yii\console\Controller->runAction()
-#19 C:\OSPanel\domains\gallery\server\vendor\yiisoft\yii2\console\Application.php(180): yii\base\Module->runAction()
-#20 C:\OSPanel\domains\gallery\server\vendor\yiisoft\yii2\console\Application.php(147): yii\console\Application->runAction()
-#21 C:\OSPanel\domains\gallery\server\vendor\yiisoft\yii2\base\Application.php(384): yii\console\Application->handleRequest()
-#22 C:\OSPanel\domains\gallery\server\yii(20): yii\base\Application->run()
-#23 {main}
-
-Next yii\db\Exception: SQLSTATE[HY000] [1049] Unknown database 'yii2basic' in C:\OSPanel\domains\gallery\server\vendor\yiisoft\yii2\db\Connection.php:648
-Stack trace:
-#0 C:\OSPanel\domains\gallery\server\vendor\yiisoft\yii2\db\Connection.php(1067): yii\db\Connection->open()
-#1 C:\OSPanel\domains\gallery\server\vendor\yiisoft\yii2\db\Connection.php(1054): yii\db\Connection->getMasterPdo()
-#2 C:\OSPanel\domains\gallery\server\vendor\yiisoft\yii2\db\Command.php(261): yii\db\Connection->getSlavePdo()
-#3 C:\OSPanel\domains\gallery\server\vendor\yiisoft\yii2\db\Command.php(1163): yii\db\Command->prepare()
-#4 C:\OSPanel\domains\gallery\server\vendor\yiisoft\yii2\db\Command.php(410): yii\db\Command->queryInternal()
-#5 C:\OSPanel\domains\gallery\server\vendor\yiisoft\yii2\db\mysql\Schema.php(320): yii\db\Command->queryAll()
-#6 C:\OSPanel\domains\gallery\server\vendor\yiisoft\yii2\db\mysql\Schema.php(125): yii\db\mysql\Schema->findColumns()
-#7 C:\OSPanel\domains\gallery\server\vendor\yiisoft\yii2\db\Schema.php(756): yii\db\mysql\Schema->loadTableSchema()
-#8 C:\OSPanel\domains\gallery\server\vendor\yiisoft\yii2\db\Schema.php(192): yii\db\Schema->getTableMetadata()
-#9 C:\OSPanel\domains\gallery\server\vendor\yiisoft\yii2\console\controllers\MigrateController.php(211): yii\db\Schema->getTableSchema()
-#10 C:\OSPanel\domains\gallery\server\vendor\yiisoft\yii2\console\controllers\BaseMigrateController.php(908): yii\console\controllers\MigrateController->getMigrationHistory()
-#11 C:\OSPanel\domains\gallery\server\vendor\yiisoft\yii2\console\controllers\BaseMigrateController.php(183): yii\console\controllers\BaseMigrateController->getNewMigrations()
-#12 [internal function]: yii\console\controllers\BaseMigrateController->actionUp()
-#13 C:\OSPanel\domains\gallery\server\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array()
-#14 C:\OSPanel\domains\gallery\server\vendor\yiisoft\yii2\base\Controller.php(178): yii\base\InlineAction->runWithParams()
-#15 C:\OSPanel\domains\gallery\server\vendor\yiisoft\yii2\console\Controller.php(180): yii\base\Controller->runAction()
-#16 C:\OSPanel\domains\gallery\server\vendor\yiisoft\yii2\base\Module.php(552): yii\console\Controller->runAction()
-#17 C:\OSPanel\domains\gallery\server\vendor\yiisoft\yii2\console\Application.php(180): yii\base\Module->runAction()
-#18 C:\OSPanel\domains\gallery\server\vendor\yiisoft\yii2\console\Application.php(147): yii\console\Application->runAction()
-#19 C:\OSPanel\domains\gallery\server\vendor\yiisoft\yii2\base\Application.php(384): yii\console\Application->handleRequest()
-#20 C:\OSPanel\domains\gallery\server\yii(20): yii\base\Application->run()
-#21 {main}
-Additional Information:
-Array
-(
-    [0] => HY000
-    [1] => 1049
-    [2] => Unknown database 'yii2basic'
-)
-
-2022-11-26 14:26:55 [-][-][-][info][application] $_GET = []
-
-$_POST = []
-
-$_FILES = []
-
-$_COOKIE = []
-
-$_SERVER = [
-    'ACSvcPort' => '17532'
-    'ALLUSERSPROFILE' => 'C:\\ProgramData'
-    'ANSICON' => '239x32766 (239x56)'
-    'ANSICON_DEF' => '7'
-    'APPDATA' => 'C:\\Users\\Ford\\AppData\\Roaming'
-    'CommonProgramFiles' => 'C:\\Program Files\\Common Files'
-    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
-    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
-    'COMPUTERNAME' => 'DESKTOP-14C8168'
-    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
-    'ConEmuANSI' => 'ON'
-    'ConEmuAnsiLog' => ''
-    'ConEmuArgs' => '/Single'
-    'ConEmuArgs2' => ''
-    'ConEmuBackHWND' => '0x00090BEE'
-    'ConEmuBaseDir' => 'C:\\ospanel\\modules\\conemu\\ConEmu'
-    'ConEmuBaseDirShort' => 'C:\\OSPanel\\modules\\conemu\\ConEmu'
-    'ConEmuBuild' => '220807'
-    'ConEmuCfgDir' => 'C:\\ospanel\\modules\\conemu'
-    'ConEmuConfig' => ''
-    'ConEmuDir' => 'C:\\ospanel\\modules\\conemu'
-    'ConEmuDrawHWND' => '0x00090946'
-    'ConEmuDrive' => 'C:'
-    'ConEmuHooks' => 'Enabled'
-    'ConEmuHWND' => '0x001A0CB6'
-    'ConEmuPalette' => '<ConEmu>'
-    'ConEmuPID' => '4944'
-    'ConEmuServerPID' => '19628'
-    'ConEmuTask' => '{Shells::cmd}'
-    'ConEmuWorkDir' => 'c:\\ospanel'
-    'ConEmuWorkDrive' => 'c:'
-    'DriverData' => 'C:\\Windows\\System32\\Drivers\\DriverData'
-    'FPS_BROWSER_APP_PROFILE_STRING' => 'Internet Explorer'
-    'FPS_BROWSER_USER_PROFILE_STRING' => 'Default'
-    'HOME' => 'c:\\ospanel'
-    'HOMEDRIVE' => 'c:'
-    'HOMEPATH' => '\\ospanel'
-    'LOCALAPPDATA' => 'C:\\Users\\Ford\\AppData\\Local'
-    'LOGONSERVER' => '\\\\DESKTOP-14C8168'
-    'NUMBER_OF_PROCESSORS' => '12'
-    'OneDrive' => 'C:\\Users\\Ford\\OneDrive'
-    'OneDriveConsumer' => 'C:\\Users\\Ford\\OneDrive'
-    'OPENSSL_CONF' => 'c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23\\conf\\openssl.cnf'
-    'OS' => 'Windows_NT'
-    'Path' => 'C:\\ospanel\\modules\\conemu;C:\\ospanel\\modules\\conemu\\ConEmu;c:\\ospanel\\modules\\php\\PHP_8.0\\ext;c:\\ospanel\\modules\\php\\PHP_8.0\\pear;c:\\ospanel\\modules\\php\\PHP_8.0\\pear\\bin;c:\\ospanel\\modules\\php\\PHP_8.0;c:\\ospanel\\modules\\wget\\bin;c:\\ospanel\\modules\\database\\MySQL-8.0-Win10\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
-    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
-    'PHPBIN' => 'c:\\ospanel\\modules\\php\\PHP_8.0\\php.exe'
-    'PHPDIR' => 'c:\\ospanel\\modules\\php\\PHP_8.0\\'
-    'PHPRC' => 'c:\\ospanel\\modules\\php\\PHP_8.0'
-    'PHP_BIN' => 'c:\\ospanel\\modules\\php\\PHP_8.0\\php.exe'
-    'PHP_BINARY' => 'c:\\ospanel\\modules\\php\\PHP_8.0\\php.exe'
-    'PHP_BINDIR' => 'c:\\ospanel\\modules\\php\\PHP_8.0\\'
-    'PHP_COMMAND' => 'php.exe'
-    'PHP_DIR' => 'c:\\ospanel\\modules\\php\\PHP_8.0\\'
-    'PHP_INI' => 'c:\\ospanel\\modules\\php\\PHP_8.0\\php.ini'
-    'PHP_PEAR_BIN_DIR' => 'c:\\ospanel\\modules\\php\\PHP_8.0\\PEAR'
-    'PHP_PEAR_DATA_DIR' => 'c:\\ospanel\\modules\\php\\PHP_8.0\\PEAR\\data'
-    'PHP_PEAR_DOC_DIR' => 'c:\\ospanel\\modules\\php\\PHP_8.0\\PEAR\\docs'
-    'PHP_PEAR_INSTALL_DIR' => 'c:\\ospanel\\modules\\php\\PHP_8.0\\PEAR\\pear'
-    'PHP_PEAR_PHP_BIN' => 'c:\\ospanel\\modules\\php\\PHP_8.0\\php.exe'
-    'PHP_PEAR_SYSCONF_DIR' => 'c:\\ospanel\\modules\\php\\PHP_8.0\\PEAR'
-    'PHP_PEAR_TEST_DIR' => 'c:\\ospanel\\modules\\php\\PHP_8.0\\PEAR\\tests'
-    'PROCESSOR_ARCHITECTURE' => 'AMD64'
-    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 167 Stepping 1, GenuineIntel'
-    'PROCESSOR_LEVEL' => '6'
-    'PROCESSOR_REVISION' => 'a701'
-    'ProgramData' => 'C:\\ProgramData'
-    'ProgramFiles' => 'C:\\Program Files'
-    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
-    'ProgramW6432' => 'C:\\Program Files'
-    'PROMPT' => '$E[m$E[32m$E]9;8;\"USERNAME\"$E\\@$E]9;8;\"COMPUTERNAME\"$E\\$S$E[92m$P$E[90m$_$E[90m$$$E[m$S$E]9;12$E\\'
-    'PSModulePath' => 'C:\\Program Files\\WindowsPowerShell\\Modules;C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules'
-    'PUBLIC' => 'C:\\Users\\Public'
-    'RlsSvcPort' => '22112'
-    'SESSIONNAME' => 'Console'
-    'SystemDrive' => 'C:'
-    'SystemRoot' => 'C:\\Windows'
-    'TEMP' => 'c:\\ospanel\\userdata\\temp'
-    'TMP' => 'c:\\ospanel\\userdata\\temp'
-    'USERDOMAIN' => 'DESKTOP-14C8168'
-    'USERDOMAIN_ROAMINGPROFILE' => 'DESKTOP-14C8168'
-    'USERNAME' => 'Ford'
-    'USERPROFILE' => 'C:\\Users\\Ford'
-    'windir' => 'C:\\Windows'
-    'YII_PATH' => 'c:\\OSPanel\\domains\\gallery\\server\\'
-    'ZES_ENABLE_SYSMAN' => '1'
-    'PHP_SELF' => 'c:\\OSPanel\\domains\\gallery\\server\\yii'
-    'SCRIPT_NAME' => 'c:\\OSPanel\\domains\\gallery\\server\\yii'
-    'SCRIPT_FILENAME' => 'c:\\OSPanel\\domains\\gallery\\server\\yii'
-    'PATH_TRANSLATED' => 'c:\\OSPanel\\domains\\gallery\\server\\yii'
-    'DOCUMENT_ROOT' => ''
-    'REQUEST_TIME_FLOAT' => 1669462015.1153
-    'REQUEST_TIME' => 1669462015
-    'argv' => [
-        0 => 'c:\\OSPanel\\domains\\gallery\\server\\yii'
-        1 => 'migrate'
-    ]
-    'argc' => 2
-]
-2022-11-26 15:36:44 [127.0.0.1][-][-][error][yii\web\HttpException:404] yii\web\NotFoundHttpException: Page not found. in C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\web\Request.php:299
-Stack trace:
-#0 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\web\Application.php(82): yii\web\Request->resolve()
-#1 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest()
-#2 C:\OSPanel\domains\localhost\server\web\index.php(12): yii\base\Application->run()
+#0 /Users/anatolev-max/PhpstormProjects/kekstagram/server/vendor/yiisoft/yii2/web/Application.php(82): yii\web\Request->resolve()
+#1 /Users/anatolev-max/PhpstormProjects/kekstagram/server/vendor/yiisoft/yii2/base/Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /Users/anatolev-max/PhpstormProjects/kekstagram/server/web/index.php(12): yii\base\Application->run()
 #3 {main}
-2022-11-26 15:36:44 [127.0.0.1][-][-][info][application] $_GET = []
+2022-11-28 14:15:50 [::1][-][-][info][application] $_GET = []
 
 $_POST = []
 
@@ -4436,116 +4269,46 @@ $_FILES = []
 $_COOKIE = []
 
 $_SERVER = [
+    'REDIRECT_STATUS' => '200'
     'HTTP_HOST' => 'localhost'
-    'HTTP_X_FORWARDED_PROTO' => 'http'
-    'HTTP_X_REAL_IP' => '127.0.0.1'
-    'HTTP_SEC_CH_UA' => '\"Chromium\";v=\"106\", \"Not.A/Brand\";v=\"24\", \"Opera GX\";v=\"92\"'
-    'HTTP_SEC_CH_UA_MOBILE' => '?0'
-    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
-    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
-    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36 OPR/92.0.0.0 (Edition Yx GX)'
-    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
-    'HTTP_SEC_FETCH_SITE' => 'none'
-    'HTTP_SEC_FETCH_MODE' => 'navigate'
-    'HTTP_SEC_FETCH_USER' => '?1'
-    'HTTP_SEC_FETCH_DEST' => 'document'
-    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
-    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
-    'PATH' => 'c:\\ospanel\\modules\\php\\PHP_8.1\\ext;c:\\ospanel\\modules\\php\\PHP_8.1\\pear;c:\\ospanel\\modules\\php\\PHP_8.1\\pear\\bin;c:\\ospanel\\modules\\php\\PHP_8.1;c:\\ospanel\\modules\\wget\\bin;c:\\ospanel\\modules\\database\\MySQL-8.0-Win10\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
-    'SystemRoot' => 'C:\\Windows'
-    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
-    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
-    'WINDIR' => 'C:\\Windows'
-    'SERVER_SIGNATURE' => ''
-    'SERVER_SOFTWARE' => 'Apache'
-    'SERVER_NAME' => 'localhost'
-    'SERVER_ADDR' => '127.0.0.1'
-    'SERVER_PORT' => '80'
-    'REMOTE_ADDR' => '127.0.0.1'
-    'DOCUMENT_ROOT' => 'C:/OSPanel/domains/localhost/server/web'
-    'REQUEST_SCHEME' => 'http'
-    'CONTEXT_PREFIX' => ''
-    'CONTEXT_DOCUMENT_ROOT' => 'C:/OSPanel/domains/localhost/server/web'
-    'SERVER_ADMIN' => '[no address given]'
-    'SCRIPT_FILENAME' => 'C:/OSPanel/domains/localhost/server/web/index.php'
-    'REMOTE_PORT' => '55755'
-    'GATEWAY_INTERFACE' => 'CGI/1.1'
-    'SERVER_PROTOCOL' => 'HTTP/1.1'
-    'REQUEST_METHOD' => 'GET'
-    'QUERY_STRING' => ''
-    'REQUEST_URI' => '/'
-    'SCRIPT_NAME' => '/index.php'
-    'PHP_SELF' => '/index.php'
-    'REQUEST_TIME_FLOAT' => 1669466204.2819
-    'REQUEST_TIME' => 1669466204
-]
-2022-11-26 15:36:53 [127.0.0.1][-][-][error][yii\web\HttpException:404] yii\web\NotFoundHttpException: Page not found. in C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\web\Request.php:299
-Stack trace:
-#0 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\web\Application.php(82): yii\web\Request->resolve()
-#1 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest()
-#2 C:\OSPanel\domains\localhost\server\web\index.php(12): yii\base\Application->run()
-#3 {main}
-2022-11-26 15:36:53 [127.0.0.1][-][-][info][application] $_GET = []
-
-$_POST = []
-
-$_FILES = []
-
-$_COOKIE = []
-
-$_SERVER = [
-    'HTTP_HOST' => 'localhost:8080'
     'HTTP_CONNECTION' => 'keep-alive'
-    'HTTP_CACHE_CONTROL' => 'max-age=0'
-    'HTTP_SEC_CH_UA' => '\"Chromium\";v=\"106\", \"Not.A/Brand\";v=\"24\", \"Opera GX\";v=\"92\"'
-    'HTTP_SEC_CH_UA_MOBILE' => '?0'
-    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
-    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
-    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36 OPR/92.0.0.0 (Edition Yx GX)'
-    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
-    'HTTP_SEC_FETCH_SITE' => 'same-origin'
-    'HTTP_SEC_FETCH_MODE' => 'navigate'
-    'HTTP_SEC_FETCH_USER' => '?1'
-    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_ACCEPT' => 'image/webp,image/avif,video/*;q=0.8,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.1 Safari/605.1.15'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru'
     'HTTP_REFERER' => 'http://localhost:8080/'
-    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
-    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
-    'HTTP_IF_NONE_MATCH' => 'W/\"156d-Z+JPj2IfW9kGFW8LIJL+4cMG9a0\"'
-    'PATH' => 'c:\\ospanel\\modules\\php\\PHP_8.1\\ext;c:\\ospanel\\modules\\php\\PHP_8.1\\pear;c:\\ospanel\\modules\\php\\PHP_8.1\\pear\\bin;c:\\ospanel\\modules\\php\\PHP_8.1;c:\\ospanel\\modules\\wget\\bin;c:\\ospanel\\modules\\database\\MySQL-8.0-Win10\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
-    'SystemRoot' => 'C:\\Windows'
-    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
-    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
-    'WINDIR' => 'C:\\Windows'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'PATH' => '/usr/bin:/bin:/usr/sbin:/sbin'
     'SERVER_SIGNATURE' => ''
-    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_SOFTWARE' => 'Apache/2.4.46 (Unix) OpenSSL/1.0.2u PHP/8.0.8 mod_wsgi/3.5 Python/2.7.18 mod_fastcgi/mod_fastcgi-SNAP-0910052141 mod_perl/2.0.11 Perl/v5.30.1'
     'SERVER_NAME' => 'localhost'
-    'SERVER_ADDR' => '127.0.0.1'
-    'SERVER_PORT' => '8080'
-    'REMOTE_ADDR' => '127.0.0.1'
-    'DOCUMENT_ROOT' => 'C:/OSPanel/domains/localhost/server/web'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => '/Users/anatolev-max/PhpstormProjects/kekstagram/server/web'
     'REQUEST_SCHEME' => 'http'
     'CONTEXT_PREFIX' => ''
-    'CONTEXT_DOCUMENT_ROOT' => 'C:/OSPanel/domains/localhost/server/web'
-    'SERVER_ADMIN' => '[no address given]'
-    'SCRIPT_FILENAME' => 'C:/OSPanel/domains/localhost/server/web/index.php'
-    'REMOTE_PORT' => '55754'
+    'CONTEXT_DOCUMENT_ROOT' => '/Users/anatolev-max/PhpstormProjects/kekstagram/server/web'
+    'SERVER_ADMIN' => 'you@example.com'
+    'SCRIPT_FILENAME' => '/Users/anatolev-max/PhpstormProjects/kekstagram/server/web/index.php'
+    'REMOTE_PORT' => '49226'
+    'REDIRECT_URL' => '/uploads/gantas-vaiciulenas-GJCELRN0b8M-unsplash_638333c2c93a2.jpg'
     'GATEWAY_INTERFACE' => 'CGI/1.1'
     'SERVER_PROTOCOL' => 'HTTP/1.1'
     'REQUEST_METHOD' => 'GET'
     'QUERY_STRING' => ''
-    'REQUEST_URI' => '/'
+    'REQUEST_URI' => '/uploads/gantas-vaiciulenas-GJCELRN0b8M-unsplash_638333c2c93a2.jpg'
     'SCRIPT_NAME' => '/index.php'
     'PHP_SELF' => '/index.php'
-    'REQUEST_TIME_FLOAT' => 1669466213.7665
-    'REQUEST_TIME' => 1669466213
+    'REQUEST_TIME_FLOAT' => 1669608950.5406
+    'REQUEST_TIME' => 1669608950
 ]
-2022-11-26 15:37:05 [127.0.0.1][-][-][error][yii\web\HttpException:404] yii\web\NotFoundHttpException: Page not found. in C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\web\Request.php:299
+2022-11-28 14:15:50 [::1][-][-][error][yii\web\HttpException:404] yii\web\NotFoundHttpException: Page not found. in /Users/anatolev-max/PhpstormProjects/kekstagram/server/vendor/yiisoft/yii2/web/Request.php:299
 Stack trace:
-#0 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\web\Application.php(82): yii\web\Request->resolve()
-#1 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest()
-#2 C:\OSPanel\domains\localhost\server\web\index.php(12): yii\base\Application->run()
+#0 /Users/anatolev-max/PhpstormProjects/kekstagram/server/vendor/yiisoft/yii2/web/Application.php(82): yii\web\Request->resolve()
+#1 /Users/anatolev-max/PhpstormProjects/kekstagram/server/vendor/yiisoft/yii2/base/Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /Users/anatolev-max/PhpstormProjects/kekstagram/server/web/index.php(12): yii\base\Application->run()
 #3 {main}
-2022-11-26 15:37:05 [127.0.0.1][-][-][info][application] $_GET = []
+2022-11-28 14:15:50 [::1][-][-][info][application] $_GET = []
 
 $_POST = []
 
@@ -4554,55 +4317,46 @@ $_FILES = []
 $_COOKIE = []
 
 $_SERVER = [
-    'HTTP_HOST' => 'localhost:8080'
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost'
     'HTTP_CONNECTION' => 'keep-alive'
-    'HTTP_SEC_CH_UA' => '\"Chromium\";v=\"106\", \"Not.A/Brand\";v=\"24\", \"Opera GX\";v=\"92\"'
-    'HTTP_SEC_CH_UA_MOBILE' => '?0'
-    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
-    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
-    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36 OPR/92.0.0.0 (Edition Yx GX)'
-    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
-    'HTTP_SEC_FETCH_SITE' => 'none'
-    'HTTP_SEC_FETCH_MODE' => 'navigate'
-    'HTTP_SEC_FETCH_USER' => '?1'
-    'HTTP_SEC_FETCH_DEST' => 'document'
-    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
-    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
-    'PATH' => 'c:\\ospanel\\modules\\php\\PHP_8.1\\ext;c:\\ospanel\\modules\\php\\PHP_8.1\\pear;c:\\ospanel\\modules\\php\\PHP_8.1\\pear\\bin;c:\\ospanel\\modules\\php\\PHP_8.1;c:\\ospanel\\modules\\wget\\bin;c:\\ospanel\\modules\\database\\MySQL-8.0-Win10\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
-    'SystemRoot' => 'C:\\Windows'
-    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
-    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
-    'WINDIR' => 'C:\\Windows'
+    'HTTP_ACCEPT' => 'image/webp,image/avif,video/*;q=0.8,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.1 Safari/605.1.15'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru'
+    'HTTP_REFERER' => 'http://localhost:8080/'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'PATH' => '/usr/bin:/bin:/usr/sbin:/sbin'
     'SERVER_SIGNATURE' => ''
-    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_SOFTWARE' => 'Apache/2.4.46 (Unix) OpenSSL/1.0.2u PHP/8.0.8 mod_wsgi/3.5 Python/2.7.18 mod_fastcgi/mod_fastcgi-SNAP-0910052141 mod_perl/2.0.11 Perl/v5.30.1'
     'SERVER_NAME' => 'localhost'
-    'SERVER_ADDR' => '127.0.0.1'
-    'SERVER_PORT' => '8080'
-    'REMOTE_ADDR' => '127.0.0.1'
-    'DOCUMENT_ROOT' => 'C:/OSPanel/domains/localhost/server/web'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => '/Users/anatolev-max/PhpstormProjects/kekstagram/server/web'
     'REQUEST_SCHEME' => 'http'
     'CONTEXT_PREFIX' => ''
-    'CONTEXT_DOCUMENT_ROOT' => 'C:/OSPanel/domains/localhost/server/web'
-    'SERVER_ADMIN' => '[no address given]'
-    'SCRIPT_FILENAME' => 'C:/OSPanel/domains/localhost/server/web/index.php'
-    'REMOTE_PORT' => '55754'
+    'CONTEXT_DOCUMENT_ROOT' => '/Users/anatolev-max/PhpstormProjects/kekstagram/server/web'
+    'SERVER_ADMIN' => 'you@example.com'
+    'SCRIPT_FILENAME' => '/Users/anatolev-max/PhpstormProjects/kekstagram/server/web/index.php'
+    'REMOTE_PORT' => '49231'
+    'REDIRECT_URL' => '/uploads/lily-kenyi--TueT4rL8jw-unsplash_638339f08f967.jpg'
     'GATEWAY_INTERFACE' => 'CGI/1.1'
     'SERVER_PROTOCOL' => 'HTTP/1.1'
     'REQUEST_METHOD' => 'GET'
     'QUERY_STRING' => ''
-    'REQUEST_URI' => '/'
+    'REQUEST_URI' => '/uploads/lily-kenyi--TueT4rL8jw-unsplash_638339f08f967.jpg'
     'SCRIPT_NAME' => '/index.php'
     'PHP_SELF' => '/index.php'
-    'REQUEST_TIME_FLOAT' => 1669466225.2823
-    'REQUEST_TIME' => 1669466225
+    'REQUEST_TIME_FLOAT' => 1669608950.5438
+    'REQUEST_TIME' => 1669608950
 ]
-2022-11-26 15:37:24 [127.0.0.1][-][-][error][yii\web\HttpException:404] yii\web\NotFoundHttpException: Page not found. in C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\web\Request.php:299
+2022-11-28 14:15:50 [::1][-][-][error][yii\web\HttpException:404] yii\web\NotFoundHttpException: Page not found. in /Users/anatolev-max/PhpstormProjects/kekstagram/server/vendor/yiisoft/yii2/web/Request.php:299
 Stack trace:
-#0 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\web\Application.php(82): yii\web\Request->resolve()
-#1 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest()
-#2 C:\OSPanel\domains\localhost\server\web\index.php(12): yii\base\Application->run()
+#0 /Users/anatolev-max/PhpstormProjects/kekstagram/server/vendor/yiisoft/yii2/web/Application.php(82): yii\web\Request->resolve()
+#1 /Users/anatolev-max/PhpstormProjects/kekstagram/server/vendor/yiisoft/yii2/base/Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /Users/anatolev-max/PhpstormProjects/kekstagram/server/web/index.php(12): yii\base\Application->run()
 #3 {main}
-2022-11-26 15:37:24 [127.0.0.1][-][-][info][application] $_GET = []
+2022-11-28 14:15:50 [::1][-][-][info][application] $_GET = []
 
 $_POST = []
 
@@ -4611,55 +4365,46 @@ $_FILES = []
 $_COOKIE = []
 
 $_SERVER = [
-    'HTTP_HOST' => 'localhost:8080'
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost'
     'HTTP_CONNECTION' => 'keep-alive'
-    'HTTP_SEC_CH_UA' => '\"Chromium\";v=\"106\", \"Not.A/Brand\";v=\"24\", \"Opera GX\";v=\"92\"'
-    'HTTP_SEC_CH_UA_MOBILE' => '?0'
-    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
-    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
-    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36 OPR/92.0.0.0 (Edition Yx GX)'
-    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
-    'HTTP_SEC_FETCH_SITE' => 'none'
-    'HTTP_SEC_FETCH_MODE' => 'navigate'
-    'HTTP_SEC_FETCH_USER' => '?1'
-    'HTTP_SEC_FETCH_DEST' => 'document'
-    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
-    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
-    'PATH' => 'c:\\ospanel\\modules\\php\\PHP_8.1\\ext;c:\\ospanel\\modules\\php\\PHP_8.1\\pear;c:\\ospanel\\modules\\php\\PHP_8.1\\pear\\bin;c:\\ospanel\\modules\\php\\PHP_8.1;c:\\ospanel\\modules\\wget\\bin;c:\\ospanel\\modules\\database\\MySQL-8.0-Win10\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
-    'SystemRoot' => 'C:\\Windows'
-    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
-    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
-    'WINDIR' => 'C:\\Windows'
+    'HTTP_ACCEPT' => 'image/webp,image/avif,video/*;q=0.8,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.1 Safari/605.1.15'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru'
+    'HTTP_REFERER' => 'http://localhost:8080/'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'PATH' => '/usr/bin:/bin:/usr/sbin:/sbin'
     'SERVER_SIGNATURE' => ''
-    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_SOFTWARE' => 'Apache/2.4.46 (Unix) OpenSSL/1.0.2u PHP/8.0.8 mod_wsgi/3.5 Python/2.7.18 mod_fastcgi/mod_fastcgi-SNAP-0910052141 mod_perl/2.0.11 Perl/v5.30.1'
     'SERVER_NAME' => 'localhost'
-    'SERVER_ADDR' => '127.0.0.1'
-    'SERVER_PORT' => '8080'
-    'REMOTE_ADDR' => '127.0.0.1'
-    'DOCUMENT_ROOT' => 'C:/OSPanel/domains/localhost/server/web'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => '/Users/anatolev-max/PhpstormProjects/kekstagram/server/web'
     'REQUEST_SCHEME' => 'http'
     'CONTEXT_PREFIX' => ''
-    'CONTEXT_DOCUMENT_ROOT' => 'C:/OSPanel/domains/localhost/server/web'
-    'SERVER_ADMIN' => '[no address given]'
-    'SCRIPT_FILENAME' => 'C:/OSPanel/domains/localhost/server/web/index.php'
-    'REMOTE_PORT' => '55754'
+    'CONTEXT_DOCUMENT_ROOT' => '/Users/anatolev-max/PhpstormProjects/kekstagram/server/web'
+    'SERVER_ADMIN' => 'you@example.com'
+    'SCRIPT_FILENAME' => '/Users/anatolev-max/PhpstormProjects/kekstagram/server/web/index.php'
+    'REMOTE_PORT' => '49229'
+    'REDIRECT_URL' => '/uploads/mailchimp-Cy5dya5MAlI-unsplash_638346bf150f3.jpg'
     'GATEWAY_INTERFACE' => 'CGI/1.1'
     'SERVER_PROTOCOL' => 'HTTP/1.1'
     'REQUEST_METHOD' => 'GET'
     'QUERY_STRING' => ''
-    'REQUEST_URI' => '/'
+    'REQUEST_URI' => '/uploads/mailchimp-Cy5dya5MAlI-unsplash_638346bf150f3.jpg'
     'SCRIPT_NAME' => '/index.php'
     'PHP_SELF' => '/index.php'
-    'REQUEST_TIME_FLOAT' => 1669466243.9949
-    'REQUEST_TIME' => 1669466243
+    'REQUEST_TIME_FLOAT' => 1669608950.5437
+    'REQUEST_TIME' => 1669608950
 ]
-2022-11-26 15:37:27 [127.0.0.1][-][-][error][yii\web\HttpException:404] yii\web\NotFoundHttpException: Page not found. in C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\web\Request.php:299
+2022-11-28 14:15:50 [::1][-][-][error][yii\web\HttpException:404] yii\web\NotFoundHttpException: Page not found. in /Users/anatolev-max/PhpstormProjects/kekstagram/server/vendor/yiisoft/yii2/web/Request.php:299
 Stack trace:
-#0 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\web\Application.php(82): yii\web\Request->resolve()
-#1 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest()
-#2 C:\OSPanel\domains\localhost\server\web\index.php(12): yii\base\Application->run()
+#0 /Users/anatolev-max/PhpstormProjects/kekstagram/server/vendor/yiisoft/yii2/web/Application.php(82): yii\web\Request->resolve()
+#1 /Users/anatolev-max/PhpstormProjects/kekstagram/server/vendor/yiisoft/yii2/base/Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /Users/anatolev-max/PhpstormProjects/kekstagram/server/web/index.php(12): yii\base\Application->run()
 #3 {main}
-2022-11-26 15:37:27 [127.0.0.1][-][-][info][application] $_GET = []
+2022-11-28 14:15:50 [::1][-][-][info][application] $_GET = []
 
 $_POST = []
 
@@ -4668,56 +4413,46 @@ $_FILES = []
 $_COOKIE = []
 
 $_SERVER = [
-    'HTTP_HOST' => 'localhost:8080'
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost'
     'HTTP_CONNECTION' => 'keep-alive'
-    'HTTP_CACHE_CONTROL' => 'max-age=0'
-    'HTTP_SEC_CH_UA' => '\"Chromium\";v=\"106\", \"Not.A/Brand\";v=\"24\", \"Opera GX\";v=\"92\"'
-    'HTTP_SEC_CH_UA_MOBILE' => '?0'
-    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
-    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
-    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36 OPR/92.0.0.0 (Edition Yx GX)'
-    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
-    'HTTP_SEC_FETCH_SITE' => 'none'
-    'HTTP_SEC_FETCH_MODE' => 'navigate'
-    'HTTP_SEC_FETCH_USER' => '?1'
-    'HTTP_SEC_FETCH_DEST' => 'document'
-    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
-    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
-    'PATH' => 'c:\\ospanel\\modules\\php\\PHP_8.1\\ext;c:\\ospanel\\modules\\php\\PHP_8.1\\pear;c:\\ospanel\\modules\\php\\PHP_8.1\\pear\\bin;c:\\ospanel\\modules\\php\\PHP_8.1;c:\\ospanel\\modules\\wget\\bin;c:\\ospanel\\modules\\database\\MySQL-8.0-Win10\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
-    'SystemRoot' => 'C:\\Windows'
-    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
-    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
-    'WINDIR' => 'C:\\Windows'
+    'HTTP_ACCEPT' => 'image/webp,image/avif,video/*;q=0.8,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.1 Safari/605.1.15'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru'
+    'HTTP_REFERER' => 'http://localhost:8080/'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'PATH' => '/usr/bin:/bin:/usr/sbin:/sbin'
     'SERVER_SIGNATURE' => ''
-    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_SOFTWARE' => 'Apache/2.4.46 (Unix) OpenSSL/1.0.2u PHP/8.0.8 mod_wsgi/3.5 Python/2.7.18 mod_fastcgi/mod_fastcgi-SNAP-0910052141 mod_perl/2.0.11 Perl/v5.30.1'
     'SERVER_NAME' => 'localhost'
-    'SERVER_ADDR' => '127.0.0.1'
-    'SERVER_PORT' => '8080'
-    'REMOTE_ADDR' => '127.0.0.1'
-    'DOCUMENT_ROOT' => 'C:/OSPanel/domains/localhost/server/web'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => '/Users/anatolev-max/PhpstormProjects/kekstagram/server/web'
     'REQUEST_SCHEME' => 'http'
     'CONTEXT_PREFIX' => ''
-    'CONTEXT_DOCUMENT_ROOT' => 'C:/OSPanel/domains/localhost/server/web'
-    'SERVER_ADMIN' => '[no address given]'
-    'SCRIPT_FILENAME' => 'C:/OSPanel/domains/localhost/server/web/index.php'
-    'REMOTE_PORT' => '55754'
+    'CONTEXT_DOCUMENT_ROOT' => '/Users/anatolev-max/PhpstormProjects/kekstagram/server/web'
+    'SERVER_ADMIN' => 'you@example.com'
+    'SCRIPT_FILENAME' => '/Users/anatolev-max/PhpstormProjects/kekstagram/server/web/index.php'
+    'REMOTE_PORT' => '49228'
+    'REDIRECT_URL' => '/uploads/hans-isaacson-k0dZh0vSQ5A-unsplash_638333ed3fafd.jpg'
     'GATEWAY_INTERFACE' => 'CGI/1.1'
     'SERVER_PROTOCOL' => 'HTTP/1.1'
     'REQUEST_METHOD' => 'GET'
     'QUERY_STRING' => ''
-    'REQUEST_URI' => '/'
+    'REQUEST_URI' => '/uploads/hans-isaacson-k0dZh0vSQ5A-unsplash_638333ed3fafd.jpg'
     'SCRIPT_NAME' => '/index.php'
     'PHP_SELF' => '/index.php'
-    'REQUEST_TIME_FLOAT' => 1669466247.9734
-    'REQUEST_TIME' => 1669466247
+    'REQUEST_TIME_FLOAT' => 1669608950.5435
+    'REQUEST_TIME' => 1669608950
 ]
-2022-11-26 15:37:29 [127.0.0.1][-][-][error][yii\web\HttpException:404] yii\web\NotFoundHttpException: Page not found. in C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\web\Request.php:299
+2022-11-28 14:15:50 [::1][-][-][error][yii\web\HttpException:404] yii\web\NotFoundHttpException: Page not found. in /Users/anatolev-max/PhpstormProjects/kekstagram/server/vendor/yiisoft/yii2/web/Request.php:299
 Stack trace:
-#0 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\web\Application.php(82): yii\web\Request->resolve()
-#1 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest()
-#2 C:\OSPanel\domains\localhost\server\web\index.php(12): yii\base\Application->run()
+#0 /Users/anatolev-max/PhpstormProjects/kekstagram/server/vendor/yiisoft/yii2/web/Application.php(82): yii\web\Request->resolve()
+#1 /Users/anatolev-max/PhpstormProjects/kekstagram/server/vendor/yiisoft/yii2/base/Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /Users/anatolev-max/PhpstormProjects/kekstagram/server/web/index.php(12): yii\base\Application->run()
 #3 {main}
-2022-11-26 15:37:28 [127.0.0.1][-][-][info][application] $_GET = []
+2022-11-28 14:15:50 [::1][-][-][info][application] $_GET = []
 
 $_POST = []
 
@@ -4726,56 +4461,46 @@ $_FILES = []
 $_COOKIE = []
 
 $_SERVER = [
-    'HTTP_HOST' => 'localhost:8080'
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost'
     'HTTP_CONNECTION' => 'keep-alive'
-    'HTTP_CACHE_CONTROL' => 'max-age=0'
-    'HTTP_SEC_CH_UA' => '\"Chromium\";v=\"106\", \"Not.A/Brand\";v=\"24\", \"Opera GX\";v=\"92\"'
-    'HTTP_SEC_CH_UA_MOBILE' => '?0'
-    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
-    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
-    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36 OPR/92.0.0.0 (Edition Yx GX)'
-    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
-    'HTTP_SEC_FETCH_SITE' => 'none'
-    'HTTP_SEC_FETCH_MODE' => 'navigate'
-    'HTTP_SEC_FETCH_USER' => '?1'
-    'HTTP_SEC_FETCH_DEST' => 'document'
-    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
-    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
-    'PATH' => 'c:\\ospanel\\modules\\php\\PHP_8.1\\ext;c:\\ospanel\\modules\\php\\PHP_8.1\\pear;c:\\ospanel\\modules\\php\\PHP_8.1\\pear\\bin;c:\\ospanel\\modules\\php\\PHP_8.1;c:\\ospanel\\modules\\wget\\bin;c:\\ospanel\\modules\\database\\MySQL-8.0-Win10\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
-    'SystemRoot' => 'C:\\Windows'
-    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
-    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
-    'WINDIR' => 'C:\\Windows'
+    'HTTP_ACCEPT' => 'image/webp,image/avif,video/*;q=0.8,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.1 Safari/605.1.15'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru'
+    'HTTP_REFERER' => 'http://localhost:8080/'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'PATH' => '/usr/bin:/bin:/usr/sbin:/sbin'
     'SERVER_SIGNATURE' => ''
-    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_SOFTWARE' => 'Apache/2.4.46 (Unix) OpenSSL/1.0.2u PHP/8.0.8 mod_wsgi/3.5 Python/2.7.18 mod_fastcgi/mod_fastcgi-SNAP-0910052141 mod_perl/2.0.11 Perl/v5.30.1'
     'SERVER_NAME' => 'localhost'
-    'SERVER_ADDR' => '127.0.0.1'
-    'SERVER_PORT' => '8080'
-    'REMOTE_ADDR' => '127.0.0.1'
-    'DOCUMENT_ROOT' => 'C:/OSPanel/domains/localhost/server/web'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => '/Users/anatolev-max/PhpstormProjects/kekstagram/server/web'
     'REQUEST_SCHEME' => 'http'
     'CONTEXT_PREFIX' => ''
-    'CONTEXT_DOCUMENT_ROOT' => 'C:/OSPanel/domains/localhost/server/web'
-    'SERVER_ADMIN' => '[no address given]'
-    'SCRIPT_FILENAME' => 'C:/OSPanel/domains/localhost/server/web/index.php'
-    'REMOTE_PORT' => '55754'
+    'CONTEXT_DOCUMENT_ROOT' => '/Users/anatolev-max/PhpstormProjects/kekstagram/server/web'
+    'SERVER_ADMIN' => 'you@example.com'
+    'SCRIPT_FILENAME' => '/Users/anatolev-max/PhpstormProjects/kekstagram/server/web/index.php'
+    'REMOTE_PORT' => '49230'
+    'REDIRECT_URL' => '/uploads/lily-kenyi--TueT4rL8jw-unsplash_638333fb9a364.jpg'
     'GATEWAY_INTERFACE' => 'CGI/1.1'
     'SERVER_PROTOCOL' => 'HTTP/1.1'
     'REQUEST_METHOD' => 'GET'
     'QUERY_STRING' => ''
-    'REQUEST_URI' => '/'
+    'REQUEST_URI' => '/uploads/lily-kenyi--TueT4rL8jw-unsplash_638333fb9a364.jpg'
     'SCRIPT_NAME' => '/index.php'
     'PHP_SELF' => '/index.php'
-    'REQUEST_TIME_FLOAT' => 1669466248.982
-    'REQUEST_TIME' => 1669466248
+    'REQUEST_TIME_FLOAT' => 1669608950.5437
+    'REQUEST_TIME' => 1669608950
 ]
-2022-11-26 15:38:34 [127.0.0.1][-][-][error][yii\web\HttpException:404] yii\web\NotFoundHttpException: Page not found. in C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\web\Request.php:299
+2022-11-28 14:15:50 [::1][-][-][error][yii\web\HttpException:404] yii\web\NotFoundHttpException: Page not found. in /Users/anatolev-max/PhpstormProjects/kekstagram/server/vendor/yiisoft/yii2/web/Request.php:299
 Stack trace:
-#0 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\web\Application.php(82): yii\web\Request->resolve()
-#1 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest()
-#2 C:\OSPanel\domains\localhost\server\web\index.php(12): yii\base\Application->run()
+#0 /Users/anatolev-max/PhpstormProjects/kekstagram/server/vendor/yiisoft/yii2/web/Application.php(82): yii\web\Request->resolve()
+#1 /Users/anatolev-max/PhpstormProjects/kekstagram/server/vendor/yiisoft/yii2/base/Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /Users/anatolev-max/PhpstormProjects/kekstagram/server/web/index.php(12): yii\base\Application->run()
 #3 {main}
-2022-11-26 15:38:34 [127.0.0.1][-][-][info][application] $_GET = []
+2022-11-28 14:15:50 [::1][-][-][info][application] $_GET = []
 
 $_POST = []
 
@@ -4784,406 +4509,46 @@ $_FILES = []
 $_COOKIE = []
 
 $_SERVER = [
-    'HTTP_HOST' => 'localhost:8080'
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost'
     'HTTP_CONNECTION' => 'keep-alive'
-    'HTTP_CACHE_CONTROL' => 'max-age=0'
-    'HTTP_SEC_CH_UA' => '\"Chromium\";v=\"106\", \"Not.A/Brand\";v=\"24\", \"Opera GX\";v=\"92\"'
-    'HTTP_SEC_CH_UA_MOBILE' => '?0'
-    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
-    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
-    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36 OPR/92.0.0.0 (Edition Yx GX)'
-    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
-    'HTTP_SEC_FETCH_SITE' => 'none'
-    'HTTP_SEC_FETCH_MODE' => 'navigate'
-    'HTTP_SEC_FETCH_USER' => '?1'
-    'HTTP_SEC_FETCH_DEST' => 'document'
-    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
-    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
-    'PATH' => 'c:\\ospanel\\modules\\php\\PHP_8.1\\ext;c:\\ospanel\\modules\\php\\PHP_8.1\\pear;c:\\ospanel\\modules\\php\\PHP_8.1\\pear\\bin;c:\\ospanel\\modules\\php\\PHP_8.1;c:\\ospanel\\modules\\wget\\bin;c:\\ospanel\\modules\\database\\MySQL-8.0-Win10\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
-    'SystemRoot' => 'C:\\Windows'
-    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
-    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
-    'WINDIR' => 'C:\\Windows'
+    'HTTP_ACCEPT' => 'image/webp,image/avif,video/*;q=0.8,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.1 Safari/605.1.15'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru'
+    'HTTP_REFERER' => 'http://localhost:8080/'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'PATH' => '/usr/bin:/bin:/usr/sbin:/sbin'
     'SERVER_SIGNATURE' => ''
-    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_SOFTWARE' => 'Apache/2.4.46 (Unix) OpenSSL/1.0.2u PHP/8.0.8 mod_wsgi/3.5 Python/2.7.18 mod_fastcgi/mod_fastcgi-SNAP-0910052141 mod_perl/2.0.11 Perl/v5.30.1'
     'SERVER_NAME' => 'localhost'
-    'SERVER_ADDR' => '127.0.0.1'
-    'SERVER_PORT' => '8080'
-    'REMOTE_ADDR' => '127.0.0.1'
-    'DOCUMENT_ROOT' => 'C:/OSPanel/domains/localhost/server/web'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => '/Users/anatolev-max/PhpstormProjects/kekstagram/server/web'
     'REQUEST_SCHEME' => 'http'
     'CONTEXT_PREFIX' => ''
-    'CONTEXT_DOCUMENT_ROOT' => 'C:/OSPanel/domains/localhost/server/web'
-    'SERVER_ADMIN' => '[no address given]'
-    'SCRIPT_FILENAME' => 'C:/OSPanel/domains/localhost/server/web/index.php'
-    'REMOTE_PORT' => '55754'
+    'CONTEXT_DOCUMENT_ROOT' => '/Users/anatolev-max/PhpstormProjects/kekstagram/server/web'
+    'SERVER_ADMIN' => 'you@example.com'
+    'SCRIPT_FILENAME' => '/Users/anatolev-max/PhpstormProjects/kekstagram/server/web/index.php'
+    'REMOTE_PORT' => '49226'
+    'REDIRECT_URL' => '/uploads/gantas-vaiciulenas-GJCELRN0b8M-unsplash_638349224bfba.jpg'
     'GATEWAY_INTERFACE' => 'CGI/1.1'
     'SERVER_PROTOCOL' => 'HTTP/1.1'
     'REQUEST_METHOD' => 'GET'
     'QUERY_STRING' => ''
-    'REQUEST_URI' => '/'
+    'REQUEST_URI' => '/uploads/gantas-vaiciulenas-GJCELRN0b8M-unsplash_638349224bfba.jpg'
     'SCRIPT_NAME' => '/index.php'
     'PHP_SELF' => '/index.php'
-    'REQUEST_TIME_FLOAT' => 1669466314.4539
-    'REQUEST_TIME' => 1669466314
+    'REQUEST_TIME_FLOAT' => 1669608950.7047
+    'REQUEST_TIME' => 1669608950
 ]
-2022-11-26 15:39:22 [127.0.0.1][-][-][error][yii\base\ErrorException:2] yii\base\ErrorException: Undefined array key "origin" in C:\OSPanel\domains\localhost\server\controllers\PictureController.php:23
+2022-11-28 14:15:50 [::1][-][-][error][yii\web\HttpException:404] yii\web\NotFoundHttpException: Page not found. in /Users/anatolev-max/PhpstormProjects/kekstagram/server/vendor/yiisoft/yii2/web/Request.php:299
 Stack trace:
-#0 C:\OSPanel\domains\localhost\server\controllers\PictureController.php(23): yii\base\ErrorHandler->handleError()
-#1 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Component.php(739): app\controllers\PictureController->behaviors()
-#2 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Component.php(609): yii\base\Component->ensureBehaviors()
-#3 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Controller.php(297): yii\base\Component->trigger()
-#4 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\web\Controller.php(218): yii\base\Controller->beforeAction()
-#5 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Controller.php(176): yii\web\Controller->beforeAction()
-#6 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction()
-#7 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction()
-#8 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest()
-#9 C:\OSPanel\domains\localhost\server\web\index.php(12): yii\base\Application->run()
-#10 {main}
-2022-11-26 15:39:22 [127.0.0.1][-][-][info][application] $_GET = [
-    'expand' => 'comments'
-]
-
-$_POST = []
-
-$_FILES = []
-
-$_COOKIE = []
-
-$_SERVER = [
-    'REDIRECT_STATUS' => '200'
-    'HTTP_HOST' => 'localhost'
-    'HTTP_X_FORWARDED_PROTO' => 'http'
-    'HTTP_X_REAL_IP' => '127.0.0.1'
-    'HTTP_SEC_CH_UA' => '\"Chromium\";v=\"106\", \"Not.A/Brand\";v=\"24\", \"Opera GX\";v=\"92\"'
-    'HTTP_SEC_CH_UA_MOBILE' => '?0'
-    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36 OPR/92.0.0.0 (Edition Yx GX)'
-    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
-    'HTTP_ACCEPT' => '*/*'
-    'HTTP_ORIGIN' => 'http://localhost:8081'
-    'HTTP_SEC_FETCH_SITE' => 'same-site'
-    'HTTP_SEC_FETCH_MODE' => 'cors'
-    'HTTP_SEC_FETCH_DEST' => 'empty'
-    'HTTP_REFERER' => 'http://localhost:8081/'
-    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
-    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
-    'PATH' => 'c:\\ospanel\\modules\\php\\PHP_8.1\\ext;c:\\ospanel\\modules\\php\\PHP_8.1\\pear;c:\\ospanel\\modules\\php\\PHP_8.1\\pear\\bin;c:\\ospanel\\modules\\php\\PHP_8.1;c:\\ospanel\\modules\\wget\\bin;c:\\ospanel\\modules\\database\\MySQL-8.0-Win10\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
-    'SystemRoot' => 'C:\\Windows'
-    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
-    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
-    'WINDIR' => 'C:\\Windows'
-    'SERVER_SIGNATURE' => ''
-    'SERVER_SOFTWARE' => 'Apache'
-    'SERVER_NAME' => 'localhost'
-    'SERVER_ADDR' => '127.0.0.1'
-    'SERVER_PORT' => '80'
-    'REMOTE_ADDR' => '127.0.0.1'
-    'DOCUMENT_ROOT' => 'C:/OSPanel/domains/localhost/server/web'
-    'REQUEST_SCHEME' => 'http'
-    'CONTEXT_PREFIX' => ''
-    'CONTEXT_DOCUMENT_ROOT' => 'C:/OSPanel/domains/localhost/server/web'
-    'SERVER_ADMIN' => '[no address given]'
-    'SCRIPT_FILENAME' => 'C:/OSPanel/domains/localhost/server/web/index.php'
-    'REMOTE_PORT' => '55927'
-    'REDIRECT_URL' => '/pictures'
-    'REDIRECT_QUERY_STRING' => 'expand=comments'
-    'GATEWAY_INTERFACE' => 'CGI/1.1'
-    'SERVER_PROTOCOL' => 'HTTP/1.1'
-    'REQUEST_METHOD' => 'GET'
-    'QUERY_STRING' => 'expand=comments'
-    'REQUEST_URI' => '/pictures?expand=comments'
-    'SCRIPT_NAME' => '/index.php'
-    'PHP_SELF' => '/index.php'
-    'REQUEST_TIME_FLOAT' => 1669466362.316
-    'REQUEST_TIME' => 1669466362
-]
-2022-11-26 15:39:26 [127.0.0.1][-][-][error][yii\base\ErrorException:2] yii\base\ErrorException: Undefined array key "origin" in C:\OSPanel\domains\localhost\server\controllers\PictureController.php:23
-Stack trace:
-#0 C:\OSPanel\domains\localhost\server\controllers\PictureController.php(23): yii\base\ErrorHandler->handleError()
-#1 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Component.php(739): app\controllers\PictureController->behaviors()
-#2 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Component.php(609): yii\base\Component->ensureBehaviors()
-#3 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Controller.php(297): yii\base\Component->trigger()
-#4 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\web\Controller.php(218): yii\base\Controller->beforeAction()
-#5 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Controller.php(176): yii\web\Controller->beforeAction()
-#6 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction()
-#7 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction()
-#8 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest()
-#9 C:\OSPanel\domains\localhost\server\web\index.php(12): yii\base\Application->run()
-#10 {main}
-2022-11-26 15:39:26 [127.0.0.1][-][-][info][application] $_GET = [
-    'expand' => 'comments'
-]
-
-$_POST = []
-
-$_FILES = []
-
-$_COOKIE = []
-
-$_SERVER = [
-    'REDIRECT_STATUS' => '200'
-    'HTTP_HOST' => 'localhost'
-    'HTTP_X_FORWARDED_PROTO' => 'http'
-    'HTTP_X_REAL_IP' => '127.0.0.1'
-    'HTTP_SEC_CH_UA' => '\"Chromium\";v=\"106\", \"Not.A/Brand\";v=\"24\", \"Opera GX\";v=\"92\"'
-    'HTTP_SEC_CH_UA_MOBILE' => '?0'
-    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36 OPR/92.0.0.0 (Edition Yx GX)'
-    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
-    'HTTP_ACCEPT' => '*/*'
-    'HTTP_ORIGIN' => 'http://localhost:8081'
-    'HTTP_SEC_FETCH_SITE' => 'same-site'
-    'HTTP_SEC_FETCH_MODE' => 'cors'
-    'HTTP_SEC_FETCH_DEST' => 'empty'
-    'HTTP_REFERER' => 'http://localhost:8081/'
-    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
-    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
-    'PATH' => 'c:\\ospanel\\modules\\php\\PHP_8.1\\ext;c:\\ospanel\\modules\\php\\PHP_8.1\\pear;c:\\ospanel\\modules\\php\\PHP_8.1\\pear\\bin;c:\\ospanel\\modules\\php\\PHP_8.1;c:\\ospanel\\modules\\wget\\bin;c:\\ospanel\\modules\\database\\MySQL-8.0-Win10\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
-    'SystemRoot' => 'C:\\Windows'
-    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
-    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
-    'WINDIR' => 'C:\\Windows'
-    'SERVER_SIGNATURE' => ''
-    'SERVER_SOFTWARE' => 'Apache'
-    'SERVER_NAME' => 'localhost'
-    'SERVER_ADDR' => '127.0.0.1'
-    'SERVER_PORT' => '80'
-    'REMOTE_ADDR' => '127.0.0.1'
-    'DOCUMENT_ROOT' => 'C:/OSPanel/domains/localhost/server/web'
-    'REQUEST_SCHEME' => 'http'
-    'CONTEXT_PREFIX' => ''
-    'CONTEXT_DOCUMENT_ROOT' => 'C:/OSPanel/domains/localhost/server/web'
-    'SERVER_ADMIN' => '[no address given]'
-    'SCRIPT_FILENAME' => 'C:/OSPanel/domains/localhost/server/web/index.php'
-    'REMOTE_PORT' => '55933'
-    'REDIRECT_URL' => '/pictures'
-    'REDIRECT_QUERY_STRING' => 'expand=comments'
-    'GATEWAY_INTERFACE' => 'CGI/1.1'
-    'SERVER_PROTOCOL' => 'HTTP/1.1'
-    'REQUEST_METHOD' => 'GET'
-    'QUERY_STRING' => 'expand=comments'
-    'REQUEST_URI' => '/pictures?expand=comments'
-    'SCRIPT_NAME' => '/index.php'
-    'PHP_SELF' => '/index.php'
-    'REQUEST_TIME_FLOAT' => 1669466366.2104
-    'REQUEST_TIME' => 1669466366
-]
-2022-11-26 15:40:21 [127.0.0.1][-][-][error][yii\base\ErrorException:2] yii\base\ErrorException: Undefined array key "origin" in C:\OSPanel\domains\localhost\server\controllers\PictureController.php:23
-Stack trace:
-#0 C:\OSPanel\domains\localhost\server\controllers\PictureController.php(23): yii\base\ErrorHandler->handleError()
-#1 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Component.php(739): app\controllers\PictureController->behaviors()
-#2 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Component.php(609): yii\base\Component->ensureBehaviors()
-#3 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Controller.php(297): yii\base\Component->trigger()
-#4 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\web\Controller.php(218): yii\base\Controller->beforeAction()
-#5 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Controller.php(176): yii\web\Controller->beforeAction()
-#6 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction()
-#7 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction()
-#8 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest()
-#9 C:\OSPanel\domains\localhost\server\web\index.php(12): yii\base\Application->run()
-#10 {main}
-2022-11-26 15:40:21 [127.0.0.1][-][-][info][application] $_GET = [
-    'expand' => 'comments'
-]
-
-$_POST = []
-
-$_FILES = []
-
-$_COOKIE = []
-
-$_SERVER = [
-    'REDIRECT_STATUS' => '200'
-    'HTTP_HOST' => 'localhost'
-    'HTTP_X_FORWARDED_PROTO' => 'http'
-    'HTTP_X_REAL_IP' => '127.0.0.1'
-    'HTTP_SEC_CH_UA' => '\"Chromium\";v=\"106\", \"Not.A/Brand\";v=\"24\", \"Opera GX\";v=\"92\"'
-    'HTTP_SEC_CH_UA_MOBILE' => '?0'
-    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36 OPR/92.0.0.0 (Edition Yx GX)'
-    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
-    'HTTP_ACCEPT' => '*/*'
-    'HTTP_ORIGIN' => 'http://localhost:8081'
-    'HTTP_SEC_FETCH_SITE' => 'same-site'
-    'HTTP_SEC_FETCH_MODE' => 'cors'
-    'HTTP_SEC_FETCH_DEST' => 'empty'
-    'HTTP_REFERER' => 'http://localhost:8081/'
-    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
-    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
-    'PATH' => 'c:\\ospanel\\modules\\php\\PHP_8.1\\ext;c:\\ospanel\\modules\\php\\PHP_8.1\\pear;c:\\ospanel\\modules\\php\\PHP_8.1\\pear\\bin;c:\\ospanel\\modules\\php\\PHP_8.1;c:\\ospanel\\modules\\wget\\bin;c:\\ospanel\\modules\\database\\MySQL-8.0-Win10\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
-    'SystemRoot' => 'C:\\Windows'
-    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
-    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
-    'WINDIR' => 'C:\\Windows'
-    'SERVER_SIGNATURE' => ''
-    'SERVER_SOFTWARE' => 'Apache'
-    'SERVER_NAME' => 'localhost'
-    'SERVER_ADDR' => '127.0.0.1'
-    'SERVER_PORT' => '80'
-    'REMOTE_ADDR' => '127.0.0.1'
-    'DOCUMENT_ROOT' => 'C:/OSPanel/domains/localhost/server/web'
-    'REQUEST_SCHEME' => 'http'
-    'CONTEXT_PREFIX' => ''
-    'CONTEXT_DOCUMENT_ROOT' => 'C:/OSPanel/domains/localhost/server/web'
-    'SERVER_ADMIN' => '[no address given]'
-    'SCRIPT_FILENAME' => 'C:/OSPanel/domains/localhost/server/web/index.php'
-    'REMOTE_PORT' => '55991'
-    'REDIRECT_URL' => '/pictures'
-    'REDIRECT_QUERY_STRING' => 'expand=comments'
-    'GATEWAY_INTERFACE' => 'CGI/1.1'
-    'SERVER_PROTOCOL' => 'HTTP/1.1'
-    'REQUEST_METHOD' => 'GET'
-    'QUERY_STRING' => 'expand=comments'
-    'REQUEST_URI' => '/pictures?expand=comments'
-    'SCRIPT_NAME' => '/index.php'
-    'PHP_SELF' => '/index.php'
-    'REQUEST_TIME_FLOAT' => 1669466421.34
-    'REQUEST_TIME' => 1669466421
-]
-2022-11-26 15:40:23 [127.0.0.1][-][-][error][yii\base\ErrorException:2] yii\base\ErrorException: Undefined array key "origin" in C:\OSPanel\domains\localhost\server\controllers\PictureController.php:23
-Stack trace:
-#0 C:\OSPanel\domains\localhost\server\controllers\PictureController.php(23): yii\base\ErrorHandler->handleError()
-#1 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Component.php(739): app\controllers\PictureController->behaviors()
-#2 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Component.php(609): yii\base\Component->ensureBehaviors()
-#3 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Controller.php(297): yii\base\Component->trigger()
-#4 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\web\Controller.php(218): yii\base\Controller->beforeAction()
-#5 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Controller.php(176): yii\web\Controller->beforeAction()
-#6 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction()
-#7 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction()
-#8 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest()
-#9 C:\OSPanel\domains\localhost\server\web\index.php(12): yii\base\Application->run()
-#10 {main}
-2022-11-26 15:40:23 [127.0.0.1][-][-][info][application] $_GET = [
-    'expand' => 'comments'
-]
-
-$_POST = []
-
-$_FILES = []
-
-$_COOKIE = []
-
-$_SERVER = [
-    'REDIRECT_STATUS' => '200'
-    'HTTP_HOST' => 'localhost'
-    'HTTP_X_FORWARDED_PROTO' => 'http'
-    'HTTP_X_REAL_IP' => '127.0.0.1'
-    'HTTP_SEC_CH_UA' => '\"Chromium\";v=\"106\", \"Not.A/Brand\";v=\"24\", \"Opera GX\";v=\"92\"'
-    'HTTP_SEC_CH_UA_MOBILE' => '?0'
-    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36 OPR/92.0.0.0 (Edition Yx GX)'
-    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
-    'HTTP_ACCEPT' => '*/*'
-    'HTTP_ORIGIN' => 'http://localhost:8081'
-    'HTTP_SEC_FETCH_SITE' => 'same-site'
-    'HTTP_SEC_FETCH_MODE' => 'cors'
-    'HTTP_SEC_FETCH_DEST' => 'empty'
-    'HTTP_REFERER' => 'http://localhost:8081/'
-    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
-    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
-    'PATH' => 'c:\\ospanel\\modules\\php\\PHP_8.1\\ext;c:\\ospanel\\modules\\php\\PHP_8.1\\pear;c:\\ospanel\\modules\\php\\PHP_8.1\\pear\\bin;c:\\ospanel\\modules\\php\\PHP_8.1;c:\\ospanel\\modules\\wget\\bin;c:\\ospanel\\modules\\database\\MySQL-8.0-Win10\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
-    'SystemRoot' => 'C:\\Windows'
-    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
-    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
-    'WINDIR' => 'C:\\Windows'
-    'SERVER_SIGNATURE' => ''
-    'SERVER_SOFTWARE' => 'Apache'
-    'SERVER_NAME' => 'localhost'
-    'SERVER_ADDR' => '127.0.0.1'
-    'SERVER_PORT' => '80'
-    'REMOTE_ADDR' => '127.0.0.1'
-    'DOCUMENT_ROOT' => 'C:/OSPanel/domains/localhost/server/web'
-    'REQUEST_SCHEME' => 'http'
-    'CONTEXT_PREFIX' => ''
-    'CONTEXT_DOCUMENT_ROOT' => 'C:/OSPanel/domains/localhost/server/web'
-    'SERVER_ADMIN' => '[no address given]'
-    'SCRIPT_FILENAME' => 'C:/OSPanel/domains/localhost/server/web/index.php'
-    'REMOTE_PORT' => '55996'
-    'REDIRECT_URL' => '/pictures'
-    'REDIRECT_QUERY_STRING' => 'expand=comments'
-    'GATEWAY_INTERFACE' => 'CGI/1.1'
-    'SERVER_PROTOCOL' => 'HTTP/1.1'
-    'REQUEST_METHOD' => 'GET'
-    'QUERY_STRING' => 'expand=comments'
-    'REQUEST_URI' => '/pictures?expand=comments'
-    'SCRIPT_NAME' => '/index.php'
-    'PHP_SELF' => '/index.php'
-    'REQUEST_TIME_FLOAT' => 1669466423.0322
-    'REQUEST_TIME' => 1669466423
-]
-2022-11-26 15:40:34 [127.0.0.1][-][-][error][yii\base\ErrorException:2] yii\base\ErrorException: Undefined array key "origin" in C:\OSPanel\domains\localhost\server\controllers\PictureController.php:23
-Stack trace:
-#0 C:\OSPanel\domains\localhost\server\controllers\PictureController.php(23): yii\base\ErrorHandler->handleError()
-#1 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Component.php(739): app\controllers\PictureController->behaviors()
-#2 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Component.php(609): yii\base\Component->ensureBehaviors()
-#3 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Controller.php(297): yii\base\Component->trigger()
-#4 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\web\Controller.php(218): yii\base\Controller->beforeAction()
-#5 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Controller.php(176): yii\web\Controller->beforeAction()
-#6 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction()
-#7 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction()
-#8 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest()
-#9 C:\OSPanel\domains\localhost\server\web\index.php(12): yii\base\Application->run()
-#10 {main}
-2022-11-26 15:40:34 [127.0.0.1][-][-][info][application] $_GET = [
-    'expand' => 'comments'
-]
-
-$_POST = []
-
-$_FILES = []
-
-$_COOKIE = []
-
-$_SERVER = [
-    'REDIRECT_STATUS' => '200'
-    'HTTP_HOST' => 'localhost'
-    'HTTP_X_FORWARDED_PROTO' => 'http'
-    'HTTP_X_REAL_IP' => '127.0.0.1'
-    'HTTP_SEC_CH_UA' => '\"Chromium\";v=\"106\", \"Not.A/Brand\";v=\"24\", \"Opera GX\";v=\"92\"'
-    'HTTP_SEC_CH_UA_MOBILE' => '?0'
-    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36 OPR/92.0.0.0 (Edition Yx GX)'
-    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
-    'HTTP_ACCEPT' => '*/*'
-    'HTTP_ORIGIN' => 'http://localhost:8081'
-    'HTTP_SEC_FETCH_SITE' => 'same-site'
-    'HTTP_SEC_FETCH_MODE' => 'cors'
-    'HTTP_SEC_FETCH_DEST' => 'empty'
-    'HTTP_REFERER' => 'http://localhost:8081/'
-    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
-    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
-    'PATH' => 'c:\\ospanel\\modules\\php\\PHP_8.1\\ext;c:\\ospanel\\modules\\php\\PHP_8.1\\pear;c:\\ospanel\\modules\\php\\PHP_8.1\\pear\\bin;c:\\ospanel\\modules\\php\\PHP_8.1;c:\\ospanel\\modules\\wget\\bin;c:\\ospanel\\modules\\database\\MySQL-8.0-Win10\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
-    'SystemRoot' => 'C:\\Windows'
-    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
-    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
-    'WINDIR' => 'C:\\Windows'
-    'SERVER_SIGNATURE' => ''
-    'SERVER_SOFTWARE' => 'Apache'
-    'SERVER_NAME' => 'localhost'
-    'SERVER_ADDR' => '127.0.0.1'
-    'SERVER_PORT' => '80'
-    'REMOTE_ADDR' => '127.0.0.1'
-    'DOCUMENT_ROOT' => 'C:/OSPanel/domains/localhost/server/web'
-    'REQUEST_SCHEME' => 'http'
-    'CONTEXT_PREFIX' => ''
-    'CONTEXT_DOCUMENT_ROOT' => 'C:/OSPanel/domains/localhost/server/web'
-    'SERVER_ADMIN' => '[no address given]'
-    'SCRIPT_FILENAME' => 'C:/OSPanel/domains/localhost/server/web/index.php'
-    'REMOTE_PORT' => '56018'
-    'REDIRECT_URL' => '/pictures'
-    'REDIRECT_QUERY_STRING' => 'expand=comments'
-    'GATEWAY_INTERFACE' => 'CGI/1.1'
-    'SERVER_PROTOCOL' => 'HTTP/1.1'
-    'REQUEST_METHOD' => 'GET'
-    'QUERY_STRING' => 'expand=comments'
-    'REQUEST_URI' => '/pictures?expand=comments'
-    'SCRIPT_NAME' => '/index.php'
-    'PHP_SELF' => '/index.php'
-    'REQUEST_TIME_FLOAT' => 1669466434.8343
-    'REQUEST_TIME' => 1669466434
-]
-2022-11-27 05:33:43 [127.0.0.1][-][-][error][yii\web\HttpException:404] yii\web\NotFoundHttpException: Page not found. in C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\web\Request.php:299
-Stack trace:
-#0 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\web\Application.php(82): yii\web\Request->resolve()
-#1 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest()
-#2 C:\OSPanel\domains\localhost\server\web\index.php(12): yii\base\Application->run()
+#0 /Users/anatolev-max/PhpstormProjects/kekstagram/server/vendor/yiisoft/yii2/web/Application.php(82): yii\web\Request->resolve()
+#1 /Users/anatolev-max/PhpstormProjects/kekstagram/server/vendor/yiisoft/yii2/base/Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /Users/anatolev-max/PhpstormProjects/kekstagram/server/web/index.php(12): yii\base\Application->run()
 #3 {main}
-2022-11-27 05:33:42 [127.0.0.1][-][-][info][application] $_GET = []
+2022-11-28 14:15:50 [::1][-][-][info][application] $_GET = []
 
 $_POST = []
 
@@ -5192,67 +4557,48 @@ $_FILES = []
 $_COOKIE = []
 
 $_SERVER = [
+    'REDIRECT_STATUS' => '200'
     'HTTP_HOST' => 'localhost'
-    'HTTP_X_FORWARDED_PROTO' => 'http'
-    'HTTP_X_REAL_IP' => '127.0.0.1'
-    'HTTP_SEC_CH_UA' => '\"Chromium\";v=\"106\", \"Not.A/Brand\";v=\"24\", \"Opera GX\";v=\"92\"'
-    'HTTP_SEC_CH_UA_MOBILE' => '?0'
-    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
-    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
-    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36 OPR/92.0.0.0 (Edition Yx GX)'
-    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
-    'HTTP_SEC_FETCH_SITE' => 'none'
-    'HTTP_SEC_FETCH_MODE' => 'navigate'
-    'HTTP_SEC_FETCH_USER' => '?1'
-    'HTTP_SEC_FETCH_DEST' => 'document'
-    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
-    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
-    'PATH' => 'c:\\ospanel\\modules\\php\\PHP_8.1\\ext;c:\\ospanel\\modules\\php\\PHP_8.1\\pear;c:\\ospanel\\modules\\php\\PHP_8.1\\pear\\bin;c:\\ospanel\\modules\\php\\PHP_8.1;c:\\ospanel\\modules\\wget\\bin;c:\\ospanel\\modules\\database\\MySQL-8.0-Win10\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
-    'SystemRoot' => 'C:\\Windows'
-    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
-    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
-    'WINDIR' => 'C:\\Windows'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_ACCEPT' => 'image/webp,image/avif,video/*;q=0.8,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.1 Safari/605.1.15'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru'
+    'HTTP_REFERER' => 'http://localhost:8080/'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'PATH' => '/usr/bin:/bin:/usr/sbin:/sbin'
     'SERVER_SIGNATURE' => ''
-    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_SOFTWARE' => 'Apache/2.4.46 (Unix) OpenSSL/1.0.2u PHP/8.0.8 mod_wsgi/3.5 Python/2.7.18 mod_fastcgi/mod_fastcgi-SNAP-0910052141 mod_perl/2.0.11 Perl/v5.30.1'
     'SERVER_NAME' => 'localhost'
-    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_ADDR' => '::1'
     'SERVER_PORT' => '80'
-    'REMOTE_ADDR' => '127.0.0.1'
-    'DOCUMENT_ROOT' => 'C:/OSPanel/domains/localhost/server/web'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => '/Users/anatolev-max/PhpstormProjects/kekstagram/server/web'
     'REQUEST_SCHEME' => 'http'
     'CONTEXT_PREFIX' => ''
-    'CONTEXT_DOCUMENT_ROOT' => 'C:/OSPanel/domains/localhost/server/web'
-    'SERVER_ADMIN' => '[no address given]'
-    'SCRIPT_FILENAME' => 'C:/OSPanel/domains/localhost/server/web/index.php'
-    'REMOTE_PORT' => '59954'
+    'CONTEXT_DOCUMENT_ROOT' => '/Users/anatolev-max/PhpstormProjects/kekstagram/server/web'
+    'SERVER_ADMIN' => 'you@example.com'
+    'SCRIPT_FILENAME' => '/Users/anatolev-max/PhpstormProjects/kekstagram/server/web/index.php'
+    'REMOTE_PORT' => '49231'
+    'REDIRECT_URL' => '/uploads/hans-isaacson-k0dZh0vSQ5A-unsplash_638349346bc1a.jpg'
     'GATEWAY_INTERFACE' => 'CGI/1.1'
     'SERVER_PROTOCOL' => 'HTTP/1.1'
     'REQUEST_METHOD' => 'GET'
     'QUERY_STRING' => ''
-    'REQUEST_URI' => '/'
+    'REQUEST_URI' => '/uploads/hans-isaacson-k0dZh0vSQ5A-unsplash_638349346bc1a.jpg'
     'SCRIPT_NAME' => '/index.php'
     'PHP_SELF' => '/index.php'
-    'REQUEST_TIME_FLOAT' => 1669516422.7299
-    'REQUEST_TIME' => 1669516422
+    'REQUEST_TIME_FLOAT' => 1669608950.7161
+    'REQUEST_TIME' => 1669608950
 ]
-2022-11-27 08:30:46 [127.0.0.1][-][-][error][yii\base\ErrorException:2] yii\base\ErrorException: Attempt to read property "baseName" on null in C:\OSPanel\domains\localhost\server\controllers\PictureController.php:41
+2022-11-28 14:15:51 [::1][-][-][error][yii\web\HttpException:404] yii\web\NotFoundHttpException: Page not found. in /Users/anatolev-max/PhpstormProjects/kekstagram/server/vendor/yiisoft/yii2/web/Request.php:299
 Stack trace:
-#0 C:\OSPanel\domains\localhost\server\controllers\PictureController.php(41): yii\base\ErrorHandler->handleError()
-#1 [internal function]: app\controllers\PictureController->actionCreate()
-#2 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array()
-#3 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Controller.php(178): yii\base\InlineAction->runWithParams()
-#4 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction()
-#5 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction()
-#6 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest()
-#7 C:\OSPanel\domains\localhost\server\web\index.php(12): yii\base\Application->run()
-#8 {main}
-2022-11-27 08:30:46 [127.0.0.1][-][-][info][application] $_GET = [
-    'expand' => 'comments'
-]
+#0 /Users/anatolev-max/PhpstormProjects/kekstagram/server/vendor/yiisoft/yii2/web/Application.php(82): yii\web\Request->resolve()
+#1 /Users/anatolev-max/PhpstormProjects/kekstagram/server/vendor/yiisoft/yii2/base/Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /Users/anatolev-max/PhpstormProjects/kekstagram/server/web/index.php(12): yii\base\Application->run()
+#3 {main}
+2022-11-28 14:15:51 [::1][-][-][info][application] $_GET = []
 
-$_POST = [
-    'description' => ''
-]
+$_POST = []
 
 $_FILES = []
 
@@ -5261,1139 +4607,34 @@ $_COOKIE = []
 $_SERVER = [
     'REDIRECT_STATUS' => '200'
     'HTTP_HOST' => 'localhost'
-    'HTTP_X_FORWARDED_PROTO' => 'http'
-    'HTTP_X_REAL_IP' => '127.0.0.1'
-    'CONTENT_LENGTH' => '142'
-    'HTTP_SEC_CH_UA' => '\"Chromium\";v=\"106\", \"Not.A/Brand\";v=\"24\", \"Opera GX\";v=\"92\"'
-    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
-    'HTTP_SEC_CH_UA_MOBILE' => '?0'
-    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36 OPR/92.0.0.0 (Edition Yx GX)'
-    'CONTENT_TYPE' => 'multipart/form-data; boundary=----WebKitFormBoundaryii9gK8cM8kUH5izS'
-    'HTTP_ACCEPT' => '*/*'
-    'HTTP_ORIGIN' => 'http://localhost:8081'
-    'HTTP_SEC_FETCH_SITE' => 'same-site'
-    'HTTP_SEC_FETCH_MODE' => 'cors'
-    'HTTP_SEC_FETCH_DEST' => 'empty'
-    'HTTP_REFERER' => 'http://localhost:8081/'
-    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
-    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
-    'PATH' => 'c:\\ospanel\\modules\\php\\PHP_8.1\\ext;c:\\ospanel\\modules\\php\\PHP_8.1\\pear;c:\\ospanel\\modules\\php\\PHP_8.1\\pear\\bin;c:\\ospanel\\modules\\php\\PHP_8.1;c:\\ospanel\\modules\\wget\\bin;c:\\ospanel\\modules\\database\\MySQL-8.0-Win10\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
-    'SystemRoot' => 'C:\\Windows'
-    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
-    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
-    'WINDIR' => 'C:\\Windows'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_ACCEPT' => 'image/webp,image/avif,video/*;q=0.8,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.1 Safari/605.1.15'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru'
+    'HTTP_REFERER' => 'http://localhost:8080/'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'PATH' => '/usr/bin:/bin:/usr/sbin:/sbin'
     'SERVER_SIGNATURE' => ''
-    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_SOFTWARE' => 'Apache/2.4.46 (Unix) OpenSSL/1.0.2u PHP/8.0.8 mod_wsgi/3.5 Python/2.7.18 mod_fastcgi/mod_fastcgi-SNAP-0910052141 mod_perl/2.0.11 Perl/v5.30.1'
     'SERVER_NAME' => 'localhost'
-    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_ADDR' => '::1'
     'SERVER_PORT' => '80'
-    'REMOTE_ADDR' => '127.0.0.1'
-    'DOCUMENT_ROOT' => 'C:/OSPanel/domains/localhost/server/web'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => '/Users/anatolev-max/PhpstormProjects/kekstagram/server/web'
     'REQUEST_SCHEME' => 'http'
     'CONTEXT_PREFIX' => ''
-    'CONTEXT_DOCUMENT_ROOT' => 'C:/OSPanel/domains/localhost/server/web'
-    'SERVER_ADMIN' => '[no address given]'
-    'SCRIPT_FILENAME' => 'C:/OSPanel/domains/localhost/server/web/index.php'
-    'REMOTE_PORT' => '58767'
-    'REDIRECT_URL' => '/pictures'
-    'REDIRECT_QUERY_STRING' => 'expand=comments'
+    'CONTEXT_DOCUMENT_ROOT' => '/Users/anatolev-max/PhpstormProjects/kekstagram/server/web'
+    'SERVER_ADMIN' => 'you@example.com'
+    'SCRIPT_FILENAME' => '/Users/anatolev-max/PhpstormProjects/kekstagram/server/web/index.php'
+    'REMOTE_PORT' => '49232'
+    'REDIRECT_URL' => '/uploads/mailchimp-Cy5dya5MAlI-unsplash_6383490b15599.jpg'
     'GATEWAY_INTERFACE' => 'CGI/1.1'
     'SERVER_PROTOCOL' => 'HTTP/1.1'
-    'REQUEST_METHOD' => 'POST'
-    'QUERY_STRING' => 'expand=comments'
-    'REQUEST_URI' => '/pictures?expand=comments'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/uploads/mailchimp-Cy5dya5MAlI-unsplash_6383490b15599.jpg'
     'SCRIPT_NAME' => '/index.php'
     'PHP_SELF' => '/index.php'
-    'REQUEST_TIME_FLOAT' => 1669527046.2676
-    'REQUEST_TIME' => 1669527046
-]
-2022-11-27 08:31:13 [127.0.0.1][-][-][error][yii\base\ErrorException:2] yii\base\ErrorException: Attempt to read property "baseName" on null in C:\OSPanel\domains\localhost\server\controllers\PictureController.php:41
-Stack trace:
-#0 C:\OSPanel\domains\localhost\server\controllers\PictureController.php(41): yii\base\ErrorHandler->handleError()
-#1 [internal function]: app\controllers\PictureController->actionCreate()
-#2 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array()
-#3 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Controller.php(178): yii\base\InlineAction->runWithParams()
-#4 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction()
-#5 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction()
-#6 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest()
-#7 C:\OSPanel\domains\localhost\server\web\index.php(12): yii\base\Application->run()
-#8 {main}
-2022-11-27 08:31:13 [127.0.0.1][-][-][info][application] $_GET = [
-    'expand' => 'comments'
-]
-
-$_POST = [
-    'description' => ''
-]
-
-$_FILES = []
-
-$_COOKIE = []
-
-$_SERVER = [
-    'REDIRECT_STATUS' => '200'
-    'HTTP_HOST' => 'localhost'
-    'HTTP_X_FORWARDED_PROTO' => 'http'
-    'HTTP_X_REAL_IP' => '127.0.0.1'
-    'CONTENT_LENGTH' => '142'
-    'HTTP_SEC_CH_UA' => '\"Chromium\";v=\"106\", \"Not.A/Brand\";v=\"24\", \"Opera GX\";v=\"92\"'
-    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
-    'HTTP_SEC_CH_UA_MOBILE' => '?0'
-    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36 OPR/92.0.0.0 (Edition Yx GX)'
-    'CONTENT_TYPE' => 'multipart/form-data; boundary=----WebKitFormBoundary9gSXkSC7ulvVxZKi'
-    'HTTP_ACCEPT' => '*/*'
-    'HTTP_ORIGIN' => 'http://localhost:8081'
-    'HTTP_SEC_FETCH_SITE' => 'same-site'
-    'HTTP_SEC_FETCH_MODE' => 'cors'
-    'HTTP_SEC_FETCH_DEST' => 'empty'
-    'HTTP_REFERER' => 'http://localhost:8081/'
-    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
-    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
-    'PATH' => 'c:\\ospanel\\modules\\php\\PHP_8.1\\ext;c:\\ospanel\\modules\\php\\PHP_8.1\\pear;c:\\ospanel\\modules\\php\\PHP_8.1\\pear\\bin;c:\\ospanel\\modules\\php\\PHP_8.1;c:\\ospanel\\modules\\wget\\bin;c:\\ospanel\\modules\\database\\MySQL-8.0-Win10\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
-    'SystemRoot' => 'C:\\Windows'
-    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
-    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
-    'WINDIR' => 'C:\\Windows'
-    'SERVER_SIGNATURE' => ''
-    'SERVER_SOFTWARE' => 'Apache'
-    'SERVER_NAME' => 'localhost'
-    'SERVER_ADDR' => '127.0.0.1'
-    'SERVER_PORT' => '80'
-    'REMOTE_ADDR' => '127.0.0.1'
-    'DOCUMENT_ROOT' => 'C:/OSPanel/domains/localhost/server/web'
-    'REQUEST_SCHEME' => 'http'
-    'CONTEXT_PREFIX' => ''
-    'CONTEXT_DOCUMENT_ROOT' => 'C:/OSPanel/domains/localhost/server/web'
-    'SERVER_ADMIN' => '[no address given]'
-    'SCRIPT_FILENAME' => 'C:/OSPanel/domains/localhost/server/web/index.php'
-    'REMOTE_PORT' => '58803'
-    'REDIRECT_URL' => '/pictures'
-    'REDIRECT_QUERY_STRING' => 'expand=comments'
-    'GATEWAY_INTERFACE' => 'CGI/1.1'
-    'SERVER_PROTOCOL' => 'HTTP/1.1'
-    'REQUEST_METHOD' => 'POST'
-    'QUERY_STRING' => 'expand=comments'
-    'REQUEST_URI' => '/pictures?expand=comments'
-    'SCRIPT_NAME' => '/index.php'
-    'PHP_SELF' => '/index.php'
-    'REQUEST_TIME_FLOAT' => 1669527073.515
-    'REQUEST_TIME' => 1669527073
-]
-2022-11-27 08:31:30 [127.0.0.1][-][-][error][yii\base\ErrorException:2] yii\base\ErrorException: Attempt to read property "baseName" on null in C:\OSPanel\domains\localhost\server\controllers\PictureController.php:41
-Stack trace:
-#0 C:\OSPanel\domains\localhost\server\controllers\PictureController.php(41): yii\base\ErrorHandler->handleError()
-#1 [internal function]: app\controllers\PictureController->actionCreate()
-#2 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array()
-#3 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Controller.php(178): yii\base\InlineAction->runWithParams()
-#4 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction()
-#5 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction()
-#6 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest()
-#7 C:\OSPanel\domains\localhost\server\web\index.php(12): yii\base\Application->run()
-#8 {main}
-2022-11-27 08:31:30 [127.0.0.1][-][-][info][application] $_GET = [
-    'expand' => 'comments'
-]
-
-$_POST = [
-    'description' => ''
-]
-
-$_FILES = []
-
-$_COOKIE = []
-
-$_SERVER = [
-    'REDIRECT_STATUS' => '200'
-    'HTTP_HOST' => 'localhost'
-    'HTTP_X_FORWARDED_PROTO' => 'http'
-    'HTTP_X_REAL_IP' => '127.0.0.1'
-    'CONTENT_LENGTH' => '142'
-    'HTTP_SEC_CH_UA' => '\"Chromium\";v=\"106\", \"Not.A/Brand\";v=\"24\", \"Opera GX\";v=\"92\"'
-    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
-    'HTTP_SEC_CH_UA_MOBILE' => '?0'
-    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36 OPR/92.0.0.0 (Edition Yx GX)'
-    'CONTENT_TYPE' => 'multipart/form-data; boundary=----WebKitFormBoundaryFvcV7uFmp5BeBKHo'
-    'HTTP_ACCEPT' => '*/*'
-    'HTTP_ORIGIN' => 'http://localhost:8081'
-    'HTTP_SEC_FETCH_SITE' => 'same-site'
-    'HTTP_SEC_FETCH_MODE' => 'cors'
-    'HTTP_SEC_FETCH_DEST' => 'empty'
-    'HTTP_REFERER' => 'http://localhost:8081/'
-    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
-    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
-    'PATH' => 'c:\\ospanel\\modules\\php\\PHP_8.1\\ext;c:\\ospanel\\modules\\php\\PHP_8.1\\pear;c:\\ospanel\\modules\\php\\PHP_8.1\\pear\\bin;c:\\ospanel\\modules\\php\\PHP_8.1;c:\\ospanel\\modules\\wget\\bin;c:\\ospanel\\modules\\database\\MySQL-8.0-Win10\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
-    'SystemRoot' => 'C:\\Windows'
-    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
-    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
-    'WINDIR' => 'C:\\Windows'
-    'SERVER_SIGNATURE' => ''
-    'SERVER_SOFTWARE' => 'Apache'
-    'SERVER_NAME' => 'localhost'
-    'SERVER_ADDR' => '127.0.0.1'
-    'SERVER_PORT' => '80'
-    'REMOTE_ADDR' => '127.0.0.1'
-    'DOCUMENT_ROOT' => 'C:/OSPanel/domains/localhost/server/web'
-    'REQUEST_SCHEME' => 'http'
-    'CONTEXT_PREFIX' => ''
-    'CONTEXT_DOCUMENT_ROOT' => 'C:/OSPanel/domains/localhost/server/web'
-    'SERVER_ADMIN' => '[no address given]'
-    'SCRIPT_FILENAME' => 'C:/OSPanel/domains/localhost/server/web/index.php'
-    'REMOTE_PORT' => '58839'
-    'REDIRECT_URL' => '/pictures'
-    'REDIRECT_QUERY_STRING' => 'expand=comments'
-    'GATEWAY_INTERFACE' => 'CGI/1.1'
-    'SERVER_PROTOCOL' => 'HTTP/1.1'
-    'REQUEST_METHOD' => 'POST'
-    'QUERY_STRING' => 'expand=comments'
-    'REQUEST_URI' => '/pictures?expand=comments'
-    'SCRIPT_NAME' => '/index.php'
-    'PHP_SELF' => '/index.php'
-    'REQUEST_TIME_FLOAT' => 1669527090.3264
-    'REQUEST_TIME' => 1669527090
-]
-2022-11-27 08:33:47 [127.0.0.1][-][-][error][yii\base\ErrorException:2] yii\base\ErrorException: Attempt to read property "baseName" on null in C:\OSPanel\domains\localhost\server\controllers\PictureController.php:41
-Stack trace:
-#0 C:\OSPanel\domains\localhost\server\controllers\PictureController.php(41): yii\base\ErrorHandler->handleError()
-#1 [internal function]: app\controllers\PictureController->actionCreate()
-#2 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array()
-#3 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Controller.php(178): yii\base\InlineAction->runWithParams()
-#4 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction()
-#5 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction()
-#6 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest()
-#7 C:\OSPanel\domains\localhost\server\web\index.php(12): yii\base\Application->run()
-#8 {main}
-2022-11-27 08:33:47 [127.0.0.1][-][-][info][application] $_GET = [
-    'expand' => 'comments'
-]
-
-$_POST = [
-    'description' => ''
-]
-
-$_FILES = []
-
-$_COOKIE = []
-
-$_SERVER = [
-    'REDIRECT_STATUS' => '200'
-    'HTTP_HOST' => 'localhost'
-    'HTTP_X_FORWARDED_PROTO' => 'http'
-    'HTTP_X_REAL_IP' => '127.0.0.1'
-    'CONTENT_LENGTH' => '142'
-    'HTTP_SEC_CH_UA' => '\"Chromium\";v=\"106\", \"Not.A/Brand\";v=\"24\", \"Opera GX\";v=\"92\"'
-    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
-    'HTTP_SEC_CH_UA_MOBILE' => '?0'
-    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36 OPR/92.0.0.0 (Edition Yx GX)'
-    'CONTENT_TYPE' => 'multipart/form-data; boundary=----WebKitFormBoundary5OjNsTl2hh1h7TLC'
-    'HTTP_ACCEPT' => '*/*'
-    'HTTP_ORIGIN' => 'http://localhost:8081'
-    'HTTP_SEC_FETCH_SITE' => 'same-site'
-    'HTTP_SEC_FETCH_MODE' => 'cors'
-    'HTTP_SEC_FETCH_DEST' => 'empty'
-    'HTTP_REFERER' => 'http://localhost:8081/'
-    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
-    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
-    'PATH' => 'c:\\ospanel\\modules\\php\\PHP_8.1\\ext;c:\\ospanel\\modules\\php\\PHP_8.1\\pear;c:\\ospanel\\modules\\php\\PHP_8.1\\pear\\bin;c:\\ospanel\\modules\\php\\PHP_8.1;c:\\ospanel\\modules\\wget\\bin;c:\\ospanel\\modules\\database\\MySQL-8.0-Win10\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
-    'SystemRoot' => 'C:\\Windows'
-    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
-    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
-    'WINDIR' => 'C:\\Windows'
-    'SERVER_SIGNATURE' => ''
-    'SERVER_SOFTWARE' => 'Apache'
-    'SERVER_NAME' => 'localhost'
-    'SERVER_ADDR' => '127.0.0.1'
-    'SERVER_PORT' => '80'
-    'REMOTE_ADDR' => '127.0.0.1'
-    'DOCUMENT_ROOT' => 'C:/OSPanel/domains/localhost/server/web'
-    'REQUEST_SCHEME' => 'http'
-    'CONTEXT_PREFIX' => ''
-    'CONTEXT_DOCUMENT_ROOT' => 'C:/OSPanel/domains/localhost/server/web'
-    'SERVER_ADMIN' => '[no address given]'
-    'SCRIPT_FILENAME' => 'C:/OSPanel/domains/localhost/server/web/index.php'
-    'REMOTE_PORT' => '59030'
-    'REDIRECT_URL' => '/pictures'
-    'REDIRECT_QUERY_STRING' => 'expand=comments'
-    'GATEWAY_INTERFACE' => 'CGI/1.1'
-    'SERVER_PROTOCOL' => 'HTTP/1.1'
-    'REQUEST_METHOD' => 'POST'
-    'QUERY_STRING' => 'expand=comments'
-    'REQUEST_URI' => '/pictures?expand=comments'
-    'SCRIPT_NAME' => '/index.php'
-    'PHP_SELF' => '/index.php'
-    'REQUEST_TIME_FLOAT' => 1669527227.9459
-    'REQUEST_TIME' => 1669527227
-]
-2022-11-27 08:34:06 [127.0.0.1][-][-][error][yii\base\ErrorException:2] yii\base\ErrorException: Attempt to read property "baseName" on null in C:\OSPanel\domains\localhost\server\controllers\PictureController.php:41
-Stack trace:
-#0 C:\OSPanel\domains\localhost\server\controllers\PictureController.php(41): yii\base\ErrorHandler->handleError()
-#1 [internal function]: app\controllers\PictureController->actionCreate()
-#2 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array()
-#3 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Controller.php(178): yii\base\InlineAction->runWithParams()
-#4 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction()
-#5 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction()
-#6 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest()
-#7 C:\OSPanel\domains\localhost\server\web\index.php(12): yii\base\Application->run()
-#8 {main}
-2022-11-27 08:34:06 [127.0.0.1][-][-][info][application] $_GET = [
-    'expand' => 'comments'
-]
-
-$_POST = [
-    'description' => '1'
-]
-
-$_FILES = []
-
-$_COOKIE = []
-
-$_SERVER = [
-    'REDIRECT_STATUS' => '200'
-    'HTTP_HOST' => 'localhost'
-    'HTTP_X_FORWARDED_PROTO' => 'http'
-    'HTTP_X_REAL_IP' => '127.0.0.1'
-    'CONTENT_LENGTH' => '143'
-    'HTTP_SEC_CH_UA' => '\"Chromium\";v=\"106\", \"Not.A/Brand\";v=\"24\", \"Opera GX\";v=\"92\"'
-    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
-    'HTTP_SEC_CH_UA_MOBILE' => '?0'
-    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36 OPR/92.0.0.0 (Edition Yx GX)'
-    'CONTENT_TYPE' => 'multipart/form-data; boundary=----WebKitFormBoundaryurtMa5psTBaS2aHX'
-    'HTTP_ACCEPT' => '*/*'
-    'HTTP_ORIGIN' => 'http://localhost:8081'
-    'HTTP_SEC_FETCH_SITE' => 'same-site'
-    'HTTP_SEC_FETCH_MODE' => 'cors'
-    'HTTP_SEC_FETCH_DEST' => 'empty'
-    'HTTP_REFERER' => 'http://localhost:8081/'
-    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
-    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
-    'PATH' => 'c:\\ospanel\\modules\\php\\PHP_8.1\\ext;c:\\ospanel\\modules\\php\\PHP_8.1\\pear;c:\\ospanel\\modules\\php\\PHP_8.1\\pear\\bin;c:\\ospanel\\modules\\php\\PHP_8.1;c:\\ospanel\\modules\\wget\\bin;c:\\ospanel\\modules\\database\\MySQL-8.0-Win10\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
-    'SystemRoot' => 'C:\\Windows'
-    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
-    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
-    'WINDIR' => 'C:\\Windows'
-    'SERVER_SIGNATURE' => ''
-    'SERVER_SOFTWARE' => 'Apache'
-    'SERVER_NAME' => 'localhost'
-    'SERVER_ADDR' => '127.0.0.1'
-    'SERVER_PORT' => '80'
-    'REMOTE_ADDR' => '127.0.0.1'
-    'DOCUMENT_ROOT' => 'C:/OSPanel/domains/localhost/server/web'
-    'REQUEST_SCHEME' => 'http'
-    'CONTEXT_PREFIX' => ''
-    'CONTEXT_DOCUMENT_ROOT' => 'C:/OSPanel/domains/localhost/server/web'
-    'SERVER_ADMIN' => '[no address given]'
-    'SCRIPT_FILENAME' => 'C:/OSPanel/domains/localhost/server/web/index.php'
-    'REMOTE_PORT' => '59051'
-    'REDIRECT_URL' => '/pictures'
-    'REDIRECT_QUERY_STRING' => 'expand=comments'
-    'GATEWAY_INTERFACE' => 'CGI/1.1'
-    'SERVER_PROTOCOL' => 'HTTP/1.1'
-    'REQUEST_METHOD' => 'POST'
-    'QUERY_STRING' => 'expand=comments'
-    'REQUEST_URI' => '/pictures?expand=comments'
-    'SCRIPT_NAME' => '/index.php'
-    'PHP_SELF' => '/index.php'
-    'REQUEST_TIME_FLOAT' => 1669527246.0698
-    'REQUEST_TIME' => 1669527246
-]
-2022-11-27 08:34:06 [127.0.0.1][-][-][error][yii\base\ErrorException:2] yii\base\ErrorException: Attempt to read property "baseName" on null in C:\OSPanel\domains\localhost\server\controllers\PictureController.php:41
-Stack trace:
-#0 C:\OSPanel\domains\localhost\server\controllers\PictureController.php(41): yii\base\ErrorHandler->handleError()
-#1 [internal function]: app\controllers\PictureController->actionCreate()
-#2 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array()
-#3 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Controller.php(178): yii\base\InlineAction->runWithParams()
-#4 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction()
-#5 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction()
-#6 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest()
-#7 C:\OSPanel\domains\localhost\server\web\index.php(12): yii\base\Application->run()
-#8 {main}
-2022-11-27 08:34:06 [127.0.0.1][-][-][info][application] $_GET = [
-    'expand' => 'comments'
-]
-
-$_POST = [
-    'description' => '1'
-]
-
-$_FILES = []
-
-$_COOKIE = []
-
-$_SERVER = [
-    'REDIRECT_STATUS' => '200'
-    'HTTP_HOST' => 'localhost'
-    'HTTP_X_FORWARDED_PROTO' => 'http'
-    'HTTP_X_REAL_IP' => '127.0.0.1'
-    'CONTENT_LENGTH' => '143'
-    'HTTP_SEC_CH_UA' => '\"Chromium\";v=\"106\", \"Not.A/Brand\";v=\"24\", \"Opera GX\";v=\"92\"'
-    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
-    'HTTP_SEC_CH_UA_MOBILE' => '?0'
-    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36 OPR/92.0.0.0 (Edition Yx GX)'
-    'CONTENT_TYPE' => 'multipart/form-data; boundary=----WebKitFormBoundaryUxGSVdrVM7lKrVDV'
-    'HTTP_ACCEPT' => '*/*'
-    'HTTP_ORIGIN' => 'http://localhost:8081'
-    'HTTP_SEC_FETCH_SITE' => 'same-site'
-    'HTTP_SEC_FETCH_MODE' => 'cors'
-    'HTTP_SEC_FETCH_DEST' => 'empty'
-    'HTTP_REFERER' => 'http://localhost:8081/'
-    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
-    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
-    'PATH' => 'c:\\ospanel\\modules\\php\\PHP_8.1\\ext;c:\\ospanel\\modules\\php\\PHP_8.1\\pear;c:\\ospanel\\modules\\php\\PHP_8.1\\pear\\bin;c:\\ospanel\\modules\\php\\PHP_8.1;c:\\ospanel\\modules\\wget\\bin;c:\\ospanel\\modules\\database\\MySQL-8.0-Win10\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
-    'SystemRoot' => 'C:\\Windows'
-    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
-    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
-    'WINDIR' => 'C:\\Windows'
-    'SERVER_SIGNATURE' => ''
-    'SERVER_SOFTWARE' => 'Apache'
-    'SERVER_NAME' => 'localhost'
-    'SERVER_ADDR' => '127.0.0.1'
-    'SERVER_PORT' => '80'
-    'REMOTE_ADDR' => '127.0.0.1'
-    'DOCUMENT_ROOT' => 'C:/OSPanel/domains/localhost/server/web'
-    'REQUEST_SCHEME' => 'http'
-    'CONTEXT_PREFIX' => ''
-    'CONTEXT_DOCUMENT_ROOT' => 'C:/OSPanel/domains/localhost/server/web'
-    'SERVER_ADMIN' => '[no address given]'
-    'SCRIPT_FILENAME' => 'C:/OSPanel/domains/localhost/server/web/index.php'
-    'REMOTE_PORT' => '59053'
-    'REDIRECT_URL' => '/pictures'
-    'REDIRECT_QUERY_STRING' => 'expand=comments'
-    'GATEWAY_INTERFACE' => 'CGI/1.1'
-    'SERVER_PROTOCOL' => 'HTTP/1.1'
-    'REQUEST_METHOD' => 'POST'
-    'QUERY_STRING' => 'expand=comments'
-    'REQUEST_URI' => '/pictures?expand=comments'
-    'SCRIPT_NAME' => '/index.php'
-    'PHP_SELF' => '/index.php'
-    'REQUEST_TIME_FLOAT' => 1669527246.1523
-    'REQUEST_TIME' => 1669527246
-]
-2022-11-27 08:34:14 [127.0.0.1][-][-][error][yii\base\ErrorException:2] yii\base\ErrorException: Attempt to read property "baseName" on null in C:\OSPanel\domains\localhost\server\controllers\PictureController.php:41
-Stack trace:
-#0 C:\OSPanel\domains\localhost\server\controllers\PictureController.php(41): yii\base\ErrorHandler->handleError()
-#1 [internal function]: app\controllers\PictureController->actionCreate()
-#2 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array()
-#3 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Controller.php(178): yii\base\InlineAction->runWithParams()
-#4 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction()
-#5 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction()
-#6 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest()
-#7 C:\OSPanel\domains\localhost\server\web\index.php(12): yii\base\Application->run()
-#8 {main}
-2022-11-27 08:34:14 [127.0.0.1][-][-][info][application] $_GET = [
-    'expand' => 'comments'
-]
-
-$_POST = [
-    'description' => ''
-]
-
-$_FILES = []
-
-$_COOKIE = []
-
-$_SERVER = [
-    'REDIRECT_STATUS' => '200'
-    'HTTP_HOST' => 'localhost'
-    'HTTP_X_FORWARDED_PROTO' => 'http'
-    'HTTP_X_REAL_IP' => '127.0.0.1'
-    'CONTENT_LENGTH' => '142'
-    'HTTP_SEC_CH_UA' => '\"Chromium\";v=\"106\", \"Not.A/Brand\";v=\"24\", \"Opera GX\";v=\"92\"'
-    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
-    'HTTP_SEC_CH_UA_MOBILE' => '?0'
-    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36 OPR/92.0.0.0 (Edition Yx GX)'
-    'CONTENT_TYPE' => 'multipart/form-data; boundary=----WebKitFormBoundaryQDbBXeFVXIrZDe1C'
-    'HTTP_ACCEPT' => '*/*'
-    'HTTP_ORIGIN' => 'http://localhost:8081'
-    'HTTP_SEC_FETCH_SITE' => 'same-site'
-    'HTTP_SEC_FETCH_MODE' => 'cors'
-    'HTTP_SEC_FETCH_DEST' => 'empty'
-    'HTTP_REFERER' => 'http://localhost:8081/'
-    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
-    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
-    'PATH' => 'c:\\ospanel\\modules\\php\\PHP_8.1\\ext;c:\\ospanel\\modules\\php\\PHP_8.1\\pear;c:\\ospanel\\modules\\php\\PHP_8.1\\pear\\bin;c:\\ospanel\\modules\\php\\PHP_8.1;c:\\ospanel\\modules\\wget\\bin;c:\\ospanel\\modules\\database\\MySQL-8.0-Win10\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
-    'SystemRoot' => 'C:\\Windows'
-    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
-    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
-    'WINDIR' => 'C:\\Windows'
-    'SERVER_SIGNATURE' => ''
-    'SERVER_SOFTWARE' => 'Apache'
-    'SERVER_NAME' => 'localhost'
-    'SERVER_ADDR' => '127.0.0.1'
-    'SERVER_PORT' => '80'
-    'REMOTE_ADDR' => '127.0.0.1'
-    'DOCUMENT_ROOT' => 'C:/OSPanel/domains/localhost/server/web'
-    'REQUEST_SCHEME' => 'http'
-    'CONTEXT_PREFIX' => ''
-    'CONTEXT_DOCUMENT_ROOT' => 'C:/OSPanel/domains/localhost/server/web'
-    'SERVER_ADMIN' => '[no address given]'
-    'SCRIPT_FILENAME' => 'C:/OSPanel/domains/localhost/server/web/index.php'
-    'REMOTE_PORT' => '59069'
-    'REDIRECT_URL' => '/pictures'
-    'REDIRECT_QUERY_STRING' => 'expand=comments'
-    'GATEWAY_INTERFACE' => 'CGI/1.1'
-    'SERVER_PROTOCOL' => 'HTTP/1.1'
-    'REQUEST_METHOD' => 'POST'
-    'QUERY_STRING' => 'expand=comments'
-    'REQUEST_URI' => '/pictures?expand=comments'
-    'SCRIPT_NAME' => '/index.php'
-    'PHP_SELF' => '/index.php'
-    'REQUEST_TIME_FLOAT' => 1669527254.0124
-    'REQUEST_TIME' => 1669527254
-]
-2022-11-27 08:34:20 [127.0.0.1][-][-][error][yii\base\ErrorException:2] yii\base\ErrorException: Attempt to read property "baseName" on null in C:\OSPanel\domains\localhost\server\controllers\PictureController.php:41
-Stack trace:
-#0 C:\OSPanel\domains\localhost\server\controllers\PictureController.php(41): yii\base\ErrorHandler->handleError()
-#1 [internal function]: app\controllers\PictureController->actionCreate()
-#2 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array()
-#3 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Controller.php(178): yii\base\InlineAction->runWithParams()
-#4 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction()
-#5 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction()
-#6 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest()
-#7 C:\OSPanel\domains\localhost\server\web\index.php(12): yii\base\Application->run()
-#8 {main}
-2022-11-27 08:34:20 [127.0.0.1][-][-][info][application] $_GET = [
-    'expand' => 'comments'
-]
-
-$_POST = [
-    'filter' => 'on'
-    'description' => '12'
-]
-
-$_FILES = []
-
-$_COOKIE = []
-
-$_SERVER = [
-    'REDIRECT_STATUS' => '200'
-    'HTTP_HOST' => 'localhost'
-    'HTTP_X_FORWARDED_PROTO' => 'http'
-    'HTTP_X_REAL_IP' => '127.0.0.1'
-    'CONTENT_LENGTH' => '239'
-    'HTTP_SEC_CH_UA' => '\"Chromium\";v=\"106\", \"Not.A/Brand\";v=\"24\", \"Opera GX\";v=\"92\"'
-    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
-    'HTTP_SEC_CH_UA_MOBILE' => '?0'
-    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36 OPR/92.0.0.0 (Edition Yx GX)'
-    'CONTENT_TYPE' => 'multipart/form-data; boundary=----WebKitFormBoundaryr26BKbFRXrjGJuxt'
-    'HTTP_ACCEPT' => '*/*'
-    'HTTP_ORIGIN' => 'http://localhost:8081'
-    'HTTP_SEC_FETCH_SITE' => 'same-site'
-    'HTTP_SEC_FETCH_MODE' => 'cors'
-    'HTTP_SEC_FETCH_DEST' => 'empty'
-    'HTTP_REFERER' => 'http://localhost:8081/'
-    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
-    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
-    'PATH' => 'c:\\ospanel\\modules\\php\\PHP_8.1\\ext;c:\\ospanel\\modules\\php\\PHP_8.1\\pear;c:\\ospanel\\modules\\php\\PHP_8.1\\pear\\bin;c:\\ospanel\\modules\\php\\PHP_8.1;c:\\ospanel\\modules\\wget\\bin;c:\\ospanel\\modules\\database\\MySQL-8.0-Win10\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
-    'SystemRoot' => 'C:\\Windows'
-    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
-    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
-    'WINDIR' => 'C:\\Windows'
-    'SERVER_SIGNATURE' => ''
-    'SERVER_SOFTWARE' => 'Apache'
-    'SERVER_NAME' => 'localhost'
-    'SERVER_ADDR' => '127.0.0.1'
-    'SERVER_PORT' => '80'
-    'REMOTE_ADDR' => '127.0.0.1'
-    'DOCUMENT_ROOT' => 'C:/OSPanel/domains/localhost/server/web'
-    'REQUEST_SCHEME' => 'http'
-    'CONTEXT_PREFIX' => ''
-    'CONTEXT_DOCUMENT_ROOT' => 'C:/OSPanel/domains/localhost/server/web'
-    'SERVER_ADMIN' => '[no address given]'
-    'SCRIPT_FILENAME' => 'C:/OSPanel/domains/localhost/server/web/index.php'
-    'REMOTE_PORT' => '59076'
-    'REDIRECT_URL' => '/pictures'
-    'REDIRECT_QUERY_STRING' => 'expand=comments'
-    'GATEWAY_INTERFACE' => 'CGI/1.1'
-    'SERVER_PROTOCOL' => 'HTTP/1.1'
-    'REQUEST_METHOD' => 'POST'
-    'QUERY_STRING' => 'expand=comments'
-    'REQUEST_URI' => '/pictures?expand=comments'
-    'SCRIPT_NAME' => '/index.php'
-    'PHP_SELF' => '/index.php'
-    'REQUEST_TIME_FLOAT' => 1669527260.5022
-    'REQUEST_TIME' => 1669527260
-]
-2022-11-27 08:34:20 [127.0.0.1][-][-][error][yii\base\ErrorException:2] yii\base\ErrorException: Attempt to read property "baseName" on null in C:\OSPanel\domains\localhost\server\controllers\PictureController.php:41
-Stack trace:
-#0 C:\OSPanel\domains\localhost\server\controllers\PictureController.php(41): yii\base\ErrorHandler->handleError()
-#1 [internal function]: app\controllers\PictureController->actionCreate()
-#2 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array()
-#3 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Controller.php(178): yii\base\InlineAction->runWithParams()
-#4 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction()
-#5 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction()
-#6 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest()
-#7 C:\OSPanel\domains\localhost\server\web\index.php(12): yii\base\Application->run()
-#8 {main}
-2022-11-27 08:34:20 [127.0.0.1][-][-][info][application] $_GET = [
-    'expand' => 'comments'
-]
-
-$_POST = [
-    'filter' => 'on'
-    'description' => '12'
-]
-
-$_FILES = []
-
-$_COOKIE = []
-
-$_SERVER = [
-    'REDIRECT_STATUS' => '200'
-    'HTTP_HOST' => 'localhost'
-    'HTTP_X_FORWARDED_PROTO' => 'http'
-    'HTTP_X_REAL_IP' => '127.0.0.1'
-    'CONTENT_LENGTH' => '239'
-    'HTTP_SEC_CH_UA' => '\"Chromium\";v=\"106\", \"Not.A/Brand\";v=\"24\", \"Opera GX\";v=\"92\"'
-    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
-    'HTTP_SEC_CH_UA_MOBILE' => '?0'
-    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36 OPR/92.0.0.0 (Edition Yx GX)'
-    'CONTENT_TYPE' => 'multipart/form-data; boundary=----WebKitFormBoundaryvD4B8qIxOK9eIemc'
-    'HTTP_ACCEPT' => '*/*'
-    'HTTP_ORIGIN' => 'http://localhost:8081'
-    'HTTP_SEC_FETCH_SITE' => 'same-site'
-    'HTTP_SEC_FETCH_MODE' => 'cors'
-    'HTTP_SEC_FETCH_DEST' => 'empty'
-    'HTTP_REFERER' => 'http://localhost:8081/'
-    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
-    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
-    'PATH' => 'c:\\ospanel\\modules\\php\\PHP_8.1\\ext;c:\\ospanel\\modules\\php\\PHP_8.1\\pear;c:\\ospanel\\modules\\php\\PHP_8.1\\pear\\bin;c:\\ospanel\\modules\\php\\PHP_8.1;c:\\ospanel\\modules\\wget\\bin;c:\\ospanel\\modules\\database\\MySQL-8.0-Win10\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
-    'SystemRoot' => 'C:\\Windows'
-    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
-    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
-    'WINDIR' => 'C:\\Windows'
-    'SERVER_SIGNATURE' => ''
-    'SERVER_SOFTWARE' => 'Apache'
-    'SERVER_NAME' => 'localhost'
-    'SERVER_ADDR' => '127.0.0.1'
-    'SERVER_PORT' => '80'
-    'REMOTE_ADDR' => '127.0.0.1'
-    'DOCUMENT_ROOT' => 'C:/OSPanel/domains/localhost/server/web'
-    'REQUEST_SCHEME' => 'http'
-    'CONTEXT_PREFIX' => ''
-    'CONTEXT_DOCUMENT_ROOT' => 'C:/OSPanel/domains/localhost/server/web'
-    'SERVER_ADMIN' => '[no address given]'
-    'SCRIPT_FILENAME' => 'C:/OSPanel/domains/localhost/server/web/index.php'
-    'REMOTE_PORT' => '59077'
-    'REDIRECT_URL' => '/pictures'
-    'REDIRECT_QUERY_STRING' => 'expand=comments'
-    'GATEWAY_INTERFACE' => 'CGI/1.1'
-    'SERVER_PROTOCOL' => 'HTTP/1.1'
-    'REQUEST_METHOD' => 'POST'
-    'QUERY_STRING' => 'expand=comments'
-    'REQUEST_URI' => '/pictures?expand=comments'
-    'SCRIPT_NAME' => '/index.php'
-    'PHP_SELF' => '/index.php'
-    'REQUEST_TIME_FLOAT' => 1669527260.5022
-    'REQUEST_TIME' => 1669527260
-]
-2022-11-27 08:36:11 [127.0.0.1][-][-][error][yii\base\ErrorException:2] yii\base\ErrorException: Attempt to read property "baseName" on null in C:\OSPanel\domains\localhost\server\controllers\PictureController.php:41
-Stack trace:
-#0 C:\OSPanel\domains\localhost\server\controllers\PictureController.php(41): yii\base\ErrorHandler->handleError()
-#1 [internal function]: app\controllers\PictureController->actionCreate()
-#2 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array()
-#3 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Controller.php(178): yii\base\InlineAction->runWithParams()
-#4 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction()
-#5 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction()
-#6 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest()
-#7 C:\OSPanel\domains\localhost\server\web\index.php(12): yii\base\Application->run()
-#8 {main}
-2022-11-27 08:36:11 [127.0.0.1][-][-][info][application] $_GET = [
-    'expand' => 'comments'
-]
-
-$_POST = [
-    'filter' => 'on'
-    'range_value' => '1'
-    'description' => '12'
-]
-
-$_FILES = []
-
-$_COOKIE = []
-
-$_SERVER = [
-    'REDIRECT_STATUS' => '200'
-    'HTTP_HOST' => 'localhost'
-    'HTTP_X_FORWARDED_PROTO' => 'http'
-    'HTTP_X_REAL_IP' => '127.0.0.1'
-    'CONTENT_LENGTH' => '338'
-    'HTTP_SEC_CH_UA' => '\"Chromium\";v=\"106\", \"Not.A/Brand\";v=\"24\", \"Opera GX\";v=\"92\"'
-    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
-    'HTTP_SEC_CH_UA_MOBILE' => '?0'
-    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36 OPR/92.0.0.0 (Edition Yx GX)'
-    'CONTENT_TYPE' => 'multipart/form-data; boundary=----WebKitFormBoundarykiE82hJAcEgjHd4d'
-    'HTTP_ACCEPT' => '*/*'
-    'HTTP_ORIGIN' => 'http://localhost:8081'
-    'HTTP_SEC_FETCH_SITE' => 'same-site'
-    'HTTP_SEC_FETCH_MODE' => 'cors'
-    'HTTP_SEC_FETCH_DEST' => 'empty'
-    'HTTP_REFERER' => 'http://localhost:8081/'
-    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
-    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
-    'PATH' => 'c:\\ospanel\\modules\\php\\PHP_8.1\\ext;c:\\ospanel\\modules\\php\\PHP_8.1\\pear;c:\\ospanel\\modules\\php\\PHP_8.1\\pear\\bin;c:\\ospanel\\modules\\php\\PHP_8.1;c:\\ospanel\\modules\\wget\\bin;c:\\ospanel\\modules\\database\\MySQL-8.0-Win10\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
-    'SystemRoot' => 'C:\\Windows'
-    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
-    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
-    'WINDIR' => 'C:\\Windows'
-    'SERVER_SIGNATURE' => ''
-    'SERVER_SOFTWARE' => 'Apache'
-    'SERVER_NAME' => 'localhost'
-    'SERVER_ADDR' => '127.0.0.1'
-    'SERVER_PORT' => '80'
-    'REMOTE_ADDR' => '127.0.0.1'
-    'DOCUMENT_ROOT' => 'C:/OSPanel/domains/localhost/server/web'
-    'REQUEST_SCHEME' => 'http'
-    'CONTEXT_PREFIX' => ''
-    'CONTEXT_DOCUMENT_ROOT' => 'C:/OSPanel/domains/localhost/server/web'
-    'SERVER_ADMIN' => '[no address given]'
-    'SCRIPT_FILENAME' => 'C:/OSPanel/domains/localhost/server/web/index.php'
-    'REMOTE_PORT' => '59223'
-    'REDIRECT_URL' => '/pictures'
-    'REDIRECT_QUERY_STRING' => 'expand=comments'
-    'GATEWAY_INTERFACE' => 'CGI/1.1'
-    'SERVER_PROTOCOL' => 'HTTP/1.1'
-    'REQUEST_METHOD' => 'POST'
-    'QUERY_STRING' => 'expand=comments'
-    'REQUEST_URI' => '/pictures?expand=comments'
-    'SCRIPT_NAME' => '/index.php'
-    'PHP_SELF' => '/index.php'
-    'REQUEST_TIME_FLOAT' => 1669527371.8233
-    'REQUEST_TIME' => 1669527371
-]
-2022-11-27 08:38:21 [127.0.0.1][-][-][error][yii\base\ErrorException:2] yii\base\ErrorException: Attempt to read property "baseName" on null in C:\OSPanel\domains\localhost\server\controllers\PictureController.php:41
-Stack trace:
-#0 C:\OSPanel\domains\localhost\server\controllers\PictureController.php(41): yii\base\ErrorHandler->handleError()
-#1 [internal function]: app\controllers\PictureController->actionCreate()
-#2 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array()
-#3 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Controller.php(178): yii\base\InlineAction->runWithParams()
-#4 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction()
-#5 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction()
-#6 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest()
-#7 C:\OSPanel\domains\localhost\server\web\index.php(12): yii\base\Application->run()
-#8 {main}
-2022-11-27 08:38:21 [127.0.0.1][-][-][info][application] $_GET = [
-    'expand' => 'comments'
-]
-
-$_POST = [
-    'filter' => 'on'
-    'range_value' => '3'
-    'description' => '12'
-]
-
-$_FILES = []
-
-$_COOKIE = []
-
-$_SERVER = [
-    'REDIRECT_STATUS' => '200'
-    'HTTP_HOST' => 'localhost'
-    'HTTP_X_FORWARDED_PROTO' => 'http'
-    'HTTP_X_REAL_IP' => '127.0.0.1'
-    'CONTENT_LENGTH' => '338'
-    'HTTP_SEC_CH_UA' => '\"Chromium\";v=\"106\", \"Not.A/Brand\";v=\"24\", \"Opera GX\";v=\"92\"'
-    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
-    'HTTP_SEC_CH_UA_MOBILE' => '?0'
-    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36 OPR/92.0.0.0 (Edition Yx GX)'
-    'CONTENT_TYPE' => 'multipart/form-data; boundary=----WebKitFormBoundaryYBluytsZ4luiB2BF'
-    'HTTP_ACCEPT' => '*/*'
-    'HTTP_ORIGIN' => 'http://localhost:8081'
-    'HTTP_SEC_FETCH_SITE' => 'same-site'
-    'HTTP_SEC_FETCH_MODE' => 'cors'
-    'HTTP_SEC_FETCH_DEST' => 'empty'
-    'HTTP_REFERER' => 'http://localhost:8081/'
-    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
-    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
-    'PATH' => 'c:\\ospanel\\modules\\php\\PHP_8.1\\ext;c:\\ospanel\\modules\\php\\PHP_8.1\\pear;c:\\ospanel\\modules\\php\\PHP_8.1\\pear\\bin;c:\\ospanel\\modules\\php\\PHP_8.1;c:\\ospanel\\modules\\wget\\bin;c:\\ospanel\\modules\\database\\MySQL-8.0-Win10\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
-    'SystemRoot' => 'C:\\Windows'
-    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
-    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
-    'WINDIR' => 'C:\\Windows'
-    'SERVER_SIGNATURE' => ''
-    'SERVER_SOFTWARE' => 'Apache'
-    'SERVER_NAME' => 'localhost'
-    'SERVER_ADDR' => '127.0.0.1'
-    'SERVER_PORT' => '80'
-    'REMOTE_ADDR' => '127.0.0.1'
-    'DOCUMENT_ROOT' => 'C:/OSPanel/domains/localhost/server/web'
-    'REQUEST_SCHEME' => 'http'
-    'CONTEXT_PREFIX' => ''
-    'CONTEXT_DOCUMENT_ROOT' => 'C:/OSPanel/domains/localhost/server/web'
-    'SERVER_ADMIN' => '[no address given]'
-    'SCRIPT_FILENAME' => 'C:/OSPanel/domains/localhost/server/web/index.php'
-    'REMOTE_PORT' => '59366'
-    'REDIRECT_URL' => '/pictures'
-    'REDIRECT_QUERY_STRING' => 'expand=comments'
-    'GATEWAY_INTERFACE' => 'CGI/1.1'
-    'SERVER_PROTOCOL' => 'HTTP/1.1'
-    'REQUEST_METHOD' => 'POST'
-    'QUERY_STRING' => 'expand=comments'
-    'REQUEST_URI' => '/pictures?expand=comments'
-    'SCRIPT_NAME' => '/index.php'
-    'PHP_SELF' => '/index.php'
-    'REQUEST_TIME_FLOAT' => 1669527501.6031
-    'REQUEST_TIME' => 1669527501
-]
-2022-11-27 08:57:39 [127.0.0.1][-][-][error][yii\base\ErrorException:2] yii\base\ErrorException: Attempt to read property "baseName" on null in C:\OSPanel\domains\localhost\server\controllers\PictureController.php:41
-Stack trace:
-#0 C:\OSPanel\domains\localhost\server\controllers\PictureController.php(41): yii\base\ErrorHandler->handleError()
-#1 [internal function]: app\controllers\PictureController->actionCreate()
-#2 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array()
-#3 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Controller.php(178): yii\base\InlineAction->runWithParams()
-#4 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction()
-#5 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction()
-#6 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest()
-#7 C:\OSPanel\domains\localhost\server\web\index.php(12): yii\base\Application->run()
-#8 {main}
-2022-11-27 08:57:39 [127.0.0.1][-][-][info][application] $_GET = [
-    'expand' => 'comments'
-]
-
-$_POST = [
-    'name' => 'Loh'
-]
-
-$_FILES = []
-
-$_COOKIE = []
-
-$_SERVER = [
-    'REDIRECT_STATUS' => '200'
-    'HTTP_HOST' => 'localhost'
-    'HTTP_X_FORWARDED_PROTO' => 'http'
-    'HTTP_X_REAL_IP' => '127.0.0.1'
-    'CONTENT_LENGTH' => '138'
-    'HTTP_SEC_CH_UA' => '\"Chromium\";v=\"106\", \"Not.A/Brand\";v=\"24\", \"Opera GX\";v=\"92\"'
-    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
-    'HTTP_SEC_CH_UA_MOBILE' => '?0'
-    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36 OPR/92.0.0.0 (Edition Yx GX)'
-    'CONTENT_TYPE' => 'multipart/form-data; boundary=----WebKitFormBoundaryAhJrVp08kcuHmWaZ'
-    'HTTP_ACCEPT' => '*/*'
-    'HTTP_ORIGIN' => 'http://localhost:8081'
-    'HTTP_SEC_FETCH_SITE' => 'same-site'
-    'HTTP_SEC_FETCH_MODE' => 'cors'
-    'HTTP_SEC_FETCH_DEST' => 'empty'
-    'HTTP_REFERER' => 'http://localhost:8081/'
-    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
-    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
-    'PATH' => 'c:\\ospanel\\modules\\php\\PHP_8.1\\ext;c:\\ospanel\\modules\\php\\PHP_8.1\\pear;c:\\ospanel\\modules\\php\\PHP_8.1\\pear\\bin;c:\\ospanel\\modules\\php\\PHP_8.1;c:\\ospanel\\modules\\wget\\bin;c:\\ospanel\\modules\\database\\MySQL-8.0-Win10\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
-    'SystemRoot' => 'C:\\Windows'
-    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
-    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
-    'WINDIR' => 'C:\\Windows'
-    'SERVER_SIGNATURE' => ''
-    'SERVER_SOFTWARE' => 'Apache'
-    'SERVER_NAME' => 'localhost'
-    'SERVER_ADDR' => '127.0.0.1'
-    'SERVER_PORT' => '80'
-    'REMOTE_ADDR' => '127.0.0.1'
-    'DOCUMENT_ROOT' => 'C:/OSPanel/domains/localhost/server/web'
-    'REQUEST_SCHEME' => 'http'
-    'CONTEXT_PREFIX' => ''
-    'CONTEXT_DOCUMENT_ROOT' => 'C:/OSPanel/domains/localhost/server/web'
-    'SERVER_ADMIN' => '[no address given]'
-    'SCRIPT_FILENAME' => 'C:/OSPanel/domains/localhost/server/web/index.php'
-    'REMOTE_PORT' => '61160'
-    'REDIRECT_URL' => '/pictures'
-    'REDIRECT_QUERY_STRING' => 'expand=comments'
-    'GATEWAY_INTERFACE' => 'CGI/1.1'
-    'SERVER_PROTOCOL' => 'HTTP/1.1'
-    'REQUEST_METHOD' => 'POST'
-    'QUERY_STRING' => 'expand=comments'
-    'REQUEST_URI' => '/pictures?expand=comments'
-    'SCRIPT_NAME' => '/index.php'
-    'PHP_SELF' => '/index.php'
-    'REQUEST_TIME_FLOAT' => 1669528659.74
-    'REQUEST_TIME' => 1669528659
-]
-2022-11-27 08:59:05 [127.0.0.1][-][-][error][yii\base\ErrorException:2] yii\base\ErrorException: Attempt to read property "baseName" on null in C:\OSPanel\domains\localhost\server\controllers\PictureController.php:41
-Stack trace:
-#0 C:\OSPanel\domains\localhost\server\controllers\PictureController.php(41): yii\base\ErrorHandler->handleError()
-#1 [internal function]: app\controllers\PictureController->actionCreate()
-#2 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array()
-#3 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Controller.php(178): yii\base\InlineAction->runWithParams()
-#4 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction()
-#5 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction()
-#6 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest()
-#7 C:\OSPanel\domains\localhost\server\web\index.php(12): yii\base\Application->run()
-#8 {main}
-2022-11-27 08:59:05 [127.0.0.1][-][-][info][application] $_GET = [
-    'expand' => 'comments'
-]
-
-$_POST = [
-    'range_value' => ''
-    'description' => ''
-]
-
-$_FILES = []
-
-$_COOKIE = []
-
-$_SERVER = [
-    'REDIRECT_STATUS' => '200'
-    'HTTP_HOST' => 'localhost'
-    'HTTP_X_FORWARDED_PROTO' => 'http'
-    'HTTP_X_REAL_IP' => '127.0.0.1'
-    'CONTENT_LENGTH' => '240'
-    'HTTP_SEC_CH_UA' => '\"Chromium\";v=\"106\", \"Not.A/Brand\";v=\"24\", \"Opera GX\";v=\"92\"'
-    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
-    'HTTP_SEC_CH_UA_MOBILE' => '?0'
-    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36 OPR/92.0.0.0 (Edition Yx GX)'
-    'CONTENT_TYPE' => 'multipart/form-data; boundary=----WebKitFormBoundaryGxeUvysi5HkdeQPO'
-    'HTTP_ACCEPT' => '*/*'
-    'HTTP_ORIGIN' => 'http://localhost:8081'
-    'HTTP_SEC_FETCH_SITE' => 'same-site'
-    'HTTP_SEC_FETCH_MODE' => 'cors'
-    'HTTP_SEC_FETCH_DEST' => 'empty'
-    'HTTP_REFERER' => 'http://localhost:8081/'
-    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
-    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
-    'PATH' => 'c:\\ospanel\\modules\\php\\PHP_8.1\\ext;c:\\ospanel\\modules\\php\\PHP_8.1\\pear;c:\\ospanel\\modules\\php\\PHP_8.1\\pear\\bin;c:\\ospanel\\modules\\php\\PHP_8.1;c:\\ospanel\\modules\\wget\\bin;c:\\ospanel\\modules\\database\\MySQL-8.0-Win10\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
-    'SystemRoot' => 'C:\\Windows'
-    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
-    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
-    'WINDIR' => 'C:\\Windows'
-    'SERVER_SIGNATURE' => ''
-    'SERVER_SOFTWARE' => 'Apache'
-    'SERVER_NAME' => 'localhost'
-    'SERVER_ADDR' => '127.0.0.1'
-    'SERVER_PORT' => '80'
-    'REMOTE_ADDR' => '127.0.0.1'
-    'DOCUMENT_ROOT' => 'C:/OSPanel/domains/localhost/server/web'
-    'REQUEST_SCHEME' => 'http'
-    'CONTEXT_PREFIX' => ''
-    'CONTEXT_DOCUMENT_ROOT' => 'C:/OSPanel/domains/localhost/server/web'
-    'SERVER_ADMIN' => '[no address given]'
-    'SCRIPT_FILENAME' => 'C:/OSPanel/domains/localhost/server/web/index.php'
-    'REMOTE_PORT' => '61336'
-    'REDIRECT_URL' => '/pictures'
-    'REDIRECT_QUERY_STRING' => 'expand=comments'
-    'GATEWAY_INTERFACE' => 'CGI/1.1'
-    'SERVER_PROTOCOL' => 'HTTP/1.1'
-    'REQUEST_METHOD' => 'POST'
-    'QUERY_STRING' => 'expand=comments'
-    'REQUEST_URI' => '/pictures?expand=comments'
-    'SCRIPT_NAME' => '/index.php'
-    'PHP_SELF' => '/index.php'
-    'REQUEST_TIME_FLOAT' => 1669528745.4523
-    'REQUEST_TIME' => 1669528745
-]
-2022-11-27 08:59:13 [127.0.0.1][-][-][error][yii\base\ErrorException:2] yii\base\ErrorException: Attempt to read property "baseName" on null in C:\OSPanel\domains\localhost\server\controllers\PictureController.php:41
-Stack trace:
-#0 C:\OSPanel\domains\localhost\server\controllers\PictureController.php(41): yii\base\ErrorHandler->handleError()
-#1 [internal function]: app\controllers\PictureController->actionCreate()
-#2 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array()
-#3 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Controller.php(178): yii\base\InlineAction->runWithParams()
-#4 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction()
-#5 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction()
-#6 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest()
-#7 C:\OSPanel\domains\localhost\server\web\index.php(12): yii\base\Application->run()
-#8 {main}
-2022-11-27 08:59:13 [127.0.0.1][-][-][info][application] $_GET = [
-    'expand' => 'comments'
-]
-
-$_POST = [
-    'range_value' => ''
-    'description' => ''
-]
-
-$_FILES = []
-
-$_COOKIE = []
-
-$_SERVER = [
-    'REDIRECT_STATUS' => '200'
-    'HTTP_HOST' => 'localhost'
-    'HTTP_X_FORWARDED_PROTO' => 'http'
-    'HTTP_X_REAL_IP' => '127.0.0.1'
-    'CONTENT_LENGTH' => '240'
-    'HTTP_SEC_CH_UA' => '\"Chromium\";v=\"106\", \"Not.A/Brand\";v=\"24\", \"Opera GX\";v=\"92\"'
-    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
-    'HTTP_SEC_CH_UA_MOBILE' => '?0'
-    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36 OPR/92.0.0.0 (Edition Yx GX)'
-    'CONTENT_TYPE' => 'multipart/form-data; boundary=----WebKitFormBoundaryjSHrauMYndWIoAQq'
-    'HTTP_ACCEPT' => '*/*'
-    'HTTP_ORIGIN' => 'http://localhost:8081'
-    'HTTP_SEC_FETCH_SITE' => 'same-site'
-    'HTTP_SEC_FETCH_MODE' => 'cors'
-    'HTTP_SEC_FETCH_DEST' => 'empty'
-    'HTTP_REFERER' => 'http://localhost:8081/'
-    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
-    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
-    'PATH' => 'c:\\ospanel\\modules\\php\\PHP_8.1\\ext;c:\\ospanel\\modules\\php\\PHP_8.1\\pear;c:\\ospanel\\modules\\php\\PHP_8.1\\pear\\bin;c:\\ospanel\\modules\\php\\PHP_8.1;c:\\ospanel\\modules\\wget\\bin;c:\\ospanel\\modules\\database\\MySQL-8.0-Win10\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
-    'SystemRoot' => 'C:\\Windows'
-    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
-    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
-    'WINDIR' => 'C:\\Windows'
-    'SERVER_SIGNATURE' => ''
-    'SERVER_SOFTWARE' => 'Apache'
-    'SERVER_NAME' => 'localhost'
-    'SERVER_ADDR' => '127.0.0.1'
-    'SERVER_PORT' => '80'
-    'REMOTE_ADDR' => '127.0.0.1'
-    'DOCUMENT_ROOT' => 'C:/OSPanel/domains/localhost/server/web'
-    'REQUEST_SCHEME' => 'http'
-    'CONTEXT_PREFIX' => ''
-    'CONTEXT_DOCUMENT_ROOT' => 'C:/OSPanel/domains/localhost/server/web'
-    'SERVER_ADMIN' => '[no address given]'
-    'SCRIPT_FILENAME' => 'C:/OSPanel/domains/localhost/server/web/index.php'
-    'REMOTE_PORT' => '61354'
-    'REDIRECT_URL' => '/pictures'
-    'REDIRECT_QUERY_STRING' => 'expand=comments'
-    'GATEWAY_INTERFACE' => 'CGI/1.1'
-    'SERVER_PROTOCOL' => 'HTTP/1.1'
-    'REQUEST_METHOD' => 'POST'
-    'QUERY_STRING' => 'expand=comments'
-    'REQUEST_URI' => '/pictures?expand=comments'
-    'SCRIPT_NAME' => '/index.php'
-    'PHP_SELF' => '/index.php'
-    'REQUEST_TIME_FLOAT' => 1669528753.2483
-    'REQUEST_TIME' => 1669528753
-]
-2022-11-27 08:59:15 [127.0.0.1][-][-][error][yii\base\ErrorException:2] yii\base\ErrorException: Attempt to read property "baseName" on null in C:\OSPanel\domains\localhost\server\controllers\PictureController.php:41
-Stack trace:
-#0 C:\OSPanel\domains\localhost\server\controllers\PictureController.php(41): yii\base\ErrorHandler->handleError()
-#1 [internal function]: app\controllers\PictureController->actionCreate()
-#2 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array()
-#3 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Controller.php(178): yii\base\InlineAction->runWithParams()
-#4 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction()
-#5 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction()
-#6 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest()
-#7 C:\OSPanel\domains\localhost\server\web\index.php(12): yii\base\Application->run()
-#8 {main}
-2022-11-27 08:59:14 [127.0.0.1][-][-][info][application] $_GET = [
-    'expand' => 'comments'
-]
-
-$_POST = [
-    'range_value' => ''
-    'description' => '12'
-]
-
-$_FILES = []
-
-$_COOKIE = []
-
-$_SERVER = [
-    'REDIRECT_STATUS' => '200'
-    'HTTP_HOST' => 'localhost'
-    'HTTP_X_FORWARDED_PROTO' => 'http'
-    'HTTP_X_REAL_IP' => '127.0.0.1'
-    'CONTENT_LENGTH' => '242'
-    'HTTP_SEC_CH_UA' => '\"Chromium\";v=\"106\", \"Not.A/Brand\";v=\"24\", \"Opera GX\";v=\"92\"'
-    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
-    'HTTP_SEC_CH_UA_MOBILE' => '?0'
-    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36 OPR/92.0.0.0 (Edition Yx GX)'
-    'CONTENT_TYPE' => 'multipart/form-data; boundary=----WebKitFormBoundarycBRqS0hlxU5zmsC1'
-    'HTTP_ACCEPT' => '*/*'
-    'HTTP_ORIGIN' => 'http://localhost:8081'
-    'HTTP_SEC_FETCH_SITE' => 'same-site'
-    'HTTP_SEC_FETCH_MODE' => 'cors'
-    'HTTP_SEC_FETCH_DEST' => 'empty'
-    'HTTP_REFERER' => 'http://localhost:8081/'
-    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
-    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
-    'PATH' => 'c:\\ospanel\\modules\\php\\PHP_8.1\\ext;c:\\ospanel\\modules\\php\\PHP_8.1\\pear;c:\\ospanel\\modules\\php\\PHP_8.1\\pear\\bin;c:\\ospanel\\modules\\php\\PHP_8.1;c:\\ospanel\\modules\\wget\\bin;c:\\ospanel\\modules\\database\\MySQL-8.0-Win10\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
-    'SystemRoot' => 'C:\\Windows'
-    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
-    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
-    'WINDIR' => 'C:\\Windows'
-    'SERVER_SIGNATURE' => ''
-    'SERVER_SOFTWARE' => 'Apache'
-    'SERVER_NAME' => 'localhost'
-    'SERVER_ADDR' => '127.0.0.1'
-    'SERVER_PORT' => '80'
-    'REMOTE_ADDR' => '127.0.0.1'
-    'DOCUMENT_ROOT' => 'C:/OSPanel/domains/localhost/server/web'
-    'REQUEST_SCHEME' => 'http'
-    'CONTEXT_PREFIX' => ''
-    'CONTEXT_DOCUMENT_ROOT' => 'C:/OSPanel/domains/localhost/server/web'
-    'SERVER_ADMIN' => '[no address given]'
-    'SCRIPT_FILENAME' => 'C:/OSPanel/domains/localhost/server/web/index.php'
-    'REMOTE_PORT' => '61358'
-    'REDIRECT_URL' => '/pictures'
-    'REDIRECT_QUERY_STRING' => 'expand=comments'
-    'GATEWAY_INTERFACE' => 'CGI/1.1'
-    'SERVER_PROTOCOL' => 'HTTP/1.1'
-    'REQUEST_METHOD' => 'POST'
-    'QUERY_STRING' => 'expand=comments'
-    'REQUEST_URI' => '/pictures?expand=comments'
-    'SCRIPT_NAME' => '/index.php'
-    'PHP_SELF' => '/index.php'
-    'REQUEST_TIME_FLOAT' => 1669528754.9799
-    'REQUEST_TIME' => 1669528754
-]
-2022-11-27 08:59:15 [127.0.0.1][-][-][error][yii\base\ErrorException:2] yii\base\ErrorException: Attempt to read property "baseName" on null in C:\OSPanel\domains\localhost\server\controllers\PictureController.php:41
-Stack trace:
-#0 C:\OSPanel\domains\localhost\server\controllers\PictureController.php(41): yii\base\ErrorHandler->handleError()
-#1 [internal function]: app\controllers\PictureController->actionCreate()
-#2 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array()
-#3 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Controller.php(178): yii\base\InlineAction->runWithParams()
-#4 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction()
-#5 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction()
-#6 C:\OSPanel\domains\localhost\server\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest()
-#7 C:\OSPanel\domains\localhost\server\web\index.php(12): yii\base\Application->run()
-#8 {main}
-2022-11-27 08:59:15 [127.0.0.1][-][-][info][application] $_GET = [
-    'expand' => 'comments'
-]
-
-$_POST = [
-    'range_value' => ''
-    'description' => '12'
-]
-
-$_FILES = []
-
-$_COOKIE = []
-
-$_SERVER = [
-    'REDIRECT_STATUS' => '200'
-    'HTTP_HOST' => 'localhost'
-    'HTTP_X_FORWARDED_PROTO' => 'http'
-    'HTTP_X_REAL_IP' => '127.0.0.1'
-    'CONTENT_LENGTH' => '242'
-    'HTTP_SEC_CH_UA' => '\"Chromium\";v=\"106\", \"Not.A/Brand\";v=\"24\", \"Opera GX\";v=\"92\"'
-    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
-    'HTTP_SEC_CH_UA_MOBILE' => '?0'
-    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36 OPR/92.0.0.0 (Edition Yx GX)'
-    'CONTENT_TYPE' => 'multipart/form-data; boundary=----WebKitFormBoundaryA4s8ML4vGox9pOWt'
-    'HTTP_ACCEPT' => '*/*'
-    'HTTP_ORIGIN' => 'http://localhost:8081'
-    'HTTP_SEC_FETCH_SITE' => 'same-site'
-    'HTTP_SEC_FETCH_MODE' => 'cors'
-    'HTTP_SEC_FETCH_DEST' => 'empty'
-    'HTTP_REFERER' => 'http://localhost:8081/'
-    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
-    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
-    'PATH' => 'c:\\ospanel\\modules\\php\\PHP_8.1\\ext;c:\\ospanel\\modules\\php\\PHP_8.1\\pear;c:\\ospanel\\modules\\php\\PHP_8.1\\pear\\bin;c:\\ospanel\\modules\\php\\PHP_8.1;c:\\ospanel\\modules\\wget\\bin;c:\\ospanel\\modules\\database\\MySQL-8.0-Win10\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
-    'SystemRoot' => 'C:\\Windows'
-    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
-    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
-    'WINDIR' => 'C:\\Windows'
-    'SERVER_SIGNATURE' => ''
-    'SERVER_SOFTWARE' => 'Apache'
-    'SERVER_NAME' => 'localhost'
-    'SERVER_ADDR' => '127.0.0.1'
-    'SERVER_PORT' => '80'
-    'REMOTE_ADDR' => '127.0.0.1'
-    'DOCUMENT_ROOT' => 'C:/OSPanel/domains/localhost/server/web'
-    'REQUEST_SCHEME' => 'http'
-    'CONTEXT_PREFIX' => ''
-    'CONTEXT_DOCUMENT_ROOT' => 'C:/OSPanel/domains/localhost/server/web'
-    'SERVER_ADMIN' => '[no address given]'
-    'SCRIPT_FILENAME' => 'C:/OSPanel/domains/localhost/server/web/index.php'
-    'REMOTE_PORT' => '61360'
-    'REDIRECT_URL' => '/pictures'
-    'REDIRECT_QUERY_STRING' => 'expand=comments'
-    'GATEWAY_INTERFACE' => 'CGI/1.1'
-    'SERVER_PROTOCOL' => 'HTTP/1.1'
-    'REQUEST_METHOD' => 'POST'
-    'QUERY_STRING' => 'expand=comments'
-    'REQUEST_URI' => '/pictures?expand=comments'
-    'SCRIPT_NAME' => '/index.php'
-    'PHP_SELF' => '/index.php'
-    'REQUEST_TIME_FLOAT' => 1669528755.0539
-    'REQUEST_TIME' => 1669528755
+    'REQUEST_TIME_FLOAT' => 1669608951.0285
+    'REQUEST_TIME' => 1669608951
 ]

@@ -3,7 +3,7 @@
         'name' => 'yiisoft/yii2-app-basic',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => 'd5bc493823fd0492db13c203e8dd09266cb69518',
+        'reference' => '4de257778008b0507179664c29c508327aa1a1cc',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -757,6 +757,15 @@
             'aliases' => array(),
             'dev_requirement' => true,
         ),
+        'workerman/workerman' => array(
+            'pretty_version' => 'v4.1.4',
+            'version' => '4.1.4.0',
+            'reference' => '83e007acf936e2233ac92d7368b87716f2bae338',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../workerman/workerman',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'yiisoft/yii2' => array(
             'pretty_version' => '2.0.46',
             'version' => '2.0.46.0',
@@ -769,7 +778,7 @@
         'yiisoft/yii2-app-basic' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => 'd5bc493823fd0492db13c203e8dd09266cb69518',
+            'reference' => '4de257778008b0507179664c29c508327aa1a1cc',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
