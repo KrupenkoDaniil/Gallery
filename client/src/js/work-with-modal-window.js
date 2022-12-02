@@ -61,7 +61,7 @@ export function openModalWindow(event, picsArray) {
         const modalWindowLikes = modalWindow.querySelector('.image-section__likes');
         modalWindowText.textContent = `${targetElement['description']}`;
         modalWindowLikes.textContent = `Likes: ${targetElement['likes']}`;
-        modalWindowImg.src = `http://192.168.1.101:8082/gallery/server/web/uploads/${targetElement['url']}`;
+        modalWindowImg.src = `http://192.168.1.101:8082/server/web/uploads/${targetElement['url']}`;
 
         let pictureFilter = checkFilters(consts.filters[targetElement['effect_id']], targetElement['effect_level']);
         modalWindowImg.style.filter = `${pictureFilter[0]}(${pictureFilter[1]})`;

@@ -23,12 +23,13 @@ const sendData = (onSuccess, body) => {
             onSuccess(JSON.parse(xhr.response));
         }
     })
+    socket.send(body);
     xhr.send(body);
 }
 
 export const setForm = (filter_id, onSuccess) => {
     consts.POST_FORM.addEventListener('submit', (event) => {
-        event.preventDefault();
+        // event.preventDefault();
         let data = new FormData(event.target);
         data.append('user_id', 1);
         console.log(+Object.keys(consts.filters).find(key => consts.filters[key] === filter_id));
@@ -36,4 +37,9 @@ export const setForm = (filter_id, onSuccess) => {
 
         sendData(onSuccess, data);
     }, { once: true });
-} 
+}
+
+const socket = new WebSocket('ws://127.0.0.1:2346');
+socket.onmessage = ((evt) => {
+    console.log(evt.data);
+});

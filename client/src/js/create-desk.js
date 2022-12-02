@@ -46,8 +46,8 @@ export function createDesk(picsArray, containerWidth = 800, RowSize = 5, contain
             newPost.style.color = consts.PICS[nextElement['url']];
 
             // Set post image
-            newPost.style.backgroundImage = `url(http://192.168.1.101:8082/gallery/server/web/uploads/${nextElement['url']})`;
-            console.log(newPost.style.backgroundImage);
+
+            newPost.style.backgroundImage = `url(http://192.168.1.101:8082/server/web/uploads/${nextElement['url']})`;
             let pictureFilter = checkFilters(consts.filters[nextElement['effect_id']], nextElement['effect_level']);
             newPost.style.filter = `${pictureFilter[0]}(${pictureFilter[1]})`;
 

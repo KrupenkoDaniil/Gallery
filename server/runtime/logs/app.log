@@ -4638,3 +4638,61 @@ $_SERVER = [
     'REQUEST_TIME_FLOAT' => 1669608951.0285
     'REQUEST_TIME' => 1669608951
 ]
+2022-12-02 12:47:42 [127.0.0.1][-][-][error][yii\web\HttpException:404] yii\web\NotFoundHttpException: Page not found. in C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\web\Request.php:299
+Stack trace:
+#0 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\web\Application.php(82): yii\web\Request->resolve()
+#1 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest()
+#2 C:\OSPanel\domains\localhost\gallery\server\web\index.php(12): yii\base\Application->run()
+#3 {main}
+2022-12-02 12:47:42 [127.0.0.1][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'HTTP_HOST' => 'localhost'
+    'HTTP_X_FORWARDED_PROTO' => 'http'
+    'HTTP_X_REAL_IP' => '127.0.0.1'
+    'HTTP_SEC_CH_UA' => '\"Chromium\";v=\"106\", \"Not.A/Brand\";v=\"24\", \"Opera GX\";v=\"92\"'
+    'HTTP_SEC_CH_UA_MOBILE' => '?0'
+    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36 OPR/92.0.0.0 (Edition Yx GX)'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_SEC_FETCH_SITE' => 'none'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
+    'PATH' => 'c:\\ospanel\\modules\\php\\PHP_8.1\\ext;c:\\ospanel\\modules\\php\\PHP_8.1\\pear;c:\\ospanel\\modules\\php\\PHP_8.1\\pear\\bin;c:\\ospanel\\modules\\php\\PHP_8.1;c:\\ospanel\\modules\\wget\\bin;c:\\ospanel\\modules\\database\\MySQL-8.0-Win10\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OSPanel/domains/localhost/gallery/server/web'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OSPanel/domains/localhost/gallery/server/web'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OSPanel/domains/localhost/gallery/server/web/index.php'
+    'REMOTE_PORT' => '56983'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1669974461.9455
+    'REQUEST_TIME' => 1669974461
+]
