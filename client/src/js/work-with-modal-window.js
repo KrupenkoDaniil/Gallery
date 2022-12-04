@@ -3,6 +3,8 @@ import { submitNewComment } from './submit-new-comment.js';
 import { setEvent, removeEvents } from './set-events.js';
 import { setRange, checkFilters } from "./noUiSlider.js";
 import { setForm } from "./server-api.js";
+
+import { createDesk } from './create-desk.js';
 // import { LoaderTargetPlugin } from 'webpack';
 
 let appliedFilter = consts.filters[1];
@@ -57,11 +59,11 @@ export function openModalWindow(event, picsArray) {
 
         // Set Image section
         modalWindowImg = modalWindow.querySelector('.image-section__img');
-        const modalWindowText = modalWindow.querySelector('.image-section__text');
+        const modalWindowDescription = modalWindow.querySelector('.image-section__text');
         const modalWindowLikes = modalWindow.querySelector('.image-section__likes');
-        modalWindowText.textContent = `${targetElement['description']}`;
+        targetElement['description'] ? modalWindowDescription.textContent = `${targetElement['description']}` : null;
         modalWindowLikes.textContent = `Likes: ${targetElement['likes']}`;
-        modalWindowImg.src = `http://192.168.1.101:8082/server/web/uploads/${targetElement['url']}`;
+        modalWindowImg.src = `http://localhost:80/uploads/${targetElement['url']}`;
 
         let pictureFilter = checkFilters(consts.filters[targetElement['effect_id']], targetElement['effect_level']);
         modalWindowImg.style.filter = `${pictureFilter[0]}(${pictureFilter[1]})`;
@@ -153,8 +155,16 @@ function closeModalWindow() {
 
     // Null Filters
     const activeLabel = document.querySelector('.setting-section__label--active');
+    const originalEffectLabel = document.querySelector('#original_effect');
+    modalWindowImg.style.filter = 'none';
+    appliedFilter = consts.filters[1];
+
+    if (activeLabel !== originalEffectLabel) {
+        activeLabel.classList.remove('setting-section__label--active');
+        originalEffectLabel.classList.add('setting-section__label--active');
+    }
+
     const activeRange = document.querySelector('.range');
-    activeLabel ? activeLabel.classList.remove('setting-section__label--active') : null;
     activeRange ? activeRange.classList.remove('active') : null;
 
     // Null Comments
@@ -315,6 +325,7 @@ function submitPost() {
     document.querySelector('.scale-control-settings__value').setAttribute('value', `${scaleValue * 100}%`)
     document.querySelector('.setting-section__effect-id').setAttribute('value', Object.keys(consts.filters).find(key => consts.filters[key] === appliedFilter))
     setForm(appliedFilter, (response) => {
+        closeModalWindow();
         console.log(response);
     });
 }

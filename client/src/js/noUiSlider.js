@@ -60,7 +60,7 @@ export function checkFilters(filterName, filterValue) {
             filterName = 'grayscale';
             filterValue = `${filterValue}`;
             break;
-        case 'fobos':
+        case 'phobos':
             filterName = 'blur';
             filterValue = `${filterValue}px`;
             break;

@@ -12,6 +12,7 @@ export const filters = {
 // Set main Constants
 export const BODY = document.body;
 export const MAIN_CONTAINER = document.createElement('div');
+MAIN_CONTAINER.classList.add('container');
 export const MAIN_OVERLAY = document.querySelector('.overlay');
 
 export const INPUT_FILE = document.querySelector('#file');

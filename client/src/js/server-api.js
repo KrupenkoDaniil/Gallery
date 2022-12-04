@@ -1,4 +1,5 @@
 import * as consts from './variables.js';
+import { createDesk } from './create-desk.js';
 
 // Get Data from the server
 export const getData = (onSuccess) => {
@@ -7,7 +8,7 @@ export const getData = (onSuccess) => {
 
     xhr.addEventListener('load', () => {
         if (xhr.status == 200) {
-            onSuccess(JSON.parse(xhr.response));
+            onSuccess(xhr.response);
         }
     })
     xhr.send();
@@ -23,23 +24,29 @@ const sendData = (onSuccess, body) => {
             onSuccess(JSON.parse(xhr.response));
         }
     })
-    socket.send(body);
     xhr.send(body);
 }
 
 export const setForm = (filter_id, onSuccess) => {
     consts.POST_FORM.addEventListener('submit', (event) => {
-        // event.preventDefault();
+        event.preventDefault();
         let data = new FormData(event.target);
         data.append('user_id', 1);
-        console.log(+Object.keys(consts.filters).find(key => consts.filters[key] === filter_id));
         data.append('effect_id', +Object.keys(consts.filters).find(key => consts.filters[key] === filter_id));
 
         sendData(onSuccess, data);
     }, { once: true });
 }
 
+// Set WebSocket
 const socket = new WebSocket('ws://127.0.0.1:2346');
-socket.onmessage = ((evt) => {
-    console.log(evt.data);
+
+socket.addEventListener('open', () => {
+    getData((response) => {
+        socket.send(response);
+    })
+});
+
+socket.addEventListener('message', (event) => {
+    createDesk(JSON.parse(event.data));
 });

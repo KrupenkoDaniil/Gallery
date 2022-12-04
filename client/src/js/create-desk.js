@@ -7,7 +7,7 @@ import * as consts from './variables.js';
 
 export function createDesk(picsArray, containerWidth = 800, RowSize = 5, containerMargin = 15) {
     // Prepare main container
-    consts.MAIN_CONTAINER.classList.add('container');
+    consts.MAIN_CONTAINER.innerHTML = '';
     consts.MAIN_CONTAINER.style.maxWidth = containerWidth + 'px';
 
     // Set all modal windows' appearance
@@ -47,9 +47,9 @@ export function createDesk(picsArray, containerWidth = 800, RowSize = 5, contain
 
             // Set post image
 
-            newPost.style.backgroundImage = `url(http://192.168.1.101:8082/server/web/uploads/${nextElement['url']})`;
+            newPost.style.backgroundImage = `url(http://localhost:80/uploads/${nextElement['url']})`;
             let pictureFilter = checkFilters(consts.filters[nextElement['effect_id']], nextElement['effect_level']);
-            newPost.style.filter = `${pictureFilter[0]}(${pictureFilter[1]})`;
+            pictureFilter[0] === 'none' ? newPost.style.filter = `${pictureFilter[0]}` : newPost.style.filter = `${pictureFilter[0]}(${pictureFilter[1]})`;
 
             // change template content
             const newPostSpans = postTemplate.content.querySelectorAll('span');
@@ -74,7 +74,7 @@ export function createDesk(picsArray, containerWidth = 800, RowSize = 5, contain
 // fetchPics();
 
 getData((response) => {
-    console.log(response);
-    createDesk(response);
-})
+    // console.log(response);
+    createDesk(JSON.parse(response));
+});
 // createDesk(generatePicsArray(10));
