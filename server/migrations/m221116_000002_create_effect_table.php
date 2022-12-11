@@ -14,7 +14,13 @@ class m221116_000002_create_effect_table extends Migration
     {
         $this->createTable('{{%effect}}', [
             'id' => $this->primaryKey()->unsigned(),
-            'inner_name' => $this->string(128)->unique(),
+            'inner_name' => $this->string(128)->notNull()->unique(),
+            'css_filter' => $this->string(128)->null(),
+            'range_min' => $this->integer()->unsigned()->null(),
+            'range_max' => $this->integer()->unsigned()->null(),
+            'step' => $this->float()->null(),
+            'start' => $this->integer()->unsigned()->null(),
+            'unit' => $this->string(8)->null(),
         ]);
     }
 

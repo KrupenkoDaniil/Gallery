@@ -1,9 +1,11 @@
-const rangeSection = document.querySelector('.range')
-const rangeInput = document.querySelector('#range-input');
 
 // Import library
 import * as noUiSlider from 'nouislider';
 import 'nouislider/dist/nouislider.css';
+
+
+const rangeSection = document.querySelector('.range')
+const rangeInput = document.querySelector('#range-input');
 
 // Set Range Slider
 const rangeSlider = document.querySelector('#range-slider');
@@ -26,23 +28,24 @@ rangeInput.addEventListener('input', () => {
 });
 
 // Main Setting Function 
-export function setRange(settings, targetElement, modalWindowImg) {
-    if (settings['max'] !== undefined) {
+export function setRange(effectId, modalWindowImg) {
+    let pictureFilter = checkEffects(effectId, rangeInput.value);
+    if (pictureFilter[2]['max']) {
         rangeSlider.noUiSlider.off();
         rangeSection.classList.add('active');
         rangeSlider.noUiSlider.updateOptions({
-            start: (settings['max']),
-            step: settings['step'],
+            start: pictureFilter[2]['max'],
+            step: pictureFilter[2]['step'],
             range: {
-                'min': settings['min'],
-                'max': settings['max']
+                'min': pictureFilter[2]['min'],
+                'max': pictureFilter[2]['max']
             }
         }, true)
         rangeSlider.noUiSlider.on('update', (value) => {
             rangeInput.value = Math.round(value * 10) / 10; // get rid of real numbers
-            let pictureFilter = checkFilters(targetElement, rangeInput.value);
+            pictureFilter = checkEffects(effectId, rangeInput.value);
             modalWindowImg.style.filter = `${pictureFilter[0]}(${pictureFilter[1]})`;
-            rangeInput.step = settings['step'];
+            rangeInput.step = pictureFilter[2]['step'];
         })
     } else {
         rangeSection.classList.remove('active');
@@ -50,24 +53,31 @@ export function setRange(settings, targetElement, modalWindowImg) {
     }
 }
 
-export function checkFilters(filterName, filterValue) {
-    switch (filterName) {
-        case 'marvin':
-            filterName = 'invert';
-            filterValue = `${filterValue}%`;
-            break;
+export function checkEffects(filterId, filterValue, filters = null) {
+    if (checkEffects.filters === undefined) {
+        checkEffects.filters = filters;
+        console.log(checkEffects.filters);
+    }
+    let currentFilter = checkEffects.filters[filterId - 1];
+    switch (currentFilter['inner_name']) {
         case 'chrome':
-            filterName = 'grayscale';
             filterValue = `${filterValue}`;
             break;
+        case 'marvin':
+            filterValue = `${filterValue}%`;
+            break;
         case 'phobos':
-            filterName = 'blur';
             filterValue = `${filterValue}px`;
             break;
         case 'heat':
-            filterName = 'brightness';
             filterValue = `${filterValue}`;
             break;
     }
-    return [filterName, filterValue];
+    let filterName = currentFilter['css_filter'];
+    let settings = {
+        min: currentFilter['range_min'],
+        max: currentFilter['range_max'],
+        step: currentFilter['step'],
+    };
+    return [filterName, filterValue, settings];
 }

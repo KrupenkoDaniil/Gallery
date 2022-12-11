@@ -8,7 +8,19 @@ export const getData = (onSuccess) => {
 
     xhr.addEventListener('load', () => {
         if (xhr.status == 200) {
-            onSuccess(xhr.response);
+            onSuccess(JSON.parse(xhr.response));
+        }
+    })
+    xhr.send();
+}
+
+export const getEffects = (onSuccess) => {
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', 'http://localhost:80/effects');
+
+    xhr.addEventListener('load', () => {
+        if (xhr.status == 200) {
+            onSuccess(JSON.parse(xhr.response));
         }
     })
     xhr.send();
@@ -32,7 +44,7 @@ export const setForm = (filter_id, onSuccess) => {
         event.preventDefault();
         let data = new FormData(event.target);
         data.append('user_id', 1);
-        data.append('effect_id', +Object.keys(consts.filters).find(key => consts.filters[key] === filter_id));
+        data.append('effect_id', filter_id);
 
         sendData(onSuccess, data);
     }, { once: true });

@@ -109,21 +109,19 @@
         display: flex;
         justify-content: space-around;
         width: 100%;
-
-        .setting-section__label{
-            font-size: 1.2em;
-            cursor: pointer;
-            padding: 5px 10px;
-            border: 2px solid transparent;
-            border-radius: 50px;
-            transition: all .2s linear;
-        }
     }
 
     &__label {
-        border: 2px solid blue;
+        font-size: 1em;
+        cursor: pointer;
+        user-select: none;
+        padding: 5px 8px;
+        border: 2px solid transparent;
+        border-radius: 50px;
+        transition: all .2s linear;
 
         &:hover {
+            border: 2px solid blue;
         }
 
         &--active {
@@ -273,7 +271,7 @@
 .filter-marvin {
     filter: invert(100%);
 }
-.filter-fobos {
+.filter-phobos {
     filter: blur(3px);
 }
 .filter-heat {

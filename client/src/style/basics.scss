@@ -112,7 +112,7 @@ input[type=number] {
         z-index: 1;
         border-radius: 50%;
         &:hover {
-            animation: shaking ease-in .5s both;
+            animation: shaking ease-in .3s both;
         }
     }
 }

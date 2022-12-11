@@ -1,13 +1,11 @@
 import * as consts from './variables.js';
 import { submitNewComment } from './submit-new-comment.js';
 import { setEvent, removeEvents } from './set-events.js';
-import { setRange, checkFilters } from "./noUiSlider.js";
+import { setRange, checkEffects } from "./noUiSlider.js";
 import { setForm } from "./server-api.js";
-
-import { createDesk } from './create-desk.js';
 // import { LoaderTargetPlugin } from 'webpack';
 
-let appliedFilter = consts.filters[1];
+let appliedEffect = 1;
 
 // Set main Vars
 let targetElement, modalWindow, modalWindowImg, scaleValue;
@@ -65,8 +63,8 @@ export function openModalWindow(event, picsArray) {
         modalWindowLikes.textContent = `Likes: ${targetElement['likes']}`;
         modalWindowImg.src = `http://localhost:80/uploads/${targetElement['url']}`;
 
-        let pictureFilter = checkFilters(consts.filters[targetElement['effect_id']], targetElement['effect_level']);
-        modalWindowImg.style.filter = `${pictureFilter[0]}(${pictureFilter[1]})`;
+        let pictureEffect = checkEffects(targetElement['effect_id'], targetElement['effect_level']);
+        modalWindowImg.style.filter = `${pictureEffect[0]}(${pictureEffect[1]})`;
         modalWindowImg.style.setProperty('--scale', targetElement['scale']);
 
         // Set comments section
@@ -93,14 +91,18 @@ export function openModalWindow(event, picsArray) {
         // Set scale addEventListeners
         setEvent('click', increaseScaleButton, () => {
             if (scaleValue < 1) {
-                modalWindowImg.style.setProperty('--scale', String(scaleValue + 0.25));
-                scaleValue = +getComputedStyle(modalWindowImg).getPropertyValue('--scale');
+                scaleValue = scaleValue + 0.25;
+                modalWindowImg.style.setProperty('--scale', String(scaleValue));
+                // scaleValue = +getComputedStyle(modalWindowImg).getPropertyValue('--scale');
+
             }
         })
         setEvent('click', decreaseScaleButton, () => {
             if (scaleValue > 0.25) {
-                modalWindowImg.style.setProperty('--scale', String(scaleValue - 0.25));
-                scaleValue = +getComputedStyle(modalWindowImg).getPropertyValue('--scale');
+                scaleValue = scaleValue - 0.25;
+                modalWindowImg.style.setProperty('--scale', String(scaleValue));
+                // scaleValue = +getComputedStyle(modalWindowImg).getPropertyValue('--scale');
+
             }
         })
 
@@ -114,9 +116,9 @@ export function openModalWindow(event, picsArray) {
             }
         });
 
-        // Put filter on photo
-        const filtersField = document.querySelector('.setting-section__effects');
-        setEvent('click', filtersField, applyFilters);
+        // Put effect on photo
+        const effectsField = document.querySelector('.setting-section__effects');
+        setEvent('click', effectsField, applyEffects);
 
         // Set Submit button
 
@@ -153,11 +155,11 @@ function closeModalWindow() {
     tegsArray = [];
     document.querySelector('.hesh-tegs-section__hesh-tegs-container').textContent = '';
 
-    // Null Filters
+    // Null effects
     const activeLabel = document.querySelector('.setting-section__label--active');
     const originalEffectLabel = document.querySelector('#original_effect');
     modalWindowImg.style.filter = 'none';
-    appliedFilter = consts.filters[1];
+    appliedEffect = 1;
 
     if (activeLabel !== originalEffectLabel) {
         activeLabel.classList.remove('setting-section__label--active');
@@ -245,7 +247,7 @@ function addNewTeg() {
     }
 }
 
-function applyFilters(event) {
+function applyEffects(event) {
     if (event.target.classList.contains('setting-section__label')) {
         let activeLabel = document.querySelector('.setting-section__label--active');
         activeLabel ? activeLabel.classList.remove('setting-section__label--active') : null;
@@ -253,78 +255,16 @@ function applyFilters(event) {
     }
     if (event.target.classList.contains('setting-section__effect')) {
         modalWindowImg.classList.length > 1 ? modalWindowImg.classList.remove(modalWindowImg.classList[1]) : null;
-        let settings = {};
-        appliedFilter = event.target.value;
-        switch (event.target.id) {
-            case 'chrome':
-                modalWindowImg.classList.add('filter-chrome');
-                settings = {
-                    min: 0,
-                    max: 1,
-                    step: 0.1,
-                };
-                break;
-            case 'sepia':
-                modalWindowImg.classList.add('filter-sepia');
-                settings = {
-                    min: 0,
-                    max: 1,
-                    step: 0.1,
-                };
-                break;
-            case 'marvin':
-                modalWindowImg.classList.add('filter-marvin');
-                settings = {
-                    min: 0,
-                    max: 100,
-                    step: 1,
-                };
-                break;
-            case 'fobos':
-                modalWindowImg.classList.add('filter-fobos');
-                settings = {
-                    min: 0,
-                    max: 3,
-                    step: 0.1,
-                };
-                break;
-            case 'heat':
-                modalWindowImg.classList.add('filter-heat');
-                settings = {
-                    min: 1,
-                    max: 3,
-                    step: 0.1,
-                };
-                break;
-            case 'original':
-                modalWindowImg.classList.add('filter-original');
-                settings = {};
-                break;
-        }
-        setRange(settings, event.target.id, modalWindowImg);
+        appliedEffect = event.target.value;
+        setRange(appliedEffect, modalWindowImg);
     }
 }
 
 function submitPost() {
-    // // Check if textarea has any content
-    // const textarea = document.querySelector('.setting-section__textarea');
-    // if (textarea.value !== '' && modalWindowImg.src !== '') { //! we can create new post only if it has discription and img
-    //     // Set active radio button
-    //     let checkedRadioButton = modalWindow.querySelector('.setting-section__label--active').childNodes[1];
-
-    //     //TODO: Add new post in general PICS object and set it in viewport
-    //     const nextPostId = generatePic.maxPicId + 1;
-
-    //     textarea.value = '';
-    //     textarea.blur();
-    // } else {
-    //     alert("Fill in all necessities!")
-    // }
-
     // Set Value input for form
-    document.querySelector('.scale-control-settings__value').setAttribute('value', `${scaleValue * 100}%`)
-    document.querySelector('.setting-section__effect-id').setAttribute('value', Object.keys(consts.filters).find(key => consts.filters[key] === appliedFilter))
-    setForm(appliedFilter, (response) => {
+    document.querySelector('.scale-control-settings__value').setAttribute('value', `${scaleValue * 100}%`);
+    document.querySelector('.setting-section__effect-id').setAttribute('value', appliedEffect);
+    setForm(appliedEffect, (response) => {
         closeModalWindow();
         console.log(response);
     });

@@ -39,7 +39,7 @@ class PictureController extends ActiveController
         $model->load(Yii::$app->getRequest()->getBodyParams(), '');
         $model->imageFile = UploadedFile::getInstanceByName('filename');
         // $filePath = uniqid("{$model->imageFile->baseName}_") . '.' . $model->imageFile->extension;
-        $filePath = uniqid(str_replace(' ', '-', $model->imageFile->baseName) . '_') . '.' . $model->imageFile->extension;
+        $filePath = uniqid(str_replace([" ", "(", ")"], "", "{$model->imageFile->baseName}_")) . '.' . $model->imageFile->extension;
         $model->url = $filePath;
 
         if ($model->save()) {

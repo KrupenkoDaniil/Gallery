@@ -1,14 +1,4 @@
 
-// Set filter consts
-export const filters = {
-    1: 'none',
-    2: 'chrome',
-    3: 'sepia',
-    4: 'marvin',
-    5: 'phobos',
-    6: 'heat'
-}
-
 // Set main Constants
 export const BODY = document.body;
 export const MAIN_CONTAINER = document.createElement('div');

@@ -51,6 +51,7 @@ $config = [
             'showScriptName' => false,
             'rules' => [
                 ['class' => 'yii\rest\UrlRule', 'controller' => 'picture'],
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'effect'],
             ],
         ],
     ],

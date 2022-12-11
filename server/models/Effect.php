@@ -10,6 +10,12 @@ use yii\db\ActiveRecord;
  *
  * @property int $id
  * @property string $inner_name
+ * @property string $css_filter
+ * @property int $range_min
+ * @property int $range_max
+ * @property float $step
+ * @property int $start
+ * @property string $unit
  *
  * @property Picture[] $pictures
  */

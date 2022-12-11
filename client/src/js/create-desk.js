@@ -1,11 +1,11 @@
-import { getData } from "./server-api.js";
+import { getData, getEffects } from "./server-api.js";
 import { openModalWindow } from "./work-with-modal-window.js";
 import './validation.js';
-import { checkFilters } from "./noUiSlider.js";
+import { checkEffects } from "./noUiSlider.js";
 import { generatePicsArray } from "./generate-pics-array.js"
 import * as consts from './variables.js';
 
-export function createDesk(picsArray, containerWidth = 800, RowSize = 5, containerMargin = 15) {
+export function createDesk(picsArray, effects, containerWidth = 800, RowSize = 5, containerMargin = 15) {
     // Prepare main container
     consts.MAIN_CONTAINER.innerHTML = '';
     consts.MAIN_CONTAINER.style.maxWidth = containerWidth + 'px';
@@ -46,10 +46,9 @@ export function createDesk(picsArray, containerWidth = 800, RowSize = 5, contain
             newPost.style.color = consts.PICS[nextElement['url']];
 
             // Set post image
-
             newPost.style.backgroundImage = `url(http://localhost:80/uploads/${nextElement['url']})`;
-            let pictureFilter = checkFilters(consts.filters[nextElement['effect_id']], nextElement['effect_level']);
-            pictureFilter[0] === 'none' ? newPost.style.filter = `${pictureFilter[0]}` : newPost.style.filter = `${pictureFilter[0]}(${pictureFilter[1]})`;
+            let pictureFilter = checkEffects(nextElement['effect_id'], nextElement['effect_level'], effects);
+            pictureFilter[0] === null ? newPost.style.filter = 'none' : newPost.style.filter = `${pictureFilter[0]}(${pictureFilter[1]})`;
 
             // change template content
             const newPostSpans = postTemplate.content.querySelectorAll('span');
@@ -74,7 +73,8 @@ export function createDesk(picsArray, containerWidth = 800, RowSize = 5, contain
 // fetchPics();
 
 getData((response) => {
-    // console.log(response);
-    createDesk(JSON.parse(response));
+    getEffects((response_2) => {
+        createDesk(response, response_2);
+    });
 });
 // createDesk(generatePicsArray(10));
