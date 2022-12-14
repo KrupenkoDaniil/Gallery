@@ -11,7 +11,7 @@ class DataController extends Controller
 {
     const EFFECTS = [
         [
-            'inner_name' => 'none',
+            'name' => 'none',
             'css_filter' => null,
             'range_min' => null,
             'range_max' => null,
@@ -20,7 +20,7 @@ class DataController extends Controller
             'unit' => null,
         ],
         [
-            'inner_name' => 'chrome',
+            'name' => 'chrome',
             'css_filter' => 'grayscale',
             'range_min' => 0,
             'range_max' => 1,
@@ -29,7 +29,7 @@ class DataController extends Controller
             'unit' => null,
         ],
         [
-            'inner_name' => 'sepia',
+            'name' => 'sepia',
             'css_filter' => 'sepia',
             'range_min' => 0,
             'range_max' => 1,
@@ -38,7 +38,7 @@ class DataController extends Controller
             'unit' => null,
         ],
         [
-            'inner_name' => 'marvin',
+            'name' => 'marvin',
             'css_filter' => 'invert',
             'range_min' => 0,
             'range_max' => 100,
@@ -47,7 +47,7 @@ class DataController extends Controller
             'unit' => '%',
         ],
         [
-            'inner_name' => 'phobos',
+            'name' => 'phobos',
             'css_filter' => 'blur',
             'range_min' => 0,
             'range_max' => 3,
@@ -56,7 +56,7 @@ class DataController extends Controller
             'unit' => 'px',
         ],
         [
-            'inner_name' => 'heat',
+            'name' => 'heat',
             'css_filter' => 'brightness',
             'range_min' => 1,
             'range_max' => 3,
@@ -70,12 +70,13 @@ class DataController extends Controller
     {
         $user = new User();
         $user->username = 'admin';
+        $user->avatar_path = './img/avatar-1.svg';
         $user->save();
 
         foreach (self::EFFECTS as $effect_item) {
             $effect = new Effect();
 
-            $effect->inner_name = $effect_item['inner_name'];
+            $effect->name = $effect_item['name'];
             $effect->css_filter = $effect_item['css_filter'];
             $effect->range_min = $effect_item['range_min'];
             $effect->range_max = $effect_item['range_max'];

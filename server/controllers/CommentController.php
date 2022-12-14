@@ -6,9 +6,9 @@ use Yii;
 use yii\filters\Cors;
 use yii\rest\ActiveController;
 
-class EffectController extends ActiveController
+class CommentController extends ActiveController
 {
-    public $modelClass = 'app\models\Effect';
+    public $modelClass = 'app\models\Comment';
 
     public function behaviors(): array
     {

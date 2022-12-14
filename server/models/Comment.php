@@ -26,6 +26,26 @@ class Comment extends ActiveRecord
     {
         return '{{%comment}}';
     }
+    
+    /**
+     * @return array
+     */
+    public function rules():array
+    {
+        return [
+            [['message'], 'required'],
+            [['message'], 'trim'],
+            [['message'], 'string'],
+
+            [['user_id'], 'required'],
+            [['user_id'], 'integer'],
+            [['user_id'], 'exist', 'targetClass' => User::class, 'targetAttribute' => 'id'],
+
+            [['picture_id'], 'required'],
+            [['picture_id'], 'integer'],
+            [['picture_id'], 'exist', 'targetClass' => Picture::class, 'targetAttribute' => 'id'],
+        ];
+    }
 
     /**
      * @return string[]

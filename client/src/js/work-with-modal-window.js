@@ -53,7 +53,7 @@ export function openModalWindow(event, picsArray) {
     if (event.target.classList.contains('post')) { //! if we target post
         targetElement = picsArray[event.target.getAttribute('id')];
         modalWindow = document.querySelector('.post-window');
-        setBasics(submitNewComment);
+        setBasics(targetElement.id, submitNewComment);
 
         // Set Image section
         modalWindowImg = modalWindow.querySelector('.image-section__img');
@@ -71,6 +71,8 @@ export function openModalWindow(event, picsArray) {
         targetElement['comments'].forEach((item) => {
             targetElementComments.push(item);
         })
+        targetElementComments.reverse();
+
         const showCommentsButton = document.querySelector('.comments-section__show-comments-button');
         showComments(consts.COMENTS_TO_SHOW_AMOUNT, showCommentsButton);
         setEvent('click', showCommentsButton, () => showComments(consts.COMENTS_TO_SHOW_AMOUNT, showCommentsButton))
@@ -132,7 +134,7 @@ export function openModalWindow(event, picsArray) {
     }
 }
 
-function setBasics(submitButtonFunc) {
+function setBasics(targetId, submitButtonFunc) {
     // Set Attributes and Styles
     modalWindow.classList.add('active');
     modalWindow.style.top = '0';
@@ -144,6 +146,7 @@ function setBasics(submitButtonFunc) {
 
     // Set Submit Button
     const submitButton = modalWindow.querySelector('button');
+    submitButton.id = targetId;
     setEvent('click', submitButton, submitButtonFunc);
 }
 
@@ -196,7 +199,7 @@ function showComments(commentsNumber, showCommentsButton) {
         const commentNickname = commentTemplate.content.querySelector('.comments-section__nickname');
         commentNickname.textContent = `${targetElementComments[0]['user']['name']}`;
         const commentAvatar = commentTemplate.content.querySelector('.comments-section__avatar');
-        commentAvatar.src = `${targetElementComments[0]['user']['avatar']}`;
+        commentAvatar.src = `http://localhost:80/uploads/avatars/${targetElementComments[0]['user']['avatar']}`;
         commentAvatar.alt = `${targetElementComments[0]['user']['name']}`;
         // Comment text
         const commentText = commentTemplate.content.querySelector('.comments-section__text');
@@ -264,7 +267,7 @@ function submitPost() {
     // Set Value input for form
     document.querySelector('.scale-control-settings__value').setAttribute('value', `${scaleValue * 100}%`);
     document.querySelector('.setting-section__effect-id').setAttribute('value', appliedEffect);
-    setForm(appliedEffect, (response) => {
+    setForm('pictures', consts.POST_FORM, [['user_id', '1'], [appliedEffect, appliedEffect]], (response) => {
         closeModalWindow();
         console.log(response);
     });

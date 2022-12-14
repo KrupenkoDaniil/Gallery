@@ -4,7 +4,7 @@ import { createDesk } from './create-desk.js';
 // Get Data from the server
 export const getData = (onSuccess) => {
     const xhr = new XMLHttpRequest();
-    xhr.open('GET', 'http://localhost:80/pictures?expand=comments');
+    xhr.open('GET', consts.GET_URLS['pictures']);
 
     xhr.addEventListener('load', () => {
         if (xhr.status == 200) {
@@ -16,7 +16,7 @@ export const getData = (onSuccess) => {
 
 export const getEffects = (onSuccess) => {
     const xhr = new XMLHttpRequest();
-    xhr.open('GET', 'http://localhost:80/effects');
+    xhr.open('GET', consts.GET_URLS['effects']);
 
     xhr.addEventListener('load', () => {
         if (xhr.status == 200) {
@@ -27,9 +27,9 @@ export const getEffects = (onSuccess) => {
 }
 
 // Send Data to the server
-const sendData = (onSuccess, body) => {
+const sendData = (postName, onSuccess, body) => {
     const xhr = new XMLHttpRequest();
-    xhr.open('POST', 'http://localhost:80/pictures');
+    xhr.open('POST', consts.POST_URLS[postName]);
 
     xhr.addEventListener('load', () => {
         if (xhr.status == 201) {
@@ -39,14 +39,12 @@ const sendData = (onSuccess, body) => {
     xhr.send(body);
 }
 
-export const setForm = (filter_id, onSuccess) => {
-    consts.POST_FORM.addEventListener('submit', (event) => {
+export const setForm = (postName, postForm, additionalId, onSuccess) => {
+    postForm.addEventListener('submit', (event) => {
         event.preventDefault();
         let data = new FormData(event.target);
-        data.append('user_id', 1);
-        data.append('effect_id', filter_id);
-
-        sendData(onSuccess, data);
+        additionalId.map((idName) => data.append(`${idName[0]}`, idName[1]));
+        sendData(postName, onSuccess, data);
     }, { once: true });
 }
 

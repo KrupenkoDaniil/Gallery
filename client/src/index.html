@@ -21,19 +21,20 @@
             </ul>
             <div class="comments-section__show-comments-button button">Show More Comments</div>
         </div>
-        <form class="post-window__add-comment add-comment" method="GET">
-            <input class="add-comment__name" type="text" list="names" placeholder="Your name" required>
-            <datalist id="names">
+
+        <form class="post-window__add-comment add-comment" id="new-comment" name="newComment" method="GET">
+            <!-- <input class="add-comment__name" type="text" list="names" placeholder="Your name" required> -->
+            <!-- <datalist id="names">
                 <option value="Daniil Krupenko"></option>
                 <option value="Vasia Pypkin"></option>
-            </datalist>
-            <textarea class="add-comment__textarea textarea" name="comment" id="comment" placeholder="Your comment here" required></textarea>
-            <button type="button" class="add-comment__submit-button button">Submit</button>
+            </datalist> -->
+            <textarea id="message" class="add-comment__textarea textarea" name="message" placeholder="Your comment here" required></textarea>
+            <button type="submit" class="add-comment__submit-button button" form="new-comment">Submit</button>
         </form>
+
     </section>
 
     <section class="add-window modal-window">
-        
         <form method="GET" class="add-window__setting-section setting-section" id="new-post-form" name="newPost">
             <img src="./img/svg/close-outline.svg" class="modal-window__exit-button">
             <div class="add-window__image-section image-section">

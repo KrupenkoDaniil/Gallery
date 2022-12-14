@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\services\HashtagService;
 use Yii;
 use yii\db\ActiveRecordInterface;
 use yii\filters\Cors;
@@ -44,6 +45,8 @@ class PictureController extends ActiveController
 
         if ($model->save()) {
             $model->imageFile->saveAs('uploads/' . $filePath);
+            $hashtags = explode(' ', Yii::$app->getRequest()->getBodyParams()['hashtags'] ?? '');
+            (new HashtagService())->processHashtags($hashtags, $model->id);
 
             $response = Yii::$app->getResponse();
             $response->setStatusCode(201);

@@ -83,6 +83,7 @@ class Picture extends ActiveRecord
             'scale',
             'effect_id',
             'effect_level',
+            'comments',
         ];
     }
 
@@ -92,7 +93,6 @@ class Picture extends ActiveRecord
     public function extraFields(): array
     {
         return [
-            'comments',
             'hashtags',
         ];
     }

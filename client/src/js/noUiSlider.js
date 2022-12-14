@@ -60,17 +60,11 @@ export function checkEffects(filterId, filterValue, filters = null) {
     }
     let currentFilter = checkEffects.filters[filterId - 1];
     switch (currentFilter['inner_name']) {
-        case 'chrome':
-            filterValue = `${filterValue}`;
-            break;
         case 'marvin':
             filterValue = `${filterValue}%`;
             break;
         case 'phobos':
             filterValue = `${filterValue}px`;
-            break;
-        case 'heat':
-            filterValue = `${filterValue}`;
             break;
     }
     let filterName = currentFilter['css_filter'];

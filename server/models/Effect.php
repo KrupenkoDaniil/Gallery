@@ -9,7 +9,7 @@ use yii\db\ActiveRecord;
  * This is the model class for table "effect".
  *
  * @property int $id
- * @property string $inner_name
+ * @property string name
  * @property string $css_filter
  * @property int $range_min
  * @property int $range_max
