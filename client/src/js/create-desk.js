@@ -73,8 +73,6 @@ export function createDesk(picsArray, effects, containerWidth = 800, RowSize = 5
 // fetchPics();
 
 getData((response) => {
-    getEffects((response_2) => {
-        createDesk(response, response_2);
-    });
+    createDesk(response[0], response[1])
 });
 // createDesk(generatePicsArray(10));

@@ -194,11 +194,15 @@
 
 }
 
-//! Hesh-Teg Settings
-.hesh-tegs-section {
+//! Hashtag Settings
+.hashtags-section {
     display: flex;
     justify-content: flex-start;
     margin-bottom: 20px;
+
+    &__form {
+        display: none;
+    }
 
     &__input{
         position: relative;
@@ -223,14 +227,14 @@
         }
     }
 
-    &__hesh-tegs-container {
+    &__hashtags-container {
         display: flex;
         flex-wrap: wrap;
         column-gap: 20px;
         row-gap: 10px;
     }
 
-    &__hesh-teg {
+    &__hashtag {
         position: relative;
         padding: 2px 25px;
         overflow: hidden;

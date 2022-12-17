@@ -6,17 +6,19 @@ MAIN_CONTAINER.classList.add('container');
 export const MAIN_OVERLAY = document.querySelector('.overlay');
 
 export const INPUT_FILE = document.querySelector('#file');
-export const INPUT_TEG = document.querySelector('.hesh-tegs-section__input');
+export const INPUT_TEG = document.querySelector('.hashtags-section__input');
 
 export const POST_FORM = document.newPost;
 export const COMMENT_FORM = document.newComment;
-export const GET_URLS = {
-    'pictures': 'http://localhost:80/pictures?expand=comments',
-    'effects': 'http://localhost:80/effects'
-};
+export const HASHTAG_FORM = document.newHashtag;
+export const GET_URLS = [
+    'http://localhost:80/pictures?expand=hashtags',
+    'http://localhost:80/effects',
+];
 export const POST_URLS = {
     'pictures': 'http://localhost:80/pictures',
-    'comments': 'http://localhost:80/comments'
+    'comments': 'http://localhost:80/comments',
+    'hashtats': 'http://localhost:80/hashtags'
 };
 
 export const COMENTS_TO_SHOW_AMOUNT = 5;

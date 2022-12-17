@@ -77,9 +77,7 @@ class Picture extends ActiveRecord
             'id',
             'url',
             'description',
-            'likes' => function () {
-                return count($this->likes);
-            },
+            'likes',
             'scale',
             'effect_id',
             'effect_level',

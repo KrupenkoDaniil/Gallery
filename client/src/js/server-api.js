@@ -3,27 +3,10 @@ import { createDesk } from './create-desk.js';
 
 // Get Data from the server
 export const getData = (onSuccess) => {
-    const xhr = new XMLHttpRequest();
-    xhr.open('GET', consts.GET_URLS['pictures']);
-
-    xhr.addEventListener('load', () => {
-        if (xhr.status == 200) {
-            onSuccess(JSON.parse(xhr.response));
-        }
-    })
-    xhr.send();
-}
-
-export const getEffects = (onSuccess) => {
-    const xhr = new XMLHttpRequest();
-    xhr.open('GET', consts.GET_URLS['effects']);
-
-    xhr.addEventListener('load', () => {
-        if (xhr.status == 200) {
-            onSuccess(JSON.parse(xhr.response));
-        }
-    })
-    xhr.send();
+    const requests = consts.GET_URLS.map(url => fetch(url));
+    Promise.all(requests)
+        .then(responses => Promise.all(responses.map(r => r.json())))
+        .then(data => onSuccess(data)); // Понять
 }
 
 // Send Data to the server
@@ -39,11 +22,11 @@ const sendData = (postName, onSuccess, body) => {
     xhr.send(body);
 }
 
-export const setForm = (postName, postForm, additionalId, onSuccess) => {
+export const setForm = (postName, postForm, additionalIds, onSuccess) => {
     postForm.addEventListener('submit', (event) => {
         event.preventDefault();
         let data = new FormData(event.target);
-        additionalId.map((idName) => data.append(`${idName[0]}`, idName[1]));
+        additionalIds.map((idName) => data.append(`${idName[0]}`, idName[1]));
         sendData(postName, onSuccess, data);
     }, { once: true });
 }

@@ -56,18 +56,10 @@ export function setRange(effectId, modalWindowImg) {
 export function checkEffects(filterId, filterValue, filters = null) {
     if (checkEffects.filters === undefined) {
         checkEffects.filters = filters;
-        console.log(checkEffects.filters);
     }
     let currentFilter = checkEffects.filters[filterId - 1];
-    switch (currentFilter['inner_name']) {
-        case 'marvin':
-            filterValue = `${filterValue}%`;
-            break;
-        case 'phobos':
-            filterValue = `${filterValue}px`;
-            break;
-    }
     let filterName = currentFilter['css_filter'];
+    filterValue = filterValue + (currentFilter['unit'] !== null ? currentFilter['unit'] : '');
     let settings = {
         min: currentFilter['range_min'],
         max: currentFilter['range_max'],

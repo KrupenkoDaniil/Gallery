@@ -27,6 +27,24 @@ class PictureLike extends ActiveRecord
     }
 
     /**
+     * @return array
+     */
+    public function rules():array
+    {
+        return [
+            [['user_id'], 'required'],
+            [['user_id'], 'integer'],
+            [['user_id'], 'exist', 'targetClass' => User::class, 'targetAttribute' => 'id'],
+
+            [['picture_id'], 'required'],
+            [['picture_id'], 'integer'],
+            [['picture_id'], 'exist', 'targetClass' => Picture::class, 'targetAttribute' => 'id'],
+
+            [['user_id', 'picture_id'], 'unique', 'targetAttribute' => ['user_id', 'picture_id']],
+        ];
+    }
+
+    /**
      * @return ActiveQuery
      */
     public function getUser(): ActiveQuery

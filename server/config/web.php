@@ -50,9 +50,26 @@ $config = [
             'enableStrictParsing' => true,
             'showScriptName' => false,
             'rules' => [
-                ['class' => 'yii\rest\UrlRule', 'controller' => 'picture'],
-                ['class' => 'yii\rest\UrlRule', 'controller' => 'comment'],
-                ['class' => 'yii\rest\UrlRule', 'controller' => 'effect'],
+                [
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => 'picture',
+                    'only' => ['index', 'view', 'create']
+                ],
+                [
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => 'comment',
+                    'only' => ['create']
+                ],
+                [
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => 'effect',
+                    'only' => ['index']
+                ],
+                [
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => 'like',
+                    'only' => ['create', 'delete', 'options']
+                ],
             ],
         ],
     ],

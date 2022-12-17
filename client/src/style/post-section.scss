@@ -48,6 +48,26 @@
         margin: auto 0;
         border-radius: 15px;
     }
+    
+    &__hashtags-container {
+        display: flex;
+        justify-content: space-around;
+        gap: 20px;
+        font-size: 15px;
+        text-transform: uppercase;
+        margin-top: 10px;
+
+        li {
+            position: relative;
+            padding: 2px 25px;
+            overflow: hidden;
+            user-select: none;
+            font-size: 20px;
+            color: white;
+            background-color: blue;
+            border-radius: 20px;
+        }
+    }
 
     &__title {
         display: flex;

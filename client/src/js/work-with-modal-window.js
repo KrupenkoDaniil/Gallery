@@ -18,26 +18,26 @@ document.addEventListener('keydown', (event) => {
         switch (event.code) {
             case 'Escape':
                 if (!document.querySelector('#description:focus')
-                    && !document.querySelector('.hesh-tegs-section__input:focus')) { // check if new-port
+                    && !document.querySelector('.hashtags-section__input:focus')) { // check if new-port
                     closeModalWindow(modalWindow);
                 }
                 break;
             case 'Enter':
                 if (document.querySelector('.add-comment__textarea:focus')) {
-                    // createNewComment(targetElement);
+                    event.preventDefault();
+                    modalWindow.querySelector('button[type="submit"]').click();
                 }
                 if (document.querySelector('.setting-section__textarea:focus')) {
                     event.preventDefault();
-                    // submitPost();
+                    modalWindow.querySelector('button[type="submit"]').click();
                 }
-                if (document.querySelector('.hesh-tegs-section__input:focus')) {
+                if (document.querySelector('.hashtags-section__input:focus')) {
                     event.preventDefault();
                     addNewTeg();
-
                 }
                 break;
             case 'Backspace':
-                if (document.querySelector('.hesh-tegs-section__input:focus') && consts.INPUT_TEG.value == '#') {
+                if (document.querySelector('.hashtags-section__input:focus') && consts.INPUT_TEG.value == '#') {
                     consts.INPUT_TEG.setCustomValidity('You can\'t delete #');
                     event.preventDefault();
                 } else {
@@ -53,7 +53,8 @@ export function openModalWindow(event, picsArray) {
     if (event.target.classList.contains('post')) { //! if we target post
         targetElement = picsArray[event.target.getAttribute('id')];
         modalWindow = document.querySelector('.post-window');
-        setBasics(targetElement.id, submitNewComment);
+        setBasics(submitNewComment, targetElement.id);
+        showHashTags(targetElement['hashtags']);
 
         // Set Image section
         modalWindowImg = modalWindow.querySelector('.image-section__img');
@@ -104,14 +105,13 @@ export function openModalWindow(event, picsArray) {
                 scaleValue = scaleValue - 0.25;
                 modalWindowImg.style.setProperty('--scale', String(scaleValue));
                 // scaleValue = +getComputedStyle(modalWindowImg).getPropertyValue('--scale');
-
             }
         })
 
         // Remove Tegs
-        const tegsContainer = modalWindow.querySelector('.hesh-tegs-section__hesh-tegs-container');
+        const tegsContainer = modalWindow.querySelector('.hashtags-section__hashtags-container');
         setEvent('click', tegsContainer, (event) => {
-            if (event.target.classList.contains('hesh-tegs-section__close-button')) {
+            if (event.target.classList.contains('hashtags-section__close-button')) {
                 tegsContainer.removeChild(event.target.parentNode);
                 const tegText = event.target.parentNode.childNodes[1].textContent;
                 tegsArray.splice(tegsArray.indexOf(tegText), 1);
@@ -134,7 +134,7 @@ export function openModalWindow(event, picsArray) {
     }
 }
 
-function setBasics(targetId, submitButtonFunc) {
+function setBasics(submitButtonFunc, targetId = '0') {
     // Set Attributes and Styles
     modalWindow.classList.add('active');
     modalWindow.style.top = '0';
@@ -145,7 +145,7 @@ function setBasics(targetId, submitButtonFunc) {
     setEvent('click', exitButton, closeModalWindow);
 
     // Set Submit Button
-    const submitButton = modalWindow.querySelector('button');
+    const submitButton = modalWindow.querySelector('button[type="submit"]');
     submitButton.id = targetId;
     setEvent('click', submitButton, submitButtonFunc);
 }
@@ -156,7 +156,7 @@ function closeModalWindow() {
     // Null Tegs
     consts.INPUT_TEG.value = '#';
     tegsArray = [];
-    document.querySelector('.hesh-tegs-section__hesh-tegs-container').textContent = '';
+    document.querySelector('.hashtags-section__hashtags-container').textContent = '';
 
     // Null effects
     const activeLabel = document.querySelector('.setting-section__label--active');
@@ -211,6 +211,18 @@ function showComments(commentsNumber, showCommentsButton) {
     }
 }
 
+function showHashTags(hashtags) {
+    const hashtagsContainer = document.querySelector('.image-section__hashtags-container');
+    hashtagsContainer.textContent = '';
+    hashtags.map((hashtag) => {
+        const newHashtag = document.createElement('li');
+        newHashtag.classList.add('image-section__hashtag-item');
+        newHashtag.textContent = hashtag['name'];
+        hashtagsContainer.appendChild(newHashtag);
+    })
+
+}
+
 function uploadPicture() {
     const modalWindowImg = modalWindow.querySelector('.image-section__img');
     const reader = new FileReader();
@@ -229,19 +241,19 @@ function uploadPicture() {
 function addNewTeg() {
     // Create New Teg
     if (consts.INPUT_TEG.value.length < 2) {
-        alert('You can\'t add empty hesh-teg!');
+        alert('You can\'t add empty hahtag!');
     } else if (consts.INPUT_TEG.value.length > consts.MAX_TEG_LENGTH) {
-        alert('You hesh-tag is too long!');
+        alert('You hashtag is too long!');
     } else if (tegsArray.includes(consts.INPUT_TEG.value.toLowerCase())) { // check if you already have such teg
-        alert('You already have such teg!');
+        alert('You already have such tag!');
     } else if (consts.INPUT_TEG.validity.customError) { // check if you have forbidden symbols
-        alert('You can\'t use #, @, $, etc symbols and spaces in hesh-teg!');
+        alert('You can\'t use #, @, $, etc symbols and spaces in hashtag!');
     } else if (tegsArray.length >= 5) {
-        alert('You can add only 5 hesh-tegs!')
+        alert('You can add only 5 hashtags!')
     } else {
-        const tegsContainer = modalWindow.querySelector('.hesh-tegs-section__hesh-tegs-container');
-        const tegTemplate = document.querySelector('#hesh-teg-template');
-        const newTegText = tegTemplate.content.querySelector('.hesh-tegs-section__text');
+        const tegsContainer = modalWindow.querySelector('.hashtags-section__hashtags-container');
+        const tegTemplate = document.querySelector('#hashtag-template');
+        const newTegText = tegTemplate.content.querySelector('.hashtags-section__text');
         newTegText.textContent = consts.INPUT_TEG.value;
         const tegClone = tegTemplate.content.cloneNode(true);
         tegsContainer.appendChild(tegClone);
@@ -264,10 +276,16 @@ function applyEffects(event) {
 }
 
 function submitPost() {
+    console.log(tegsArray.join(' '));
+
     // Set Value input for form
     document.querySelector('.scale-control-settings__value').setAttribute('value', `${scaleValue * 100}%`);
     document.querySelector('.setting-section__effect-id').setAttribute('value', appliedEffect);
-    setForm('pictures', consts.POST_FORM, [['user_id', '1'], [appliedEffect, appliedEffect]], (response) => {
+    setForm('pictures', consts.POST_FORM, [
+        ['user_id', '1'],
+        [appliedEffect, appliedEffect],
+        ['hashtags', tegsArray.join(' ')]
+    ], (response) => {
         closeModalWindow();
         console.log(response);
     });

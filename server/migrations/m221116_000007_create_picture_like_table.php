@@ -52,6 +52,8 @@ class m221116_000007_create_picture_like_table extends Migration
             'id',
             'CASCADE'
         );
+
+        $this->execute('ALTER TABLE picture_like ADD UNIQUE INDEX user_picture (user_id, picture_id)');
     }
 
     /**

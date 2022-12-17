@@ -15,17 +15,17 @@ newPostDescription.addEventListener('input', () => {
 });
 
 // Set New Teg Validation
-const tegInput = document.querySelector('.hesh-tegs-section__input');
+const tegInput = document.querySelector('.hashtags-section__input');
 const reg = new RegExp('^#[A-Za-zА-Яа-я0-9]{0,20}$');
 
 tegInput.addEventListener('input', () => {
     let inputValue = tegInput.value;
     if (inputValue[0] != '#') {
-        tegInput.setCustomValidity('You can\'t add hesh-teg without # at the first place!');
+        tegInput.setCustomValidity('You can\'t add hashtag without # at the first place!');
     } else if (inputValue.length > MAX_TEG_LENGTH) {
-        tegInput.setCustomValidity(`Your hesh-teg name can\' be longer then ${MAX_TEG_LENGTH} words!`);
+        tegInput.setCustomValidity(`Your hashtag name can\' be longer then ${MAX_TEG_LENGTH} words!`);
     } else if (!reg.test(inputValue)) {
-        tegInput.setCustomValidity(`You can\'t use #, @, $, etc symbols and spaces in hesh-teg!`);
+        tegInput.setCustomValidity(`You can\'t use #, @, $, etc symbols and spaces in hashtag!`);
     }
     else {
         tegInput.setCustomValidity('');

@@ -10,6 +10,8 @@
         <img src="./img/svg/close-outline.svg" class="modal-window__exit-button">
         <div class="post-window__image-section image-section">
             <img class="image-section__img" src="#" alt="picture">
+            <ul class="image-section__hashtags-container">
+            </ul>
             <div class="image-section__title">
                 <p class="image-section__text"></p>
                 <div class="image-section__likes"></div>
@@ -47,9 +49,9 @@
                 <input id="file" name="filename" type="file" accept="image/png, image/jpeg" class="add-window__upload-input">
             </div>
             <hr>
-            <div class="setting-section__hesh-tegs-section hesh-tegs-section">
-                <input value="#" placeholder="print #" type="text" class="hesh-tegs-section__input">
-                <div class="hesh-tegs-section__hesh-tegs-container">
+            <div class="setting-section__hashtags-section hashtags-section">
+                <input value="#" placeholder="print #" type="text" class="hashtags-section__input">
+                <div class="hashtags-section__hashtags-container">
                 </div>
             </div>
             <div class="setting-section__effects">
@@ -101,10 +103,10 @@
         </li>
     </template>
 
-    <template id="hesh-teg-template">
-        <div class="hesh-tegs-section__hesh-teg">
-            <span class="hesh-tegs-section__text"></span>
-            <span class="hesh-tegs-section__close-button">X</span></div>
+    <template id="hashtag-template">
+        <div class="hashtags-section__hashtag">
+            <span class="hashtags-section__text"></span>
+            <span class="hashtags-section__close-button">X</span></div>
     </template>
 </body>
 </html>
