@@ -245,16 +245,17 @@ function checkLikes(add = 0) {
 
 function setLike() {
     let userLike = checkLikes(); // check if user's already liked the pic
+    let likeSVG = modalWindow.querySelector('.image-section__like-svg');
     if (userLike) {
         deleteData(`http://localhost:80/likes/${userLike.id}`);
-        modalWindow.querySelector('.image-section__like-svg').classList.add('image-section__like-svg___disliked');
+        likeSVG.classList.add('image-section__like-svg___disliked');
     } else {
         setForm('likes', consts.LIKE_FORM, [
             ['user_id', '1'],
             ['picture_id', targetElement.id],
         ], () => { }, 'change');
         checkLikes(1);
-        modalWindow.querySelector('.image-section__like-svg').classList.add('image-section__like-svg___liked');
+        likeSVG.classList.add('image-section__like-svg___liked');
     }
 }
 
