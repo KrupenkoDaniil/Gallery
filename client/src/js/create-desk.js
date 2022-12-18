@@ -53,7 +53,7 @@ export function createDesk(picsArray, effects, containerWidth = 800, RowSize = 5
             // change template content
             const newPostSpans = postTemplate.content.querySelectorAll('span');
             newPostSpans[0].textContent = `${nextElement['comments'].length}`;
-            newPostSpans[1].textContent = `${nextElement['likes']}`;
+            newPostSpans[1].textContent = `${nextElement['likes'].length}`;
 
             const postClone = postTemplate.content.cloneNode(true);
             consts.MAIN_CONTAINER.appendChild(postClone);

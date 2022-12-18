@@ -2,13 +2,13 @@ import * as consts from './variables.js';
 import { submitNewComment } from './submit-new-comment.js';
 import { setEvent, removeEvents } from './set-events.js';
 import { setRange, checkEffects } from "./noUiSlider.js";
-import { setForm } from "./server-api.js";
+import { setForm, deleteData } from "./server-api.js";
 // import { LoaderTargetPlugin } from 'webpack';
 
 let appliedEffect = 1;
 
 // Set main Vars
-let targetElement, modalWindow, modalWindowImg, scaleValue;
+let targetElement, modalWindow, modalWindowImg, likesSpan, scaleValue;
 let targetElementComments = [];
 let tegsArray = [];
 
@@ -51,22 +51,31 @@ document.addEventListener('keydown', (event) => {
 
 export function openModalWindow(event, picsArray) {
     if (event.target.classList.contains('post')) { //! if we target post
+
+        // Set basics for Display modal window
         targetElement = picsArray[event.target.getAttribute('id')];
         modalWindow = document.querySelector('.post-window');
         setBasics(submitNewComment, targetElement.id);
+
+        // Set Hashtags section
         showHashTags(targetElement['hashtags']);
 
         // Set Image section
+        likesSpan = modalWindow.querySelector('.image-section__likes-label span');
+        checkLikes();
         modalWindowImg = modalWindow.querySelector('.image-section__img');
         const modalWindowDescription = modalWindow.querySelector('.image-section__text');
-        const modalWindowLikes = modalWindow.querySelector('.image-section__likes');
         targetElement['description'] ? modalWindowDescription.textContent = `${targetElement['description']}` : null;
-        modalWindowLikes.textContent = `Likes: ${targetElement['likes']}`;
         modalWindowImg.src = `http://localhost:80/uploads/${targetElement['url']}`;
-
         let pictureEffect = checkEffects(targetElement['effect_id'], targetElement['effect_level']);
         modalWindowImg.style.filter = `${pictureEffect[0]}(${pictureEffect[1]})`;
         modalWindowImg.style.setProperty('--scale', targetElement['scale']);
+
+
+        // Set Likes
+        setEvent('change', consts.INPUT_LIKE, setLike);
+
+
 
         // Set comments section
         targetElement['comments'].forEach((item) => {
@@ -223,6 +232,32 @@ function showHashTags(hashtags) {
 
 }
 
+function checkLikes(add = 0) {
+    // Set Like checkbox 
+    consts.INPUT_LIKE.checked === true ? consts.INPUT_LIKE.click() : null; // check if input in checked
+    let userLike = targetElement['likes'].filter(like => like['user_id'] === 1)[0]; // find user's like
+    userLike ? consts.INPUT_LIKE.click() : null; // set user's like
+    // Set Likes container
+    likesSpan.textContent = targetElement['likes'].length + add;
+
+    return userLike;
+}
+
+function setLike() {
+    let userLike = checkLikes(); // check if user's already liked the pic
+    if (userLike) {
+        deleteData(`http://localhost:80/likes/${userLike.id}`);
+        modalWindow.querySelector('.image-section__like-svg').classList.add('image-section__like-svg___disliked');
+    } else {
+        setForm('likes', consts.LIKE_FORM, [
+            ['user_id', '1'],
+            ['picture_id', targetElement.id],
+        ], () => { }, 'change');
+        checkLikes(1);
+        modalWindow.querySelector('.image-section__like-svg').classList.add('image-section__like-svg___liked');
+    }
+}
+
 function uploadPicture() {
     const modalWindowImg = modalWindow.querySelector('.image-section__img');
     const reader = new FileReader();
@@ -287,6 +322,5 @@ function submitPost() {
         ['hashtags', tegsArray.join(' ')]
     ], (response) => {
         closeModalWindow();
-        console.log(response);
     });
 }

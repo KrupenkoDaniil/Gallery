@@ -22,13 +22,26 @@ const sendData = (postName, onSuccess, body) => {
     xhr.send(body);
 }
 
-export const setForm = (postName, postForm, additionalIds, onSuccess) => {
-    postForm.addEventListener('submit', (event) => {
+export const setForm = (postName, postForm, additionalIds, onSuccess, eventName = 'submit') => {
+    postForm.addEventListener(eventName, (event) => {
         event.preventDefault();
-        let data = new FormData(event.target);
+        let data = new FormData(postForm);
         additionalIds.map((idName) => data.append(`${idName[0]}`, idName[1]));
         sendData(postName, onSuccess, data);
     }, { once: true });
+}
+
+export const deleteData = (deleteURL) => {
+    var xhr = new XMLHttpRequest();
+    xhr.open("DELETE", deleteURL);
+
+    xhr.addEventListener('load', () => {
+        if (xhr.status == 201) {
+            onSuccess(JSON.parse(xhr.response));
+        }
+    })
+
+    xhr.send();
 }
 
 // Set WebSocket

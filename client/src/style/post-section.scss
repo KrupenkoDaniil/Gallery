@@ -81,10 +81,54 @@
         font-size: 1.2em;
     }
 
-    &__likes span {
-        font-size: 1.2em;
-        font-weight: 700;
+    
+
+    &__likes-label {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+
+        span {
+            font-size: 1.2em;
+            font-weight: 700;
+        }
     }
+
+    &__like-svg {
+        width: 2em;
+
+        
+    }
+
+    @keyframes like {
+        50% {
+            transform: rotate(-25deg);
+        }
+        100% {
+            transform: rotate(0deg);
+        }
+    }
+    @keyframes dislike {
+        50% {
+            transform: rotate(25deg);
+        }
+        100% {
+            transform: rotate(0deg);
+        }
+    }
+    &__like-svg___liked {
+        animation: like .4s both;
+        fill: blue;
+    }
+    &__like-svg___disliked {
+        animation: dislike .4s both;
+        fill: blue;
+    }
+
+    &__likes-input {
+        display: none;
+    }
+
 }
 
 //! Comments Section Settings 

@@ -7,8 +7,11 @@ export const MAIN_OVERLAY = document.querySelector('.overlay');
 
 export const INPUT_FILE = document.querySelector('#file');
 export const INPUT_TEG = document.querySelector('.hashtags-section__input');
+export const INPUT_LIKE = document.querySelector('.image-section__likes-input');
+
 
 export const POST_FORM = document.newPost;
+export const LIKE_FORM = document.newLike;
 export const COMMENT_FORM = document.newComment;
 export const HASHTAG_FORM = document.newHashtag;
 export const GET_URLS = [
@@ -17,8 +20,9 @@ export const GET_URLS = [
 ];
 export const POST_URLS = {
     'pictures': 'http://localhost:80/pictures',
+    'likes': 'http://localhost:80/likes',
     'comments': 'http://localhost:80/comments',
-    'hashtats': 'http://localhost:80/hashtags'
+    'hashtats': 'http://localhost:80/hashtags',
 };
 
 export const COMENTS_TO_SHOW_AMOUNT = 5;
