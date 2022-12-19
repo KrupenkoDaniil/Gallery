@@ -1,4 +1,4 @@
-import { getData, getEffects } from "./server-api.js";
+import { getData } from "./server-api.js";
 import { openModalWindow } from "./work-with-modal-window.js";
 import './validation.js';
 import { checkEffects } from "./noUiSlider.js";
@@ -61,18 +61,52 @@ export function createDesk(picsArray, effects, containerWidth = 800, RowSize = 5
     }
 }
 
-// async function fetchPics() {
-//     try {
-//         const response = await fetch('http://gallery:80/pictures?expand=comments');
-//         const data = await response.json();
-//         createDesk(data);
-//     } catch (error) {
-//         console.log(error);
-//     }
-// }
-// fetchPics();
+let currentFilter;
+function setFilters() {
+    const filterContainer = document.querySelector('.filters-list');
+    currentFilter = filterContainer.querySelector('.filters-list__filter-item--active').id;
+    filterContainer.addEventListener('click', (event) => {
+        const eventTarget = event.target;
+        if (eventTarget.classList.contains('filters-list__filter-item')) {
+            document.querySelector('.filters-list__filter-item--active').classList.remove('filters-list__filter-item--active');
+            eventTarget.classList.add('filters-list__filter-item--active');
+            currentFilter = eventTarget.id;
+            applyFilters(currentFilter);
+        }
+    })
+}
 
+function applyFilters(filterMode, response = []) {
+    if (applyFilters.pictures === undefined) {
+        applyFilters.pictures = response[0];
+        applyFilters.effects = response[1];
+    }
+
+    switch (filterMode) {
+        case consts.FILTER_MODES.ID_UP: {
+            applyFilters.pictures.sort((post, next) => post.id - next.id);
+            break;
+        }
+        case consts.FILTER_MODES.ID_DOWN: {
+            applyFilters.pictures.sort((post, next) => next.id - post.id);
+            break;
+        }
+        case consts.FILTER_MODES.EFFECTS: {
+            applyFilters.pictures.sort((post, next) => post.effect_id - next.effect_id);
+            break;
+        }
+        case consts.FILTER_MODES.TAG: {
+            //TODO: add seatching part
+            applyFilters.pictures.sort((post, next) => next.hashtags.length - post.hashtags.length);
+            break;
+        }
+    }
+    createDesk(applyFilters.pictures, applyFilters.effects);
+}
+
+setFilters();
 getData((response) => {
-    createDesk(response[0], response[1])
+    applyFilters(currentFilter, response);
 });
+
 // createDesk(generatePicsArray(10));

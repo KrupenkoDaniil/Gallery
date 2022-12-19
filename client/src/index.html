@@ -29,7 +29,6 @@
             </ul>
             <div class="comments-section__show-comments-button button">Show More Comments</div>
         </div>
-
         <form class="post-window__add-comment add-comment" id="new-comment" name="newComment" method="GET">
             <!-- <input class="add-comment__name" type="text" list="names" placeholder="Your name" required> -->
             <!-- <datalist id="names">
@@ -39,7 +38,6 @@
             <textarea id="message" class="add-comment__textarea textarea" name="message" placeholder="Your comment here" required></textarea>
             <button type="submit" class="add-comment__submit-button button" form="new-comment">Submit</button>
         </form>
-
     </section>
 
     <section class="add-window modal-window">
@@ -91,6 +89,16 @@
             <button type="submit" class="setting-section__submit-button button" form="new-post-form">Upload new post</button>
         </form>
     </section>
+
+    <section class="filters-section">
+        <ul class="filters-list">
+            <li id="byIdUp" class="filters-list__filter-item filters-list__filter-item--active">By id up</li>
+            <li id="byIdDown" class="filters-list__filter-item">By id down </li>
+            <li id="byEffects" class="filters-list__filter-item">By effects</li>
+            <li id="byTag" class="filters-list__filter-item">By tag</li>
+        </ul>
+    </section>
+
 
     <template id="post-template">
         <div class="post">

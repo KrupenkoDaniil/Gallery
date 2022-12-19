@@ -9,6 +9,12 @@ export const INPUT_FILE = document.querySelector('#file');
 export const INPUT_TEG = document.querySelector('.hashtags-section__input');
 export const INPUT_LIKE = document.querySelector('.image-section__likes-input');
 
+export const FILTER_MODES = {
+    ID_UP: 'byIdUp',
+    ID_DOWN: 'byIdDown',
+    EFFECTS: 'byEffects',
+    TAG: 'byTag',
+};
 
 export const POST_FORM = document.newPost;
 export const LIKE_FORM = document.newLike;

@@ -31,6 +31,7 @@ export const setForm = (postName, postForm, additionalIds, onSuccess, eventName 
     }, { once: true });
 }
 
+// Delete Data from server
 export const deleteData = (deleteURL) => {
     var xhr = new XMLHttpRequest();
     xhr.open("DELETE", deleteURL);
@@ -52,7 +53,6 @@ socket.addEventListener('open', () => {
         socket.send(response);
     })
 });
-
 socket.addEventListener('message', (event) => {
     createDesk(JSON.parse(event.data));
 });
