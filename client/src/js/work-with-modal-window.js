@@ -8,7 +8,7 @@ import { setForm, deleteData } from "./server-api.js";
 let appliedEffect = 1;
 
 // Set main Vars
-let targetElement, modalWindow, modalWindowImg, likesSpan, scaleValue;
+let targetElement, modalWindow, modalWindowImg, userLike, likesSpan, postLiked, scaleValue;
 let targetElementComments = [];
 let tegsArray = [];
 
@@ -62,7 +62,6 @@ export function openModalWindow(event, picsArray) {
 
         // Set Image section
         likesSpan = modalWindow.querySelector('.image-section__likes-label span');
-        checkLikes();
         modalWindowImg = modalWindow.querySelector('.image-section__img');
         const modalWindowDescription = modalWindow.querySelector('.image-section__text');
         targetElement['description'] ? modalWindowDescription.textContent = `${targetElement['description']}` : null;
@@ -73,9 +72,8 @@ export function openModalWindow(event, picsArray) {
 
 
         // Set Likes
+        checkLikes();
         setEvent('change', consts.INPUT_LIKE, setLike);
-
-
 
         // Set comments section
         targetElement['comments'].forEach((item) => {
@@ -196,7 +194,6 @@ function closeModalWindow() {
 function showComments(commentsNumber, showCommentsButton) {
     const commentSection = document.querySelector('.comments-container');
     const commentTemplate = document.getElementById('comment-template');
-    console.log(targetElementComments);
 
     // Check if we have enough comments
     showCommentsButton.classList.remove('hidden');
@@ -233,30 +230,34 @@ function showHashTags(hashtags) {
 
 }
 
-function checkLikes(add = 0) {
+function checkLikes() {
     // Set Like checkbox 
     consts.INPUT_LIKE.checked === true ? consts.INPUT_LIKE.click() : null; // check if input in checked
-    let userLike = targetElement['likes'].filter(like => like['user_id'] === 1)[0]; // find user's like
-    userLike ? consts.INPUT_LIKE.click() : null; // set user's like
-    // Set Likes container
-    likesSpan.textContent = targetElement['likes'].length + add;
+    userLike = targetElement['likes'].filter(like => like['user_id'] === 1)[0]; // find user's like
+    if (userLike) {
+        postLiked = true;
+        consts.INPUT_LIKE.click()
+    } else {
+        postLiked = false;
+    }
 
-    return userLike;
+    // Set Likes container
+    likesSpan.textContent = targetElement['likes'].length;
 }
 
 function setLike() {
-    let userLike = checkLikes(); // check if user's already liked the pic
     let likeSVG = modalWindow.querySelector('.image-section__like-svg');
-    if (userLike) {
+    if (userLike && postLiked) {
         deleteData(`http://localhost:80/likes/${userLike.id}`);
         likeSVG.classList.add('image-section__like-svg___disliked');
-    } else {
+        postLiked = false;
+    } else if (!userLike && !postLiked) {
         setForm('likes', consts.LIKE_FORM, [
             ['user_id', '1'],
             ['picture_id', targetElement.id],
         ], () => { }, 'change');
-        checkLikes(1);
         likeSVG.classList.add('image-section__like-svg___liked');
+        postLiked = true;
     }
 }
 
