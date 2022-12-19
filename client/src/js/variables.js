@@ -12,6 +12,8 @@ export const INPUT_LIKE = document.querySelector('.image-section__likes-input');
 export const FILTER_MODES = {
     ID_UP: 'byIdUp',
     ID_DOWN: 'byIdDown',
+    RANDOM: 'random',
+    POPULAR: 'popular',
     EFFECTS: 'byEffects',
     TAG: 'byTag',
 };

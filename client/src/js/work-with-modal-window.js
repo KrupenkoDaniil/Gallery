@@ -196,6 +196,7 @@ function closeModalWindow() {
 function showComments(commentsNumber, showCommentsButton) {
     const commentSection = document.querySelector('.comments-container');
     const commentTemplate = document.getElementById('comment-template');
+    console.log(targetElementComments);
 
     // Check if we have enough comments
     showCommentsButton.classList.remove('hidden');

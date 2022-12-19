@@ -3,15 +3,20 @@ import { openModalWindow } from "./work-with-modal-window.js";
 import './validation.js';
 import { checkEffects } from "./noUiSlider.js";
 import { generatePicsArray } from "./generate-pics-array.js"
+import { removeEvents } from "./set-events.js";
+import { shuffle } from "./randoming.js";
 import * as consts from './variables.js';
 
+let bodyEventsHandler;
 export function createDesk(picsArray, effects, containerWidth = 800, RowSize = 5, containerMargin = 15) {
+
+    bodyEventsHandler = (event) => openModalWindow(event, picsArray);
     // Prepare main container
     consts.MAIN_CONTAINER.innerHTML = '';
     consts.MAIN_CONTAINER.style.maxWidth = containerWidth + 'px';
 
     // Set all modal windows' appearance
-    consts.BODY.addEventListener('click', (event) => openModalWindow(event, picsArray));
+    consts.BODY.addEventListener('click', bodyEventsHandler);
     consts.BODY.appendChild(consts.MAIN_CONTAINER);
 
     // Set parameters
@@ -71,6 +76,7 @@ function setFilters() {
             document.querySelector('.filters-list__filter-item--active').classList.remove('filters-list__filter-item--active');
             eventTarget.classList.add('filters-list__filter-item--active');
             currentFilter = eventTarget.id;
+            consts.BODY.removeEventListener('click', bodyEventsHandler);
             applyFilters(currentFilter);
         }
     })
@@ -84,11 +90,19 @@ function applyFilters(filterMode, response = []) {
 
     switch (filterMode) {
         case consts.FILTER_MODES.ID_UP: {
-            applyFilters.pictures.sort((post, next) => post.id - next.id);
+            applyFilters.pictures.sort((next, post) => next.id - post.id);
             break;
         }
         case consts.FILTER_MODES.ID_DOWN: {
-            applyFilters.pictures.sort((post, next) => next.id - post.id);
+            applyFilters.pictures.sort((next, post) => post.id - next.id);
+            break;
+        }
+        case consts.FILTER_MODES.RANDOM: {
+            shuffle(applyFilters.pictures);
+            break;
+        }
+        case consts.FILTER_MODES.POPULAR: {
+            applyFilters.pictures.sort((next, post) => post.comments.length - next.comments.length);
             break;
         }
         case consts.FILTER_MODES.EFFECTS: {

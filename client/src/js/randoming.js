@@ -19,3 +19,7 @@ export function getRandomKey(dic) {
     };
     return list[getRandomInt(0, list.length - 1)];
 }
+
+export function shuffle(array) {
+    array.sort(() => Math.random() - 0.5);
+  }
