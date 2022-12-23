@@ -44,6 +44,13 @@ input[type=number] {
     transition: opacity .2s linear;
 }
 
+.scale-preverved {
+
+    .post {
+        background-size: contain;
+    }
+}
+
 .button {
     cursor: pointer;
     display: block;
@@ -134,12 +141,33 @@ input[type=number] {
 .filters-section {
     padding: 10px 0;
     text-transform: uppercase;
+
+     &__preserve-scale-label {
+        cursor: pointer;
+        padding: 5px 10px;
+        border-radius: 20px;
+        transition: all .2s linear;
+
+        &:hover {
+            color: white;
+            background-color: blue;
+        }
+    }
+    &__preserve-scale-button--active {
+        color: white;
+        background-color: blue;
+    }
+
+    &__preserve-scale-input {
+        display: none;
+    }
 }
 
 .filters-list {
     width: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 20px;
 
     &__filter-item {
@@ -157,4 +185,6 @@ input[type=number] {
         color: white;
         background-color: blue;
     }
+
+   
 }

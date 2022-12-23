@@ -83,7 +83,7 @@ export function openModalWindow(event, picsArray) {
 
         const showCommentsButton = document.querySelector('.comments-section__show-comments-button');
         showComments(consts.COMENTS_TO_SHOW_AMOUNT, showCommentsButton);
-        setEvent('click', showCommentsButton, () => showComments(consts.COMENTS_TO_SHOW_AMOUNT, showCommentsButton))
+        setEvent('click', showCommentsButton, () => showComments(consts.COMENTS_TO_SHOW_AMOUNT, showCommentsButton));
 
     } else if (event.target.classList.contains('add-button')) { //! if we target add button
         modalWindow = document.querySelector('.add-window');
@@ -106,14 +106,14 @@ export function openModalWindow(event, picsArray) {
                 // scaleValue = +getComputedStyle(modalWindowImg).getPropertyValue('--scale');
 
             }
-        })
+        });
         setEvent('click', decreaseScaleButton, () => {
             if (scaleValue > 0.25) {
                 scaleValue = scaleValue - 0.25;
                 modalWindowImg.style.setProperty('--scale', String(scaleValue));
                 // scaleValue = +getComputedStyle(modalWindowImg).getPropertyValue('--scale');
             }
-        })
+        });
 
         // Remove Tegs
         const tegsContainer = modalWindow.querySelector('.hashtags-section__hashtags-container');
@@ -132,7 +132,7 @@ export function openModalWindow(event, picsArray) {
         // Set Submit button
 
         const submitButton = document.querySelector('.setting-section__submit-button');
-        setEvent('submit', submitButton, submitPost)
+        setEvent('submit', submitButton, submitPost);
 
     } else if (modalWindow !== undefined // if modal window is set
         && modalWindow.classList.contains('active') // if modal window is active
@@ -226,8 +226,7 @@ function showHashTags(hashtags) {
         newHashtag.classList.add('image-section__hashtag-item');
         newHashtag.textContent = hashtag['name'];
         hashtagsContainer.appendChild(newHashtag);
-    })
-
+    });
 }
 
 function checkLikes() {
@@ -236,7 +235,7 @@ function checkLikes() {
     userLike = targetElement['likes'].filter(like => like['user_id'] === 1)[0]; // find user's like
     if (userLike) {
         postLiked = true;
-        consts.INPUT_LIKE.click()
+        consts.INPUT_LIKE.click();
     } else {
         postLiked = false;
     }
@@ -287,7 +286,7 @@ function addNewTeg() {
     } else if (consts.INPUT_TEG.validity.customError) { // check if you have forbidden symbols
         alert('You can\'t use #, @, $, etc symbols and spaces in hashtag!');
     } else if (tegsArray.length >= 5) {
-        alert('You can add only 5 hashtags!')
+        alert('You can add only 5 hashtags!');
     } else {
         const tegsContainer = modalWindow.querySelector('.hashtags-section__hashtags-container');
         const tegTemplate = document.querySelector('#hashtag-template');

@@ -81,6 +81,13 @@ function setFilters() {
         }
     })
 }
+function setScalePreserve() {
+    const scaleButton = document.querySelector('.filters-section__preserve-scale-input');
+    scaleButton.addEventListener('click', () => {
+        consts.MAIN_CONTAINER.classList.toggle('scale-preverved');
+        scaleButton.parentElement.classList.toggle('filters-section__preserve-scale-button--active')
+    });
+}
 
 function applyFilters(filterMode, response = []) {
     if (applyFilters.pictures === undefined) {
@@ -118,6 +125,7 @@ function applyFilters(filterMode, response = []) {
     createDesk(applyFilters.pictures, applyFilters.effects);
 }
 
+setScalePreserve();
 setFilters();
 getData((response) => {
     applyFilters(currentFilter, response);
