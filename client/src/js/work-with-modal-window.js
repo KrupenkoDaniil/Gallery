@@ -8,7 +8,7 @@ import { setForm, deleteData } from "./server-api.js";
 let appliedEffect = 1;
 
 // Set main Vars
-let targetElement, modalWindow, modalWindowImg, userLike, likesSpan, postLiked, scaleValue;
+let targetElement, modalWindow, modalWindowImg, userLike, likesSpan, scaleValue;
 let targetElementComments = [];
 let tegsArray = [];
 
@@ -230,34 +230,30 @@ function showHashTags(hashtags) {
 }
 
 function checkLikes() {
-    // Set Like checkbox 
-    consts.INPUT_LIKE.checked === true ? consts.INPUT_LIKE.click() : null; // check if input in checked
-    userLike = targetElement['likes'].filter(like => like['user_id'] === 1)[0]; // find user's like
-    if (userLike) {
-        postLiked = true;
-        consts.INPUT_LIKE.click();
-    } else {
-        postLiked = false;
-    }
-
-    // Set Likes container
+    userLike = targetElement['likes'].filter(like => like['user_id'] == 1)[0]; // find user's like
     likesSpan.textContent = targetElement['likes'].length;
 }
 
 function setLike() {
     let likeSVG = modalWindow.querySelector('.image-section__like-svg');
-    if (userLike && postLiked) {
+    if (userLike) {
+        targetElement['likes'].splice(targetElement['likes'].indexOf(userLike), 1);
         deleteData(`http://localhost:80/likes/${userLike.id}`);
+        likeSVG.classList.remove('image-section__like-svg___liked');
         likeSVG.classList.add('image-section__like-svg___disliked');
-        postLiked = false;
-    } else if (!userLike && !postLiked) {
+        checkLikes();
+    } else {
         setForm('likes', consts.LIKE_FORM, [
             ['user_id', '1'],
             ['picture_id', targetElement.id],
-        ], () => { }, 'change');
+        ], (response) => {
+            targetElement['likes'].push(response);
+            checkLikes();
+        }, 'change');
+        likeSVG.classList.remove('image-section__like-svg___disliked');
         likeSVG.classList.add('image-section__like-svg___liked');
-        postLiked = true;
     }
+
 }
 
 function uploadPicture() {

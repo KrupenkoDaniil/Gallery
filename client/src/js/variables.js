@@ -13,7 +13,8 @@ export const FILTER_MODES = {
     ID_UP: 'byIdUp',
     ID_DOWN: 'byIdDown',
     RANDOM: 'random',
-    POPULAR: 'popular',
+    BYLIKES: 'byLikes',
+    BYCOMMENTS: 'byComments',
     EFFECTS: 'byEffects',
     TAG: 'byTag',
 };

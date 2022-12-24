@@ -108,7 +108,11 @@ function applyFilters(filterMode, response = []) {
             shuffle(applyFilters.pictures);
             break;
         }
-        case consts.FILTER_MODES.POPULAR: {
+        case consts.FILTER_MODES.BYLIKES: {
+            applyFilters.pictures.sort((next, post) => post.likes.length - next.likes.length);
+            break;
+        }
+        case consts.FILTER_MODES.BYCOMMENTS: {
             applyFilters.pictures.sort((next, post) => post.comments.length - next.comments.length);
             break;
         }
