@@ -8,6 +8,7 @@ import * as consts from './variables.js';
 
 let bodyEventsHandler;
 export function createDesk(picsArray, effects, containerWidth = 800, RowSize = 5, containerMargin = 15) {
+    consts.BODY.removeEventListener('click', bodyEventsHandler); // get rid of previous listener
 
     bodyEventsHandler = (event) => openModalWindow(event, picsArray);
     // Prepare main container
@@ -92,7 +93,6 @@ export function applyFilters(filterMode, response = []) {
     if (applyFilters.pictures === undefined) {
         applyFilters.pictures = response[0];
         applyFilters.effects = response[1];
-        console.log(applyFilters.pictures);
     }
 
     switch (filterMode) {

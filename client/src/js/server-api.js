@@ -1,5 +1,5 @@
 import * as consts from './variables.js';
-import { createDesk } from './create-desk.js';
+import { applyFilters } from './create-desk.js';
 
 // Get Data from the server
 export const getData = (onSuccess) => {
@@ -26,7 +26,9 @@ export const setForm = (postName, postForm, additionalIds, onSuccess, eventName 
     postForm.addEventListener(eventName, (event) => {
         event.preventDefault();
         let data = new FormData(postForm);
-        additionalIds.map((idName) => data.append(`${idName[0]}`, idName[1]));
+        additionalIds.map((idName) => {
+            data.append(`${idName[0]}`, idName[1])
+        });
         sendData(postName, onSuccess, data);
     }, { once: true });
 }
@@ -50,9 +52,10 @@ const socket = new WebSocket('ws://127.0.0.1:2346');
 
 socket.addEventListener('open', () => {
     getData((response) => {
-        socket.send(response);
-    })
+        let message = JSON.stringify(applyFilters.pictures);
+        socket.send(message);
+    });
 });
 socket.addEventListener('message', (event) => {
-    createDesk(JSON.parse(event.data));
+    applyFilters('1');
 });

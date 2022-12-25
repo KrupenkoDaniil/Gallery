@@ -12735,3 +12735,592 @@ $_SERVER = [
     'REQUEST_TIME_FLOAT' => 1671868975.7517
     'REQUEST_TIME' => 1671868975
 ]
+2022-12-25 12:22:30 [127.0.0.1][-][-][error][yii\db\Exception] PDOException: SQLSTATE[HY000]: General error: 1366 Incorrect string value: '\xF0\x9F\x98\x80' for column 'description' at row 1 in C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\db\Command.php:1302
+Stack trace:
+#0 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\db\Command.php(1302): PDOStatement->execute()
+#1 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\db\Command.php(1102): yii\db\Command->internalExecute()
+#2 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\db\Schema.php(431): yii\db\Command->execute()
+#3 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\db\ActiveRecord.php(604): yii\db\Schema->insert()
+#4 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\db\ActiveRecord.php(570): yii\db\ActiveRecord->insertInternal()
+#5 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\db\BaseActiveRecord.php(676): yii\db\ActiveRecord->insert()
+#6 C:\OSPanel\domains\localhost\gallery\server\controllers\PictureController.php(46): yii\db\BaseActiveRecord->save()
+#7 [internal function]: app\controllers\PictureController->actionCreate()
+#8 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array()
+#9 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\base\Controller.php(178): yii\base\InlineAction->runWithParams()
+#10 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction()
+#11 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction()
+#12 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest()
+#13 C:\OSPanel\domains\localhost\gallery\server\web\index.php(12): yii\base\Application->run()
+#14 {main}
+
+Next yii\db\Exception: SQLSTATE[HY000]: General error: 1366 Incorrect string value: '\xF0\x9F\x98\x80' for column 'description' at row 1
+The SQL being executed was: INSERT INTO `picture` (`scale`, `effect_id`, `effect_level`, `description`, `user_id`, `url`) VALUES ('100%', 6, 2.7, 'Hello, World!😀', 1, 'Магистраль_63a81655ee091.jpg') in C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\db\Schema.php:676
+Stack trace:
+#0 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\db\Command.php(1307): yii\db\Schema->convertException()
+#1 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\db\Command.php(1102): yii\db\Command->internalExecute()
+#2 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\db\Schema.php(431): yii\db\Command->execute()
+#3 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\db\ActiveRecord.php(604): yii\db\Schema->insert()
+#4 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\db\ActiveRecord.php(570): yii\db\ActiveRecord->insertInternal()
+#5 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\db\BaseActiveRecord.php(676): yii\db\ActiveRecord->insert()
+#6 C:\OSPanel\domains\localhost\gallery\server\controllers\PictureController.php(46): yii\db\BaseActiveRecord->save()
+#7 [internal function]: app\controllers\PictureController->actionCreate()
+#8 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array()
+#9 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\base\Controller.php(178): yii\base\InlineAction->runWithParams()
+#10 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction()
+#11 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction()
+#12 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest()
+#13 C:\OSPanel\domains\localhost\gallery\server\web\index.php(12): yii\base\Application->run()
+#14 {main}
+Additional Information:
+Array
+(
+    [0] => HY000
+    [1] => 1366
+    [2] => Incorrect string value: '\xF0\x9F\x98\x80' for column 'description' at row 1
+)
+
+2022-12-25 12:22:29 [127.0.0.1][-][-][info][application] $_GET = []
+
+$_POST = [
+    'scale' => '100%'
+    'effect_name' => '6'
+    'effect_id' => '6'
+    'effect_level' => '2.7'
+    'description' => 'Hello, World!😀'
+    'user_id' => '1'
+    6 => '6'
+    'hashtags' => '#оавлвпы #плавыо'
+]
+
+$_FILES = [
+    'filename' => [
+        'name' => 'Магистраль.jpg'
+        'full_path' => 'Магистраль.jpg'
+        'type' => 'image/jpeg'
+        'tmp_name' => 'C:\\OSPanel\\userdata\\temp\\upload\\php798A.tmp'
+        'error' => 0
+        'size' => 125624
+    ]
+]
+
+$_COOKIE = []
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_X_FORWARDED_PROTO' => 'http'
+    'HTTP_X_REAL_IP' => '127.0.0.1'
+    'CONTENT_LENGTH' => '126643'
+    'HTTP_SEC_CH_UA' => '\"Opera GX\";v=\"93\", \"Not/A)Brand\";v=\"8\", \"Chromium\";v=\"107\"'
+    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
+    'HTTP_SEC_CH_UA_MOBILE' => '?0'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 OPR/93.0.0.0 (Edition Yx GX)'
+    'CONTENT_TYPE' => 'multipart/form-data; boundary=----WebKitFormBoundaryf6cM7ooDIhIHV4K0'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_ORIGIN' => 'http://localhost:8081'
+    'HTTP_SEC_FETCH_SITE' => 'same-site'
+    'HTTP_SEC_FETCH_MODE' => 'cors'
+    'HTTP_SEC_FETCH_DEST' => 'empty'
+    'HTTP_REFERER' => 'http://localhost:8081/'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
+    'PATH' => 'c:\\ospanel\\modules\\php\\PHP_8.1\\ext;c:\\ospanel\\modules\\php\\PHP_8.1\\pear;c:\\ospanel\\modules\\php\\PHP_8.1\\pear\\bin;c:\\ospanel\\modules\\php\\PHP_8.1;c:\\ospanel\\modules\\wget\\bin;c:\\ospanel\\modules\\database\\MySQL-8.0-Win10\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OSPanel/domains/localhost/gallery/server/web'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OSPanel/domains/localhost/gallery/server/web'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OSPanel/domains/localhost/gallery/server/web/index.php'
+    'REMOTE_PORT' => '54499'
+    'REDIRECT_URL' => '/pictures'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/pictures'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1671960149.9056
+    'REQUEST_TIME' => 1671960149
+]
+2022-12-25 12:22:32 [127.0.0.1][-][-][error][yii\db\Exception] PDOException: SQLSTATE[HY000]: General error: 1366 Incorrect string value: '\xF0\x9F\x98\x80' for column 'description' at row 1 in C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\db\Command.php:1302
+Stack trace:
+#0 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\db\Command.php(1302): PDOStatement->execute()
+#1 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\db\Command.php(1102): yii\db\Command->internalExecute()
+#2 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\db\Schema.php(431): yii\db\Command->execute()
+#3 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\db\ActiveRecord.php(604): yii\db\Schema->insert()
+#4 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\db\ActiveRecord.php(570): yii\db\ActiveRecord->insertInternal()
+#5 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\db\BaseActiveRecord.php(676): yii\db\ActiveRecord->insert()
+#6 C:\OSPanel\domains\localhost\gallery\server\controllers\PictureController.php(46): yii\db\BaseActiveRecord->save()
+#7 [internal function]: app\controllers\PictureController->actionCreate()
+#8 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array()
+#9 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\base\Controller.php(178): yii\base\InlineAction->runWithParams()
+#10 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction()
+#11 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction()
+#12 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest()
+#13 C:\OSPanel\domains\localhost\gallery\server\web\index.php(12): yii\base\Application->run()
+#14 {main}
+
+Next yii\db\Exception: SQLSTATE[HY000]: General error: 1366 Incorrect string value: '\xF0\x9F\x98\x80' for column 'description' at row 1
+The SQL being executed was: INSERT INTO `picture` (`scale`, `effect_id`, `effect_level`, `description`, `user_id`, `url`) VALUES ('100%', 6, 2.7, 'Hello, World!😀', 1, 'Магистраль_63a8165833f24.jpg') in C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\db\Schema.php:676
+Stack trace:
+#0 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\db\Command.php(1307): yii\db\Schema->convertException()
+#1 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\db\Command.php(1102): yii\db\Command->internalExecute()
+#2 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\db\Schema.php(431): yii\db\Command->execute()
+#3 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\db\ActiveRecord.php(604): yii\db\Schema->insert()
+#4 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\db\ActiveRecord.php(570): yii\db\ActiveRecord->insertInternal()
+#5 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\db\BaseActiveRecord.php(676): yii\db\ActiveRecord->insert()
+#6 C:\OSPanel\domains\localhost\gallery\server\controllers\PictureController.php(46): yii\db\BaseActiveRecord->save()
+#7 [internal function]: app\controllers\PictureController->actionCreate()
+#8 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array()
+#9 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\base\Controller.php(178): yii\base\InlineAction->runWithParams()
+#10 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction()
+#11 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction()
+#12 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest()
+#13 C:\OSPanel\domains\localhost\gallery\server\web\index.php(12): yii\base\Application->run()
+#14 {main}
+Additional Information:
+Array
+(
+    [0] => HY000
+    [1] => 1366
+    [2] => Incorrect string value: '\xF0\x9F\x98\x80' for column 'description' at row 1
+)
+
+2022-12-25 12:22:32 [127.0.0.1][-][-][info][application] $_GET = []
+
+$_POST = [
+    'scale' => '100%'
+    'effect_name' => '6'
+    'effect_id' => '6'
+    'effect_level' => '2.7'
+    'description' => 'Hello, World!😀'
+    'user_id' => '1'
+    6 => '6'
+    'hashtags' => '#оавлвпы #плавыо'
+]
+
+$_FILES = [
+    'filename' => [
+        'name' => 'Магистраль.jpg'
+        'full_path' => 'Магистраль.jpg'
+        'type' => 'image/jpeg'
+        'tmp_name' => 'C:\\OSPanel\\userdata\\temp\\upload\\php8246.tmp'
+        'error' => 0
+        'size' => 125624
+    ]
+]
+
+$_COOKIE = []
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_X_FORWARDED_PROTO' => 'http'
+    'HTTP_X_REAL_IP' => '127.0.0.1'
+    'CONTENT_LENGTH' => '126643'
+    'HTTP_SEC_CH_UA' => '\"Opera GX\";v=\"93\", \"Not/A)Brand\";v=\"8\", \"Chromium\";v=\"107\"'
+    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
+    'HTTP_SEC_CH_UA_MOBILE' => '?0'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 OPR/93.0.0.0 (Edition Yx GX)'
+    'CONTENT_TYPE' => 'multipart/form-data; boundary=----WebKitFormBoundary58Mqu7iohfUMBNN5'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_ORIGIN' => 'http://localhost:8081'
+    'HTTP_SEC_FETCH_SITE' => 'same-site'
+    'HTTP_SEC_FETCH_MODE' => 'cors'
+    'HTTP_SEC_FETCH_DEST' => 'empty'
+    'HTTP_REFERER' => 'http://localhost:8081/'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
+    'PATH' => 'c:\\ospanel\\modules\\php\\PHP_8.1\\ext;c:\\ospanel\\modules\\php\\PHP_8.1\\pear;c:\\ospanel\\modules\\php\\PHP_8.1\\pear\\bin;c:\\ospanel\\modules\\php\\PHP_8.1;c:\\ospanel\\modules\\wget\\bin;c:\\ospanel\\modules\\database\\MySQL-8.0-Win10\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OSPanel/domains/localhost/gallery/server/web'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OSPanel/domains/localhost/gallery/server/web'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OSPanel/domains/localhost/gallery/server/web/index.php'
+    'REMOTE_PORT' => '54503'
+    'REDIRECT_URL' => '/pictures'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/pictures'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1671960152.1459
+    'REQUEST_TIME' => 1671960152
+]
+2022-12-25 12:22:35 [127.0.0.1][-][-][error][yii\db\Exception] PDOException: SQLSTATE[HY000]: General error: 1366 Incorrect string value: '\xF0\x9F\x98\x80' for column 'description' at row 1 in C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\db\Command.php:1302
+Stack trace:
+#0 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\db\Command.php(1302): PDOStatement->execute()
+#1 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\db\Command.php(1102): yii\db\Command->internalExecute()
+#2 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\db\Schema.php(431): yii\db\Command->execute()
+#3 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\db\ActiveRecord.php(604): yii\db\Schema->insert()
+#4 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\db\ActiveRecord.php(570): yii\db\ActiveRecord->insertInternal()
+#5 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\db\BaseActiveRecord.php(676): yii\db\ActiveRecord->insert()
+#6 C:\OSPanel\domains\localhost\gallery\server\controllers\PictureController.php(46): yii\db\BaseActiveRecord->save()
+#7 [internal function]: app\controllers\PictureController->actionCreate()
+#8 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array()
+#9 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\base\Controller.php(178): yii\base\InlineAction->runWithParams()
+#10 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction()
+#11 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction()
+#12 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest()
+#13 C:\OSPanel\domains\localhost\gallery\server\web\index.php(12): yii\base\Application->run()
+#14 {main}
+
+Next yii\db\Exception: SQLSTATE[HY000]: General error: 1366 Incorrect string value: '\xF0\x9F\x98\x80' for column 'description' at row 1
+The SQL being executed was: INSERT INTO `picture` (`scale`, `effect_id`, `effect_level`, `description`, `user_id`, `url`) VALUES ('100%', 6, 2.7, 'Hello, World!😀', 1, 'Магистраль_63a8165b5e524.jpg') in C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\db\Schema.php:676
+Stack trace:
+#0 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\db\Command.php(1307): yii\db\Schema->convertException()
+#1 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\db\Command.php(1102): yii\db\Command->internalExecute()
+#2 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\db\Schema.php(431): yii\db\Command->execute()
+#3 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\db\ActiveRecord.php(604): yii\db\Schema->insert()
+#4 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\db\ActiveRecord.php(570): yii\db\ActiveRecord->insertInternal()
+#5 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\db\BaseActiveRecord.php(676): yii\db\ActiveRecord->insert()
+#6 C:\OSPanel\domains\localhost\gallery\server\controllers\PictureController.php(46): yii\db\BaseActiveRecord->save()
+#7 [internal function]: app\controllers\PictureController->actionCreate()
+#8 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array()
+#9 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\base\Controller.php(178): yii\base\InlineAction->runWithParams()
+#10 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction()
+#11 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction()
+#12 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest()
+#13 C:\OSPanel\domains\localhost\gallery\server\web\index.php(12): yii\base\Application->run()
+#14 {main}
+Additional Information:
+Array
+(
+    [0] => HY000
+    [1] => 1366
+    [2] => Incorrect string value: '\xF0\x9F\x98\x80' for column 'description' at row 1
+)
+
+2022-12-25 12:22:35 [127.0.0.1][-][-][info][application] $_GET = []
+
+$_POST = [
+    'scale' => '100%'
+    'effect_name' => '6'
+    'effect_id' => '6'
+    'effect_level' => '2.7'
+    'description' => 'Hello, World!😀'
+    'user_id' => '1'
+    6 => '6'
+    'hashtags' => '#оавлвпы #плавыо'
+]
+
+$_FILES = [
+    'filename' => [
+        'name' => 'Магистраль.jpg'
+        'full_path' => 'Магистраль.jpg'
+        'type' => 'image/jpeg'
+        'tmp_name' => 'C:\\OSPanel\\userdata\\temp\\upload\\php8EBA.tmp'
+        'error' => 0
+        'size' => 125624
+    ]
+]
+
+$_COOKIE = []
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_X_FORWARDED_PROTO' => 'http'
+    'HTTP_X_REAL_IP' => '127.0.0.1'
+    'CONTENT_LENGTH' => '126643'
+    'HTTP_SEC_CH_UA' => '\"Opera GX\";v=\"93\", \"Not/A)Brand\";v=\"8\", \"Chromium\";v=\"107\"'
+    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
+    'HTTP_SEC_CH_UA_MOBILE' => '?0'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 OPR/93.0.0.0 (Edition Yx GX)'
+    'CONTENT_TYPE' => 'multipart/form-data; boundary=----WebKitFormBoundaryEY2C3OpRaMpAiD8P'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_ORIGIN' => 'http://localhost:8081'
+    'HTTP_SEC_FETCH_SITE' => 'same-site'
+    'HTTP_SEC_FETCH_MODE' => 'cors'
+    'HTTP_SEC_FETCH_DEST' => 'empty'
+    'HTTP_REFERER' => 'http://localhost:8081/'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
+    'PATH' => 'c:\\ospanel\\modules\\php\\PHP_8.1\\ext;c:\\ospanel\\modules\\php\\PHP_8.1\\pear;c:\\ospanel\\modules\\php\\PHP_8.1\\pear\\bin;c:\\ospanel\\modules\\php\\PHP_8.1;c:\\ospanel\\modules\\wget\\bin;c:\\ospanel\\modules\\database\\MySQL-8.0-Win10\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OSPanel/domains/localhost/gallery/server/web'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OSPanel/domains/localhost/gallery/server/web'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OSPanel/domains/localhost/gallery/server/web/index.php'
+    'REMOTE_PORT' => '54506'
+    'REDIRECT_URL' => '/pictures'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/pictures'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1671960155.3293
+    'REQUEST_TIME' => 1671960155
+]
+2022-12-25 12:22:42 [127.0.0.1][-][-][error][yii\db\Exception] PDOException: SQLSTATE[HY000]: General error: 1366 Incorrect string value: '\xF0\x9F\x98\x80' for column 'description' at row 1 in C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\db\Command.php:1302
+Stack trace:
+#0 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\db\Command.php(1302): PDOStatement->execute()
+#1 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\db\Command.php(1102): yii\db\Command->internalExecute()
+#2 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\db\Schema.php(431): yii\db\Command->execute()
+#3 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\db\ActiveRecord.php(604): yii\db\Schema->insert()
+#4 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\db\ActiveRecord.php(570): yii\db\ActiveRecord->insertInternal()
+#5 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\db\BaseActiveRecord.php(676): yii\db\ActiveRecord->insert()
+#6 C:\OSPanel\domains\localhost\gallery\server\controllers\PictureController.php(46): yii\db\BaseActiveRecord->save()
+#7 [internal function]: app\controllers\PictureController->actionCreate()
+#8 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array()
+#9 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\base\Controller.php(178): yii\base\InlineAction->runWithParams()
+#10 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction()
+#11 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction()
+#12 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest()
+#13 C:\OSPanel\domains\localhost\gallery\server\web\index.php(12): yii\base\Application->run()
+#14 {main}
+
+Next yii\db\Exception: SQLSTATE[HY000]: General error: 1366 Incorrect string value: '\xF0\x9F\x98\x80' for column 'description' at row 1
+The SQL being executed was: INSERT INTO `picture` (`scale`, `effect_id`, `effect_level`, `description`, `user_id`, `url`) VALUES ('100%', 6, 2.7, 'Hello, World!😀', 1, 'Магистраль_63a81662d3c3c.jpg') in C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\db\Schema.php:676
+Stack trace:
+#0 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\db\Command.php(1307): yii\db\Schema->convertException()
+#1 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\db\Command.php(1102): yii\db\Command->internalExecute()
+#2 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\db\Schema.php(431): yii\db\Command->execute()
+#3 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\db\ActiveRecord.php(604): yii\db\Schema->insert()
+#4 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\db\ActiveRecord.php(570): yii\db\ActiveRecord->insertInternal()
+#5 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\db\BaseActiveRecord.php(676): yii\db\ActiveRecord->insert()
+#6 C:\OSPanel\domains\localhost\gallery\server\controllers\PictureController.php(46): yii\db\BaseActiveRecord->save()
+#7 [internal function]: app\controllers\PictureController->actionCreate()
+#8 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array()
+#9 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\base\Controller.php(178): yii\base\InlineAction->runWithParams()
+#10 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction()
+#11 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction()
+#12 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest()
+#13 C:\OSPanel\domains\localhost\gallery\server\web\index.php(12): yii\base\Application->run()
+#14 {main}
+Additional Information:
+Array
+(
+    [0] => HY000
+    [1] => 1366
+    [2] => Incorrect string value: '\xF0\x9F\x98\x80' for column 'description' at row 1
+)
+
+2022-12-25 12:22:42 [127.0.0.1][-][-][info][application] $_GET = []
+
+$_POST = [
+    'scale' => '100%'
+    'effect_name' => '6'
+    'effect_id' => '6'
+    'effect_level' => '2.7'
+    'description' => 'Hello, World!😀'
+    'user_id' => '1'
+    6 => '6'
+    'hashtags' => '#оавлвпы #плавыо'
+]
+
+$_FILES = [
+    'filename' => [
+        'name' => 'Магистраль.jpg'
+        'full_path' => 'Магистраль.jpg'
+        'type' => 'image/jpeg'
+        'tmp_name' => 'C:\\OSPanel\\userdata\\temp\\upload\\phpABF8.tmp'
+        'error' => 0
+        'size' => 125624
+    ]
+]
+
+$_COOKIE = []
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_X_FORWARDED_PROTO' => 'http'
+    'HTTP_X_REAL_IP' => '127.0.0.1'
+    'CONTENT_LENGTH' => '126643'
+    'HTTP_SEC_CH_UA' => '\"Opera GX\";v=\"93\", \"Not/A)Brand\";v=\"8\", \"Chromium\";v=\"107\"'
+    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
+    'HTTP_SEC_CH_UA_MOBILE' => '?0'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 OPR/93.0.0.0 (Edition Yx GX)'
+    'CONTENT_TYPE' => 'multipart/form-data; boundary=----WebKitFormBoundaryizqCjcA8oF2WKofv'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_ORIGIN' => 'http://localhost:8081'
+    'HTTP_SEC_FETCH_SITE' => 'same-site'
+    'HTTP_SEC_FETCH_MODE' => 'cors'
+    'HTTP_SEC_FETCH_DEST' => 'empty'
+    'HTTP_REFERER' => 'http://localhost:8081/'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
+    'PATH' => 'c:\\ospanel\\modules\\php\\PHP_8.1\\ext;c:\\ospanel\\modules\\php\\PHP_8.1\\pear;c:\\ospanel\\modules\\php\\PHP_8.1\\pear\\bin;c:\\ospanel\\modules\\php\\PHP_8.1;c:\\ospanel\\modules\\wget\\bin;c:\\ospanel\\modules\\database\\MySQL-8.0-Win10\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OSPanel/domains/localhost/gallery/server/web'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OSPanel/domains/localhost/gallery/server/web'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OSPanel/domains/localhost/gallery/server/web/index.php'
+    'REMOTE_PORT' => '54516'
+    'REDIRECT_URL' => '/pictures'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/pictures'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1671960162.8141
+    'REQUEST_TIME' => 1671960162
+]
+2022-12-25 13:51:43 [127.0.0.1][-][-][error][yii\db\Exception] PDOException: SQLSTATE[HY000]: General error: 1366 Incorrect string value: '\xF0\x9F\x98\x80' for column 'description' at row 1 in C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\db\Command.php:1302
+Stack trace:
+#0 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\db\Command.php(1302): PDOStatement->execute()
+#1 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\db\Command.php(1102): yii\db\Command->internalExecute()
+#2 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\db\Schema.php(431): yii\db\Command->execute()
+#3 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\db\ActiveRecord.php(604): yii\db\Schema->insert()
+#4 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\db\ActiveRecord.php(570): yii\db\ActiveRecord->insertInternal()
+#5 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\db\BaseActiveRecord.php(676): yii\db\ActiveRecord->insert()
+#6 C:\OSPanel\domains\localhost\gallery\server\controllers\PictureController.php(46): yii\db\BaseActiveRecord->save()
+#7 [internal function]: app\controllers\PictureController->actionCreate()
+#8 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array()
+#9 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\base\Controller.php(178): yii\base\InlineAction->runWithParams()
+#10 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction()
+#11 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction()
+#12 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest()
+#13 C:\OSPanel\domains\localhost\gallery\server\web\index.php(12): yii\base\Application->run()
+#14 {main}
+
+Next yii\db\Exception: SQLSTATE[HY000]: General error: 1366 Incorrect string value: '\xF0\x9F\x98\x80' for column 'description' at row 1
+The SQL being executed was: INSERT INTO `picture` (`scale`, `effect_id`, `effect_level`, `description`, `user_id`, `url`) VALUES ('100%', 3, 1, 'Hello, World!😀', 1, 'Иосифтолкующийсны_63a82b3f17d04.jpg') in C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\db\Schema.php:676
+Stack trace:
+#0 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\db\Command.php(1307): yii\db\Schema->convertException()
+#1 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\db\Command.php(1102): yii\db\Command->internalExecute()
+#2 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\db\Schema.php(431): yii\db\Command->execute()
+#3 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\db\ActiveRecord.php(604): yii\db\Schema->insert()
+#4 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\db\ActiveRecord.php(570): yii\db\ActiveRecord->insertInternal()
+#5 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\db\BaseActiveRecord.php(676): yii\db\ActiveRecord->insert()
+#6 C:\OSPanel\domains\localhost\gallery\server\controllers\PictureController.php(46): yii\db\BaseActiveRecord->save()
+#7 [internal function]: app\controllers\PictureController->actionCreate()
+#8 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array()
+#9 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\base\Controller.php(178): yii\base\InlineAction->runWithParams()
+#10 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction()
+#11 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction()
+#12 C:\OSPanel\domains\localhost\gallery\server\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest()
+#13 C:\OSPanel\domains\localhost\gallery\server\web\index.php(12): yii\base\Application->run()
+#14 {main}
+Additional Information:
+Array
+(
+    [0] => HY000
+    [1] => 1366
+    [2] => Incorrect string value: '\xF0\x9F\x98\x80' for column 'description' at row 1
+)
+
+2022-12-25 13:51:43 [127.0.0.1][-][-][info][application] $_GET = []
+
+$_POST = [
+    'scale' => '100%'
+    'effect_name' => '3'
+    'effect_id' => '3'
+    'effect_level' => '1'
+    'description' => 'Hello, World!😀'
+    'user_id' => '1'
+    'hashtags' => '#123'
+]
+
+$_FILES = [
+    'filename' => [
+        'name' => 'Иосиф, толкующий сны.jpg'
+        'full_path' => 'Иосиф, толкующий сны.jpg'
+        'type' => 'image/jpeg'
+        'tmp_name' => 'C:\\OSPanel\\userdata\\temp\\upload\\php2870.tmp'
+        'error' => 0
+        'size' => 159422
+    ]
+]
+
+$_COOKIE = []
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_X_FORWARDED_PROTO' => 'http'
+    'HTTP_X_REAL_IP' => '127.0.0.1'
+    'CONTENT_LENGTH' => '160342'
+    'HTTP_SEC_CH_UA' => '\"Opera GX\";v=\"93\", \"Not/A)Brand\";v=\"8\", \"Chromium\";v=\"107\"'
+    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
+    'HTTP_SEC_CH_UA_MOBILE' => '?0'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 OPR/93.0.0.0 (Edition Yx GX)'
+    'CONTENT_TYPE' => 'multipart/form-data; boundary=----WebKitFormBoundaryWIbzhRNKw7zBOpBO'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_ORIGIN' => 'http://localhost:8081'
+    'HTTP_SEC_FETCH_SITE' => 'same-site'
+    'HTTP_SEC_FETCH_MODE' => 'cors'
+    'HTTP_SEC_FETCH_DEST' => 'empty'
+    'HTTP_REFERER' => 'http://localhost:8081/'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
+    'PATH' => 'c:\\ospanel\\modules\\php\\PHP_8.1\\ext;c:\\ospanel\\modules\\php\\PHP_8.1\\pear;c:\\ospanel\\modules\\php\\PHP_8.1\\pear\\bin;c:\\ospanel\\modules\\php\\PHP_8.1;c:\\ospanel\\modules\\wget\\bin;c:\\ospanel\\modules\\database\\MySQL-8.0-Win10\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23\\bin;c:\\ospanel\\modules\\http\\Apache_2.4-PHP_8.0-8.1+Nginx_1.23;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OSPanel/domains/localhost/gallery/server/web'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OSPanel/domains/localhost/gallery/server/web'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OSPanel/domains/localhost/gallery/server/web/index.php'
+    'REMOTE_PORT' => '63057'
+    'REDIRECT_URL' => '/pictures'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/pictures'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1671965503.0334
+    'REQUEST_TIME' => 1671965503
+]

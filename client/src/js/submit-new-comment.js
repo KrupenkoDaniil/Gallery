@@ -1,6 +1,7 @@
 import * as consts from './variables.js';
 import { setForm } from "./server-api";
 import { openModalWindow } from "./work-with-modal-window.js";
+import { applyFilters } from './create-desk.js';
 
 export function submitNewComment(event) {
     // Check if textarea has any content
@@ -10,6 +11,7 @@ export function submitNewComment(event) {
         // Find necessary elements
         const commentContainer = document.querySelector('.comments-container');
         const commentTemplate = document.getElementById('comment-template');
+        const eventTarget = applyFilters.pictures.filter(pic => pic.id == event.target.id)[0];
 
         // Set basics
         const commentName = commentTemplate.content.querySelector('.comments-section__nickname');
@@ -21,11 +23,14 @@ export function submitNewComment(event) {
         const commentText = commentTemplate.content.querySelector('.comments-section__text');
         commentText.textContent = textarea.value;
 
-
         // Creating a new comment clone
         const commentTextClone = commentTemplate.content.cloneNode(true);
         commentContainer.insertBefore(commentTextClone, commentContainer.children[0]);
-        setForm('comments', consts.COMMENT_FORM, [['user_id', '1'], ['picture_id', event.target.id]], (response) => {
+        setForm('comments', consts.COMMENT_FORM, [
+            ['user_id', '1'],
+            ['picture_id', eventTarget.id]
+        ], (response) => {
+            eventTarget.comments.push(response);
             textarea.value = '';
             textarea.blur();
         });

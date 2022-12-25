@@ -219,13 +219,13 @@ function showComments(commentsNumber, showCommentsButton) {
     }
 }
 
-function showHashTags(hashtags = []) {
+function showHashTags(hashtags) {
     const hashtagsContainer = document.querySelector('.image-section__hashtags-container');
     hashtagsContainer.textContent = '';
     hashtags.map((hashtag) => {
         const newHashtag = document.createElement('li');
         newHashtag.classList.add('image-section__hashtag-item');
-        newHashtag.textContent = hashtag['name'];
+        newHashtag.textContent = hashtag['name'] || hashtag;
         hashtagsContainer.appendChild(newHashtag);
     });
 }
@@ -310,17 +310,17 @@ function applyEffects(event) {
 }
 
 function submitPost() {
-
     // Set Value input for form
     document.querySelector('.scale-control-settings__value').setAttribute('value', `${scaleValue * 100}%`);
     document.querySelector('.setting-section__effect-id').setAttribute('value', appliedEffect);
     setForm('pictures', consts.POST_FORM, [
         ['user_id', '1'],
-        [appliedEffect, appliedEffect],
         ['hashtags', tegsArray.join(' ')]
     ], (response) => {
+        response.hashtags = tegsArray;
         applyFilters.pictures.push(response);
-        createDesk(applyFilters.pictures, applyFilters.effects);
         closeModalWindow();
+        removeEvents();
+        createDesk(applyFilters.pictures, applyFilters.effects);
     });
 }
