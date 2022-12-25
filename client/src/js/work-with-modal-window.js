@@ -3,6 +3,7 @@ import { submitNewComment } from './submit-new-comment.js';
 import { setEvent, removeEvents } from './set-events.js';
 import { setRange, checkEffects } from "./noUiSlider.js";
 import { setForm, deleteData } from "./server-api.js";
+import { createDesk, applyFilters } from './create-desk.js';
 // import { LoaderTargetPlugin } from 'webpack';
 
 let appliedEffect = 1;
@@ -218,7 +219,7 @@ function showComments(commentsNumber, showCommentsButton) {
     }
 }
 
-function showHashTags(hashtags) {
+function showHashTags(hashtags = []) {
     const hashtagsContainer = document.querySelector('.image-section__hashtags-container');
     hashtagsContainer.textContent = '';
     hashtags.map((hashtag) => {
@@ -309,7 +310,6 @@ function applyEffects(event) {
 }
 
 function submitPost() {
-    console.log(tegsArray.join(' '));
 
     // Set Value input for form
     document.querySelector('.scale-control-settings__value').setAttribute('value', `${scaleValue * 100}%`);
@@ -319,6 +319,8 @@ function submitPost() {
         [appliedEffect, appliedEffect],
         ['hashtags', tegsArray.join(' ')]
     ], (response) => {
+        applyFilters.pictures.push(response);
+        createDesk(applyFilters.pictures, applyFilters.effects);
         closeModalWindow();
     });
 }

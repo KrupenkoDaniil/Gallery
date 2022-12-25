@@ -3,7 +3,6 @@ import { openModalWindow } from "./work-with-modal-window.js";
 import './validation.js';
 import { checkEffects } from "./noUiSlider.js";
 import { generatePicsArray } from "./generate-pics-array.js"
-import { removeEvents } from "./set-events.js";
 import { shuffle } from "./randoming.js";
 import * as consts from './variables.js';
 
@@ -89,10 +88,11 @@ function setScalePreserve() {
     });
 }
 
-function applyFilters(filterMode, response = []) {
+export function applyFilters(filterMode, response = []) {
     if (applyFilters.pictures === undefined) {
         applyFilters.pictures = response[0];
         applyFilters.effects = response[1];
+        console.log(applyFilters.pictures);
     }
 
     switch (filterMode) {
