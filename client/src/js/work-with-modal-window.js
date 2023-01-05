@@ -18,7 +18,9 @@ document.addEventListener('keydown', (event) => {
     if (modalWindow !== undefined) {
         switch (event.code) {
             case 'Escape':
-                if (!document.querySelector('#description:focus')
+                if (document.querySelector('.message__window')) {
+                    removeMessageWindow();
+                } else if (!document.querySelector('#description:focus')
                     && !document.querySelector('.hashtags-section__input:focus')) { // check if new-port
                     closeModalWindow(modalWindow);
                 }
@@ -137,6 +139,7 @@ export function openModalWindow(event, picsArray) {
 
     } else if (modalWindow !== undefined // if modal window is set
         && modalWindow.classList.contains('active') // if modal window is active
+        && !document.querySelector('.message__window') // if there is no Message Window
         && event.target.classList.contains('overlay')) { //! if we target overlay
         closeModalWindow();
     }
@@ -323,4 +326,44 @@ function submitPost() {
         removeEvents();
         createDesk(applyFilters.pictures, applyFilters.effects);
     });
+}
+
+export function showMessage(postName, status) {
+    if (status == 201) {
+        switch (postName) {
+            case 'pictures': {
+                createMessageWindow('Your post was successfully uploaded');
+                break;
+            }
+            case 'comments': {
+                createMessageWindow('Your comment was successfully uploaded');
+                break;
+            }
+        }
+    } else {
+        createMessageWindow('There is some problems!');
+    }
+}
+
+function createMessageWindow(title) {
+    // Setting Message Template 
+    const messageTemplate = document.getElementById('message-template');
+    const messageTitle = messageTemplate.content.querySelector('.message__title');
+    messageTitle.textContent = title;
+
+    // Creating Message Clone
+    const messageClone = messageTemplate.content.cloneNode(true);
+
+    // Setting Events
+    const messageButton = messageClone.querySelector('.message__success-button');
+    messageButton.addEventListener('click', removeMessageWindow);
+    document.body.addEventListener('click', removeMessageWindow);
+
+    document.body.insertBefore(messageClone, document.body.children[0]);
+}
+
+function removeMessageWindow() {
+    const message = document.querySelector('.message__window');
+    document.body.removeChild(message);
+    document.body.removeEventListener('click', removeMessageWindow);
 }

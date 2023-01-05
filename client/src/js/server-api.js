@@ -1,5 +1,6 @@
 import * as consts from './variables.js';
 import { applyFilters } from './create-desk.js';
+import { showMessage } from './work-with-modal-window.js';
 
 // Get Data from the server
 export const getData = (onSuccess) => {
@@ -18,8 +19,14 @@ const sendData = (postName, onSuccess, body) => {
         if (xhr.status == 201) {
             onSuccess(JSON.parse(xhr.response));
         }
+        showMessage(postName, xhr.status);
+    });
+    xhr.addEventListener('error', () => {
+        console.log('error');
     })
+
     xhr.send(body);
+
 }
 
 export const setForm = (postName, postForm, additionalIds, onSuccess, eventName = 'submit') => {
@@ -29,6 +36,9 @@ export const setForm = (postName, postForm, additionalIds, onSuccess, eventName 
         additionalIds.map((idName) => {
             data.append(`${idName[0]}`, idName[1])
         });
+
+
+
         sendData(postName, onSuccess, data);
     }, { once: true });
 }

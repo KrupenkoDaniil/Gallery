@@ -25,15 +25,18 @@ export function submitNewComment(event) {
 
         // Creating a new comment clone
         const commentTextClone = commentTemplate.content.cloneNode(true);
-        commentContainer.insertBefore(commentTextClone, commentContainer.children[0]);
+
+
         setForm('comments', consts.COMMENT_FORM, [
             ['user_id', '1'],
             ['picture_id', eventTarget.id]
         ], (response) => {
+            commentContainer.insertBefore(commentTextClone, commentContainer.children[0]);
             eventTarget.comments.push(response);
             textarea.value = '';
             textarea.blur();
         });
+
 
     } else {
         alert("Fill in all the fields!");
