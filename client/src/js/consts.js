@@ -23,11 +23,15 @@ export const POST_FORM = document.newPost;
 export const LIKE_FORM = document.newLike;
 export const COMMENT_FORM = document.newComment;
 export const HASHTAG_FORM = document.newHashtag;
+export const SIGNUP_FORM = document.signupForm;
+export const LOGIN_FORM = document.loginForm;
 export const GET_URLS = [
     'http://localhost:80/pictures?expand=hashtags',
     'http://localhost:80/effects',
 ];
 export const POST_URLS = {
+    'users': 'http://localhost:80/users',
+    'tokens': 'http://localhost:80/tokens',
     'pictures': 'http://localhost:80/pictures',
     'likes': 'http://localhost:80/likes',
     'comments': 'http://localhost:80/comments',

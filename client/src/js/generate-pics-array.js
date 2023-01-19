@@ -1,5 +1,5 @@
 import { getRandomInt, getRandomElem, getRandomKey } from "./randoming.js";
-import * as consts from './variables.js';
+import * as consts from './consts.js';
 
 
 

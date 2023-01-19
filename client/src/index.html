@@ -6,6 +6,35 @@
 </head>
 <body>
     <div class="overlay"></div>
+
+    <nav class="navigation">
+        <ul class="navigation__list">
+            <li class="navigation__item">
+                <label for="preserve-scale" class="navigation__preserve-scale-label">
+                    <span>preserved</span>
+                    <input type="radio" id="preserve-scale" class="navigation__preserve-scale-input"></input>
+                </label>
+            </li>
+            <li class="navigation__item">
+                <ul class="navigation__filters-list filters-list">
+                    <li id="byIdUp" class="filters-list__filter-item filters-list__filter-item--active">By id up</li>
+                    <li id="byIdDown" class="filters-list__filter-item">By id down </li>
+                    <li id="random" class="filters-list__filter-item">random </li>
+                    <li id="byLikes" class="filters-list__filter-item">by likes</li>
+                    <li id="byComments" class="filters-list__filter-item">by comments</li>
+                    <li id="byEffects" class="filters-list__filter-item">By effects</li>
+                    <li id="byTag" class="filters-list__filter-item">By tag</li>
+                </ul>
+            </li>
+            <li class="navigation__item">
+                <a href="#" class="navigation__signup-button">
+                    <img alt="signup!" class="navigation__user-avatar">
+                    <h3 class="navigation__username"></h3>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
     <section class="post-window modal-window"> 
         <img src="./img/svg/close-outline.svg" class="modal-window__exit-button">
         <div class="post-window__image-section image-section">
@@ -90,7 +119,7 @@
         </form>
     </section>
 
-    <section class="filters-section">
+    <!-- <section class="filters-section">
         <label for="preserve-scale" class="filters-section__preserve-scale-label">
             <span>preserved</span>
             <input type="radio" id="preserve-scale" class="filters-section__preserve-scale-input"></input>
@@ -104,6 +133,38 @@
             <li id="byEffects" class="filters-list__filter-item">By effects</li>
             <li id="byTag" class="filters-list__filter-item">By tag</li>
         </ul>
+    </section> -->
+
+    <section class="signup-window modal-window">
+        <form action="GET" id="signup-form" name="signupForm">
+            <h1 class="signup-form__title">Register</h1>
+            <img src="./img/svg/close-outline.svg" class="modal-window__exit-button">
+            <label for="signup-email">Email:
+                <input class="signup-form__email" type="email" id="signup-email" name="email" placeholder="email" value="daniilkru24@gmail.com" required>
+            </label>
+            <label for="signup-password">Password
+                <input class="signup-form__password" type="password" id="signup-password" name="password_hash" placeholder="password" value="123" required>
+            </label>
+            <label for="signup-username">Username:
+                <input class="signup-form__username" type="text" id="signup-username" name="username" placeholder="username" value="username" required>
+            </label>
+            <label for="signup-avatar">Avatar
+                <input class="signup-form__avatar" type="text" id="signup-avatar" name="avatar_path" placeholder="avatar path" value="./avatar-1.png" required>
+            </label>
+            <button class="sign-up__button button" type="submit">Sign Up</button>
+        </form>
+        <form action="GET" id="login-form" name="loginForm">
+            <h1 class="login-form__title">Log In</h1>
+            <label for="login-email">Email:
+                <input class="login-form__email" type="email" id="login-email" name="email" placeholder="email" value="daniilkru24@gmail.com" required>
+            </label>
+            <label for="login-password">Password
+                <input class="login-form__password" type="password" id="login-password" name="password" placeholder="password" value="123" required>
+            </label>
+            <button class="login-form__button button" type="submit">Log In</button>
+
+            <!-- <button>Out</button> -->
+        </form>
     </section>
 
     <!-- <div class="message__window">

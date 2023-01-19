@@ -1,4 +1,4 @@
-import * as consts from './variables.js';
+import * as consts from './consts.js';
 import { setForm } from "./server-api";
 import { openModalWindow } from "./work-with-modal-window.js";
 import { applyFilters } from './create-desk.js';
@@ -16,8 +16,8 @@ export function submitNewComment(event) {
         // Set basics
         const commentName = commentTemplate.content.querySelector('.comments-section__nickname');
         const commentAvatar = commentTemplate.content.querySelector('.comments-section__avatar');
-        commentAvatar.src = '../img/avatars/avatar-4.png';
-        commentName.textContent = 'Daniil';
+        commentAvatar.src = `../img/avatars/${window.localStorage.getItem('user_avatar')}`;
+        commentName.textContent = window.localStorage.getItem('user_name');
 
         // Comment text
         const commentText = commentTemplate.content.querySelector('.comments-section__text');
@@ -28,7 +28,7 @@ export function submitNewComment(event) {
 
 
         setForm('comments', consts.COMMENT_FORM, [
-            ['user_id', '1'],
+            ['user_id', window.localStorage.getItem('user_id')],
             ['picture_id', eventTarget.id]
         ], (response) => {
             commentContainer.insertBefore(commentTextClone, commentContainer.children[0]);

@@ -64,7 +64,7 @@ class Picture extends ActiveRecord
             [['user_id'], 'integer'],
             [['user_id'], 'exist', 'targetClass' => User::class, 'targetAttribute' => 'id'],
 
-            [['imageFile'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg'],
+            [['imageFile'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg, jpeg'],
         ];
     }
 

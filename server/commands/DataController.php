@@ -2,8 +2,10 @@
 
 namespace app\commands;
 
+use app\models\AccessToken;
 use app\models\Effect;
 use app\models\User;
+use Yii;
 use yii\console\Controller;
 use yii\console\ExitCode;
 
@@ -68,11 +70,6 @@ class DataController extends Controller
 
     public function actionImport(): int
     {
-        $user = new User();
-        $user->username = 'admin';
-        $user->avatar_path = './img/avatar-1.svg';
-        $user->save();
-
         foreach (self::EFFECTS as $effect_item) {
             $effect = new Effect();
 

@@ -1,0 +1,57 @@
+.signup-window {
+	display: flex;
+	justify-content: center;
+	gap: 100px;
+}
+
+#signup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+
+		&__email {
+		}
+
+		&__password {
+		}
+
+		&__username {
+		}
+
+		&__avatar {
+		}
+}
+
+@media screen and (max-width: 1000px) {
+	.signup-window {
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		gap: 50px;
+	}
+	input {
+		margin-top: 5px;
+		width: 100%;
+	}
+}
+
+#login-form {
+	display: flex;
+    flex-direction: column;
+    gap: 1em;
+
+	&__title {
+	}
+
+	&__email {
+	}
+
+	&__password {
+	}
+
+	&__button {
+	}
+}
+.button {
+}
+

@@ -1,0 +1,81 @@
+.navigation {
+
+    &__list {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    &__item {
+        padding: 10px 0;
+        text-transform: uppercase;
+    }
+
+     &__preserve-scale-label {
+        cursor: pointer;
+        padding: 5px 10px;
+        border-radius: 20px;
+        transition: all .2s linear;
+
+        &:hover {
+            color: white;
+            background-color: blue;
+        }
+    }
+    &__preserve-scale-button--active {
+        color: white;
+        background-color: blue;
+    }
+
+    &__preserve-scale-input {
+        display: none;
+    }
+
+    &__signup-button {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+        cursor: pointer;
+        padding: 5px 10px;
+        color: black;
+        border-radius: 15rem;
+        transition: all .2s linear;
+
+        &:hover {
+            color: white;
+            background-color: blue;
+        }
+    }
+
+    &__user-avatar {
+        width: 3em;
+    }
+
+    &__username {
+        font-weight: normal;
+    }
+}
+
+.filters-list {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+    &__filter-item {
+        cursor: pointer;
+        padding: 5px 10px;
+        border-radius: 20px;
+        transition: all .2s linear;
+
+        &:hover {
+            color: white;
+            background-color: blue;
+        }
+    }
+    &__filter-item--active {
+        color: white;
+        background-color: blue;
+    }
+}

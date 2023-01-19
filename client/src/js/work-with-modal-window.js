@@ -1,8 +1,8 @@
-import * as consts from './variables.js';
+import * as consts from './consts.js';
 import { submitNewComment } from './submit-new-comment.js';
 import { setEvent, removeEvents } from './set-events.js';
 import { setRange, checkEffects } from "./noUiSlider.js";
-import { setForm, deleteData } from "./server-api.js";
+import { getData, setForm, deleteData } from "./server-api.js";
 import { createDesk, applyFilters } from './create-desk.js';
 // import { LoaderTargetPlugin } from 'webpack';
 
@@ -53,11 +53,12 @@ document.addEventListener('keydown', (event) => {
 });
 
 export function openModalWindow(event, picsArray) {
-    if (event.target.classList.contains('post')) { //! if we target post
+    if (event.target.closest('.post')) { //! if we target post
 
         // Set basics for Display modal window
         targetElement = picsArray[event.target.getAttribute('id')];
         modalWindow = document.querySelector('.post-window');
+        console.log(targetElement);
         setBasics(submitNewComment, targetElement.id);
 
         // Set Hashtags section
@@ -137,6 +138,13 @@ export function openModalWindow(event, picsArray) {
         const submitButton = document.querySelector('.setting-section__submit-button');
         setEvent('submit', submitButton, submitPost);
 
+    } else if (event.target.closest('.navigation__signup-button')) {
+        modalWindow = document.querySelector('.signup-window');
+        setBasics(signUp);
+
+        const logInButton = modalWindow.querySelector('.login-form__button');
+        setEvent('click', logInButton, logIn);
+
     } else if (modalWindow !== undefined // if modal window is set
         && modalWindow.classList.contains('active') // if modal window is active
         && !document.querySelector('.message__window') // if there is no Message Window
@@ -172,7 +180,7 @@ function closeModalWindow() {
     // Null effects
     const activeLabel = document.querySelector('.setting-section__label--active');
     const originalEffectLabel = document.querySelector('#original_effect');
-    modalWindowImg.style.filter = 'none';
+    modalWindowImg ? modalWindowImg.style.filter = 'none' : null;
     appliedEffect = 1;
 
     if (activeLabel !== originalEffectLabel) {
@@ -248,7 +256,7 @@ function setLike() {
         checkLikes();
     } else {
         setForm('likes', consts.LIKE_FORM, [
-            ['user_id', '1'],
+            ['user_id', window.localStorage.getItem('user_id')],
             ['picture_id', targetElement.id],
         ], (response) => {
             targetElement['likes'].push(response);
@@ -316,8 +324,9 @@ function submitPost() {
     // Set Value input for form
     document.querySelector('.scale-control-settings__value').setAttribute('value', `${scaleValue * 100}%`);
     document.querySelector('.setting-section__effect-id').setAttribute('value', appliedEffect);
+
     setForm('pictures', consts.POST_FORM, [
-        ['user_id', '1'],
+        ['user_id', window.localStorage.getItem('user_id')],
         ['hashtags', tegsArray.join(' ')]
     ], (response) => {
         response.hashtags = tegsArray;
@@ -328,7 +337,8 @@ function submitPost() {
     });
 }
 
-export function showMessage(postName, status) {
+export function showMessage(postName, status = null) {
+
     if (status == 201) {
         switch (postName) {
             case 'pictures': {
@@ -341,11 +351,27 @@ export function showMessage(postName, status) {
             }
         }
     } else {
-        createMessageWindow('There is some problems!');
+        switch (postName) {
+            case 'filters': {
+                createMessageWindow('Log In, please, before using filters!');
+                break;
+            }
+            case 'getData': {
+                createMessageWindow('Log In, please!');
+                break;
+
+            }
+            default: {
+                createMessageWindow('There is some problems!');
+            }
+        }
     }
 }
 
 function createMessageWindow(title) {
+    consts.MAIN_OVERLAY.style.display = 'block';
+    consts.MAIN_OVERLAY.addEventListener('click', removeMessageWindow);
+
     // Setting Message Template 
     const messageTemplate = document.getElementById('message-template');
     const messageTitle = messageTemplate.content.querySelector('.message__title');
@@ -353,17 +379,50 @@ function createMessageWindow(title) {
 
     // Creating Message Clone
     const messageClone = messageTemplate.content.cloneNode(true);
+    document.body.insertBefore(messageClone, document.body.children[0]);
 
     // Setting Events
-    const messageButton = messageClone.querySelector('.message__success-button');
+    const messageButton = document.body.children[0].querySelector('.message__success-button');
     messageButton.addEventListener('click', removeMessageWindow);
-    document.body.addEventListener('click', removeMessageWindow);
 
-    document.body.insertBefore(messageClone, document.body.children[0]);
 }
 
 function removeMessageWindow() {
     const message = document.querySelector('.message__window');
     document.body.removeChild(message);
-    document.body.removeEventListener('click', removeMessageWindow);
+    consts.MAIN_OVERLAY.style.display = 'none';
+    consts.MAIN_OVERLAY.removeEventListener('click', removeMessageWindow)
 }
+
+// const signupButton = document.querySelector('.sign-up__button');
+function signUp() {
+    setForm('users', consts.SIGNUP_FORM, [], (response) => {
+        console.log(response);
+    });
+}
+
+// const loginButton = document.querySelector('.login-form__button');
+export function logIn() {
+    setForm('tokens', consts.LOGIN_FORM, [], (response) => {
+        console.log(response);
+        window.localStorage.setItem('token', response.token);
+        window.localStorage.setItem('user_id', response.user.id);
+        window.localStorage.setItem('user_name', response.user.name);
+        window.localStorage.setItem('user_avatar', response.user.avatar);
+        getData((response) => {
+            console.log(response);
+            applyFilters(consts.FILTER_MODES.ID_UP, response);
+            closeModalWindow();
+        });
+    });
+}
+
+// {
+//     "id": 10,
+//     "created_at": null,
+//     "token": "8gSe_4xiLKS0cLfYUXTyfskSo7pLAkDY",
+//     "user": {
+//         "name": "username",
+//         "avatar": "./avatar-1.png"
+//     }
+// }
