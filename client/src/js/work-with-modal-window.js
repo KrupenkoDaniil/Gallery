@@ -1,38 +1,33 @@
-import * as consts from './consts.js';
-import { submitNewComment } from './submit-new-comment.js';
-import { setEvent, removeEvents } from './set-events.js';
-import { setRange, checkEffects } from "./noUiSlider.js";
-import { getData, setForm, deleteData } from "./server-api.js";
+import { setForm, getData, deleteData, createMessageWindow } from './server-api.js';
 import { createDesk, applyFilters } from './create-desk.js';
-// import { LoaderTargetPlugin } from 'webpack';
+import { submitNewComment } from './submit-new-comment.js'
+import { setRange, checkEffects } from "./noUiSlider.js";
+import { setEvent, removeEvents } from "./set-events";
+import * as consts from '../js/consts.js';
 
+let targetElement, modalWindowImg, userLike, likesSpan, scaleValue;
 let appliedEffect = 1;
-
-// Set main Vars
-let targetElement, modalWindow, modalWindowImg, userLike, likesSpan, scaleValue;
-let targetElementComments = [];
 let tegsArray = [];
-
-// Set event for exeting modal window by pressing "Escape" button 
+let targetElementComments = [];
 document.addEventListener('keydown', (event) => {
-    if (modalWindow !== undefined) {
+    if (createModalWindow.modalWindow !== undefined) {
         switch (event.code) {
             case 'Escape':
                 if (document.querySelector('.message__window')) {
                     removeMessageWindow();
                 } else if (!document.querySelector('#description:focus')
                     && !document.querySelector('.hashtags-section__input:focus')) { // check if new-port
-                    closeModalWindow(modalWindow);
+                    closeModalWindow();
                 }
                 break;
             case 'Enter':
                 if (document.querySelector('.add-comment__textarea:focus')) {
                     event.preventDefault();
-                    modalWindow.querySelector('button[type="submit"]').click();
+                    createModalWindow.modalWindow.querySelector('button[type="submit"]').click();
                 }
                 if (document.querySelector('.setting-section__textarea:focus')) {
                     event.preventDefault();
-                    modalWindow.querySelector('button[type="submit"]').click();
+                    createModalWindow.modalWindow.querySelector('button[type="submit"]').click();
                 }
                 if (document.querySelector('.hashtags-section__input:focus')) {
                     event.preventDefault();
@@ -52,125 +47,127 @@ document.addEventListener('keydown', (event) => {
     }
 });
 
-export function openModalWindow(event, picsArray) {
-    if (event.target.closest('.post')) { //! if we target post
+export function createModalWindow(windowType, eventTarget) {
+    switch (windowType) {
+        case 'signUp': {
+            createModalWindow.modalWindow = document.querySelector('.signup-window');
+            setBasics();
+            const signUpButton = createModalWindow.modalWindow.querySelector('.sign-up__button');
+            setEvent('click', signUpButton, signUp)
 
-        // Set basics for Display modal window
-        targetElement = picsArray[event.target.getAttribute('id')];
-        modalWindow = document.querySelector('.post-window');
-        console.log(targetElement);
-        setBasics(submitNewComment, targetElement.id);
+            const logInButton = createModalWindow.modalWindow.querySelector('.login-form__button');
+            setEvent('click', logInButton, logIn);
+            break;
+        }
+        case 'post': {
+            targetElement = applyFilters.pictures[eventTarget.getAttribute('id')];
+            createModalWindow.modalWindow = document.querySelector('.post-window');
+            setBasics();
 
-        // Set Hashtags section
-        showHashTags(targetElement['hashtags']);
+            // Set Hashtags section
+            showHashTags(targetElement['hashtags']);
 
-        // Set Image section
-        likesSpan = modalWindow.querySelector('.image-section__likes-label span');
-        modalWindowImg = modalWindow.querySelector('.image-section__img');
-        const modalWindowDescription = modalWindow.querySelector('.image-section__text');
-        targetElement['description'] ? modalWindowDescription.textContent = `${targetElement['description']}` : null;
-        modalWindowImg.src = `http://localhost:80/uploads/${targetElement['url']}`;
-        let pictureEffect = checkEffects(targetElement['effect_id'], targetElement['effect_level']);
-        modalWindowImg.style.filter = `${pictureEffect[0]}(${pictureEffect[1]})`;
-        modalWindowImg.style.setProperty('--scale', targetElement['scale']);
+            // Set Image section
+            likesSpan = createModalWindow.modalWindow.querySelector('.image-section__likes-label span');
+            modalWindowImg = createModalWindow.modalWindow.querySelector('.image-section__img');
+            const modalWindowDescription = createModalWindow.modalWindow.querySelector('.image-section__text');
+            targetElement['description'] ? modalWindowDescription.textContent = `${targetElement['description']}` : null;
+            modalWindowImg.src = `http://localhost:80/uploads/${targetElement['url']}`;
+            let pictureEffect = checkEffects(targetElement['effect_id'], targetElement['effect_level']);
+            modalWindowImg.style.filter = `${pictureEffect[0]}(${pictureEffect[1]})`;
+            modalWindowImg.style.setProperty('--scale', targetElement['scale']);
 
+            // Set Likes
+            checkLikes();
+            setEvent('change', consts.INPUT_LIKE, setLike);
 
-        // Set Likes
-        checkLikes();
-        setEvent('change', consts.INPUT_LIKE, setLike);
+            // Set comments section
+            targetElement['comments'].forEach((item) => {
+                targetElementComments.push(item);
+            })
+            targetElementComments.reverse();
 
-        // Set comments section
-        targetElement['comments'].forEach((item) => {
-            targetElementComments.push(item);
-        })
-        targetElementComments.reverse();
+            const showCommentsButton = document.querySelector('.comments-section__show-comments-button');
 
-        const showCommentsButton = document.querySelector('.comments-section__show-comments-button');
-        showComments(consts.COMENTS_TO_SHOW_AMOUNT, showCommentsButton);
-        setEvent('click', showCommentsButton, () => showComments(consts.COMENTS_TO_SHOW_AMOUNT, showCommentsButton));
+            // targetElementComments.length < 5 ? showCommentsButton.classList.add('hidden') : showCommentsButton.classList.remove('hidden');
+            showComments(consts.COMENTS_TO_SHOW_AMOUNT, showCommentsButton);
+            setEvent('click', showCommentsButton, () => showComments(consts.COMENTS_TO_SHOW_AMOUNT, showCommentsButton));
 
-    } else if (event.target.classList.contains('add-button')) { //! if we target add button
-        modalWindow = document.querySelector('.add-window');
-        setEvent('change', consts.INPUT_FILE, uploadPicture);
+            // Set submit Button
+            const submitCommentButton = createModalWindow.modalWindow.querySelector('button[type="submit"]');
+            submitCommentButton.id = targetElement.id;
+            setEvent('click', submitCommentButton, submitNewComment);
+            break;
+        }
+        case 'add-button': {
+            createModalWindow.modalWindow = document.querySelector('.add-window');
+            setEvent('change', consts.INPUT_FILE, uploadPicture);
+            // Change photo's scale
+            modalWindowImg = createModalWindow.modalWindow.querySelector('.image-section__img');
+            const increaseScaleButton = document.querySelector('.scale-control-settings__increase-button');
+            const decreaseScaleButton = document.querySelector('.scale-control-settings__decrease-button');
 
-        // Change photo's scale
-        modalWindowImg = modalWindow.querySelector('.image-section__img');
-        const increaseScaleButton = document.querySelector('.scale-control-settings__increase-button');
-        const decreaseScaleButton = document.querySelector('.scale-control-settings__decrease-button');
+            // Set default scale 
+            scaleValue = 1;
+            modalWindowImg.style.setProperty('--scale', scaleValue);
 
-        // Set default scale 
-        scaleValue = 1;
-        modalWindowImg.style.setProperty('--scale', scaleValue);
+            // Set scale addEventListeners
+            setEvent('click', increaseScaleButton, () => {
+                if (scaleValue < 1) {
+                    scaleValue = scaleValue + 0.25;
+                    modalWindowImg.style.setProperty('--scale', String(scaleValue));
+                    // scaleValue = +getComputedStyle(modalWindowImg).getPropertyValue('--scale');
 
-        // Set scale addEventListeners
-        setEvent('click', increaseScaleButton, () => {
-            if (scaleValue < 1) {
-                scaleValue = scaleValue + 0.25;
-                modalWindowImg.style.setProperty('--scale', String(scaleValue));
-                // scaleValue = +getComputedStyle(modalWindowImg).getPropertyValue('--scale');
+                }
+            });
+            setEvent('click', decreaseScaleButton, () => {
+                if (scaleValue > 0.25) {
+                    scaleValue = scaleValue - 0.25;
+                    modalWindowImg.style.setProperty('--scale', String(scaleValue));
+                    // scaleValue = +getComputedStyle(modalWindowImg).getPropertyValue('--scale');
+                }
+            });
 
-            }
-        });
-        setEvent('click', decreaseScaleButton, () => {
-            if (scaleValue > 0.25) {
-                scaleValue = scaleValue - 0.25;
-                modalWindowImg.style.setProperty('--scale', String(scaleValue));
-                // scaleValue = +getComputedStyle(modalWindowImg).getPropertyValue('--scale');
-            }
-        });
+            // Remove Tegs
+            const tegsContainer = createModalWindow.modalWindow.querySelector('.hashtags-section__hashtags-container');
+            setEvent('click', tegsContainer, (event) => {
+                if (event.target.classList.contains('hashtags-section__close-button')) {
+                    tegsContainer.removeChild(event.target.parentNode);
+                    const tegText = event.target.parentNode.childNodes[1].textContent;
+                    tegsArray.splice(tegsArray.indexOf(tegText), 1);
+                }
+            });
 
-        // Remove Tegs
-        const tegsContainer = modalWindow.querySelector('.hashtags-section__hashtags-container');
-        setEvent('click', tegsContainer, (event) => {
-            if (event.target.classList.contains('hashtags-section__close-button')) {
-                tegsContainer.removeChild(event.target.parentNode);
-                const tegText = event.target.parentNode.childNodes[1].textContent;
-                tegsArray.splice(tegsArray.indexOf(tegText), 1);
-            }
-        });
+            // Put effect on photo
+            const effectsField = document.querySelector('.setting-section__effects');
+            setEvent('click', effectsField, applyEffects);
 
-        // Put effect on photo
-        const effectsField = document.querySelector('.setting-section__effects');
-        setEvent('click', effectsField, applyEffects);
-
-        // Set Submit button
-
-        const submitButton = document.querySelector('.setting-section__submit-button');
-        setEvent('submit', submitButton, submitPost);
-
-    } else if (event.target.closest('.navigation__signup-button')) {
-        modalWindow = document.querySelector('.signup-window');
-        setBasics(signUp);
-
-        const logInButton = modalWindow.querySelector('.login-form__button');
-        setEvent('click', logInButton, logIn);
-
-    } else if (modalWindow !== undefined // if modal window is set
-        && modalWindow.classList.contains('active') // if modal window is active
-        && !document.querySelector('.message__window') // if there is no Message Window
-        && event.target.classList.contains('overlay')) { //! if we target overlay
-        closeModalWindow();
+            // Set Submit button
+            const submitButton = document.querySelector('.setting-section__submit-button');
+            setEvent('click', submitButton, submitPost);
+            break;
+        }
     }
 }
 
-function setBasics(submitButtonFunc, targetId = '0') {
+function setBasics() {
     // Set Attributes and Styles
-    modalWindow.classList.add('active');
-    modalWindow.style.top = '0';
+    createModalWindow.modalWindow.classList.add('active');
+    createModalWindow.modalWindow.style.top = '0';
     consts.MAIN_OVERLAY.style.display = 'block';
 
     // Set Exit Button
-    const exitButton = modalWindow.querySelector('.modal-window__exit-button');
+    const exitButton = createModalWindow.modalWindow.querySelector('.modal-window__exit-button');
     setEvent('click', exitButton, closeModalWindow);
 
     // Set Submit Button
-    const submitButton = modalWindow.querySelector('button[type="submit"]');
-    submitButton.id = targetId;
-    setEvent('click', submitButton, submitButtonFunc);
+    // const submitButton = modalWindow.querySelector('button[type="submit"]');
+    // submitButton.id = targetId;
+    // setEvent('click', submitButton, submitButtonFunc);
 }
 
-function closeModalWindow() {
-    modalWindow.classList.remove('active');
+export function closeModalWindow() {
+    createModalWindow.modalWindow.classList.remove('active');
 
     // Null Tegs
     consts.INPUT_TEG.value = '#';
@@ -180,7 +177,7 @@ function closeModalWindow() {
     // Null effects
     const activeLabel = document.querySelector('.setting-section__label--active');
     const originalEffectLabel = document.querySelector('#original_effect');
-    modalWindowImg ? modalWindowImg.style.filter = 'none' : null;
+    createModalWindow.modalWindow ? createModalWindow.modalWindow.style.filter = 'none' : null;
     appliedEffect = 1;
 
     if (activeLabel !== originalEffectLabel) {
@@ -196,7 +193,7 @@ function closeModalWindow() {
     targetElementComments = [];
 
     // Null Styles
-    modalWindow.style.top = '-100%';
+    createModalWindow.modalWindow.style.top = '-100%';
     consts.MAIN_OVERLAY.style.display = 'none';
     consts.INPUT_FILE.value = '';
 
@@ -242,12 +239,12 @@ function showHashTags(hashtags) {
 }
 
 function checkLikes() {
-    userLike = targetElement['likes'].filter(like => like['user_id'] == 1)[0]; // find user's like
+    userLike = targetElement['likes'].filter(like => like['user_id'] == localStorage.getItem('user_id'))[0]; // find user's like
     likesSpan.textContent = targetElement['likes'].length;
 }
 
 function setLike() {
-    let likeSVG = modalWindow.querySelector('.image-section__like-svg');
+    let likeSVG = createModalWindow.modalWindow.querySelector('.image-section__like-svg');
     if (userLike) {
         targetElement['likes'].splice(targetElement['likes'].indexOf(userLike), 1);
         deleteData(`http://localhost:80/likes/${userLike.id}`);
@@ -269,7 +266,7 @@ function setLike() {
 }
 
 function uploadPicture() {
-    const modalWindowImg = modalWindow.querySelector('.image-section__img');
+    const modalWindowImg = createModalWindow.modalWindow.querySelector('.image-section__img');
     const reader = new FileReader();
     const selectedFile = consts.INPUT_FILE.files[0];
 
@@ -279,7 +276,7 @@ function uploadPicture() {
         });
         reader.readAsDataURL(selectedFile);
 
-        setBasics(submitPost);
+        setBasics();
     }
 }
 
@@ -296,7 +293,7 @@ function addNewTeg() {
     } else if (tegsArray.length >= 5) {
         alert('You can add only 5 hashtags!');
     } else {
-        const tegsContainer = modalWindow.querySelector('.hashtags-section__hashtags-container');
+        const tegsContainer = createModalWindow.modalWindow.querySelector('.hashtags-section__hashtags-container');
         const tegTemplate = document.querySelector('#hashtag-template');
         const newTegText = tegTemplate.content.querySelector('.hashtags-section__text');
         newTegText.textContent = consts.INPUT_TEG.value;
@@ -324,105 +321,34 @@ function submitPost() {
     // Set Value input for form
     document.querySelector('.scale-control-settings__value').setAttribute('value', `${scaleValue * 100}%`);
     document.querySelector('.setting-section__effect-id').setAttribute('value', appliedEffect);
-
     setForm('pictures', consts.POST_FORM, [
         ['user_id', window.localStorage.getItem('user_id')],
         ['hashtags', tegsArray.join(' ')]
     ], (response) => {
         response.hashtags = tegsArray;
         applyFilters.pictures.push(response);
+        createDesk(applyFilters.pictures, applyFilters.effects);
+        createMessageWindow('Your post has been submited!')
         closeModalWindow();
         removeEvents();
-        createDesk(applyFilters.pictures, applyFilters.effects);
     });
 }
 
-export function showMessage(postName, status = null) {
-
-    if (status == 201) {
-        switch (postName) {
-            case 'pictures': {
-                createMessageWindow('Your post was successfully uploaded');
-                break;
-            }
-            case 'comments': {
-                createMessageWindow('Your comment was successfully uploaded');
-                break;
-            }
-        }
-    } else {
-        switch (postName) {
-            case 'filters': {
-                createMessageWindow('Log In, please, before using filters!');
-                break;
-            }
-            case 'getData': {
-                createMessageWindow('Log In, please!');
-                break;
-
-            }
-            default: {
-                createMessageWindow('There is some problems!');
-            }
-        }
-    }
-}
-
-function createMessageWindow(title) {
-    consts.MAIN_OVERLAY.style.display = 'block';
-    consts.MAIN_OVERLAY.addEventListener('click', removeMessageWindow);
-
-    // Setting Message Template 
-    const messageTemplate = document.getElementById('message-template');
-    const messageTitle = messageTemplate.content.querySelector('.message__title');
-    messageTitle.textContent = title;
-
-    // Creating Message Clone
-    const messageClone = messageTemplate.content.cloneNode(true);
-    document.body.insertBefore(messageClone, document.body.children[0]);
-
-    // Setting Events
-    const messageButton = document.body.children[0].querySelector('.message__success-button');
-    messageButton.addEventListener('click', removeMessageWindow);
-
-}
-
-function removeMessageWindow() {
-    const message = document.querySelector('.message__window');
-    document.body.removeChild(message);
-    consts.MAIN_OVERLAY.style.display = 'none';
-    consts.MAIN_OVERLAY.removeEventListener('click', removeMessageWindow)
-}
-
-// const signupButton = document.querySelector('.sign-up__button');
 function signUp() {
     setForm('users', consts.SIGNUP_FORM, [], (response) => {
-        console.log(response);
     });
 }
 
-// const loginButton = document.querySelector('.login-form__button');
 export function logIn() {
     setForm('tokens', consts.LOGIN_FORM, [], (response) => {
-        console.log(response);
         window.localStorage.setItem('token', response.token);
         window.localStorage.setItem('user_id', response.user.id);
+        window.localStorage.setItem('token_id', response.id);
         window.localStorage.setItem('user_name', response.user.name);
         window.localStorage.setItem('user_avatar', response.user.avatar);
         getData((response) => {
-            console.log(response);
             applyFilters(consts.FILTER_MODES.ID_UP, response);
             closeModalWindow();
         });
     });
 }
-
-// {
-//     "id": 10,
-//     "created_at": null,
-//     "token": "8gSe_4xiLKS0cLfYUXTyfskSo7pLAkDY",
-//     "user": {
-//         "name": "username",
-//         "avatar": "./avatar-1.png"
-//     }
-// }

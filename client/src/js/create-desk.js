@@ -1,34 +1,70 @@
-import { getData } from "./server-api.js";
-import { openModalWindow, showMessage } from "./work-with-modal-window.js";
-import './validation.js';
-import { checkEffects } from "./noUiSlider.js";
-import { generatePicsArray } from "./generate-pics-array.js"
-import { shuffle } from "./randoming.js";
-import * as consts from './consts.js';
-
-let bodyEventsHandler = (event) => {
-    openModalWindow(event, []);
-}; // primarally listener
-consts.BODY.addEventListener('click', bodyEventsHandler);
+import { getData, deleteData, createMessageWindow, removeMessageWindow } from "../js/server-api.js";
+import { createModalWindow, closeModalWindow } from "./work-with-modal-window.js";
+import { checkEffects } from "../js/noUiSlider.js";
+import { shuffle } from "../js/randoming.js";
+import * as consts from '../js/consts.js';
+import '../js/validation.js';
 
 export function createDesk(picsArray, effects, containerWidth = 800, RowSize = 5, containerMargin = 15) {
-    consts.BODY.removeEventListener('click', bodyEventsHandler); // get rid of previous listener
-
-    bodyEventsHandler = (event) => openModalWindow(event, picsArray);
 
     // Prepare main container
     consts.MAIN_CONTAINER.innerHTML = '';
     consts.MAIN_CONTAINER.style.maxWidth = containerWidth + 'px';
 
     // Set all modal windows' appearance
-    consts.BODY.addEventListener('click', bodyEventsHandler);
     consts.BODY.appendChild(consts.MAIN_CONTAINER);
+    consts.MAIN_CONTAINER.addEventListener('click', (event) => {
+        const eventTarget = event.target;
+        if (eventTarget.closest('.post')) {
+            createModalWindow('post', event.target);
+        } else if (eventTarget.closest('.add-button')) {
+            createModalWindow('add-button');
+        }
+    });
 
-    // Set user info
-    let userAvatar = document.querySelector('.navigation__user-avatar');
-    let userName = document.querySelector('.navigation__username');
-    userAvatar.src = `../img/avatars/${window.localStorage.getItem('user_avatar')}`;
-    userName.textContent = window.localStorage.getItem('user_name');
+    const filtersList = document.querySelector('.filters-list');
+    const scaleButtonLabel = document.querySelector('.navigation__preserve-scale-label');
+    const userSection = document.querySelector('.navigation__signup-button');
+    userSection.innerHTML = '';
+    if (localStorage.getItem('token')) {
+        // Set filters & preserve btn
+        filtersList.classList.remove('hidden');
+        scaleButtonLabel.classList.remove('hidden');
+
+        // Set user info
+        const userAvatar = document.createElement('img');
+        userAvatar.src = `../img/avatars/${window.localStorage.getItem('user_avatar')}`;
+        userAvatar.classList.add('navigation__user-avatar');
+        userSection.appendChild(userAvatar);
+
+        const userName = document.createElement('h3');
+        userName.classList.add('navigation__username');
+        userName.textContent = window.localStorage.getItem('user_name');
+        userSection.appendChild(userName);
+
+        const userLogOutButton = document.createElement('h3');
+        userLogOutButton.type = 'submit';
+        userLogOutButton.textContent = 'Log Out';
+        userLogOutButton.classList.add('navigation__signup-text');
+        userSection.appendChild(userLogOutButton);
+        userLogOutButton.addEventListener('click', (event) => {
+            event.stopPropagation();
+            if (confirm('Do you want to log out?')) {
+                deleteData(consts.POST_URLS['tokens'] + '/' + localStorage.getItem('token_id'), false);
+                localStorage.clear();
+                createDesk([], []);
+            }
+        })
+    } else {
+        // Set filters & preserve btn
+        filtersList.classList.add('hidden');
+        scaleButtonLabel.classList.add('hidden');
+
+        const signUpButton = document.createElement('h3');
+        signUpButton.classList.add('navigation__signup-text');
+        signUpButton.textContent = 'SignUp!';
+        userSection.appendChild(signUpButton);
+    }
 
     // Set parameters
     const postSize = containerWidth / RowSize - containerMargin * 2;
@@ -37,6 +73,7 @@ export function createDesk(picsArray, effects, containerWidth = 800, RowSize = 5
 
     // Start loop
     let buttonSet = false;
+
     for (let i = 0; i < picsArray.length; i++) {
         if (i == (addButtonYPos * RowSize - rowHalf) && !buttonSet) { // if next element is button
             const newElement = document.createElement('label');
@@ -75,11 +112,37 @@ export function createDesk(picsArray, effects, containerWidth = 800, RowSize = 5
             consts.MAIN_CONTAINER.appendChild(postClone);
         }
     }
+
+    if (picsArray.length < 3 && !buttonSet && localStorage.getItem('token')) {
+        const newElement = document.createElement('label');
+        newElement.classList.add('add-button');
+        newElement.setAttribute('for', 'file');
+        newElement.innerText = 'Add new';
+        newElement.style.width = postSize + 'px';
+        newElement.style.height = postSize + 'px';
+        newElement.style.margin = containerMargin + 'px';
+        consts.MAIN_CONTAINER.appendChild(newElement);
+        buttonSet = true;
+    }
+}
+
+function setSignUpButton() {
+    const signUpButton = document.querySelector('.navigation__signup-button');
+    signUpButton.addEventListener('click', () => {
+        createModalWindow('signUp');
+    })
+}
+
+function setOverlay() {
+    consts.MAIN_OVERLAY.addEventListener('click', () => {
+        closeModalWindow();
+    })
 }
 
 let currentFilter;
 function setFilters() {
     const filterContainer = document.querySelector('.filters-list');
+    filterContainer.classList.add('hidden');
     currentFilter = filterContainer.querySelector('.filters-list__filter-item--active').id;
     filterContainer.addEventListener('click', (event) => {
         const eventTarget = event.target;
@@ -87,13 +150,17 @@ function setFilters() {
             document.querySelector('.filters-list__filter-item--active').classList.remove('filters-list__filter-item--active');
             eventTarget.classList.add('filters-list__filter-item--active');
             currentFilter = eventTarget.id;
-            consts.BODY.removeEventListener('click', bodyEventsHandler);
+            // consts.BODY.removeEventListener('click', bodyEventsHandler);
             applyFilters(currentFilter);
         }
     })
 }
 function setScalePreserve() {
     const scaleButton = document.querySelector('.navigation__preserve-scale-input');
+
+    const scaleButtonLabel = document.querySelector('.navigation__preserve-scale-label');
+    scaleButtonLabel.classList.add('hidden');
+
     scaleButton.addEventListener('click', () => {
         consts.MAIN_CONTAINER.classList.toggle('scale-preverved');
         scaleButton.parentElement.classList.toggle('navigation__preserve-scale-button--active')
@@ -139,16 +206,18 @@ export function applyFilters(filterMode, response = []) {
         }
         createDesk(applyFilters.pictures, applyFilters.effects);
     } catch (er) {
-        showMessage('filters');
-        consts.BODY.addEventListener('click', bodyEventsHandler);
+        console.log(er);
+        createMessageWindow('There are problems with filters');
+        // consts.BODY.addEventListener('click', bodyEventsHandler);
     }
 
 }
 
+setSignUpButton();
 setScalePreserve();
+setOverlay();
 setFilters();
-getData((response) => {
-    response ? applyFilters(currentFilter, response) : showMessage('getData');
-});
 
-// createDesk(generatePicsArray(10));
+getData((response) => {
+    applyFilters(consts.FILTER_MODES.ID_UP, response);
+});

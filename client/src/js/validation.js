@@ -16,7 +16,7 @@ newPostDescription.addEventListener('input', () => {
 
 // Set New Teg Validation
 const tegInput = document.querySelector('.hashtags-section__input');
-const reg = new RegExp('^#[A-Za-zА-Яа-я0-9]{0,20}$');
+const TegReg = new RegExp('^#[A-Za-zА-Яа-я0-9]{0,20}$');
 
 tegInput.addEventListener('input', () => {
     let inputValue = tegInput.value;
@@ -24,11 +24,39 @@ tegInput.addEventListener('input', () => {
         tegInput.setCustomValidity('You can\'t add hashtag without # at the first place!');
     } else if (inputValue.length > MAX_TEG_LENGTH) {
         tegInput.setCustomValidity(`Your hashtag name can\' be longer then ${MAX_TEG_LENGTH} words!`);
-    } else if (!reg.test(inputValue)) {
+    } else if (!TegReg.test(inputValue)) {
         tegInput.setCustomValidity(`You can\'t use #, @, $, etc symbols and spaces in hashtag!`);
     }
     else {
         tegInput.setCustomValidity('');
     }
     tegInput.reportValidity();
+});
+
+// Set signUp form validation
+const emailInput = document.querySelector('.signup-form__email');
+const passwordInput = document.querySelector('.signup-form__password');
+const passwordReg = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$/;
+const emailReg = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+
+emailInput.addEventListener('input', () => {
+    let emailValue = emailInput.value;
+    console.log('Email: ' + emailReg.test(emailValue));
+    if (!emailReg.test(emailValue)) {
+        emailInput.setCustomValidity('Your email is incorect!');
+    } else {
+        emailInput.setCustomValidity('');
+    }
+    emailInput.reportValidity();
+})
+
+passwordInput.addEventListener('input', () => {
+    let passwordValue = passwordInput.value;
+    console.log('Password: ' + passwordReg.test(passwordValue));
+    if (!passwordReg.test(passwordValue)) {
+        passwordInput.setCustomValidity('Your password is unexeptable!')
+    } else {
+        passwordInput.setCustomValidity('');
+    }
+    passwordInput.reportValidity();
 });

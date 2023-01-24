@@ -1,7 +1,7 @@
-import * as consts from './consts.js';
-import { setForm } from "./server-api";
-import { openModalWindow } from "./work-with-modal-window.js";
+import { createMessageWindow } from './server-api';
 import { applyFilters } from './create-desk.js';
+import { setForm } from "./server-api";
+import * as consts from './consts.js';
 
 export function submitNewComment(event) {
     // Check if textarea has any content
@@ -36,10 +36,5 @@ export function submitNewComment(event) {
             textarea.value = '';
             textarea.blur();
         });
-
-
-    } else {
-        alert("Fill in all the fields!");
     }
-
 }
