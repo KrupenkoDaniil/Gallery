@@ -2,53 +2,6 @@ import * as consts from './consts.js';
 import { applyFilters } from './create-desk.js';
 
 // Setting showing messages
-// export function showMessage(postName, status = null) {
-
-//     if (status == 201) {
-//         switch (postName) {
-//             case 'pictures': {
-//                 createMessageWindow('Your post was successfully uploaded');
-//                 break;
-//             }
-//             case 'comments': {
-//                 createMessageWindow('Your comment was successfully uploaded');
-//                 break;
-//             }
-//             case 'signUp': {
-//                 createMessageWindow('You has registered!');
-//                 break;
-//             }
-//             case 'logIn': {
-//                 createMessageWindow('You has log In!');
-//                 break;
-//             }
-//         }
-//     } else {
-//         switch (postName) {
-//             case 'filters': {
-//                 createMessageWindow('Log In, please, before using filters!');
-//                 break;
-//             }
-//             case 'getData': {
-//                 createMessageWindow('Log In, please!');
-//                 break;
-
-//             }
-//             case 'signUp': {
-//                 createMessageWindow("Such Username or Avatar already exists!");
-//                 break;
-//             }
-//             case 'logIn': {
-//                 createMessageWindow("Email or password is wrong!");
-//                 break;
-//             }
-//             default: {
-//                 createMessageWindow('There is some problems!');
-//             }
-//         }
-//     }
-// }
-
 export function createMessageWindow(title) {
     consts.MAIN_OVERLAY.style.display = 'block';
     consts.MAIN_OVERLAY.addEventListener('click', removeMessageWindow);
@@ -132,10 +85,10 @@ const sendData = (postName, onSuccess, body, targetButton) => {
             })
             .then(data => {
                 if (responseIsOk) {
-                    onSuccess(data);
                     createMessageWindow(postName == 'users' ? 'You have signed Up!' : 'You have log in!');
+                    onSuccess(data);
                 } else {
-                    createMessageWindow('Sorry, probably such email or avatar already exists!')
+                    createMessageWindow(postName == 'users' ? 'Sorry, probably such email or avatar already exists!' : 'Sorry, but your email or password is wrong')
                 }
             })
             .finally(() => {

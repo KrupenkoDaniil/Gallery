@@ -5,6 +5,15 @@ import { shuffle } from "../js/randoming.js";
 import * as consts from '../js/consts.js';
 import '../js/validation.js';
 
+consts.MAIN_CONTAINER.addEventListener('click', (event) => {
+    const eventTarget = event.target;
+    if (eventTarget.closest('.post')) {
+        createModalWindow('post', event.target);
+    } else if (eventTarget.closest('.add-button')) {
+        createModalWindow('add-button');
+    }
+});
+
 export function createDesk(picsArray, effects, containerWidth = 800, RowSize = 5, containerMargin = 15) {
 
     // Prepare main container
@@ -13,14 +22,7 @@ export function createDesk(picsArray, effects, containerWidth = 800, RowSize = 5
 
     // Set all modal windows' appearance
     consts.BODY.appendChild(consts.MAIN_CONTAINER);
-    consts.MAIN_CONTAINER.addEventListener('click', (event) => {
-        const eventTarget = event.target;
-        if (eventTarget.closest('.post')) {
-            createModalWindow('post', event.target);
-        } else if (eventTarget.closest('.add-button')) {
-            createModalWindow('add-button');
-        }
-    });
+
 
     const filtersList = document.querySelector('.filters-list');
     const scaleButtonLabel = document.querySelector('.navigation__preserve-scale-label');
@@ -122,6 +124,7 @@ export function createDesk(picsArray, effects, containerWidth = 800, RowSize = 5
         newElement.style.height = postSize + 'px';
         newElement.style.margin = containerMargin + 'px';
         consts.MAIN_CONTAINER.appendChild(newElement);
+        checkEffects(1, 0, effects);
         buttonSet = true;
     }
 }

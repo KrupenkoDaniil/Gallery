@@ -41,7 +41,6 @@ const emailReg = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
 
 emailInput.addEventListener('input', () => {
     let emailValue = emailInput.value;
-    console.log('Email: ' + emailReg.test(emailValue));
     if (!emailReg.test(emailValue)) {
         emailInput.setCustomValidity('Your email is incorect!');
     } else {
@@ -52,7 +51,6 @@ emailInput.addEventListener('input', () => {
 
 passwordInput.addEventListener('input', () => {
     let passwordValue = passwordInput.value;
-    console.log('Password: ' + passwordReg.test(passwordValue));
     if (!passwordReg.test(passwordValue)) {
         passwordInput.setCustomValidity('Your password is unexeptable!')
     } else {

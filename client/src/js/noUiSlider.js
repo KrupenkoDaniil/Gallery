@@ -53,7 +53,7 @@ export function setRange(effectId, modalWindowImg) {
     }
 }
 
-export function checkEffects(filterId, filterValue, filters = null) {
+export function checkEffects(filterId, filterValue, filters) {
     if (checkEffects.filters === undefined) {
         checkEffects.filters = filters;
     }

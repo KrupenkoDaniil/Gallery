@@ -175,6 +175,7 @@ export function closeModalWindow() {
     document.querySelector('.hashtags-section__hashtags-container').textContent = '';
 
     // Null effects
+    modalWindowImg ? modalWindowImg.style.filter = 'none' : null;
     const activeLabel = document.querySelector('.setting-section__label--active');
     const originalEffectLabel = document.querySelector('#original_effect');
     createModalWindow.modalWindow ? createModalWindow.modalWindow.style.filter = 'none' : null;
@@ -191,6 +192,13 @@ export function closeModalWindow() {
     // Null Comments
     document.querySelector('.comments-container').textContent = '';
     targetElementComments = [];
+
+    // Null textareas
+    const commentDescription = document.querySelector('.add-comment__textarea');
+    commentDescription.value = '';
+
+    const postDescription = document.querySelector('.setting-section__textarea');
+    postDescription.value = '';
 
     // Null Styles
     createModalWindow.modalWindow.style.top = '-100%';
