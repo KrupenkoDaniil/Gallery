@@ -2,7 +2,7 @@
   "name": "gallery",
   "version": "1.0.0",
   "description": "Short webpack set",
-  "main": "main.js",
+  "main": "webpackMain.js",
   "scripts": {
     "server": "webpack serve --mode development --open",
     "dev": "webpack --mode development"

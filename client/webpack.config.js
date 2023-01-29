@@ -4,7 +4,7 @@ const CopyPlugin = require("copy-webpack-plugin");
 const path = require('path');
 
 module.exports = {
-    entry: './src/main.js',
+    entry: './src/webpackMain.js',
     devtool: 'source-map',
     devServer: {
         open: true,

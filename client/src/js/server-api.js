@@ -1,5 +1,6 @@
 import * as consts from './consts.js';
-import { applyFilters } from './create-desk.js';
+import { applyFilters } from './start.js';
+import { createModalWindow } from './work-with-modal-window.js';
 
 // Setting showing messages
 export function createMessageWindow(title) {
@@ -62,11 +63,10 @@ export const getData = (onSuccess) => {
             .then(responses => Promise.all(responses.map(r => r.json())))
             .then(data => onSuccess(data))
             .catch((error) => {
-                // console.log(error);
-                createMessageWindow('There is some problem on the server!')
+                createMessageWindow('There is some problem on the server!');
             })
     } else {
-        createMessageWindow('Sorry, you are not log in!')
+        createModalWindow('signUp');
     }
 
 }
@@ -85,7 +85,7 @@ const sendData = (postName, onSuccess, body, targetButton) => {
             })
             .then(data => {
                 if (responseIsOk) {
-                    createMessageWindow(postName == 'users' ? 'You have signed Up!' : 'You have log in!');
+                    postName == 'tokens' && createMessageWindow('You have log in!');
                     onSuccess(data);
                 } else {
                     createMessageWindow(postName == 'users' ? 'Sorry, probably such email or avatar already exists!' : 'Sorry, but your email or password is wrong')

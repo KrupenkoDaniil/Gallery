@@ -1,11 +1,25 @@
 .signup-window {
-	display: flex;
-	justify-content: center;
-	gap: 100px;
+
+	.tab__list {
+		display: flex;
+		justify-content: center;
+		gap: 20px;
+		font-size: 1.5rem;
+	}
+	.tab__item {
+		cursor: pointer;
+		padding: 7px 10px;
+	}
+
+	.tab__item--active {
+		color: white;
+		background-color: blue;
+		border-radius: 5px;
+	}
 }
 
 #signup-form {
-    display: flex;
+    display: none;
     flex-direction: column;
     gap: 1em;
 
@@ -22,21 +36,8 @@
 		}
 }
 
-@media screen and (max-width: 1000px) {
-	.signup-window {
-		display: flex;
-		justify-content: center;
-		flex-direction: column;
-		gap: 50px;
-	}
-	input {
-		margin-top: 5px;
-		width: 100%;
-	}
-}
-
 #login-form {
-	display: flex;
+	display: none;
     flex-direction: column;
     gap: 1em;
 
@@ -50,8 +51,12 @@
 	}
 
 	&__button {
+		background-color:red;
+		width: auto !important;
 	}
 }
-.button {
+
+.login-form__button {
+	width: auto !important;
 }
 

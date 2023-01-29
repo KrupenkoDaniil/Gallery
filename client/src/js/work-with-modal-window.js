@@ -1,14 +1,15 @@
 import { setForm, getData, deleteData, createMessageWindow } from './server-api.js';
-import { createDesk, applyFilters } from './create-desk.js';
 import { submitNewComment } from './submit-new-comment.js'
 import { setRange, checkEffects } from "./noUiSlider.js";
 import { setEvent, removeEvents } from "./set-events";
-import * as consts from '../js/consts.js';
+import { createDesk } from './create-desk';
+import { applyFilters } from './start.js';
+import * as consts from './consts.js';
 
 let targetElement, modalWindowImg, userLike, likesSpan, scaleValue;
 let appliedEffect = 1;
-let tegsArray = [];
-let targetElementComments = [];
+const tegsArray = [];
+const targetElementComments = [];
 document.addEventListener('keydown', (event) => {
     if (createModalWindow.modalWindow !== undefined) {
         switch (event.code) {
@@ -52,7 +53,14 @@ export function createModalWindow(windowType, eventTarget) {
         case 'signUp': {
             createModalWindow.modalWindow = document.querySelector('.signup-window');
             setBasics();
-            const signUpButton = createModalWindow.modalWindow.querySelector('.sign-up__button');
+
+            // Set Tabs
+            document.signupForm.style.display = 'flex';
+            const tabList = createModalWindow.modalWindow.querySelector('.tab__list');
+            setEvent('click', tabList, setTabs);
+
+            // Set Post Button
+            const signUpButton = createModalWindow.modalWindow.querySelector('.signup__button');
             setEvent('click', signUpButton, signUp)
 
             const logInButton = createModalWindow.modalWindow.querySelector('.login-form__button');
@@ -171,7 +179,7 @@ export function closeModalWindow() {
 
     // Null Tegs
     consts.INPUT_TEG.value = '#';
-    tegsArray = [];
+    tegsArray.length = 0;
     document.querySelector('.hashtags-section__hashtags-container').textContent = '';
 
     // Null effects
@@ -191,7 +199,7 @@ export function closeModalWindow() {
 
     // Null Comments
     document.querySelector('.comments-container').textContent = '';
-    targetElementComments = [];
+    targetElementComments.length = 0;
 
     // Null textareas
     const commentDescription = document.querySelector('.add-comment__textarea');
@@ -206,6 +214,23 @@ export function closeModalWindow() {
     consts.INPUT_FILE.value = '';
 
     removeEvents();
+}
+
+const tabs = document.querySelectorAll('.tab__item');
+function setTabs(event) {
+    if (event.target.classList.contains('tab__item')) {
+        if (!event.target.matches('.tab__item--active')) {
+            tabs.forEach(tab => {
+                tab.classList.remove('tab__item--active');
+                const currentForm = tab.getAttribute('data-form');
+                createModalWindow.modalWindow.querySelector(`#${currentForm}`).style.display = 'none';
+            })
+            event.target.classList.add('tab__item--active');
+            const activeForm = event.target.getAttribute('data-form');
+            createModalWindow.modalWindow.querySelector(`#${activeForm}`).style.display = 'flex';
+        }
+    }
+
 }
 
 function showComments(commentsNumber, showCommentsButton) {
@@ -344,6 +369,9 @@ function submitPost() {
 
 function signUp() {
     setForm('users', consts.SIGNUP_FORM, [], (response) => {
+        consts.LOGIN_FORM.querySelector('.login-form__email').value = consts.SIGNUP_FORM.querySelector('.signup-form__email').value;
+        consts.LOGIN_FORM.querySelector('.login-form__password').value = consts.SIGNUP_FORM.querySelector('.signup-form__password').value;
+        createModalWindow.modalWindow.querySelector('.login-form__button').click();
     });
 }
 

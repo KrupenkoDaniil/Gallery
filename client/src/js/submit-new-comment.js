@@ -1,5 +1,5 @@
-import { createMessageWindow } from './server-api';
-import { applyFilters } from './create-desk.js';
+import { createMessageWindow } from './server-api.js';
+import { applyFilters } from './start.js';
 import { setForm } from "./server-api";
 import * as consts from './consts.js';
 
