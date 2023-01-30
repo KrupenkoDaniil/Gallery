@@ -55,9 +55,11 @@ export function createModalWindow(windowType, eventTarget) {
             setBasics();
 
             // Set Tabs
-            document.signupForm.style.display = 'flex';
             const tabList = createModalWindow.modalWindow.querySelector('.tab__list');
             setEvent('click', tabList, setTabs);
+
+            // Set Upload Avatar button
+            setEvent('change', consts.INPUT_AVATAR, uploadAvatar);
 
             // Set Post Button
             const signUpButton = createModalWindow.modalWindow.querySelector('.signup__button');
@@ -299,7 +301,7 @@ function setLike() {
 }
 
 function uploadPicture() {
-    const modalWindowImg = createModalWindow.modalWindow.querySelector('.image-section__img');
+    modalWindowImg = createModalWindow.modalWindow.querySelector('.image-section__img');
     const reader = new FileReader();
     const selectedFile = consts.INPUT_FILE.files[0];
 
@@ -365,6 +367,19 @@ function submitPost() {
         closeModalWindow();
         removeEvents();
     });
+}
+
+function uploadAvatar() {
+    modalWindowImg = createModalWindow.modalWindow.querySelector('.signup-avatar__img');
+    const reader = new FileReader();
+    const selectedFile = consts.INPUT_AVATAR.files[0];
+
+    if (selectedFile) {
+        reader.addEventListener('load', () => {
+            modalWindowImg.src = reader.result;
+        });
+        reader.readAsDataURL(selectedFile);
+    }
 }
 
 function signUp() {

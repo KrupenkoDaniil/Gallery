@@ -19,7 +19,7 @@
 }
 
 #signup-form {
-    display: none;
+    display: flex;
     flex-direction: column;
     gap: 1em;
 
@@ -33,7 +33,15 @@
 		}
 
 		&__avatar {
+
+			
 		}
+}
+
+.signup-avatar__img {
+	width: 15%;
+	margin-top: 1rem;
+	border-radius: 50%;
 }
 
 #login-form {

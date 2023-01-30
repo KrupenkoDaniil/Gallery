@@ -6,6 +6,7 @@ MAIN_CONTAINER.classList.add('container');
 export const MAIN_OVERLAY = document.querySelector('.overlay');
 
 export const INPUT_FILE = document.querySelector('#file');
+export const INPUT_AVATAR = document.querySelector('#signup-avatar-img');
 export const INPUT_TEG = document.querySelector('.hashtags-section__input');
 export const INPUT_LIKE = document.querySelector('.image-section__likes-input');
 

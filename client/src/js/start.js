@@ -23,7 +23,7 @@ function setSignUpButton() {
 
 function setOverlay() {
     consts.MAIN_OVERLAY.addEventListener('click', () => {
-        localStorage.getItem('token') ? closeModalWindow() : null;
+        closeModalWindow();
     })
 }
 

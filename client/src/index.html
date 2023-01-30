@@ -128,22 +128,6 @@
         </form>
     </section>
 
-    <!-- <section class="filters-section">
-        <label for="preserve-scale" class="filters-section__preserve-scale-label">
-            <span>preserved</span>
-            <input type="radio" id="preserve-scale" class="filters-section__preserve-scale-input"></input>
-        </label>
-        <ul class="filters-list">
-            <li id="byIdUp" class="filters-list__filter-item filters-list__filter-item--active">By id up</li>
-            <li id="byIdDown" class="filters-list__filter-item">By id down </li>
-            <li id="random" class="filters-list__filter-item">random </li>
-            <li id="byLikes" class="filters-list__filter-item">by likes</li>
-            <li id="byComments" class="filters-list__filter-item">by comments</li>
-            <li id="byEffects" class="filters-list__filter-item">By effects</li>
-            <li id="byTag" class="filters-list__filter-item">By tag</li>
-        </ul>
-    </section> -->
-
     <section class="signup-window modal-window">
         <img src="./img/svg/close-outline.svg" class="modal-window__exit-button">
         <div class="tab__list">
@@ -162,8 +146,9 @@
                 <label for="signup-username">Username:
                     <input class="signup-form__username" type="text" id="signup-username" name="username" placeholder="username" value="username" required>
                 </label>
-                <label for="signup-avatar">Avatar
-                    <input class="signup-form__avatar" type="text" id="signup-avatar" name="avatar_path" placeholder="avatar path" value="./avatar-4.png" required>
+                <label for="signup-avatar-path">Avatar:
+                    <input id="signup-avatar-img" name="avatar" type="file" accept="image/png, image/jpeg" class="signup-form__avatar" required>
+                    <img class="signup-avatar__img">
                 </label>
                 <button class="signup__button button" type="submit">Sign Up</button>
             </form>
@@ -179,11 +164,6 @@
             </form>
         </div>
     </section>
-
-    <!-- <div class="message__window">
-        <h6 class="message__title">Message!</h6>
-        <button type="button" class="message__success-button button">Got It</button>
-    </div> -->
 
     <template id="message-template">
         <div class="message__window">

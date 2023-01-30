@@ -10,6 +10,7 @@ use yii\helpers\Json;
 use yii\helpers\Url;
 use yii\rest\ActiveController;
 use yii\web\ServerErrorHttpException;
+use yii\web\UploadedFile;
 
 class UserController extends ActiveController
 {
@@ -40,19 +41,25 @@ class UserController extends ActiveController
     {
         $model = new $this->modelClass;
         $model->load(Yii::$app->getRequest()->getBodyParams(), '');
+        $model->avatar = UploadedFile::getInstanceByName('avatar');
+
+        if ($model->avatar) {
+            $filePath = uniqid("{$model->avatar->baseName}_") . '.' . $model->avatar->extension;
+            $model->avatar_path = $filePath;
+        }
 
         if ($model->password_hash) {
             $model->password_hash = Yii::$app->getSecurity()->generatePasswordHash($model->password_hash);
         }
 
         if ($model->save()) {
+            $model->avatar->saveAs('uploads/avatars/' . $filePath);
             $response = Yii::$app->getResponse();
             $response->setStatusCode(201);
             $id = implode(',', $model->getPrimaryKey(true));
             $response->getHeaders()->set('Location', Url::toRoute(['view', 'id' => $id], true));
         } elseif ($model->hasErrors()) {
             $response = Yii::$app->getResponse();
-            $response->setStatusCode(422);
             $response->getHeaders()->set('errors', Json::encode($model->errors));
         } elseif (!$model->hasErrors()) {
             throw new ServerErrorHttpException('Failed to create the object for unknown reason.');

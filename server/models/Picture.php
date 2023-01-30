@@ -95,16 +95,16 @@ class Picture extends ActiveRecord
         ];
     }
 
-    public function upload()
-    {
-        if ($this->validate()) {
-            $filePath = uniqid("{$this->imageFile->baseName}_") . '.' . $this->imageFile->extension;
-            $this->imageFile->saveAs('uploads/' . $filePath);
-            return true;
-        } else {
-            return false;
-        }
-    }
+//    public function upload()
+//    {
+//        if ($this->validate()) {
+//            $filePath = uniqid("{$this->imageFile->baseName}_") . '.' . $this->imageFile->extension;
+//            $this->imageFile->saveAs('uploads/' . $filePath);
+//            return true;
+//        } else {
+//            return false;
+//        }
+//    }
 
     /**
      * @return ActiveQuery

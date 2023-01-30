@@ -24,7 +24,7 @@ export function createDesk(picsArray, effects, containerWidth = 800, RowSize = 5
 
         // Set user info
         const userAvatar = document.createElement('img');
-        userAvatar.src = `../img/avatars/${window.localStorage.getItem('user_avatar')}`;
+        userAvatar.src = `http://localhost:80/uploads/avatars/${window.localStorage.getItem('user_avatar')}`;
         userAvatar.classList.add('navigation__user-avatar');
         userSection.appendChild(userAvatar);
 
