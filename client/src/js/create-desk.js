@@ -45,7 +45,7 @@ export function createDesk(picsArray, effects, containerWidth = 800, RowSize = 5
                 localStorage.clear();
                 createDesk([], []);
             }
-        })
+        });
     } else {
         // Set filters & preserve btn
         filtersList.classList.add('hidden');
@@ -104,7 +104,7 @@ export function createDesk(picsArray, effects, containerWidth = 800, RowSize = 5
         }
     }
 
-    if (picsArray.length < 3 && !buttonSet && localStorage.getItem('token')) {
+    if (picsArray.length < 3 && !buttonSet && localStorage.getItem('token')) { // delete < !buttonSet >
         const newElement = document.createElement('label');
         newElement.classList.add('add-button');
         newElement.setAttribute('for', 'file');
