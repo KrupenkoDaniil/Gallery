@@ -16,7 +16,7 @@ export function submitNewComment(event) {
         // Set basics
         const commentName = commentTemplate.content.querySelector('.comments-section__nickname');
         const commentAvatar = commentTemplate.content.querySelector('.comments-section__avatar');
-        commentAvatar.src = `../img/avatars/${window.localStorage.getItem('user_avatar')}`;
+        commentAvatar.src = `http://localhost:80/uploads/avatars/${window.localStorage.getItem('user_avatar')}`;
         commentName.textContent = window.localStorage.getItem('user_name');
 
         // Comment text
