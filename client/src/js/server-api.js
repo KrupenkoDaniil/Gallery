@@ -54,7 +54,7 @@ export const getData = (onSuccess) => {
     if (localStorage.getItem('token')) {
         OPTIONS = {
             headers: {
-                Authorization: `Basic ${btoa(window.localStorage.getItem('token') + ':')}` // через localstorage
+                Authorization: `Basic ${btoa(window.localStorage.getItem('token') + ':')}`
             }
         }
         const requests = consts.GET_URLS.map(url => fetch(url, OPTIONS));
@@ -85,10 +85,10 @@ const sendData = (postName, onSuccess, body, targetButton) => {
             })
             .then(data => {
                 if (responseIsOk) {
-                    postName == 'tokens' && createMessageWindow('You have log in!');
+                    postName === 'tokens' && createMessageWindow('You have log in!');
                     onSuccess(data);
                 } else {
-                    createMessageWindow(postName == 'users' ? 'Sorry, probably such email or avatar already exists!' : 'Sorry, but your email or password is wrong')
+                    createMessageWindow(postName === 'users' ? 'Sorry, probably such email or avatar already exists!' : 'Sorry, but your email or password is wrong')
                 }
             })
             .finally(() => {
@@ -145,11 +145,11 @@ export const deleteData = (deleteURL, header = true) => {
 // Set WebSocket
 const socket = new WebSocket('ws://127.0.0.1:2346');
 socket.addEventListener('open', () => {
-    getData((response) => {
+    getData(() => {
         let message = JSON.stringify(applyFilters.pictures);
         socket.send(message);
     });
 });
-socket.addEventListener('message', (event) => {
+socket.addEventListener('message', () => {
     applyFilters('1');
 });

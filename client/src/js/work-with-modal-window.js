@@ -8,6 +8,7 @@ import * as consts from './consts.js';
 
 let targetElement, modalWindowImg, userLike, likesSpan, scaleValue;
 let appliedEffect = 1;
+const tabs = document.querySelectorAll('.tab__item');
 const tegsArray = [];
 const targetElementComments = [];
 document.addEventListener('keydown', (event) => {
@@ -99,7 +100,6 @@ export function createModalWindow(windowType, eventTarget) {
 
             const showCommentsButton = document.querySelector('.comments-section__show-comments-button');
 
-            // targetElementComments.length < 5 ? showCommentsButton.classList.add('hidden') : showCommentsButton.classList.remove('hidden');
             showComments(consts.COMENTS_TO_SHOW_AMOUNT, showCommentsButton);
             setEvent('click', showCommentsButton, () => showComments(consts.COMENTS_TO_SHOW_AMOUNT, showCommentsButton));
 
@@ -169,11 +169,6 @@ function setBasics() {
     // Set Exit Button
     const exitButton = createModalWindow.modalWindow.querySelector('.modal-window__exit-button');
     setEvent('click', exitButton, closeModalWindow);
-
-    // Set Submit Button
-    // const submitButton = modalWindow.querySelector('button[type="submit"]');
-    // submitButton.id = targetId;
-    // setEvent('click', submitButton, submitButtonFunc);
 }
 
 export function closeModalWindow() {
@@ -218,7 +213,6 @@ export function closeModalWindow() {
     removeEvents();
 }
 
-const tabs = document.querySelectorAll('.tab__item');
 function setTabs(event) {
     if (event.target.classList.contains('tab__item')) {
         if (!event.target.matches('.tab__item--active')) {
@@ -232,7 +226,6 @@ function setTabs(event) {
             createModalWindow.modalWindow.querySelector(`#${activeForm}`).style.display = 'flex';
         }
     }
-
 }
 
 function showComments(commentsNumber, showCommentsButton) {
@@ -274,7 +267,7 @@ function showHashTags(hashtags) {
 }
 
 function checkLikes() {
-    userLike = targetElement['likes'].filter(like => like['user_id'] == localStorage.getItem('user_id'))[0]; // find user's like
+    userLike = targetElement['likes'].filter(like => like['user_id'] === localStorage.getItem('user_id'))[0]; // find user's like
     likesSpan.textContent = targetElement['likes'].length;
 }
 
@@ -297,7 +290,6 @@ function setLike() {
         likeSVG.classList.remove('image-section__like-svg___disliked');
         likeSVG.classList.add('image-section__like-svg___liked');
     }
-
 }
 
 function uploadPicture() {

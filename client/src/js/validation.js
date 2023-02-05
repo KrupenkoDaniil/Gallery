@@ -20,7 +20,7 @@ const TegReg = new RegExp('^#[A-Za-zА-Яа-я0-9]{0,20}$');
 
 tegInput.addEventListener('input', () => {
     let inputValue = tegInput.value;
-    if (inputValue[0] != '#') {
+    if (inputValue[0] !== '#') {
         tegInput.setCustomValidity('You can\'t add hashtag without # at the first place!');
     } else if (inputValue.length > MAX_TEG_LENGTH) {
         tegInput.setCustomValidity(`Your hashtag name can\' be longer then ${MAX_TEG_LENGTH} words!`);

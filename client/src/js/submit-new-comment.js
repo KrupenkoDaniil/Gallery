@@ -6,7 +6,6 @@ import * as consts from './consts.js';
 export function submitNewComment(event) {
     // Check if textarea has any content
     const textarea = document.querySelector('.add-comment__textarea');
-    // const commenterName = document.querySelector('.add-comment__name');
     if (textarea.value !== '') {
         // Find necessary elements
         const commentContainer = document.querySelector('.comments-container');

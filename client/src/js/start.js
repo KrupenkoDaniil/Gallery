@@ -38,7 +38,6 @@ function setFilters() {
             document.querySelector('.filters-list__filter-item--active').classList.remove('filters-list__filter-item--active');
             eventTarget.classList.add('filters-list__filter-item--active');
             currentFilter = eventTarget.id;
-            // consts.BODY.removeEventListener('click', bodyEventsHandler);
             applyFilters(currentFilter);
         }
     })
@@ -46,7 +45,6 @@ function setFilters() {
 
 function setScalePreserve() {
     const scaleButton = document.querySelector('.navigation__preserve-scale-input');
-
     const scaleButtonLabel = document.querySelector('.navigation__preserve-scale-label');
     scaleButtonLabel.classList.add('hidden');
 
@@ -88,7 +86,6 @@ export function applyFilters(filterMode, response = []) {
                 break;
             }
             case consts.FILTER_MODES.TAG: {
-                //TODO: add seatching part
                 applyFilters.pictures.sort((post, next) => next.hashtags.length - post.hashtags.length);
                 break;
             }
@@ -97,7 +94,6 @@ export function applyFilters(filterMode, response = []) {
     } catch (er) {
         console.log(er);
         createMessageWindow('There are problems with filters');
-        // consts.BODY.addEventListener('click', bodyEventsHandler);
     }
 
 }

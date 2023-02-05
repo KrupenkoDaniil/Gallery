@@ -66,7 +66,7 @@ export function createDesk(picsArray, effects, containerWidth = 800, RowSize = 5
     let buttonSet = false;
 
     for (let i = 0; i < picsArray.length; i++) {
-        if (i == (addButtonYPos * RowSize - rowHalf) && !buttonSet) { // if next element is button
+        if (i === (addButtonYPos * RowSize - rowHalf) && !buttonSet) { // if next element is button
             const newElement = document.createElement('label');
             newElement.classList.add('add-button');
             newElement.setAttribute('for', 'file');

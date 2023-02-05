@@ -23,7 +23,6 @@ export function generatePic(maxPicId, maxCommentId) {
 
     const newPic = {
         id: getUniqueId.call(generatePic, maxPicId),
-        // url: `./photos/${nextId}.jpg`,
         url: `${getRandomKey(consts.PICS)}`,
         description: getRandomElem(consts.DESCRIPTIONS),
         likes: getRandomInt(consts.MIN_LIKE_COUNT, consts.MAX_LIKE_COUNT), //! 15 - 200

@@ -1,5 +1,5 @@
 export function setEvent(eventName, eventElement, eventFunction) {
-    if (setEvent.activeEvents == undefined) {
+    if (setEvent.activeEvents === undefined) {
         setEvent.activeEvents = [];
     }
     eventElement.addEventListener(eventName, eventFunction);
