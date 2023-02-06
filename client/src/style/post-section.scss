@@ -151,7 +151,11 @@
     }
 
     &__avatar {
-        width: 40px;
+        width: 2.5em;
+        height: 2.5em;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 50%;
     }
 
     &__nickname {

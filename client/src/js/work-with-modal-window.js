@@ -98,10 +98,10 @@ export function createModalWindow(windowType, eventTarget) {
             })
             targetElementComments.reverse();
 
-            const showCommentsButton = document.querySelector('.comments-section__show-comments-button');
+            const setCommentsButton = document.querySelector('.comments-section__show-comments-button');
 
-            showComments(consts.COMENTS_TO_SHOW_AMOUNT, showCommentsButton);
-            setEvent('click', showCommentsButton, () => showComments(consts.COMENTS_TO_SHOW_AMOUNT, showCommentsButton));
+            setComments(consts.COMENTS_TO_SHOW_AMOUNT, setCommentsButton);
+            setEvent('click', setCommentsButton, () => setComments(consts.COMENTS_TO_SHOW_AMOUNT, setCommentsButton));
 
             // Set submit Button
             const submitCommentButton = createModalWindow.modalWindow.querySelector('button[type="submit"]');
@@ -109,7 +109,7 @@ export function createModalWindow(windowType, eventTarget) {
             setEvent('click', submitCommentButton, submitNewComment);
             break;
         }
-        case 'add-button': {
+        case 'add': {
             createModalWindow.modalWindow = document.querySelector('.add-window');
             setEvent('change', consts.INPUT_FILE, uploadPicture);
             // Change photo's scale
@@ -214,39 +214,40 @@ export function closeModalWindow() {
 }
 
 function setTabs(event) {
-    if (event.target.classList.contains('tab__item')) {
-        if (!event.target.matches('.tab__item--active')) {
-            tabs.forEach(tab => {
-                tab.classList.remove('tab__item--active');
-                const currentForm = tab.getAttribute('data-form');
-                createModalWindow.modalWindow.querySelector(`#${currentForm}`).style.display = 'none';
-            })
-            event.target.classList.add('tab__item--active');
-            const activeForm = event.target.getAttribute('data-form');
-            createModalWindow.modalWindow.querySelector(`#${activeForm}`).style.display = 'flex';
-        }
+    let currentTab = createModalWindow.modalWindow.querySelector('.tab__item--active');
+    let currentForm = createModalWindow.modalWindow.querySelector(`#${currentTab.getAttribute('data-form')}`);
+
+    if (currentTab) {
+        currentTab.classList.remove('tab__item--active');
+        currentForm.style.display = 'none';
     }
+
+    const newTab = event.target;
+    const newForm = createModalWindow.modalWindow.querySelector(`#${newTab.getAttribute('data-form')}`);
+    newTab.classList.add('tab__item--active');
+    newForm.style.display = 'flex';
 }
 
-function showComments(commentsNumber, showCommentsButton) {
+function setComments(commentsNumber, showCommentsButton) {
     const commentSection = document.querySelector('.comments-container');
-    const commentTemplate = document.getElementById('comment-template');
+    const commentTemplate = document.querySelector('#comment-template');
 
     // Check if we have enough comments
     showCommentsButton.classList.remove('hidden');
-    if (targetElementComments.length <= 5) {
+    if (targetElementComments.length <= consts.COMENTS_TO_SHOW_AMOUNT) {
         commentsNumber = targetElementComments.length;
         showCommentsButton.classList.add('hidden');
     }
+
+    const commentNickname = commentTemplate.content.querySelector('.comments-section__nickname');
+    const commentAvatar = commentTemplate.content.querySelector('.comments-section__avatar');
+    const commentText = commentTemplate.content.querySelector('.comments-section__text');
     for (let i = 0; i < commentsNumber; i++) {
         // Comment header
-        const commentNickname = commentTemplate.content.querySelector('.comments-section__nickname');
         commentNickname.textContent = `${targetElementComments[0]['user']['name']}`;
-        const commentAvatar = commentTemplate.content.querySelector('.comments-section__avatar');
         commentAvatar.src = `http://localhost:80/uploads/avatars/${targetElementComments[0]['user']['avatar']}`;
         commentAvatar.alt = `${targetElementComments[0]['user']['name']}`;
         // Comment text
-        const commentText = commentTemplate.content.querySelector('.comments-section__text');
         commentText.textContent = `${targetElementComments[0]['message']}`;
         // Comment clone
         const commentTextClone = commentTemplate.content.cloneNode(true);
@@ -296,14 +297,17 @@ function uploadPicture() {
     modalWindowImg = createModalWindow.modalWindow.querySelector('.image-section__img');
     const reader = new FileReader();
     const selectedFile = consts.INPUT_FILE.files[0];
+    const extension = selectedFile.name.split('.').pop();
 
-    if (selectedFile) {
+    if (selectedFile && consts.PICTURE_FORMATS.includes(extension)) {
         reader.addEventListener('load', () => {
             modalWindowImg.src = reader.result;
         });
         reader.readAsDataURL(selectedFile);
 
         setBasics();
+    } else {
+        createMessageWindow('Sorry, this extension is not allowed!');
     }
 }
 

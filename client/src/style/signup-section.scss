@@ -39,8 +39,10 @@
 }
 
 .signup-avatar__img {
-	width: 15%;
-	margin-top: 1rem;
+	width: 5em;
+	height: 5em;
+	object-fit: cover;
+	object-position: center;
 	border-radius: 50%;
 }
 

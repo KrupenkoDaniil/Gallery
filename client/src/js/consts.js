@@ -39,6 +39,12 @@ export const POST_URLS = {
     'hashtats': 'http://localhost:80/hashtags',
 };
 
+export const PICTURE_FORMATS = [
+    'jpeg',
+    'img',
+    'jpg'
+]
+
 export const COMENTS_TO_SHOW_AMOUNT = 5;
 
 export const MAX_TEG_LENGTH = 20;

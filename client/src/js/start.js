@@ -10,7 +10,7 @@ consts.MAIN_CONTAINER.addEventListener('click', (event) => {
     if (eventTarget.closest('.post')) {
         createModalWindow('post', event.target);
     } else if (eventTarget.closest('.add-button')) {
-        createModalWindow('add-button');
+        createModalWindow('add');
     }
 });
 

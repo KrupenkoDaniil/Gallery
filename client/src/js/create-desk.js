@@ -70,7 +70,7 @@ export function createDesk(picsArray, effects, containerWidth = 800, RowSize = 5
             const newElement = document.createElement('label');
             newElement.classList.add('add-button');
             newElement.setAttribute('for', 'file');
-            newElement.innerText = 'Add new';
+            newElement.textContent = 'Add new';
             newElement.style.width = postSize + 'px';
             newElement.style.height = postSize + 'px';
             newElement.style.margin = containerMargin + 'px';
@@ -81,7 +81,7 @@ export function createDesk(picsArray, effects, containerWidth = 800, RowSize = 5
             const nextElement = picsArray[i];
 
             // Create new post
-            const postTemplate = document.getElementById('post-template');
+            const postTemplate = document.querySelector('#post-template');
             const newPost = postTemplate.content.querySelector('.post');
             newPost.style.margin = containerMargin + 'px';
             newPost.setAttribute('id', i);
@@ -108,7 +108,7 @@ export function createDesk(picsArray, effects, containerWidth = 800, RowSize = 5
         const newElement = document.createElement('label');
         newElement.classList.add('add-button');
         newElement.setAttribute('for', 'file');
-        newElement.innerText = 'Add new';
+        newElement.textContent = 'Add new';
         newElement.style.width = postSize + 'px';
         newElement.style.height = postSize + 'px';
         newElement.style.margin = containerMargin + 'px';

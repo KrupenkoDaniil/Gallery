@@ -8,7 +8,7 @@ export function createMessageWindow(title) {
     consts.MAIN_OVERLAY.addEventListener('click', removeMessageWindow);
 
     // Setting Message Template 
-    const messageTemplate = document.getElementById('message-template');
+    const messageTemplate = document.querySelector('#message-template');
     const messageTitle = messageTemplate.content.querySelector('.message__title');
     messageTitle.textContent = title;
 
@@ -29,7 +29,6 @@ export function removeMessageWindow() {
     consts.MAIN_OVERLAY.removeEventListener('click', removeMessageWindow);
 }
 
-let signUpButton;
 function blockSubmitButton(button) {
     if (button) {
         button.textContent = 'in process...';
@@ -57,14 +56,17 @@ export const getData = (onSuccess) => {
                 Authorization: `Basic ${btoa(window.localStorage.getItem('token') + ':')}`
             }
         }
+
         const requests = consts.GET_URLS.map(url => fetch(url, OPTIONS));
 
         Promise.all(requests)
             .then(responses => Promise.all(responses.map(r => r.json())))
             .then(data => onSuccess(data))
-            .catch((error) => {
+            .catch(() => {
                 createMessageWindow('There is some problem on the server!');
             })
+
+
     } else {
         createModalWindow('signUp');
     }
