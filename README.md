@@ -29,6 +29,8 @@ ___
 Команды для запуска и остановки websocket-сервера:
 * ./yii worker/index start
 * ./yii worker/index stop
+Настройки OpenServer:
+Настройки > Домены > Ручное + Автропоиск (Имя домена: localhost; Папка домена: до папки web в server)
 ___
 [💾 ***-> ссылка на полное ТЗ проекта <-*** 💾](https://onedrive.live.com/edit.aspx?resid=39696ED78C8F552E!20657&cid=44730dc7-06bf-442f-8db9-f55a7cfbfc50&ithint=file%2cdocx&wdOrigin=OFFICECOM-WEB.START.REC)
 
